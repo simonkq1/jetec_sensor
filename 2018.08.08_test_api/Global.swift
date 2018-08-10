@@ -49,6 +49,16 @@ extension String {
     
 }
 
+extension UIView {
+//    
+//    func changeContainreView(storyboard: UIStoryboard? = nil, vc: UIViewController) {
+//        let controller = storyboard!.instantiateViewController(withIdentifier: "Second")
+//        addChildViewController(controller)
+//        controller.view.translatesAutoresizingMaskIntoConstraints = false
+//        self.addSubview(controller.view)
+//    }
+}
+
 
 class Global: NSObject {
     
@@ -60,6 +70,7 @@ class Global: NSObject {
         static var devicesInfo: [[[String: Any]]] = []
        static var authToken: String!
     }
+    
     
     
     static func postToURL(url: String, body: String, auth: String? = nil, action: ((_ returnData: Data?, _ returnString: String?,_ returnResponse: Int?) -> Void)? = nil ) {
@@ -142,6 +153,7 @@ class Global: NSObject {
             return subStr
         
     }
+    
     
     
     

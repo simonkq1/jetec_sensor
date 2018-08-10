@@ -21,12 +21,14 @@ class DevicesListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         tableView.tableFooterView = UIView()
-        if Global.memberData.devicesInfo.count <= 0 {
-            getDevicesInfo()
-            while infoIsGet == false {
-                usleep(100000)
+        
+        
+            if Global.memberData.devicesInfo.count <= 0 {
+                self.getDevicesInfo()
+                while self.infoIsGet == false {
+                    usleep(100000)
+                }
             }
-        }
         
         
         Global.memberData.devicesInfo = Global.memberData.devicesInfo.sorted { (d1, d2) -> Bool in
@@ -36,6 +38,7 @@ class DevicesListTableViewController: UITableViewController {
         
         
     }
+    
     
     func getDevicesInfo() {
         for i in Global.memberData.devicesData {
@@ -55,7 +58,6 @@ class DevicesListTableViewController: UITableViewController {
         while Global.memberData.devicesInfo.count != Global.memberData.devicesData.count{
             usleep(100000)
         }
-        print(Global.memberData.devicesData)
     }
     
     
@@ -91,9 +93,7 @@ class DevicesListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let deviceClass = Global.memberData.devicesData[section]["deviceClass"] as! String
         let devicesId = Global.memberData.devicesData[section]["id"] as! Int
-        print("AAA")
         let isConnected = Global.memberData.devicesData[section]["isConnected"] as! Int
-        print(isConnected)
         var title: String {
             return (isConnected == 1) ? (deviceClass + " \(devicesId)") : (deviceClass + " \(devicesId) (Disconnected)")
         }

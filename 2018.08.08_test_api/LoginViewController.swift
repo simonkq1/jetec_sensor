@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftSVG
 
 class LoginViewController: UIViewController {
     
@@ -20,14 +21,18 @@ class LoginViewController: UIViewController {
     var homesIsGet: Bool = false
     var authIsGet: Bool = false
     var userIsGet: Bool = false
+    var devicesIsGet: Bool = false
     var dataIsReady: Bool = false
     var dataIsError: Bool = false
     var loading_vc: LoadingViewController!
     var authToken: String!
+    
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBAction func login(_ sender: Any) {
         self.dataIsReady = false
+        
         
         let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -37,6 +42,7 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async {
                 self.present(self.loading_vc, animated: false, completion: nil)
             }
+            
             loginCheck(email: email, password: password, projectId: "1010")
             
             while true {
@@ -48,7 +54,7 @@ class LoginViewController: UIViewController {
             
             
             if dataIsError == false {
-                let vc = storyboard?.instantiateViewController(withIdentifier: "first_nc") as! FirstNavigationController
+                let vc = storyboard?.instantiateViewController(withIdentifier: "main_vc") as! MainViewController
                 self.show(vc, sender: nil)
             }else {
                 DispatchQueue.main.async {
@@ -76,6 +82,18 @@ class LoginViewController: UIViewController {
         
         loading_vc = storyboard?.instantiateViewController(withIdentifier: "loading_vc") as! LoadingViewController
         
+//        let svgURL = URL(string: "https://wicloud.jetec.com.tw/3.1.6/img/sensors/temp-icon-sm.svg")!
+//        let hammock = UIView(SVGURL: svgURL) { (svgLayer) in
+//            svgLayer.resizeToFit(self.view.bounds)
+//        }
+//        view1.addSubview(hammock)
+////
+        Global.getFromURL(url: "https://wicloud.jetec.com.tw/3.1.6/img/sensors/temp-icon-sm.svg", auth: Global.memberData.authToken) { (data, html, response) in
+            DispatchQueue.main.async {
+                print(html)
+
+            }
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -137,15 +155,35 @@ class LoginViewController: UIViewController {
                 Global.memberData.homesData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String:Any]]
                 self.homesIsGet = true
                 
+                let homeId = Global.memberData.homesData[0]["id"] as! Int
+                self.getDevices(homeId: homeId)
             }catch {
                 print(error)
             }
         }
     }
     
+    func getDevices (homeId: Int, action: (() -> Void)? = nil) {
+        let url = Basic.api + "/devices?homeId=" + "\(homeId)"
+        Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, status) in
+            if status == 200 {
+                do {
+                    Global.memberData.devicesData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String:Any]]
+                    if action != nil {
+                        action!()
+                    }
+                    self.devicesIsGet = true
+                }catch {
+                    print(error)
+                }
+            }
+        }
+    }
+
+    
     
     func dataCheck() {
-        if self.authIsGet == true, self.userIsGet == true, self.homesIsGet == true {
+        if self.authIsGet == true, self.userIsGet == true, self.homesIsGet == true, self.devicesIsGet == true {
             self.dataIsReady = true
         }
     }

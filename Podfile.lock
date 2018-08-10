@@ -1,16 +1,20 @@
 PODS:
   - Starscream (3.0.5)
+  - SwiftSVG (2.1.5)
 
 DEPENDENCIES:
   - Starscream (~> 3.0.5)
+  - SwiftSVG (~> 2.1.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Starscream
+    - SwiftSVG
 
 SPEC CHECKSUMS:
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
+  SwiftSVG: 9d78f41396a921c210ce9898ada05c85d412acb8
 
-PODFILE CHECKSUM: 6a1b989e91e527210df565819cd6f4e1103a3fb9
+PODFILE CHECKSUM: 9c2bd2c5afbe34b64322acdd8b9fe3ff8d650440
 
 COCOAPODS: 1.5.3

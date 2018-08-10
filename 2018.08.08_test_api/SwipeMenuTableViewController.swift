@@ -1,15 +1,29 @@
 //
-//  HomesListTableViewController.swift
+//  SwipeMenuTableViewController.swift
 //  2018.08.08_test_api
 //
-//  Created by macos on 2018/8/9.
+//  Created by macos on 2018/8/10.
 //  Copyright © 2018年 macos. All rights reserved.
 //
 
 import UIKit
 
-class HomesListTableViewController: UITableViewController {
-
+class SwipeMenuTableViewController: UITableViewController {
+    
+    let list = ["Dashboard", "Hardware", "Notifications", "Support", "MyAccount"]
+    
+    
+    private lazy var dashboard_vc: DashboardViewController = {
+        let dash_board = UIStoryboard(name: "Dashboard", bundle: Bundle.main)
+        var vc = dash_board.instantiateViewController(withIdentifier: "dashboard_vc") as! DashboardViewController
+        
+        self.add(asChildViewController: vc)
+        
+        return vc
+    }()
+    
+    var selectedViewController: UIViewController!
+    var main_vc: MainViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,30 +32,46 @@ class HomesListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        tableView.tableFooterView = UIView()
-    }
-    
-    
-    
-    func getDevices (homeId: Int, action: (() -> Void)? = nil) {
-        let url = Basic.api + "/devices?homeId=" + "\(homeId)"
-        Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, status) in
-            if status == 200 {
-                do {
-                    Global.memberData.devicesData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String:Any]]
-                    if action != nil {
-                        action!()
-                    }
-                }catch {
-                    print(error)
-                }
-            }
-        }
+        
+        main_vc = parent as! MainViewController
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func add(asChildViewController viewController: UIViewController) {
+        // Add Child View Controller
+        main_vc.addChildViewController(viewController)
+        
+        // Add Child View as Subview
+        main_vc.view.addSubview(viewController.view)
+        
+        // Configure Child View
+        viewController.view.frame = view.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Notify Child View Controller
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    
+    func changePage(to newViewController: UIViewController) {
+        // 2. Remove previous viewController
+        selectedViewController.willMove(toParentViewController: nil)
+        selectedViewController.view.removeFromSuperview()
+        selectedViewController.removeFromParentViewController()
+        
+        // 3. Add new viewController
+        addChildViewController(newViewController)
+        main_vc.mainContainerView.addSubview(newViewController.view)
+        newViewController.view.frame = main_vc.mainContainerView.bounds
+        newViewController.didMove(toParentViewController: self)
+        
+        // 4.
+        self.selectedViewController = newViewController
     }
 
     // MARK: - Table view data source
@@ -53,28 +83,39 @@ class HomesListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Global.memberData.homesData.count
+        return list.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = list[indexPath.row]
         
-        cell.textLabel?.text = Global.memberData.homesData[indexPath.row]["name"] as! String
         // Configure the cell...
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let homeId = Global.memberData.homesData[indexPath.row]["id"] as! Int
-        getDevices(homeId: homeId) {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "devices_vc") as! DevicesListTableViewController
-            DispatchQueue.main.async {
-                self.show(vc, sender: self)
-            }
+        let dash_board = UIStoryboard(name: "Dashboard", bundle: nil)
+        switch list[indexPath.row] {
+        case "Dashboard":
+            
+            
+            break
+        case "Hardware":
+            break
+        case "Notifications":
+            break
+        case "Support":
+            break
+        case "MyAccount":
+            break
+        default:
+            break
         }
     }
+    
     
 
     /*

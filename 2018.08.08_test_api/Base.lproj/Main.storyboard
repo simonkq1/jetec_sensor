@@ -37,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUR-sD-Khl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="-569"/>
+            <point key="canvasLocation" x="-1015" y="-606"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -109,7 +109,121 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+            <point key="canvasLocation" x="-1014" y="126"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="bbz-Nl-bAn">
+            <objects>
+                <viewController storyboardIdentifier="main_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HZe-Y6-Ga8" customClass="MainViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cd7-XM-baf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3Y-5e-Wgj">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <connections>
+                                    <segue destination="2wX-t9-Xqu" kind="embed" id="GIq-C7-Bem"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Mi-h5Q">
+                                <rect key="frame" x="-400" y="20" width="375" height="647"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Fgk-I2-wcD"/>
+                                    <constraint firstAttribute="height" constant="647" id="M6E-0O-STT"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="3pm-xJ-422" kind="embed" id="Pnj-c5-ErZ"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDh-pZ-m0M">
+                                <rect key="frame" x="-150" y="20" width="150" height="647"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="oPX-fD-Jkk"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="0gZ-9r-jWH" kind="embed" identifier="main_to_showVC" id="Neh-Sa-b4q"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="q3Y-5e-Wgj" firstAttribute="leading" secondItem="Ayc-qV-acO" secondAttribute="leading" id="D2r-u6-STf"/>
+                            <constraint firstItem="q3Y-5e-Wgj" firstAttribute="trailing" secondItem="Ayc-qV-acO" secondAttribute="trailing" id="Hev-hG-aZL"/>
+                            <constraint firstItem="q3Y-5e-Wgj" firstAttribute="top" secondItem="Ayc-qV-acO" secondAttribute="top" id="RAn-oR-Xy7"/>
+                            <constraint firstItem="ZmY-Mi-h5Q" firstAttribute="leading" secondItem="Ayc-qV-acO" secondAttribute="leading" constant="-400" id="ShH-Ta-9dn"/>
+                            <constraint firstItem="ZmY-Mi-h5Q" firstAttribute="top" secondItem="Ayc-qV-acO" secondAttribute="top" id="St7-dk-ulU"/>
+                            <constraint firstItem="ZmY-Mi-h5Q" firstAttribute="bottom" secondItem="Ayc-qV-acO" secondAttribute="bottom" id="Zvb-xW-4VZ"/>
+                            <constraint firstItem="YDh-pZ-m0M" firstAttribute="bottom" secondItem="Ayc-qV-acO" secondAttribute="bottom" id="b7d-q9-KSw"/>
+                            <constraint firstItem="YDh-pZ-m0M" firstAttribute="leading" secondItem="Ayc-qV-acO" secondAttribute="leading" constant="-150" id="jTc-hJ-OQR"/>
+                            <constraint firstItem="YDh-pZ-m0M" firstAttribute="top" secondItem="Ayc-qV-acO" secondAttribute="top" id="m2Z-ic-fOZ"/>
+                            <constraint firstItem="q3Y-5e-Wgj" firstAttribute="bottom" secondItem="Ayc-qV-acO" secondAttribute="bottom" id="xAU-MC-pLj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ayc-qV-acO"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ABQ-eb-BEF" appends="YES" id="ylY-fN-abH"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundConstraint" destination="ShH-Ta-9dn" id="Qom-fE-5aF"/>
+                        <outlet property="mainContainerView" destination="q3Y-5e-Wgj" id="TW9-IS-U87"/>
+                        <outlet property="swipeMenuConstraint" destination="jTc-hJ-OQR" id="Gf3-sO-K3N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2MT-JV-SeT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="ABQ-eb-BEF">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="ScreenEdgePanGesture:" destination="HZe-Y6-Ga8" id="8lR-5V-Y9g"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="338" y="125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zyd-HO-cDN">
+            <objects>
+                <navigationController id="0gZ-9r-jWH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9RP-4d-l3u">
+                        <rect key="frame" x="0.0" y="20" width="150" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qBj-Nz-0iG" kind="relationship" relationship="rootViewController" id="kSM-8r-6pF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bop-E3-n6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301" y="116"/>
+        </scene>
+        <!--Swipe Menu Table View Controller-->
+        <scene sceneID="p70-Ph-scv">
+            <objects>
+                <tableViewController storyboardIdentifier="menu_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBj-Nz-0iG" customClass="SwipeMenuTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2hc-43-SGk">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="a9K-5b-wTJ">
+                                <rect key="frame" x="0.0" y="28" width="150" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a9K-5b-wTJ" id="5vq-ZQ-WQ0">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qBj-Nz-0iG" id="UDW-Rq-Vha"/>
+                            <outlet property="delegate" destination="qBj-Nz-0iG" id="Mfj-hd-a6o"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="c5s-Bf-hDk"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgK-hs-2dN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1739" y="116"/>
         </scene>
         <!--First Navigation Controller-->
         <scene sceneID="Lcl-cP-SOX">
@@ -120,12 +234,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="y7K-Ek-GhO" kind="relationship" relationship="rootViewController" id="Qwf-0x-PVb"/>
+                        <segue destination="EM5-PQ-T3a" kind="relationship" relationship="rootViewController" id="RJh-gT-weu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVf-Xe-F25" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="117"/>
+            <point key="canvasLocation" x="209" y="829"/>
         </scene>
         <!--Homes-->
         <scene sceneID="V5Z-Zb-9ua">
@@ -154,14 +268,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeT-b5-C2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1521" y="118"/>
+            <point key="canvasLocation" x="1238" y="829"/>
         </scene>
         <!--Devices-->
         <scene sceneID="Uke-5u-AsF">
             <objects>
                 <tableViewController storyboardIdentifier="devices_vc" title="Devices" id="EM5-PQ-T3a" customClass="DevicesListTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UP1-zI-oCM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -179,15 +293,16 @@
                             <outlet property="delegate" destination="EM5-PQ-T3a" id="rrJ-g7-Hao"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Hardware" id="pwp-iu-qcz"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzD-Oe-igl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="833"/>
+            <point key="canvasLocation" x="209" y="1623"/>
         </scene>
-        <!--Device Socket Table View Controller-->
+        <!--Sensor Values-->
         <scene sceneID="ldB-BZ-8uh">
             <objects>
-                <tableViewController storyboardIdentifier="showinfo_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PTg-Fh-qXp" customClass="DeviceSocketTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="showinfo_vc" title="Sensor Values" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PTg-Fh-qXp" customClass="DeviceSocketTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0UP-V9-gY6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,7 +341,30 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jcw-BV-le6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1521" y="833"/>
+            <point key="canvasLocation" x="1238" y="1623"/>
+        </scene>
+        <!--Background View Controller-->
+        <scene sceneID="8xE-pU-Xoy">
+            <objects>
+                <viewController id="3pm-xJ-422" customClass="BackgroundViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dpS-NH-4Pr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="HaD-fk-NK8" appends="YES" id="iH9-Ju-XrM"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aVo-AA-UMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="HaD-fk-NK8">
+                    <connections>
+                        <action selector="panGesture:" destination="3pm-xJ-422" id="Ee3-hI-eRL"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="598" y="-548"/>
         </scene>
     </scenes>
 </document>
