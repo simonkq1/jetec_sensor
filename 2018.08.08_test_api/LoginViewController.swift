@@ -65,15 +65,21 @@ class LoginViewController: UIViewController {
         
         
     }
+    
+    
+    var subStr = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.text = "tohsakarc@gmail.com"
         passwordTextField.text = "jetec0000"
         
         loading_vc = storyboard?.instantiateViewController(withIdentifier: "loading_vc") as! LoadingViewController
+        
 
         // Do any additional setup after loading the view.
     }
+    
     
     
     

@@ -13,6 +13,8 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     var deviceData: [String: Any] = [:]
     var socket: WebSocket!
+    
+    var sensorData: [String:String] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +24,16 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        print(deviceData)
+        conncetWebSocket()
+//        print(deviceData)
+        
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        socket.disconnect()
+    }
     
     
     func websocketDidConnect(socket: WebSocketClient) {
@@ -37,7 +45,20 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print(text)
+        sensorData = [:]
+        let revceiveData = text.getJsonData() as! [String: Any]
+        let data = (revceiveData["eventData"] as! [String:Any])["timeSeriesData"] as! [[String:Any]]
+        for i in data {
+            let sensorKey = (Global.regexGetSub(pattern: Basic.dataPattern, str: (i["seriesId"] as! String)))[1]
+            let sensorValue = String(format: "%.0f", i["value"] as! Double)
+            sensorData[sensorKey] = sensorValue
+//            print(sensorKey + " : \(sensorValue)")
+            
+        }
+//        print(sensorData)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         print("did ReceiveMessage")
     }
     
@@ -49,13 +70,16 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     func conncetWebSocket () {
         
-        var request = URLRequest(url: URL(string: "wss://api.tinkermode.com/userSession/websocket")!)
+        let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
+        var request = URLRequest(url: URL(string: "wss://api.tinkermode.com/userSession/websocket?deviceId=\(deviceId)")!)
         request.timeoutInterval = 5
-        request.setValue(authToken, forHTTPHeaderField: "Authorization")
+        request.setValue(Global.memberData.authToken, forHTTPHeaderField: "Authorization")
         socket = WebSocket(request: request)
         socket.delegate = self
         socket.connect()
     }
+    
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -78,9 +102,31 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        var sensor = ((deviceData["value"] as! [String:Any])["sensors"] as! [String])[indexPath.row]
+        var sensor = ((((deviceData["value"] as! [String:Any])["sensors"] as! [String])[indexPath.row]).replacingOccurrences(of: ":0", with: "")).replacingOccurrences(of: "_", with: " ")
+        let sensorFirst = sensor.first
+        sensor.remove(at: sensor.startIndex)
+        let sensortitle = "\(String(sensorFirst!).uppercased())\(sensor.lowercased())"
+        if sensorData.count <= 0 {
+            cell.detailTextLabel?.text = ""
+        }else {
+            if sensortitle.lowercased().contains("wind"), sensortitle.lowercased().contains("speed") {
+                cell.detailTextLabel?.text = sensorData["wind_speed"]
+            }
+            if sensortitle.lowercased().contains("wind"), sensortitle.lowercased().contains("direction") {
+                cell.detailTextLabel?.text = sensorData["wind_direction"]
+            }
+            if sensortitle.lowercased().contains("temperature") {
+                cell.detailTextLabel?.text = sensorData["temperature"]
+            }
+            if sensortitle.lowercased().contains("humidity") {
+                cell.detailTextLabel?.text = sensorData["humidity"]
+            }
+            if sensortitle.lowercased().contains("precipitation") {
+                cell.detailTextLabel?.text = sensorData["precipitation"]
+            }
+        }
 //        sensor = sensor.first + sensor.lowercased().removeFirst()
-        cell.textLabel?.text = sensor
+        cell.textLabel?.text = sensortitle
         
 
         return cell

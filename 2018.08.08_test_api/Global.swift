@@ -10,6 +10,7 @@ import UIKit
 
 struct Basic {
     static let api = "https://api.tinkermode.com"
+    static let dataPattern = "^(\\S+)-(\\S+):0$"
 }
 
 struct Member {
@@ -18,6 +19,36 @@ struct Member {
     static let projectId = "1010"
     static let appId = "webapp"
 }
+
+extension Data {
+    
+    func getJsonData() -> Any {
+        var jsonData: Any!
+        do {
+            jsonData = try JSONSerialization.jsonObject(with: self, options: .allowFragments)
+        }catch {
+            
+        }
+        return jsonData
+    }
+    
+}
+
+extension String {
+    
+    func getJsonData() -> Any {
+        var jsonData: Any!
+        do {
+            jsonData = try JSONSerialization.jsonObject(with: self.data(using: .utf8)!, options: .allowFragments)
+        }catch {
+            
+        }
+        return jsonData
+    }
+    
+    
+}
+
 
 class Global: NSObject {
     
@@ -94,6 +125,24 @@ class Global: NSObject {
         dataTask.resume()
         
     }
+    
+    
+    
+    static func regexGetSub(pattern:String, str:String) -> [String] {
+        
+            var subStr = [String]()
+            let regex = try! NSRegularExpression(pattern: pattern, options:[])
+            let matches = regex.matches(in: str, options: [], range: NSRange(str.startIndex...,in: str))
+            //解析出子串
+            for  match in matches {
+                //        subStr.append(String(str[Range(match.range(at: 1), in: str)!]))
+                //        subStr.append(String(str[Range(match.range(at: 2), in: str)!]))
+                subStr.append(contentsOf: [String(str[Range(match.range(at: 1), in: str)!]),String(str[Range(match.range(at: 2), in: str)!])])
+            }
+            return subStr
+        
+    }
+    
     
     
 

@@ -55,6 +55,7 @@ class DevicesListTableViewController: UITableViewController {
         while Global.memberData.devicesInfo.count != Global.memberData.devicesData.count{
             usleep(100000)
         }
+        print(Global.memberData.devicesData)
     }
     
     
@@ -88,19 +89,34 @@ class DevicesListTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         let deviceClass = Global.memberData.devicesData[section]["deviceClass"] as! String
         let devicesId = Global.memberData.devicesData[section]["id"] as! Int
-        let title = deviceClass + " \(devicesId)"
+        print("AAA")
+        let isConnected = Global.memberData.devicesData[section]["isConnected"] as! Int
+        print(isConnected)
+        var title: String {
+            return (isConnected == 1) ? (deviceClass + " \(devicesId)") : (deviceClass + " \(devicesId) (Disconnected)")
+        }
         return title
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "showinfo_vc") as! DeviceSocketTableViewController
         vc.deviceData = Global.memberData.devicesInfo[indexPath.section][indexPath.row]
-        DispatchQueue.main.async {
-            self.show(vc, sender: self)
-        }
+        let isConnected = Global.memberData.devicesData[indexPath.section]["isConnected"] as! Int
+//        if isConnected == 1 {
+            DispatchQueue.main.async {
+                self.show(vc, sender: self)
+            }
+//        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88
     }
     
     
