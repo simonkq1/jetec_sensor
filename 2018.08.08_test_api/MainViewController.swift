@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
         case .began:
             print("begin")
             originX = position.x
-            print(originX)
+//            print(originX)
             break
         case .changed:
             let posX = position.x
