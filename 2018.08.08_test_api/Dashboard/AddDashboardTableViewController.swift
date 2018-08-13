@@ -1,20 +1,15 @@
 //
-//  SwipeMenuTableViewController.swift
+//  AddDashboardTableViewController.swift
 //  2018.08.08_test_api
 //
-//  Created by macos on 2018/8/10.
+//  Created by macos on 2018/8/13.
 //  Copyright © 2018年 macos. All rights reserved.
 //
 
 import UIKit
 
-class SwipeMenuTableViewController: UITableViewController {
-    
-    let list = ["Dashboard", "Hardware", "Notifications", "Support", "MyAccount"]
-    
-    
-    
-    var main_vc: MainViewController!
+class AddDashboardTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,76 +18,38 @@ class SwipeMenuTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        main_vc = (parent as! UINavigationController).parent as! MainViewController
-//        main_vc = parent as! MainViewController
-        
+        tableView.register(UINib(nibName: "AddDashboardTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return list.count
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = list[indexPath.row]
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddDashboardTableViewCell
+        cell.typeTextLabel.text = "\(indexPath.section) : \(indexPath.row)"
+        cell.contextLabel.text = "asfkmoin egfuieqwngiouqn wuigbiuqw bguibuibgiuq gubwqibgu iqbwiub"
         // Configure the cell...
 
         return cell
     }
-    
-    func celldidSelectAnimate(_ cell: UITableViewCell) {
-        cell.contentView.backgroundColor = UIColor.lightGray
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
-            cell.contentView.backgroundColor = UIColor.white
-        }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.size.height / 3
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        celldidSelectAnimate(tableView.cellForRow(at: indexPath)!)
-        
-        let dash_board = UIStoryboard(name: "Dashboard", bundle: nil)
-        switch list[indexPath.row] {
-        case "Dashboard":
-            main_vc.changePage(to: main_vc.dashboard_nc)
-            break
-        case "Hardware":
-            main_vc.changePage(to: main_vc.firstViewController)
-            break
-        case "Notifications":
-            break
-        case "Support":
-            break
-        case "MyAccount":
-            break
-        default:
-            break
-        }
-        
-        main_vc.swipeMenuConstraint.constant = -150
-        main_vc.backgroundConstraint.constant = -400
-        UIView.animate(withDuration: 0.5) {
-            self.main_vc.view.layoutIfNeeded()
-        }
-    }
-    
     
 
     /*

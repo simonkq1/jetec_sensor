@@ -1,20 +1,24 @@
 PODS:
   - Starscream (3.0.5)
   - SwiftSVG (2.1.5)
+  - SwipeCellKit (2.4.3)
 
 DEPENDENCIES:
   - Starscream (~> 3.0.5)
   - SwiftSVG (~> 2.1.5)
+  - SwipeCellKit (~> 2.4.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Starscream
     - SwiftSVG
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftSVG: 9d78f41396a921c210ce9898ada05c85d412acb8
+  SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
 
-PODFILE CHECKSUM: 9c2bd2c5afbe34b64322acdd8b9fe3ff8d650440
+PODFILE CHECKSUM: 44802d0471b6a39ba3e2b257dcef04069f8c4049
 
 COCOAPODS: 1.5.3

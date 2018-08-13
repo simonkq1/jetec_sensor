@@ -6,6 +6,7 @@ target '2018.08.08_test_api' do
   use_frameworks!
   pod 'Starscream', '~> 3.0.5'
   pod 'SwiftSVG', '~> 2.1.5'
+  pod 'SwipeCellKit', '~> 2.4.3'
   # Pods for 2018.08.08_test_api
 
 end

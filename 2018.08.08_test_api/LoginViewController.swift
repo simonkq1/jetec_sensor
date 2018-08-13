@@ -73,18 +73,6 @@ class LoginViewController: UIViewController {
         passwordTextField.text = "jetec0000"
         
         
-        //        let svgURL = URL(string: "https://wicloud.jetec.com.tw/3.1.6/img/sensors/temp-icon-sm.svg")!
-        //        let hammock = UIView(SVGURL: svgURL) { (svgLayer) in
-        //            svgLayer.resizeToFit(self.view.bounds)
-        //        }
-        //        view1.addSubview(hammock)
-        ////
-        Global.getFromURL(url: "https://wicloud.jetec.com.tw/3.1.6/img/sensors/temp-icon-sm.svg", auth: Global.memberData.authToken) { (data, html, response) in
-            DispatchQueue.main.async {
-                print(html)
-                
-            }
-        }
         
         // Do any additional setup after loading the view.
     }

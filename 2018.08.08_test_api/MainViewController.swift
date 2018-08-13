@@ -15,6 +15,20 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var mainContainerView: UIView!
     
+    
+    
+    var selectedViewController: UIViewController!
+    var firstViewController: FirstNavigationController!
+    lazy var dashboard_nc: DashboardNavigationController = {
+        let dash_board = UIStoryboard(name: "Dashboard", bundle: Bundle.main)
+        var nc = dash_board.instantiateViewController(withIdentifier: "dashboard_nc") as! DashboardNavigationController
+        
+        self.add(asChildViewController: nc)
+        
+        return nc
+    }()
+    
+    
     var menuIsShow: Bool = false
     var menu_vc: SwipeMenuTableViewController!
     @IBAction func ScreenEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
@@ -63,6 +77,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        selectedViewController = firstViewController
         
         for i in childViewControllers {
             if i.restorationIdentifier == "menu_vc" {
@@ -71,9 +86,51 @@ class MainViewController: UIViewController {
         }
         
         
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "containerView_segue" {
+            firstViewController = segue.destination as! FirstNavigationController
+            
+        }
+    }
+    
+    
+    private func add(asChildViewController viewController: UIViewController) {
+        // Add Child View Controller
+        self.addChildViewController(viewController)
         
+        // Add Child View as Subview
+        self.view.addSubview(viewController.view)
+        
+        // Configure Child View
+        viewController.view.frame = view.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        // Notify Child View Controller
+        viewController.didMove(toParentViewController: self)
+    }
+    
+    
+    func changePage(to newViewController: UIViewController) {
+        // 2. Remove previous viewController
+        selectedViewController.willMove(toParentViewController: nil)
+        selectedViewController.view.removeFromSuperview()
+        selectedViewController.removeFromParentViewController()
+        
+        // 3. Add new viewController
+        addChildViewController(newViewController)
+        self.mainContainerView.addSubview(newViewController.view)
+        newViewController.view.frame = self.mainContainerView.bounds
+        newViewController.didMove(toParentViewController: self)
+        
+        // 4.
+        self.selectedViewController = newViewController
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

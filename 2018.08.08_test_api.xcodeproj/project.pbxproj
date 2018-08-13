@@ -19,11 +19,15 @@
 		226EC203211C27F5003A90D6 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226EC202211C27F5003A90D6 /* LoadingViewController.swift */; };
 		226EC207211C3176003A90D6 /* DevicesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226EC206211C3176003A90D6 /* DevicesListTableViewController.swift */; };
 		226EC20B211C3D55003A90D6 /* DeviceSocketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226EC20A211C3D55003A90D6 /* DeviceSocketTableViewController.swift */; };
+		22898A2421212A3400A1CD61 /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22898A2321212A3400A1CD61 /* DashboardTableViewController.swift */; };
+		22898A6921215FA500A1CD61 /* DashboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22898A6821215FA500A1CD61 /* DashboardNavigationController.swift */; };
+		22B5FC2321218512002C559A /* AddDashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5FC2121218512002C559A /* AddDashboardTableViewCell.swift */; };
+		22B5FC2421218512002C559A /* AddDashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B5FC2221218512002C559A /* AddDashboardTableViewCell.xib */; };
+		22B5FC262121878F002C559A /* AddDashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B5FC252121878F002C559A /* AddDashboardTableViewController.swift */; };
 		22E7E6FE211D6CB9001DE27F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E6FD211D6CB9001DE27F /* MainViewController.swift */; };
 		22E7E702211D769C001DE27F /* SwipeMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E701211D769C001DE27F /* SwipeMenuTableViewController.swift */; };
 		22E7E704211D8025001DE27F /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E703211D8025001DE27F /* BackgroundViewController.swift */; };
 		22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E7E705211D8BBD001DE27F /* Dashboard.storyboard */; };
-		22E7E70A211D9237001DE27F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E709211D9237001DE27F /* DashboardViewController.swift */; };
 		95535ABC7B3FF8B0FF89FF03 /* Pods_2018_08_08_test_api.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,11 +46,15 @@
 		226EC202211C27F5003A90D6 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		226EC206211C3176003A90D6 /* DevicesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListTableViewController.swift; sourceTree = "<group>"; };
 		226EC20A211C3D55003A90D6 /* DeviceSocketTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSocketTableViewController.swift; sourceTree = "<group>"; };
+		22898A2321212A3400A1CD61 /* DashboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
+		22898A6821215FA500A1CD61 /* DashboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationController.swift; sourceTree = "<group>"; };
+		22B5FC2121218512002C559A /* AddDashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDashboardTableViewCell.swift; sourceTree = "<group>"; };
+		22B5FC2221218512002C559A /* AddDashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddDashboardTableViewCell.xib; sourceTree = "<group>"; };
+		22B5FC252121878F002C559A /* AddDashboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDashboardTableViewController.swift; sourceTree = "<group>"; };
 		22E7E6FD211D6CB9001DE27F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		22E7E701211D769C001DE27F /* SwipeMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeMenuTableViewController.swift; sourceTree = "<group>"; };
 		22E7E703211D8025001DE27F /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		22E7E705211D8BBD001DE27F /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
-		22E7E709211D9237001DE27F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		61C7A3D0B737C572F9B6085B /* Pods-2018.08.08_test_api.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.release.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.release.xcconfig"; sourceTree = "<group>"; };
 		A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2018_08_08_test_api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F3828EDC95C4E3FC664D2 /* Pods-2018.08.08_test_api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.debug.xcconfig"; sourceTree = "<group>"; };
@@ -96,7 +104,8 @@
 				2204D02B211AB5AC00B70B1D /* AppDelegate.swift */,
 				2204D02D211AB5AC00B70B1D /* ViewController.swift */,
 				2204D02F211AB5AC00B70B1D /* Main.storyboard */,
-				22E7E705211D8BBD001DE27F /* Dashboard.storyboard */,
+				22E7E708211D8C04001DE27F /* Dashboard */,
+				22E7E707211D8BCF001DE27F /* Hardware */,
 				2204D032211AB5AF00B70B1D /* Assets.xcassets */,
 				2204D034211AB5AF00B70B1D /* LaunchScreen.storyboard */,
 				2204D037211AB5AF00B70B1D /* Info.plist */,
@@ -106,8 +115,6 @@
 				22E7E703211D8025001DE27F /* BackgroundViewController.swift */,
 				226EC202211C27F5003A90D6 /* LoadingViewController.swift */,
 				226EC1FE211C0E66003A90D6 /* HomesListTableViewController.swift */,
-				22E7E708211D8C04001DE27F /* Dashboard */,
-				22E7E707211D8BCF001DE27F /* Hardware */,
 				2204D03D211AB5DE00B70B1D /* Global.swift */,
 			);
 			path = 2018.08.08_test_api;
@@ -126,7 +133,12 @@
 		22E7E708211D8C04001DE27F /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				22E7E709211D9237001DE27F /* DashboardViewController.swift */,
+				22E7E705211D8BBD001DE27F /* Dashboard.storyboard */,
+				22898A2321212A3400A1CD61 /* DashboardTableViewController.swift */,
+				22898A6821215FA500A1CD61 /* DashboardNavigationController.swift */,
+				22B5FC252121878F002C559A /* AddDashboardTableViewController.swift */,
+				22B5FC2121218512002C559A /* AddDashboardTableViewCell.swift */,
+				22B5FC2221218512002C559A /* AddDashboardTableViewCell.xib */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -204,6 +216,7 @@
 				2204D033211AB5AF00B70B1D /* Assets.xcassets in Resources */,
 				2204D031211AB5AC00B70B1D /* Main.storyboard in Resources */,
 				22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */,
+				22B5FC2421218512002C559A /* AddDashboardTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,11 +250,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSVG/SwiftSVG.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSVG.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -255,17 +270,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22898A2421212A3400A1CD61 /* DashboardTableViewController.swift in Sources */,
 				22E7E704211D8025001DE27F /* BackgroundViewController.swift in Sources */,
 				22E7E702211D769C001DE27F /* SwipeMenuTableViewController.swift in Sources */,
 				221965CE211C078B00329BA1 /* LoginViewController.swift in Sources */,
+				22898A6921215FA500A1CD61 /* DashboardNavigationController.swift in Sources */,
 				226EC201211C1A47003A90D6 /* FirstNavigationController.swift in Sources */,
 				226EC203211C27F5003A90D6 /* LoadingViewController.swift in Sources */,
 				226EC1FF211C0E66003A90D6 /* HomesListTableViewController.swift in Sources */,
+				22B5FC262121878F002C559A /* AddDashboardTableViewController.swift in Sources */,
 				2204D02E211AB5AC00B70B1D /* ViewController.swift in Sources */,
-				22E7E70A211D9237001DE27F /* DashboardViewController.swift in Sources */,
 				2204D02C211AB5AC00B70B1D /* AppDelegate.swift in Sources */,
 				226EC20B211C3D55003A90D6 /* DeviceSocketTableViewController.swift in Sources */,
 				226EC207211C3176003A90D6 /* DevicesListTableViewController.swift in Sources */,
+				22B5FC2321218512002C559A /* AddDashboardTableViewCell.swift in Sources */,
 				2204D03E211AB5DE00B70B1D /* Global.swift in Sources */,
 				22E7E6FE211D6CB9001DE27F /* MainViewController.swift in Sources */,
 			);

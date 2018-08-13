@@ -1,14 +1,14 @@
 //
-//  DashboardViewController.swift
+//  DashboardNavigationController.swift
 //  2018.08.08_test_api
 //
-//  Created by macos on 2018/8/10.
+//  Created by macos on 2018/8/13.
 //  Copyright © 2018年 macos. All rights reserved.
 //
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
