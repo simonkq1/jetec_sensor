@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
     var devicesIsGet: Bool = false
     var dataIsReady: Bool = false
     var dataIsError: Bool = false
-    var loading_vc: LoadingViewController!
     var authToken: String!
     
     
@@ -32,16 +31,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBAction func login(_ sender: Any) {
         self.dataIsReady = false
-        
-        
         let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         
+        
         if email != "", password != "" {
-            
-            DispatchQueue.main.async {
-                self.present(self.loading_vc, animated: false, completion: nil)
-            }
             
             loginCheck(email: email, password: password, projectId: "1010")
             
@@ -52,22 +46,20 @@ class LoginViewController: UIViewController {
                 }
             }
             
-            
             if dataIsError == false {
+                
                 let vc = storyboard?.instantiateViewController(withIdentifier: "main_vc") as! MainViewController
-                self.show(vc, sender: nil)
-            }else {
                 DispatchQueue.main.async {
-                    self.loading_vc.dismiss(animated: false, completion: nil)
+                    self.show(vc, sender: nil)
+//                    self.dismiss(animated: true, completion: nil)
                 }
+            }else {
                 print("data is error")
             }
-            
+        }else {
             
             
         }
-        
-        
         
         
     }
@@ -80,21 +72,20 @@ class LoginViewController: UIViewController {
         emailTextField.text = "tohsakarc@gmail.com"
         passwordTextField.text = "jetec0000"
         
-        loading_vc = storyboard?.instantiateViewController(withIdentifier: "loading_vc") as! LoadingViewController
         
-//        let svgURL = URL(string: "https://wicloud.jetec.com.tw/3.1.6/img/sensors/temp-icon-sm.svg")!
-//        let hammock = UIView(SVGURL: svgURL) { (svgLayer) in
-//            svgLayer.resizeToFit(self.view.bounds)
-//        }
-//        view1.addSubview(hammock)
-////
+        //        let svgURL = URL(string: "https://wicloud.jetec.com.tw/3.1.6/img/sensors/temp-icon-sm.svg")!
+        //        let hammock = UIView(SVGURL: svgURL) { (svgLayer) in
+        //            svgLayer.resizeToFit(self.view.bounds)
+        //        }
+        //        view1.addSubview(hammock)
+        ////
         Global.getFromURL(url: "https://wicloud.jetec.com.tw/3.1.6/img/sensors/temp-icon-sm.svg", auth: Global.memberData.authToken) { (data, html, response) in
             DispatchQueue.main.async {
                 print(html)
-
+                
             }
         }
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -102,7 +93,6 @@ class LoginViewController: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        loading_vc.dismiss(animated: false, completion: nil)
     }
     
     func loginCheck(email: String, password: String, projectId: String, appId: String = "webapp") {
@@ -179,7 +169,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
-
+    
     
     
     func dataCheck() {
@@ -188,21 +178,21 @@ class LoginViewController: UIViewController {
         }
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

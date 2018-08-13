@@ -33,7 +33,8 @@ class SwipeMenuTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        main_vc = parent as! MainViewController
+        main_vc = (parent as! UINavigationController).parent as! MainViewController
+//        main_vc = parent as! MainViewController
         
     }
 
@@ -96,7 +97,17 @@ class SwipeMenuTableViewController: UITableViewController {
         return cell
     }
     
+    func celldidSelectAnimate(_ cell: UITableViewCell) {
+        cell.contentView.backgroundColor = UIColor.lightGray
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
+            cell.contentView.backgroundColor = UIColor.white
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        celldidSelectAnimate(tableView.cellForRow(at: indexPath)!)
+        
         let dash_board = UIStoryboard(name: "Dashboard", bundle: nil)
         switch list[indexPath.row] {
         case "Dashboard":

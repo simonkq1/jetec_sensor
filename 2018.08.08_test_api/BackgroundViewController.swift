@@ -13,14 +13,14 @@ class BackgroundViewController: UIViewController {
     var originX: CGFloat!
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         let main_vc = parent as! MainViewController
-        print(main_vc.swipeMenuConstraint.constant)
+//        print(main_vc.swipeMenuConstraint.constant)
         let position = sender.location(in: sender.view)
         switch sender.state {
         case .began:
             originX = position.x
             break
         case .changed:
-            print(originX)
+//            print(originX)
             if main_vc.menuIsShow {
                 if main_vc.swipeMenuConstraint.constant <= 0 {
                     main_vc.swipeMenuConstraint.constant = 0 - (originX - position.x)
@@ -32,6 +32,8 @@ class BackgroundViewController: UIViewController {
                 main_vc.swipeMenuConstraint.constant = -150
                 main_vc.menuIsShow = false
                 main_vc.backgroundConstraint.constant = -400
+            }else {
+                main_vc.swipeMenuConstraint.constant = 0
             }
             UIView.animate(withDuration: 0.5) {
                 main_vc.view.layoutIfNeeded()
