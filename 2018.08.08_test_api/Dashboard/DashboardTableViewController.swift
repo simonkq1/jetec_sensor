@@ -45,12 +45,10 @@ class DashboardTableViewController: UITableViewController {
             do {
                 self.dashboardData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: Any]
                 self.dashboardIsGet = true
-                print(self.dashboardData)
                 
             }catch {
                 
             }
-            //            print(string)
         }
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"
@@ -71,7 +69,6 @@ class DashboardTableViewController: UITableViewController {
     }
     
     @objc func editingBarButtonAction(sender: UIBarButtonItem) {
-        print(sender.title)
         selectIndexPath = nil
         let delete = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonAction(_:)))
         let edit = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editIconBarButtonAction(_:)))
@@ -85,7 +82,6 @@ class DashboardTableViewController: UITableViewController {
     }
     
     @objc func doneBarButtonAction(_ sender: UIBarButtonItem) {
-        print(sender.title)
         DispatchQueue.main.async {
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.rightBarButtonItems = self.leftBarItems
@@ -95,7 +91,10 @@ class DashboardTableViewController: UITableViewController {
     
     @objc func addBarButtonAction(_ sender: UIBarButtonItem) {
         let vc = dashboard_storyboard.instantiateViewController(withIdentifier: "adddashboard_vc") as! AddDashboardTableViewController
-        self.show(vc, sender: self)
+        
+        let navigation = UINavigationController(rootViewController: vc)
+        self.present(navigation, animated: true, completion: nil)
+//        self.show(vc, sender: self)
         print("add")
     }
     

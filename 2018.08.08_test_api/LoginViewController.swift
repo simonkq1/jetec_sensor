@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftSVG
 
 class LoginViewController: UIViewController {
     
@@ -25,6 +24,7 @@ class LoginViewController: UIViewController {
     var dataIsReady: Bool = false
     var dataIsError: Bool = false
     var authToken: String!
+    let user = UserDefaults()
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -47,6 +47,8 @@ class LoginViewController: UIViewController {
             }
             
             if dataIsError == false {
+                user.setValue(email, forKey: "email")
+                user.setValue(password, forKey: "password")
                 
                 let vc = storyboard?.instantiateViewController(withIdentifier: "main_vc") as! MainViewController
                 DispatchQueue.main.async {

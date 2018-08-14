@@ -7,6 +7,7 @@ target '2018.08.08_test_api' do
   pod 'Starscream', '~> 3.0.5'
   pod 'SwiftSVG', '~> 2.1.5'
   pod 'SwipeCellKit', '~> 2.4.3'
+  pod 'DropDown', '~> 2.3.2'
   # Pods for 2018.08.08_test_api
 
 end

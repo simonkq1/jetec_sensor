@@ -9,6 +9,18 @@
 import UIKit
 
 class AddDashboardTableViewController: UITableViewController {
+    
+    let titleList = ["Value", "Gauge", "Time-Series Graph", "Data Log", "Alert Log"]
+    let contextList = ["Display current sensor value and its trend",
+                       "Gauge value from a single sensor between a minimum and maxinum",
+                       "Graphs value of a sensor over a period of time",
+                       "Display report values for a sensor over a specified amount of time",
+                       "Lists alert from a sensor over a specified duration"]
+    
+    var selectedCell: Int!
+    var nextBarButton: UIBarButtonItem!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +30,52 @@ class AddDashboardTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        self.title = "Select Type of Panel to Add"
         tableView.register(UINib(nibName: "AddDashboardTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
+        nextBarButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(nextBarButtonAction))
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBarButtonAction))
+        self.navigationItem.rightBarButtonItem = nextBarButton
+        
+        if selectedCell == nil{
+            nextBarButton.isEnabled = false
+        }
+        
+        
     }
+    
+    @objc func cancelBarButtonAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func nextBarButtonAction() {
+        print(titleList[selectedCell])
+        switch titleList[selectedCell] {
+        case "Value":
+            let value_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "value_panel_vc") as! ValueViewController
+            value_vc.title = titleList[selectedCell]
+            self.show(value_vc, sender: nil)
+            break
+        case "Gauge":
+            break
+        case "Time-Series Graph":
+            break
+        case "Data Log":
+            break
+        case "Alert Log":
+            break
+        default:
+            break
+        }
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Panel Style"
+        navigationItem.backBarButtonItem = backItem
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,14 +97,52 @@ class AddDashboardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddDashboardTableViewCell
-        cell.typeTextLabel.text = "\(indexPath.section) : \(indexPath.row)"
-        cell.contextLabel.text = "asfkmoin egfuieqwngiouqn wuigbiuqw bguibuibgiuq gubwqibgu iqbwiub"
+        cell.typeTextLabel.text = titleList[indexPath.section]
+        cell.contextLabel.text = contextList[indexPath.section]
+        cell.innerView.backgroundColor = UIColor.white
+        switch titleList[indexPath.section] {
+        case "Value":
+            cell.innerLabel.alpha = 1
+            cell.innerLabel.text = "50.4"
+            cell.innerImageView.image = nil
+            break
+        case "Gauge":
+            cell.innerLabel.alpha = 0
+            cell.innerImageView.image = UIImage(named: "gauge")
+            break
+        case "Time-Series Graph":
+            cell.innerLabel.alpha = 0
+            cell.innerImageView.image = UIImage(named: "time_series_graph")
+            break
+        case "Data Log":
+            cell.innerLabel.alpha = 0
+            cell.innerImageView.image = UIImage(named: "data_log")
+            break
+        case "Alert Log":
+            cell.innerLabel.alpha = 0
+            cell.innerImageView.image = UIImage(named: "alert_log")
+            break
+        default:
+            break
+        }
         // Configure the cell...
 
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.height / 3
+        return tableView.frame.size.height / 2.3
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedCell = indexPath.section
+        if selectedCell != nil {
+            nextBarButton.isEnabled = true
+            DispatchQueue.main.async {
+                self.title = self.titleList[indexPath.section]
+            }
+        }
+        
     }
     
 

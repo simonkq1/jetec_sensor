@@ -13,6 +13,13 @@
 		2204D033211AB5AF00B70B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2204D032211AB5AF00B70B1D /* Assets.xcassets */; };
 		2204D036211AB5AF00B70B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2204D034211AB5AF00B70B1D /* LaunchScreen.storyboard */; };
 		2204D03E211AB5DE00B70B1D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2204D03D211AB5DE00B70B1D /* Global.swift */; };
+		2216507721228B5F00190E44 /* GaugeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507621228B5F00190E44 /* GaugeViewController.swift */; };
+		2216507921228B9F00190E44 /* TimeSeriesGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507821228B9F00190E44 /* TimeSeriesGraphViewController.swift */; };
+		2216507C212299CB00190E44 /* ValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507B212299CB00190E44 /* ValueViewController.swift */; };
+		2216507E212299D800190E44 /* DataLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507D212299D800190E44 /* DataLogViewController.swift */; };
+		22165080212299E200190E44 /* AlertLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507F212299E200190E44 /* AlertLogViewController.swift */; };
+		2216508221229E0400190E44 /* PanelClassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216508121229E0400190E44 /* PanelClassButton.swift */; };
+		221650842122B89D00190E44 /* PanelClassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221650832122B89D00190E44 /* PanelClassTextField.swift */; };
 		221965CE211C078B00329BA1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965CD211C078B00329BA1 /* LoginViewController.swift */; };
 		226EC1FF211C0E66003A90D6 /* HomesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226EC1FE211C0E66003A90D6 /* HomesListTableViewController.swift */; };
 		226EC201211C1A47003A90D6 /* FirstNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226EC200211C1A47003A90D6 /* FirstNavigationController.swift */; };
@@ -40,6 +47,13 @@
 		2204D035211AB5AF00B70B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2204D037211AB5AF00B70B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2204D03D211AB5DE00B70B1D /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		2216507621228B5F00190E44 /* GaugeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeViewController.swift; sourceTree = "<group>"; };
+		2216507821228B9F00190E44 /* TimeSeriesGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesGraphViewController.swift; sourceTree = "<group>"; };
+		2216507B212299CB00190E44 /* ValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueViewController.swift; sourceTree = "<group>"; };
+		2216507D212299D800190E44 /* DataLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLogViewController.swift; sourceTree = "<group>"; };
+		2216507F212299E200190E44 /* AlertLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLogViewController.swift; sourceTree = "<group>"; };
+		2216508121229E0400190E44 /* PanelClassButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelClassButton.swift; sourceTree = "<group>"; };
+		221650832122B89D00190E44 /* PanelClassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelClassTextField.swift; sourceTree = "<group>"; };
 		221965CD211C078B00329BA1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		226EC1FE211C0E66003A90D6 /* HomesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesListTableViewController.swift; sourceTree = "<group>"; };
 		226EC200211C1A47003A90D6 /* FirstNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNavigationController.swift; sourceTree = "<group>"; };
@@ -120,6 +134,20 @@
 			path = 2018.08.08_test_api;
 			sourceTree = "<group>";
 		};
+		2216507521228B2300190E44 /* AddPanel */ = {
+			isa = PBXGroup;
+			children = (
+				2216507621228B5F00190E44 /* GaugeViewController.swift */,
+				2216507821228B9F00190E44 /* TimeSeriesGraphViewController.swift */,
+				2216507B212299CB00190E44 /* ValueViewController.swift */,
+				2216507D212299D800190E44 /* DataLogViewController.swift */,
+				2216507F212299E200190E44 /* AlertLogViewController.swift */,
+				2216508121229E0400190E44 /* PanelClassButton.swift */,
+				221650832122B89D00190E44 /* PanelClassTextField.swift */,
+			);
+			path = AddPanel;
+			sourceTree = "<group>";
+		};
 		22E7E707211D8BCF001DE27F /* Hardware */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +161,7 @@
 		22E7E708211D8C04001DE27F /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				2216507521228B2300190E44 /* AddPanel */,
 				22E7E705211D8BBD001DE27F /* Dashboard.storyboard */,
 				22898A2321212A3400A1CD61 /* DashboardTableViewController.swift */,
 				22898A6821215FA500A1CD61 /* DashboardNavigationController.swift */,
@@ -248,12 +277,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSVG/SwiftSVG.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSVG.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
@@ -271,10 +302,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				22898A2421212A3400A1CD61 /* DashboardTableViewController.swift in Sources */,
+				2216507C212299CB00190E44 /* ValueViewController.swift in Sources */,
+				2216507921228B9F00190E44 /* TimeSeriesGraphViewController.swift in Sources */,
 				22E7E704211D8025001DE27F /* BackgroundViewController.swift in Sources */,
 				22E7E702211D769C001DE27F /* SwipeMenuTableViewController.swift in Sources */,
+				2216507E212299D800190E44 /* DataLogViewController.swift in Sources */,
 				221965CE211C078B00329BA1 /* LoginViewController.swift in Sources */,
+				2216508221229E0400190E44 /* PanelClassButton.swift in Sources */,
 				22898A6921215FA500A1CD61 /* DashboardNavigationController.swift in Sources */,
+				221650842122B89D00190E44 /* PanelClassTextField.swift in Sources */,
 				226EC201211C1A47003A90D6 /* FirstNavigationController.swift in Sources */,
 				226EC203211C27F5003A90D6 /* LoadingViewController.swift in Sources */,
 				226EC1FF211C0E66003A90D6 /* HomesListTableViewController.swift in Sources */,
@@ -282,7 +318,9 @@
 				2204D02E211AB5AC00B70B1D /* ViewController.swift in Sources */,
 				2204D02C211AB5AC00B70B1D /* AppDelegate.swift in Sources */,
 				226EC20B211C3D55003A90D6 /* DeviceSocketTableViewController.swift in Sources */,
+				22165080212299E200190E44 /* AlertLogViewController.swift in Sources */,
 				226EC207211C3176003A90D6 /* DevicesListTableViewController.swift in Sources */,
+				2216507721228B5F00190E44 /* GaugeViewController.swift in Sources */,
 				22B5FC2321218512002C559A /* AddDashboardTableViewCell.swift in Sources */,
 				2204D03E211AB5DE00B70B1D /* Global.swift in Sources */,
 				22E7E6FE211D6CB9001DE27F /* MainViewController.swift in Sources */,

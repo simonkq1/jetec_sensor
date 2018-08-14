@@ -16,6 +16,7 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     var sensorData: [String:String] = [:]
 
+    var revceiveData: [String: Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,19 +47,28 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         sensorData = [:]
-        let revceiveData = text.getJsonData() as! [String: Any]
-        let data = (revceiveData["eventData"] as! [String:Any])["timeSeriesData"] as! [[String:Any]]
-        for i in data {
-            let sensorKey = (Global.regexGetSub(pattern: Basic.dataPattern, str: (i["seriesId"] as! String)))[1]
-            let sensorValue = String(format: "%.0f", i["value"] as! Double)
-            sensorData[sensorKey] = sensorValue
-//            print(sensorKey + " : \(sensorValue)")
+        print("***********************************")
+//        print(text)
+        revceiveData = text.getJsonData() as! [String: Any]
+        if let data = (revceiveData["eventData"] as! [String:Any])["timeSeriesData"] {
+            let originDeviceId = String(revceiveData["originDeviceId"] as! Int)
+            let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
+            if deviceId == originDeviceId {
+                
+                for i in (data as! [[String:Any]]) {
+                    let sensorKey = (Global.regexGetSub(pattern: Basic.dataPattern, str: (i["seriesId"] as! String)))[1]
+                    let sensorValue = String(format: "%.0f", i["value"] as! Double)
+                    sensorData[sensorKey] = sensorValue
+                    //            print(sensorKey + " : \(sensorValue)")
+                    
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
             
         }
 //        print(sensorData)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
         print("did ReceiveMessage")
     }
     
@@ -70,8 +80,7 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     func conncetWebSocket () {
         
-        let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
-        var request = URLRequest(url: URL(string: "wss://api.tinkermode.com/userSession/websocket?deviceId=\(deviceId)")!)
+        var request = URLRequest(url: URL(string: "wss://api.tinkermode.com/userSession/websocket")!)
         request.timeoutInterval = 5
         request.setValue(Global.memberData.authToken, forHTTPHeaderField: "Authorization")
         socket = WebSocket(request: request)

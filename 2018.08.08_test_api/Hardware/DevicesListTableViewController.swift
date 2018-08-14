@@ -36,9 +36,29 @@ class DevicesListTableViewController: UITableViewController {
             return ((d1[0]["value"] as! [String:Any])["gatewayId"] as! String) < ((d2[0]["value"] as! [String:Any])["gatewayId"] as! String)
         }
         
+        getOnlineDevice()
+        
+        
         
     }
     
+    
+    func getOnlineDevice() {
+        
+        Global.memberData.onlineDevices = []
+        for i in 0..<Global.memberData.devicesData.count {
+            var devices: [String: Any] = [:]
+            let isConnect: Bool = ((Global.memberData.devicesData[i]["isConnected"] as! Int) == 1) ? true : false
+            if isConnect {
+                for j in 0..<Global.memberData.devicesInfo[i].count {
+                    let deviceValue = Global.memberData.devicesInfo[i][j]["value"] as! [String:Any]
+                    Global.memberData.onlineDevices.append(deviceValue)
+                }
+            }
+        }
+        print(Global.memberData.onlineDevices)
+        
+    }
     
     func getDevicesInfo() {
         for i in Global.memberData.devicesData {
@@ -83,6 +103,8 @@ class DevicesListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let deviceValue = Global.memberData.devicesInfo[indexPath.section][indexPath.row]["value"] as! [String:Any]
         let deviceName = deviceValue["name"] as! String
+        
+        
         cell.textLabel?.text = deviceName
         // Configure the cell...
         

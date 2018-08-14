@@ -20,6 +20,8 @@ struct Member {
     static let appId = "webapp"
 }
 
+
+
 extension Data {
     
     func getJsonData() -> Any {
@@ -50,25 +52,30 @@ extension String {
 }
 
 extension UIView {
-//    
-//    func changeContainreView(storyboard: UIStoryboard? = nil, vc: UIViewController) {
-//        let controller = storyboard!.instantiateViewController(withIdentifier: "Second")
-//        addChildViewController(controller)
-//        controller.view.translatesAutoresizingMaskIntoConstraints = false
-//        self.addSubview(controller.view)
-//    }
+    //
+    //    func changeContainreView(storyboard: UIStoryboard? = nil, vc: UIViewController) {
+    //        let controller = storyboard!.instantiateViewController(withIdentifier: "Second")
+    //        addChildViewController(controller)
+    //        controller.view.translatesAutoresizingMaskIntoConstraints = false
+    //        self.addSubview(controller.view)
+    //    }
 }
 
 
 class Global: NSObject {
     
+    static var dash_storyboard: UIStoryboard = {
+        return UIStoryboard(name: "Dashboard", bundle: Bundle.main)
+    }()
+    
     class memberData: Global {
-       static var authData: [String:Any] = [:]
-       static var userData: [String:Any] = [:]
-       static var homesData: [[String:Any]] = []
-       static var devicesData: [[String:Any]] = []
+        static var authData: [String:Any] = [:]
+        static var userData: [String:Any] = [:]
+        static var homesData: [[String:Any]] = []
+        static var devicesData: [[String:Any]] = []
         static var devicesInfo: [[[String: Any]]] = []
-       static var authToken: String!
+        static var authToken: String!
+        static var onlineDevices: [[String: Any]] = []
     }
     
     
@@ -141,21 +148,21 @@ class Global: NSObject {
     
     static func regexGetSub(pattern:String, str:String) -> [String] {
         
-            var subStr = [String]()
-            let regex = try! NSRegularExpression(pattern: pattern, options:[])
-            let matches = regex.matches(in: str, options: [], range: NSRange(str.startIndex...,in: str))
-            //解析出子串
-            for  match in matches {
-                //        subStr.append(String(str[Range(match.range(at: 1), in: str)!]))
-                //        subStr.append(String(str[Range(match.range(at: 2), in: str)!]))
-                subStr.append(contentsOf: [String(str[Range(match.range(at: 1), in: str)!]),String(str[Range(match.range(at: 2), in: str)!])])
-            }
-            return subStr
+        var subStr = [String]()
+        let regex = try! NSRegularExpression(pattern: pattern, options:[])
+        let matches = regex.matches(in: str, options: [], range: NSRange(str.startIndex...,in: str))
+        //解析出子串
+        for  match in matches {
+            //        subStr.append(String(str[Range(match.range(at: 1), in: str)!]))
+            //        subStr.append(String(str[Range(match.range(at: 2), in: str)!]))
+            subStr.append(contentsOf: [String(str[Range(match.range(at: 1), in: str)!]),String(str[Range(match.range(at: 2), in: str)!])])
+        }
+        return subStr
         
     }
     
     
     
     
-
+    
 }

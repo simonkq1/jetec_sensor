@@ -13,9 +13,13 @@ class AddDashboardTableViewCell: UITableViewCell {
     @IBOutlet weak var stackView: UIStackView!
     
     @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var innerLabel: UILabel!
     @IBOutlet weak var typeTextLabel: UILabel!
     
     @IBOutlet weak var contextLabel: UILabel!
+    
+    @IBOutlet weak var innerImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

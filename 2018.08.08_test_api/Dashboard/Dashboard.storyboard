@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,7 +42,7 @@
         <!--Add Dashboard Table View Controller-->
         <scene sceneID="t8h-sG-hms">
             <objects>
-                <tableViewController storyboardIdentifier="adddashboard_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0uK-VM-55H" customClass="AddDashboardTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="adddashboard_vc" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0uK-VM-55H" customClass="AddDashboardTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="0rJ-TO-qJF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +65,150 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJY-gc-Jrr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2153" y="218"/>
+            <point key="canvasLocation" x="1894" y="217"/>
+        </scene>
+        <!--Value View Controller-->
+        <scene sceneID="nIf-pH-ESE">
+            <objects>
+                <viewController storyboardIdentifier="value_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vbc-iw-gX6" customClass="ValueViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OSQ-uB-UyA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0N-oY-S85">
+                                <rect key="frame" x="16" y="80" width="343" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7B2-6C-8C0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMd-QQ-jxv">
+                                <rect key="frame" x="16" y="180" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="wOu-fK-GpB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-zy-KcS" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                <rect key="frame" x="16" y="233" width="343" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="YcZ-0f-g8T"/>
+                                </constraints>
+                                <state key="normal" title="Select a sensor module                     "/>
+                                <connections>
+                                    <action selector="sensorModuleButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="4oJ-O4-hGI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoJ-G1-ac0">
+                                <rect key="frame" x="16" y="289" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Xch-WG-gye"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-t5-rPt" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                <rect key="frame" x="16" y="342" width="343" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="oan-Ux-DGE"/>
+                                </constraints>
+                                <state key="normal" title="Select a sensor                               "/>
+                                <connections>
+                                    <action selector="typeButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="RQl-wQ-wZN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2r8-Vq-nMt">
+                                <rect key="frame" x="16" y="398" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="mGc-kr-hVD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNl-Oq-S0A" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                <rect key="frame" x="16" y="451" width="343" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="gX3-8x-a8o"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="PCO-AB-IRh">
+                                <rect key="frame" x="329" y="244" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="4Q6-6A-EGB"/>
+                                    <constraint firstAttribute="width" constant="15" id="u5H-Dz-VUl"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-ol-3js">
+                                <rect key="frame" x="329" y="353" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="3JO-dH-f86"/>
+                                    <constraint firstAttribute="height" constant="15" id="sOU-9q-89f"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="2r8-Vq-nMt" secondAttribute="trailing" constant="16" id="4Rh-zJ-VCe"/>
+                            <constraint firstItem="2r8-Vq-nMt" firstAttribute="top" secondItem="fLs-t5-rPt" secondAttribute="bottom" constant="20" id="8kx-XQ-riu"/>
+                            <constraint firstItem="PCO-AB-IRh" firstAttribute="trailing" secondItem="6tU-zy-KcS" secondAttribute="trailing" constant="-15" id="BFj-h2-4ZJ"/>
+                            <constraint firstItem="PCO-AB-IRh" firstAttribute="centerY" secondItem="6tU-zy-KcS" secondAttribute="centerY" id="GV7-hR-CsC"/>
+                            <constraint firstItem="2r8-Vq-nMt" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="JLQ-4T-hqJ"/>
+                            <constraint firstItem="gMd-QQ-jxv" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="Jwu-MV-67v"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="z0N-oY-S85" secondAttribute="trailing" constant="16" id="Lkf-4q-IYd"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="hoJ-G1-ac0" secondAttribute="trailing" constant="16" id="Oxv-gJ-R26"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="6tU-zy-KcS" secondAttribute="trailing" constant="16" id="PJx-xH-rOm"/>
+                            <constraint firstItem="GNl-Oq-S0A" firstAttribute="top" secondItem="2r8-Vq-nMt" secondAttribute="bottom" constant="8" id="QIL-XV-SYU"/>
+                            <constraint firstItem="gMd-QQ-jxv" firstAttribute="top" secondItem="z0N-oY-S85" secondAttribute="bottom" constant="40" id="S75-EO-5sb"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="GNl-Oq-S0A" secondAttribute="trailing" constant="16" id="XkT-Iq-gFM"/>
+                            <constraint firstItem="z0N-oY-S85" firstAttribute="top" secondItem="mv0-Qb-u7n" secondAttribute="top" constant="60" id="Y0k-cx-bQD"/>
+                            <constraint firstItem="fLs-t5-rPt" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="Ycm-gp-jJF"/>
+                            <constraint firstItem="z0N-oY-S85" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="bad-eN-Xlg"/>
+                            <constraint firstItem="SPh-ol-3js" firstAttribute="centerY" secondItem="fLs-t5-rPt" secondAttribute="centerY" id="dRL-PP-we5"/>
+                            <constraint firstItem="hoJ-G1-ac0" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="di0-sg-tpZ"/>
+                            <constraint firstItem="GNl-Oq-S0A" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="e3H-49-UU9"/>
+                            <constraint firstItem="6tU-zy-KcS" firstAttribute="top" secondItem="gMd-QQ-jxv" secondAttribute="bottom" constant="8" id="is9-4S-1Lg"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="fLs-t5-rPt" secondAttribute="trailing" constant="16" id="kjv-Dh-H7R"/>
+                            <constraint firstItem="fLs-t5-rPt" firstAttribute="top" secondItem="hoJ-G1-ac0" secondAttribute="bottom" constant="8" id="pNz-Bf-Hof"/>
+                            <constraint firstItem="6tU-zy-KcS" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="r6L-vH-3OF"/>
+                            <constraint firstItem="hoJ-G1-ac0" firstAttribute="top" secondItem="6tU-zy-KcS" secondAttribute="bottom" constant="20" id="rjo-98-ZRL"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="gMd-QQ-jxv" secondAttribute="trailing" constant="16" id="sbl-2y-FnY"/>
+                            <constraint firstItem="SPh-ol-3js" firstAttribute="centerX" secondItem="PCO-AB-IRh" secondAttribute="centerX" id="ygl-Hc-AlP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mv0-Qb-u7n"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="GNl-Oq-S0A" id="22x-pt-kbK"/>
+                        <outlet property="sensorModuleButton" destination="6tU-zy-KcS" id="OZg-k5-lBw"/>
+                        <outlet property="typeButton" destination="fLs-t5-rPt" id="Xnt-zR-VOW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Adq-zd-z3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2749.5999999999999" y="215.44227886056973"/>
+        </scene>
+        <!--Gauge View Controller-->
+        <scene sceneID="aLO-ET-ihc">
+            <objects>
+                <viewController storyboardIdentifier="gauge_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ev1-fr-4yq" customClass="GaugeViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Sc-ij-VcA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TmN-2D-lG8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tid-Sm-XuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3502" y="216"/>
         </scene>
         <!--Dashboard Navigation Controller-->
         <scene sceneID="rvI-zV-eW4">
@@ -82,5 +226,53 @@
             </objects>
             <point key="canvasLocation" x="194" y="211"/>
         </scene>
+        <!--Data Log View Controller-->
+        <scene sceneID="7ea-1A-24v">
+            <objects>
+                <viewController storyboardIdentifier="datalog_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pt-eI-mPV" customClass="DataLogViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mqf-9c-vhb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="iUy-v4-sBt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7DW-WP-AL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750" y="928"/>
+        </scene>
+        <!--Alert Log View Controller-->
+        <scene sceneID="k4L-cB-F7K">
+            <objects>
+                <viewController storyboardIdentifier="alertlog_panel_vc" id="Qrz-Rt-U50" customClass="AlertLogViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TzN-Dv-SOO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sDb-9g-qEa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSq-R7-BmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3502" y="928"/>
+        </scene>
+        <!--Time Series Graph View Controller-->
+        <scene sceneID="2mJ-9J-pln">
+            <objects>
+                <viewController storyboardIdentifier="timeseriesgraph_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="evt-Vl-XzX" customClass="TimeSeriesGraphViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ASA-47-VAd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="m6X-dw-9Bm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wL-xm-o5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1894" y="928"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="triangel_down" width="29" height="29"/>
+    </resources>
 </document>

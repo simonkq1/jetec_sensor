@@ -1,24 +1,28 @@
 PODS:
+  - DropDown (2.3.2)
   - Starscream (3.0.5)
   - SwiftSVG (2.1.5)
   - SwipeCellKit (2.4.3)
 
 DEPENDENCIES:
+  - DropDown (~> 2.3.2)
   - Starscream (~> 3.0.5)
   - SwiftSVG (~> 2.1.5)
   - SwipeCellKit (~> 2.4.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - DropDown
     - Starscream
     - SwiftSVG
     - SwipeCellKit
 
 SPEC CHECKSUMS:
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftSVG: 9d78f41396a921c210ce9898ada05c85d412acb8
   SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
 
-PODFILE CHECKSUM: 44802d0471b6a39ba3e2b257dcef04069f8c4049
+PODFILE CHECKSUM: a223fe14258924407645eed00efa4573d72d0576
 
 COCOAPODS: 1.5.3
