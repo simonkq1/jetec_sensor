@@ -92,7 +92,6 @@ class GaugeViewController: UIViewController {
         dropDownAction(list: (typeList["show"] as! [String]), anchorView: typeButton) { (sender, item, index) in
             if (self.typeList["show"] as! [String])[0] != "Select a sensor" {
                 self.typeButton.titleLabel?.text = (self.typeList["show"] as! [String])[index]
-                self.dataIsReady = true
                 self.selectSensorIndex = index
                 
             }
@@ -139,7 +138,6 @@ class GaugeViewController: UIViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         scrollView.touchesBegan(touches, with: event)
-        print("AAA")
     }
     
     //MARK: - Function Area
@@ -187,8 +185,9 @@ class GaugeViewController: UIViewController {
     
     @objc func addPanelBarButtonAction() {
         
-        if self.dataIsReady {
+        if self.checkDataIsReady() {
             if let moduleIndex = self.selectModuleIndex, let sensorIndex = self.selectSensorIndex {
+                let number = NumberFormatter()
                 var sensorType: String {
                     let a = ((typeList["true"] as! [String])[sensorIndex]).replacingOccurrences(of: ":0", with: "")
                     let b = a.replacingOccurrences(of: "_", with: " ")
@@ -198,14 +197,23 @@ class GaugeViewController: UIViewController {
                     let a = String((nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines))!)
                     return a
                 }
+                var min: NSNumber {
+                    return number.number(from: minTextField.text!)!
+                }
+                var max: NSNumber {
+                    return number.number(from: maxTextField.text!)!
+                }
                 
                 self.panelData = [
                     "name":name,
                     "sensorType":sensorType,
                     "sensorId":(typeList["true"] as! [String])[sensorIndex],
                     "sensorModule":Global.memberData.onlineDevices[moduleIndex]["id"] as! String,
-                    "panelType":"VALUE"
+                    "panelType":"VALUE",
+                    "min":min,
+                    "max":max
                 ]
+                
                 print("--------------------")
                 Global.memberData.dashboardData.append(self.panelData)
                 
