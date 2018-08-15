@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         
         if email != "", password != "" {
             
-            loginCheck(email: email, password: password, projectId: "1010")
+            loginCheck(email: email, password: password, projectId: Basic.projectId)
             
             while true {
                 dataCheck()
@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
     }
     
-    func loginCheck(email: String, password: String, projectId: String, appId: String = "webapp") {
+    func loginCheck(email: String, password: String, projectId: String, appId: String = Basic.appId) {
         let authurl = "https://api.tinkermode.com/auth/user"
         let authbody = "email=\(email)&password=\(password)&projectId=\(projectId)&appId=\(appId)"
         Global.postToURL(url: authurl, body: authbody, auth: nil) { (data, html, status) in

@@ -69,21 +69,24 @@ class SwipeMenuTableViewController: UITableViewController {
         celldidSelectAnimate(tableView.cellForRow(at: indexPath)!)
         
         let dash_board = UIStoryboard(name: "Dashboard", bundle: nil)
-        switch list[indexPath.row] {
-        case "Dashboard":
-            main_vc.changePage(to: main_vc.dashboard_nc)
-            break
-        case "Hardware":
-            main_vc.changePage(to: main_vc.firstViewController)
-            break
-        case "Notifications":
-            break
-        case "Support":
-            break
-        case "MyAccount":
-            break
-        default:
-            break
+        DispatchQueue.main.async {
+            
+            switch self.list[indexPath.row] {
+            case "Dashboard":
+                self.main_vc.changePage(to: self.main_vc.dashboard_nc)
+                break
+            case "Hardware":
+                self.main_vc.changePage(to: self.main_vc.firstViewController)
+                break
+            case "Notifications":
+                break
+            case "Support":
+                break
+            case "MyAccount":
+                break
+            default:
+                break
+            }
         }
         
         main_vc.swipeMenuConstraint.constant = -150

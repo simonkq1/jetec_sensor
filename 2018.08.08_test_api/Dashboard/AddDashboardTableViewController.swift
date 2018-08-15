@@ -19,6 +19,9 @@ class AddDashboardTableViewController: UITableViewController {
     
     var selectedCell: Int!
     var nextBarButton: UIBarButtonItem!
+    var dashboard_vc: MainViewController {
+        return self.parent as! MainViewController
+    }
     
     
 
@@ -56,9 +59,12 @@ class AddDashboardTableViewController: UITableViewController {
         case "Value":
             let value_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "value_panel_vc") as! ValueViewController
             value_vc.title = titleList[selectedCell]
-            self.show(value_vc, sender: nil)
+            self.show(value_vc, sender: self)
             break
         case "Gauge":
+            let gauge_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "gauge_panel_vc") as! GaugeViewController
+            gauge_vc.title = titleList[selectedCell]
+            self.show(gauge_vc, sender: self)
             break
         case "Time-Series Graph":
             break

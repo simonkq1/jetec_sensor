@@ -80,14 +80,11 @@ class MainViewController: UIViewController {
         selectedViewController = firstViewController
         
         for i in childViewControllers {
+            
             if i.restorationIdentifier == "menu_vc" {
                 menu_vc = i as! SwipeMenuTableViewController
             }
         }
-        
-        
-        
-        
         
     }
     

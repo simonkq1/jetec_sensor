@@ -17,7 +17,6 @@ class ValueViewController: UIViewController {
     
     @IBOutlet weak var typeButton: PanelClassButton!
     
-    
     lazy var sensorList: [String] = {
         var list: [String] = []
         for i in Global.memberData.onlineDevices {
@@ -34,6 +33,7 @@ class ValueViewController: UIViewController {
     var sensorTypeList: [String]!
     
     var selectModuleIndex: Int?
+    var selectSensorIndex: Int?
     var isShow: Bool = false
     var originY: CGFloat!
     var addPanelButton = UIBarButtonItem()
@@ -44,9 +44,13 @@ class ValueViewController: UIViewController {
             }
         }
     }
+    var panelData: [String: Any] = [:]
+    
+    let user = UserDefaults()
     
     @IBAction func sensorModuleButtonAction(_ sender: Any) {
         selectModuleIndex = nil
+        dataIsReady = false
         typeList["show"] = ["Select a sensor"]
         typeButton.titleLabel?.text = "Select a sensor"
         dropDownAction(list: sensorList, anchorView: sensorModuleButton) { (sender, item, index) in
@@ -55,6 +59,8 @@ class ValueViewController: UIViewController {
         }
     }
     @IBAction func typeButtonAction(_ sender: Any) {
+        selectSensorIndex = nil
+        dataIsReady = false
         typeList = [:]
         var list: [String] = []
         var trueList: [String] = []
@@ -77,15 +83,17 @@ class ValueViewController: UIViewController {
         dropDownAction(list: (typeList["show"] as! [String]), anchorView: typeButton) { (sender, item, index) in
             if (self.typeList["show"] as! [String])[0] != "Select a sensor" {
                 self.typeButton.titleLabel?.text = (self.typeList["show"] as! [String])[index]
+                self.dataIsReady = true
+                self.selectSensorIndex = index
+                
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        print(Global.memberData.devicesData)
         sensorModuleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         typeButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -98,7 +106,6 @@ class ValueViewController: UIViewController {
         addPanelButton.action = #selector(addPanelBarButtonAction)
         addPanelButton.title = "Add"
         self.navigationItem.rightBarButtonItem = addPanelButton
-        
         dataIsReady = false
     }
     
@@ -113,6 +120,51 @@ class ValueViewController: UIViewController {
     
     @objc func addPanelBarButtonAction() {
         
+        if self.dataIsReady {
+            if let moduleIndex = self.selectModuleIndex, let sensorIndex = self.selectSensorIndex {
+                var sensorType: String {
+                    let a = ((typeList["true"] as! [String])[sensorIndex]).replacingOccurrences(of: ":0", with: "")
+                    let b = a.replacingOccurrences(of: "_", with: " ")
+                    return b.firstCharacterUppercase()
+                }
+                var name: String {
+                    let a = String((nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+                    return a
+                }
+                
+                self.panelData = [
+                    "name":name,
+                    "sensorType":sensorType,
+                    "sensorId":(typeList["true"] as! [String])[sensorIndex],
+                    "sensorModule":Global.memberData.onlineDevices[moduleIndex]["id"] as! String,
+                    "panelType":"VALUE"
+                ]
+                print("--------------------")
+                Global.memberData.dashboardData.append(self.panelData)
+                
+                
+                let json = try? JSONSerialization.data(withJSONObject: Global.memberData.dashboardData, options: [])
+                
+                let dashboardJson = String(data: json!, encoding: .utf8)
+                user.setValue(dashboardJson, forKey: "dashboardJson")
+                user.synchronize()
+                
+                let app = UIApplication.shared.delegate as! AppDelegate
+                let root = (app.window?.rootViewController as! MainViewController)
+                for i in root.dashboard_nc.viewControllers {
+                    if i is DashboardTableViewController {
+                        let dash_vc = i as! DashboardTableViewController
+                        dash_vc.viewDidLoad()
+                        dash_vc.tableView.reloadData()
+                        
+                    }
+                }
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        
+        
     }
     
     @objc func nameReturnAction() {
@@ -125,13 +177,19 @@ class ValueViewController: UIViewController {
         guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         if self.view.frame.origin.y == originY {
+            
+            UIView.animate(withDuration: 0.1, animations: {
             self.view.frame.origin.y -= keyboardFrame.height
+            })
         }
         
     }
     @objc func keyboardWillFall(notification: NSNotification) {
         if self.view.frame.origin.y != originY {
-            self.view.frame.origin.y = originY
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.frame.origin.y = self.originY
+            })
         }
         
     }
@@ -159,21 +217,21 @@ class ValueViewController: UIViewController {
         
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

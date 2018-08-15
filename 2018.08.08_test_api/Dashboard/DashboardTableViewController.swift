@@ -20,10 +20,12 @@ class DashboardTableViewController: UITableViewController {
     lazy var leftBarItems: [UIBarButtonItem] = {
         return [editingButton, addButton]
     }()
-    lazy var dashboard_storyboard: UIStoryboard = {
-        return UIStoryboard(name: "Dashboard", bundle: Bundle.main)
-    }()
+    
     var selectIndexPath: IndexPath!
+    
+    let textLabel = UILabel()
+    
+    //MARK: - System Function
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,31 +35,42 @@ class DashboardTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        if let myDashboard = user.object(forKey: "myDashboard") {
+        if let myDashboard = user.object(forKey: "dashboardJson") {
             do {
                 let data = (myDashboard as! String).data(using: .utf8)
-                userDashboard = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: Any]]
+                Global.memberData.dashboardData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: Any]]
             }catch {
                 
             }
         }
-        Global.getFromURL(url: "https://api.tinkermode.com/homes/744/kv/dashboard", auth: Global.memberData.authToken) { (data, string, respond) in
-            do {
-                self.dashboardData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: Any]
-                self.dashboardIsGet = true
-                
-            }catch {
-                
-            }
-        }
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"
         let date = Date()
         let datestr = formatter.string(from: date)
         
-        while dashboardIsGet == false {
-            usleep(1000000)
+        print("********************")
+        
+        if Global.memberData.dashboardData.count <= 0 {
+            textLabel.center = view.center
+            textLabel.frame.origin = CGPoint(x: self.view.center.x, y: self.view.center.y)
+            textLabel.frame.size = CGSize(width: self.view.bounds.size.width - 30, height: self.view.bounds.size.height - 30)
+            textLabel.center.x = view.center.x
+            textLabel.center.y = view.center.y - ((self.navigationController?.navigationBar.frame.size.height) ?? 44)
+            textLabel.textAlignment = .center
+            textLabel.font = UIFont.systemFont(ofSize: 50)
+            textLabel.textColor = UIColor.lightGray
+            textLabel.numberOfLines = 0
+            textLabel.alpha = 1
+            textLabel.text = "You have no panel, add one!"
+            DispatchQueue.main.async {
+                self.view.addSubview(self.textLabel)
+            }
+            
+        }else {
+            textLabel.alpha = 0
         }
+        
         
         editingButton = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editingBarButtonAction(sender:)))
         addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
@@ -68,6 +81,8 @@ class DashboardTableViewController: UITableViewController {
         
     }
     
+    
+    // MARK:- Selector Action
     @objc func editingBarButtonAction(sender: UIBarButtonItem) {
         selectIndexPath = nil
         let delete = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonAction(_:)))
@@ -90,7 +105,7 @@ class DashboardTableViewController: UITableViewController {
     }
     
     @objc func addBarButtonAction(_ sender: UIBarButtonItem) {
-        let vc = dashboard_storyboard.instantiateViewController(withIdentifier: "adddashboard_vc") as! AddDashboardTableViewController
+        let vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "adddashboard_vc") as! AddDashboardTableViewController
         
         let navigation = UINavigationController(rootViewController: vc)
         self.present(navigation, animated: true, completion: nil)
@@ -131,20 +146,21 @@ class DashboardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (dashboardData["value"] as! [[String: Any]]).count
+        return Global.memberData.dashboardData.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 //        print((dashboardData["value"] as! [[String: Any]])[indexPath.row])
-        let title = (dashboardData["value"] as! [[String: Any]])[indexPath.row]["name"] as? String ?? "沒有標題"
-        if title.contains("沒有標題") {
+        var title = Global.memberData.dashboardData[indexPath.row]["name"] as? String ?? "沒有標題"
+        
+        if title.count <= 0 {
             cell.textLabel?.textColor = UIColor.lightGray
+            title = "沒有標題"
         }
         cell.textLabel?.text = title
         // Configure the cell...
-        
         return cell
     }
     
@@ -154,6 +170,13 @@ class DashboardTableViewController: UITableViewController {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, index) in
             
             print("Delete \(indexPath)")
+            Global.memberData.dashboardData.remove(at: index.row)
+            let json = try? JSONSerialization.data(withJSONObject: Global.memberData.dashboardData, options: [])
+            self.user.setValue(String(data: json!, encoding: .utf8), forKey: "dashboardJson")
+            DispatchQueue.main.async {
+                self.viewDidLoad()
+                self.tableView.reloadData()
+            }
         }
         
         let editAction = UITableViewRowAction(style: .destructive, title: "Edit") { (action, index) in

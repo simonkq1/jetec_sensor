@@ -8,61 +8,12 @@
 
 import UIKit
 
-struct Basic {
-    static let api = "https://api.tinkermode.com"
-    static let dataPattern = "^(\\S+)-(\\S+):0$"
-}
-
-struct Member {
-    static let email = "tohsakarc@gmail.com"
-    static let password = "jetec0000"
-    static let projectId = "1010"
-    static let appId = "webapp"
-}
 
 
-
-extension Data {
-    
-    func getJsonData() -> Any {
-        var jsonData: Any!
-        do {
-            jsonData = try JSONSerialization.jsonObject(with: self, options: .allowFragments)
-        }catch {
-            
-        }
-        return jsonData
-    }
-    
-}
-
-extension String {
-    
-    func getJsonData() -> Any {
-        var jsonData: Any!
-        do {
-            jsonData = try JSONSerialization.jsonObject(with: self.data(using: .utf8)!, options: .allowFragments)
-        }catch {
-            
-        }
-        return jsonData
-    }
-    
-    
-}
-
-extension UIView {
-    //
-    //    func changeContainreView(storyboard: UIStoryboard? = nil, vc: UIViewController) {
-    //        let controller = storyboard!.instantiateViewController(withIdentifier: "Second")
-    //        addChildViewController(controller)
-    //        controller.view.translatesAutoresizingMaskIntoConstraints = false
-    //        self.addSubview(controller.view)
-    //    }
-}
 
 
 class Global: NSObject {
+    
     
     static var dash_storyboard: UIStoryboard = {
         return UIStoryboard(name: "Dashboard", bundle: Bundle.main)
@@ -76,6 +27,7 @@ class Global: NSObject {
         static var devicesInfo: [[[String: Any]]] = []
         static var authToken: String!
         static var onlineDevices: [[String: Any]] = []
+        static var dashboardData: [[String: Any]] = []
     }
     
     
