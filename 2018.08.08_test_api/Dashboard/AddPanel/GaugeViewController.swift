@@ -54,6 +54,7 @@ class GaugeViewController: UIViewController {
         }
     }
     let user = UserDefaults()
+    var dashboard_vc: DashboardTableViewController!
     
     
     @IBAction func sensorModuleButtonAction(_ sender: Any) {
@@ -224,16 +225,9 @@ class GaugeViewController: UIViewController {
                 user.setValue(dashboardJson, forKey: "dashboardJson")
                 user.synchronize()
                 
-                let app = UIApplication.shared.delegate as! AppDelegate
-                let root = (app.window?.rootViewController as! MainViewController)
-                for i in root.dashboard_nc.viewControllers {
-                    if i is DashboardTableViewController {
-                        let dash_vc = i as! DashboardTableViewController
-                        dash_vc.viewDidLoad()
-                        dash_vc.tableView.reloadData()
-                        
-                    }
-                }
+                self.dashboard_vc.viewDidLoad()
+                self.dashboard_vc.tableView.reloadData()
+                
                 self.dismiss(animated: true, completion: nil)
             }
         }

@@ -106,7 +106,7 @@ class DashboardTableViewController: UITableViewController {
     
     @objc func addBarButtonAction(_ sender: UIBarButtonItem) {
         let vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "adddashboard_vc") as! AddDashboardTableViewController
-        
+        vc.dashboard_vc = self
         let navigation = UINavigationController(rootViewController: vc)
         self.present(navigation, animated: true, completion: nil)
 //        self.show(vc, sender: self)
@@ -154,7 +154,7 @@ class DashboardTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 //        print((dashboardData["value"] as! [[String: Any]])[indexPath.row])
         var title = Global.memberData.dashboardData[indexPath.row]["name"] as? String ?? "沒有標題"
-        
+        cell.textLabel?.textColor = UIColor.black
         if title.count <= 0 {
             cell.textLabel?.textColor = UIColor.lightGray
             title = "沒有標題"

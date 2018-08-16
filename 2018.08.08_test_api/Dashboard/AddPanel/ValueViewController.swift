@@ -11,12 +11,13 @@ import DropDown
 
 class ValueViewController: UIViewController {
     
-    
+    // MARK: IBOutlet
     @IBOutlet weak var nameTextField: PanelClassTextField!
     @IBOutlet weak var sensorModuleButton: PanelClassButton!
-    
     @IBOutlet weak var typeButton: PanelClassButton!
     
+    
+    // MARK: variable
     lazy var sensorList: [String] = {
         var list: [String] = []
         for i in Global.memberData.onlineDevices {
@@ -47,6 +48,9 @@ class ValueViewController: UIViewController {
     var panelData: [String: Any] = [:]
     
     let user = UserDefaults()
+    var dashboard_vc: DashboardTableViewController!
+    
+    //MARK: - IBAction
     
     @IBAction func sensorModuleButtonAction(_ sender: Any) {
         selectModuleIndex = nil
@@ -90,6 +94,8 @@ class ValueViewController: UIViewController {
         }
     }
     
+    //MARK: - System Function
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,6 +123,8 @@ class ValueViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nameTextField.endEditing(true)
     }
+    
+    //MARK: - Custom Function
     
     @objc func addPanelBarButtonAction() {
         
@@ -149,16 +157,8 @@ class ValueViewController: UIViewController {
                 user.setValue(dashboardJson, forKey: "dashboardJson")
                 user.synchronize()
                 
-                let app = UIApplication.shared.delegate as! AppDelegate
-                let root = (app.window?.rootViewController as! MainViewController)
-                for i in root.dashboard_nc.viewControllers {
-                    if i is DashboardTableViewController {
-                        let dash_vc = i as! DashboardTableViewController
-                        dash_vc.viewDidLoad()
-                        dash_vc.tableView.reloadData()
-                        
-                    }
-                }
+                self.dashboard_vc.viewDidLoad()
+                self.dashboard_vc.tableView.reloadData()
                 self.dismiss(animated: true, completion: nil)
             }
         }

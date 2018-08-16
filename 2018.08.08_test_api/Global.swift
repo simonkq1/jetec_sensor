@@ -18,6 +18,9 @@ class Global: NSObject {
     static var dash_storyboard: UIStoryboard = {
         return UIStoryboard(name: "Dashboard", bundle: Bundle.main)
     }()
+    static var main_storyboard: UIStoryboard = {
+        return UIStoryboard(name: "Main", bundle: Bundle.main)
+    }()
     
     class memberData: Global {
         static var authData: [String:Any] = [:]
