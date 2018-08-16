@@ -110,8 +110,13 @@ class GaugeViewController: UIViewController {
         sensorModuleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         typeButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        nameTextField.addTarget(self, action: #selector(nameReturnAction), for: UIControlEvents.editingDidEndOnExit)
+        
+        
+        
         addPanelButton.target = self
         addPanelButton.style = .plain
         addPanelButton.action = #selector(addPanelBarButtonAction)
@@ -225,17 +230,40 @@ class GaugeViewController: UIViewController {
                 user.setValue(dashboardJson, forKey: "dashboardJson")
                 user.synchronize()
                 
+                for i in self.view.subviews {
+                    if i is UITextField {
+                        if (i as! UITextField).isEditing {
+                            (i as! UITextField).endEditing(true)
+                        }
+                    }
+                }
                 self.dashboard_vc.viewDidLoad()
                 self.dashboard_vc.tableView.reloadData()
                 
                 self.dismiss(animated: true, completion: nil)
             }
         }
-        
-        
-        
+    }
+    @objc func nameReturnAction() {
+        nameTextField.endEditing(true)
     }
     
+    
+    
+    @objc func keyboardWillChangeFrame(notification: NSNotification) {
+        
+        guard let userInfo = notification.userInfo else {return}
+        guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
+        let keyboardFrame = keyboardSize.cgRectValue
+        if self.view.frame.origin.y != originY {
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.view.frame.origin.y  = self.originY - keyboardFrame.height
+                })
+            }
+            
+        }
+    }
     
     @objc func keyboardWillRise(notification: NSNotification) {
         

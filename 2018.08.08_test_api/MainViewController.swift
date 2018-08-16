@@ -36,7 +36,6 @@ class MainViewController: UIViewController {
         var position = sender.location(in: sender.view)
         switch sender.state {
         case .began:
-            print("begin")
             originX = position.x
 //            print(originX)
             break
@@ -51,7 +50,7 @@ class MainViewController: UIViewController {
                 swipeMenuConstraint.constant = 0
                 menuIsShow = true
             }
-            if swipeMenuConstraint.constant > -50 {
+            if swipeMenuConstraint.constant > -100 {
                 swipeMenuConstraint.constant = 0
                 menuIsShow = true
             }else {

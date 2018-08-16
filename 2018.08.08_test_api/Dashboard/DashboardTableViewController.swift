@@ -20,8 +20,10 @@ class DashboardTableViewController: UITableViewController {
     lazy var leftBarItems: [UIBarButtonItem] = {
         return [editingButton, addButton]
     }()
+    var timeSeriesData: [[String:Any]] = []
     
     var selectIndexPath: IndexPath!
+    var timeSeriesIsReady: [Bool] = []
     
     let textLabel = UILabel()
     
@@ -35,6 +37,8 @@ class DashboardTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        
+        
         if let myDashboard = user.object(forKey: "dashboardJson") {
             do {
                 let data = (myDashboard as! String).data(using: .utf8)
@@ -44,12 +48,40 @@ class DashboardTableViewController: UITableViewController {
             }
         }
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let date = Date()
-        let datestr = formatter.string(from: date)
+        for _ in 0..<Global.memberData.dashboardData.count {
+            timeSeriesIsReady.append(true)
+        }
         
+        
+        
+        drawNoDataMessage()
         print("********************")
+        getTimeSeriesData()
+        self.timeSeriesData = self.timeSeriesData.sorted(by: { (d1, d2) -> Bool in
+            return (d1["order"] as! Int) < (d2["order"] as! Int)
+        })
+        
+        
+        
+        
+        
+        editingButton = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editingBarButtonAction(sender:)))
+        addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
+        self.navigationItem.rightBarButtonItems = leftBarItems
+        
+//        print(Global.memberData.dashboardData)
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    // MARK:- Function Area
+    
+    func drawNoDataMessage() {
         
         if Global.memberData.dashboardData.count <= 0 {
             textLabel.center = view.center
@@ -68,26 +100,95 @@ class DashboardTableViewController: UITableViewController {
             }
             
         }else {
+            
             textLabel.alpha = 0
         }
-        
-        
-        editingButton = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editingBarButtonAction(sender:)))
-        addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
-        self.navigationItem.rightBarButtonItems = leftBarItems
-//        tableView.allowsSelectionDuringEditing = true
-//        tableView.allowsMultipleSelectionDuringEditing = true
-        
-        
     }
     
     
-    // MARK:- Selector Action
+    func getTimeSeriesData() {
+        
+        if Global.memberData.dashboardData.count > 0 {
+            let formatter = DateFormatter()
+            formatter.dateFormat = Basic.dateFormate
+            formatter.timeZone = TimeZone(abbreviation: "UTC")
+            let now = formatter.string(from: (Date() - 60))
+            print("AAA")
+            print(now)
+            let target = formatter.string(from: (Date() - 60 - (60 * 60 * 24)))
+            print(target)
+            for i in 0..<Global.memberData.dashboardData.count {
+                var check = true
+                let panelType = Global.memberData.dashboardData[i]["panelType"] as! String
+                let moduleId = Global.memberData.dashboardData[i]["sensorModule"] as! String
+                let sensorId = (Global.memberData.dashboardData[i]["sensorId"] as! String).lowercased()
+                let moduleSensorID = moduleId + "-\(sensorId)"
+                var seriesdata: [String: Any] = [:]
+                print("----------------")
+                print(moduleSensorID)
+                var url = "https://api.tinkermode.com/homes/744/smartModules/tsdb/timeSeries/\(moduleSensorID)/data?begin=\(target)&end=\(now)&aggregation="
+                
+                
+                if sensorId.lowercased().contains("precipitation") {
+                    print("SUM")
+                    url = url + "sum"
+                }else {
+                    
+                    url = url + "avg"
+                }
+                
+                
+                switch panelType {
+                case "VALUE":
+                    timeSeriesData.append(["order":i, "data":seriesdata])
+                    check = false
+                    timeSeriesIsReady[i] = false
+                    break
+                case "GAUGE":
+                    timeSeriesData.append(["order":i, "data":seriesdata])
+                    check = false
+                    timeSeriesIsReady[i] = false
+                    
+                    break
+                case "GRAPH":
+                    Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, respond) in
+                        seriesdata = html?.getJsonData() as! [String: Any]
+                        self.timeSeriesData.append(["order":i, "data":seriesdata])
+                        self.timeSeriesIsReady[i] = false
+                        check = false
+                    }
+                    break
+                case "DATA":
+                    Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, respond) in
+                        seriesdata = html?.getJsonData() as! [String: Any]
+                        self.timeSeriesData.append(["order":i, "data":seriesdata])
+                        self.timeSeriesIsReady[i] = false
+                        check = false
+                    }
+                    break
+                case "ALERT":
+                    self.timeSeriesIsReady[i] = false
+                    check = false
+                    break
+                default:
+                    break
+                }
+                while check {
+                    usleep(200000)
+                }
+            }
+            // quit loop
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
     @objc func editingBarButtonAction(sender: UIBarButtonItem) {
         selectIndexPath = nil
-        let delete = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteBarButtonAction(_:)))
-        let edit = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editIconBarButtonAction(_:)))
-        let add = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneBarButtonAction(_:)))
         DispatchQueue.main.async {
             self.navigationItem.rightBarButtonItem = nil
@@ -122,15 +223,6 @@ class DashboardTableViewController: UITableViewController {
         }
     }
     
-    @objc func deleteBarButtonAction(_ sender: UIBarButtonItem) {
-        print("Delete \(selectIndexPath)")
-        DispatchQueue.main.async {
-            self.navigationItem.rightBarButtonItem = nil
-            self.navigationItem.rightBarButtonItems = self.leftBarItems
-            self.tableView.setEditing(false, animated: true)
-        }
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -141,6 +233,7 @@ class DashboardTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        print(self.timeSeriesData)
         return 1
     }
     

@@ -19,6 +19,7 @@ class DevicesListTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.title = "Hardware"
         
         tableView.tableFooterView = UIView()
         
@@ -26,7 +27,7 @@ class DevicesListTableViewController: UITableViewController {
             if Global.memberData.devicesInfo.count <= 0 {
                 self.getDevicesInfo()
                 while self.infoIsGet == false {
-                    usleep(100000)
+                    usleep(150000)
                 }
             }
         
@@ -56,7 +57,7 @@ class DevicesListTableViewController: UITableViewController {
                 }
             }
         }
-        print(Global.memberData.onlineDevices)
+//        print(Global.memberData.onlineDevices)
         
     }
     
@@ -76,7 +77,7 @@ class DevicesListTableViewController: UITableViewController {
             }
         }
         while Global.memberData.devicesInfo.count != Global.memberData.devicesData.count{
-            usleep(100000)
+            usleep(150000)
         }
     }
     

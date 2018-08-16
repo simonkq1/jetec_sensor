@@ -17,7 +17,7 @@ class ValueViewController: UIViewController {
     @IBOutlet weak var typeButton: PanelClassButton!
     
     
-    // MARK: variable
+    // MARK: Variables
     lazy var sensorList: [String] = {
         var list: [String] = []
         for i in Global.memberData.onlineDevices {
@@ -156,6 +156,14 @@ class ValueViewController: UIViewController {
                 let dashboardJson = String(data: json!, encoding: .utf8)
                 user.setValue(dashboardJson, forKey: "dashboardJson")
                 user.synchronize()
+                
+                for i in self.view.subviews {
+                    if i is UITextField {
+                        if (i as! UITextField).isEditing {
+                            (i as! UITextField).endEditing(true)
+                        }
+                    }
+                }
                 
                 self.dashboard_vc.viewDidLoad()
                 self.dashboard_vc.tableView.reloadData()

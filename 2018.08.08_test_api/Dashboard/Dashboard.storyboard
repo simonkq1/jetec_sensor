@@ -415,6 +415,7 @@
         <!--Dashboard Navigation Controller-->
         <scene sceneID="rvI-zV-eW4">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="638-Qy-8On" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="dashboard_nc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M69-3L-bux" customClass="DashboardNavigationController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Stb-iQ-NbE">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -424,7 +425,6 @@
                         <segue destination="vuq-8N-Mlg" kind="relationship" relationship="rootViewController" id="5iA-hl-Mu1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="638-Qy-8On" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="194" y="211"/>
         </scene>
@@ -461,7 +461,7 @@
                                 </constraints>
                                 <state key="normal" title="Select a sensor module                     "/>
                                 <connections>
-                                    <action selector="sensorModuleButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="QJp-hj-ga8"/>
+                                    <action selector="sensorModuleButtonAction:" destination="5Pt-eI-mPV" eventType="touchUpInside" id="dav-5p-L1B"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yD0-yt-Dnd">
@@ -480,7 +480,7 @@
                                 </constraints>
                                 <state key="normal" title="Select a sensor                               "/>
                                 <connections>
-                                    <action selector="typeButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="bx2-jl-FNp"/>
+                                    <action selector="typeButtonAction:" destination="5Pt-eI-mPV" eventType="touchUpInside" id="9Ry-Og-FJC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uD-hm-b8I">
@@ -529,9 +529,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="nDX-3e-L8k"/>
                                 </constraints>
-                                <state key="normal" title="Select a range                            "/>
+                                <state key="normal" title="1 day                            "/>
                                 <connections>
-                                    <action selector="typeButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="cd6-Cb-vt3"/>
+                                    <action selector="dateRangeButtonAction:" destination="5Pt-eI-mPV" eventType="touchUpInside" id="Aru-kH-M54"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="mvF-j1-5aK">
@@ -580,6 +580,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUy-v4-sBt"/>
                     </view>
+                    <connections>
+                        <outlet property="dateRangeButton" destination="fIY-Xn-IVt" id="tIu-rK-i9X"/>
+                        <outlet property="nameTextField" destination="2it-4L-NpH" id="Hqq-sB-Klu"/>
+                        <outlet property="sensorModuleButton" destination="awl-H1-gXT" id="7zl-tZ-OMt"/>
+                        <outlet property="typeButton" destination="Ik1-wu-UOO" id="nuZ-oU-EkF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DW-WP-AL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -618,7 +624,7 @@
                                 </constraints>
                                 <state key="normal" title="Select a sensor module                     "/>
                                 <connections>
-                                    <action selector="sensorModuleButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="Wgq-aX-kit"/>
+                                    <action selector="sensorModuleButtonAction:" destination="Qrz-Rt-U50" eventType="touchUpInside" id="h4X-ET-7i4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeS-Xr-4AM">
@@ -637,7 +643,7 @@
                                 </constraints>
                                 <state key="normal" title="Select a sensor                               "/>
                                 <connections>
-                                    <action selector="typeButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="6ep-Nq-0hb"/>
+                                    <action selector="typeButtonAction:" destination="Qrz-Rt-U50" eventType="touchUpInside" id="bsg-6m-PDI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6p0-02-Wrg">
@@ -686,9 +692,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="B3l-aF-rX3"/>
                                 </constraints>
-                                <state key="normal" title="Select a range                            "/>
+                                <state key="normal" title="1 day                            "/>
                                 <connections>
-                                    <action selector="typeButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="WG6-5p-2g9"/>
+                                    <action selector="dateRangeButtonAction:" destination="Qrz-Rt-U50" eventType="touchUpInside" id="tfA-5F-NGt"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="4tr-IR-XCe">
@@ -737,6 +743,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sDb-9g-qEa"/>
                     </view>
+                    <connections>
+                        <outlet property="dateRangeButton" destination="xoI-A6-m2F" id="i2a-mk-dSx"/>
+                        <outlet property="nameTextField" destination="8pj-Rr-Rel" id="BD6-uz-VZy"/>
+                        <outlet property="sensorModuleButton" destination="4WK-hL-yze" id="I88-99-ayv"/>
+                        <outlet property="typeButton" destination="vjM-JN-bCM" id="1tT-Js-9ms"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSq-R7-BmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

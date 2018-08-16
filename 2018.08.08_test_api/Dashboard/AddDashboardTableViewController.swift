@@ -74,8 +74,16 @@ class AddDashboardTableViewController: UITableViewController {
             
             break
         case "Data Log":
+            let dataLog_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "datalog_panel_vc") as! DataLogViewController
+            dataLog_vc.dashboard_vc = self.dashboard_vc
+            dataLog_vc.title = titleList[selectedCell]
+            self.show(dataLog_vc, sender: self)
             break
         case "Alert Log":
+            let alertLog_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "alertlog_panel_vc") as! AlertLogViewController
+            alertLog_vc.dashboard_vc = self.dashboard_vc
+            alertLog_vc.title = titleList[selectedCell]
+            self.show(alertLog_vc, sender: self)
             break
         default:
             break

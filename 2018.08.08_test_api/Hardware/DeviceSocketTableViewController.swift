@@ -54,7 +54,7 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
             let originDeviceId = String(revceiveData["originDeviceId"] as! Int)
             let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
             if deviceId == originDeviceId {
-                
+                print(self.revceiveData)
                 for i in (data as! [[String:Any]]) {
                     let sensorKey = (Global.regexGetSub(pattern: Basic.dataPattern, str: (i["seriesId"] as! String)))[1]
                     let sensorValue = String(format: "%.0f", i["value"] as! Double)

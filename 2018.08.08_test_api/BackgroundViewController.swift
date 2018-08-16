@@ -9,7 +9,7 @@
 import UIKit
 
 class BackgroundViewController: UIViewController {
-
+    
     var originX: CGFloat!
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         let main_vc = parent as! MainViewController
@@ -44,10 +44,31 @@ class BackgroundViewController: UIViewController {
         }
         
     }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(sender:))))
+        
+        
+    }
+    
+    
+    @objc func tapGestureAction(sender: UITapGestureRecognizer) {
+        
+        let main_vc = parent as! MainViewController
+        main_vc.swipeMenuConstraint.constant = -150
+        main_vc.backgroundConstraint.constant = -400
+        main_vc.menuIsShow = false
+        UIView.animate(withDuration: 0.5) {
+            main_vc.view.layoutIfNeeded()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

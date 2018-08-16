@@ -138,6 +138,9 @@ class TimeSeriesGraphViewController: UIViewController {
         nameTextField.endEditing(true)
     }
     
+    
+    //MARK: - Function Area
+    
     @objc func addPanelBarButtonAction() {
         
         if self.dataIsReady {
@@ -190,6 +193,13 @@ class TimeSeriesGraphViewController: UIViewController {
                 user.setValue(dashboardJson, forKey: "dashboardJson")
                 user.synchronize()
                 
+                for i in self.view.subviews {
+                    if i is UITextField {
+                        if (i as! UITextField).isEditing {
+                            (i as! UITextField).endEditing(true)
+                        }
+                    }
+                }
                 self.dashboard_vc.viewDidLoad()
                 self.dashboard_vc.tableView.reloadData()
                 self.dismiss(animated: true, completion: nil)

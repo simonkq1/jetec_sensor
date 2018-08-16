@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
                 user.setValue(email, forKey: "email")
                 user.setValue(password, forKey: "password")
                 
-                let vc = storyboard?.instantiateViewController(withIdentifier: "main_vc") as! MainViewController
+                let vc = storyboard?.instantiateViewController(withIdentifier: "main_nc") as! FirstNavigationController
                 DispatchQueue.main.async {
                     self.show(vc, sender: nil)
 //                    self.dismiss(animated: true, completion: nil)
