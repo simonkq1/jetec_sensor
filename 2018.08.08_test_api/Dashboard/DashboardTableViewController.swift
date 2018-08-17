@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Starscream
 
-class DashboardTableViewController: UITableViewController {
+class DashboardTableViewController: UITableViewController, WebSocketDelegate {
+    
+    
+    
     
     
     var dashboardData: [String: Any] = [:]
@@ -23,9 +27,10 @@ class DashboardTableViewController: UITableViewController {
     var timeSeriesData: [[String:Any]] = []
     
     var selectIndexPath: IndexPath!
-    var timeSeriesIsReady: [Bool] = []
     
     let textLabel = UILabel()
+    var socket: WebSocket!
+    var receiveData: [String: Any] = [:]
     
     //MARK: - System Function
     override func viewDidLoad() {
@@ -48,10 +53,6 @@ class DashboardTableViewController: UITableViewController {
             }
         }
         
-        for _ in 0..<Global.memberData.dashboardData.count {
-            timeSeriesIsReady.append(true)
-        }
-        
         
         
         drawNoDataMessage()
@@ -62,15 +63,48 @@ class DashboardTableViewController: UITableViewController {
         })
         
         
-        
-        
-        
         editingButton = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editingBarButtonAction(sender:)))
         addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
         self.navigationItem.rightBarButtonItems = leftBarItems
+        tableView.register(UINib(nibName: "GaugeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "gauge_cell")
         
-//        print(Global.memberData.dashboardData)
+        tableView.register(UINib(nibName: "ValueTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "value_cell")
         
+        
+        socket = Global.connectToWebSocket(delegate: self)
+        
+        
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if socket != nil {
+            if socket.isConnected {
+                socket.disconnect()
+            }
+        }
+    }
+    
+    //MARK: - Socket Event Action
+    
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("Connect Socket")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        
+        print("disConnect Socket")
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        print("************************")
+        DispatchQueue.main.async {
+            self.receiveData = text.getJsonData() as! [String: Any]
+            self.tableView.reloadData()
+        }
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         
     }
     
@@ -109,6 +143,7 @@ class DashboardTableViewController: UITableViewController {
     func getTimeSeriesData() {
         
         if Global.memberData.dashboardData.count > 0 {
+            timeSeriesData = []
             let formatter = DateFormatter()
             formatter.dateFormat = Basic.dateFormate
             formatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -124,37 +159,33 @@ class DashboardTableViewController: UITableViewController {
                 let sensorId = (Global.memberData.dashboardData[i]["sensorId"] as! String).lowercased()
                 let moduleSensorID = moduleId + "-\(sensorId)"
                 var seriesdata: [String: Any] = [:]
+                
+                
                 print("----------------")
                 print(moduleSensorID)
                 var url = "https://api.tinkermode.com/homes/744/smartModules/tsdb/timeSeries/\(moduleSensorID)/data?begin=\(target)&end=\(now)&aggregation="
                 
                 
                 if sensorId.lowercased().contains("precipitation") {
-                    print("SUM")
                     url = url + "sum"
                 }else {
-                    
                     url = url + "avg"
                 }
-                
                 
                 switch panelType {
                 case "VALUE":
                     timeSeriesData.append(["order":i, "data":seriesdata])
                     check = false
-                    timeSeriesIsReady[i] = false
                     break
                 case "GAUGE":
                     timeSeriesData.append(["order":i, "data":seriesdata])
                     check = false
-                    timeSeriesIsReady[i] = false
                     
                     break
                 case "GRAPH":
                     Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, respond) in
                         seriesdata = html?.getJsonData() as! [String: Any]
                         self.timeSeriesData.append(["order":i, "data":seriesdata])
-                        self.timeSeriesIsReady[i] = false
                         check = false
                     }
                     break
@@ -162,12 +193,10 @@ class DashboardTableViewController: UITableViewController {
                     Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, respond) in
                         seriesdata = html?.getJsonData() as! [String: Any]
                         self.timeSeriesData.append(["order":i, "data":seriesdata])
-                        self.timeSeriesIsReady[i] = false
                         check = false
                     }
                     break
                 case "ALERT":
-                    self.timeSeriesIsReady[i] = false
                     check = false
                     break
                 default:
@@ -210,7 +239,7 @@ class DashboardTableViewController: UITableViewController {
         vc.dashboard_vc = self
         let navigation = UINavigationController(rootViewController: vc)
         self.present(navigation, animated: true, completion: nil)
-//        self.show(vc, sender: self)
+        //        self.show(vc, sender: self)
         print("add")
     }
     
@@ -233,7 +262,6 @@ class DashboardTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        print(self.timeSeriesData)
         return 1
     }
     
@@ -244,17 +272,85 @@ class DashboardTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        print((dashboardData["value"] as! [[String: Any]])[indexPath.row])
+        var cell: ValueTableViewCell!
+        var gauge_cell: GaugeTableViewCell!
+        //        print((dashboardData["value"] as! [[String: Any]])[indexPath.row])
         var title = Global.memberData.dashboardData[indexPath.row]["name"] as? String ?? "沒有標題"
-        cell.textLabel?.textColor = UIColor.black
-        if title.count <= 0 {
-            cell.textLabel?.textColor = UIColor.lightGray
-            title = "沒有標題"
+        
+        var receiveSeriesData: [[String: Any]] {
+            if let eventData: [String: Any] = receiveData["eventData"] as? [String: Any] {
+                if let series = eventData["timeSeriesData"] as? [[String:Any]] {
+                    return series
+                }else {
+                    return []
+                }
+            }else {
+                return []
+            }
         }
-        cell.textLabel?.text = title
+        let panelType = Global.memberData.dashboardData[indexPath.row]["panelType"] as! String
+        let moduleId = Global.memberData.dashboardData[indexPath.row]["sensorModule"] as! String
+        let sensorId = (Global.memberData.dashboardData[indexPath.row]["sensorId"] as! String).lowercased()
+        let localSeriesId = moduleId + "-\(sensorId)"
+        if panelType != "GAUGE" {
+            cell = tableView.dequeueReusableCell(withIdentifier: "value_cell", for: indexPath) as! ValueTableViewCell
+        }else {
+            gauge_cell = tableView.dequeueReusableCell(withIdentifier: "gauge_cell", for: indexPath) as! GaugeTableViewCell
+        }
+        
+//        cell.accessoryType = .none
+        
+        
+//        cell.textLabel?.textColor = UIColor.black
+//        if title.count <= 0 {
+//            cell.textLabel?.textColor = UIColor.lightGray
+//            title = "沒有標題"
+//        }
+//        cell.textLabel?.text = title
+        
+        
+        switch panelType {
+        case "VALUE":
+            if receiveSeriesData.count > 0 {
+                for i in receiveSeriesData {
+                    if (i["seriesId"] as! String) == localSeriesId {
+                        let value = i["value"]
+                        let numFormatter = NumberFormatter()
+                        if value != nil {
+                            if value is String {
+                                let num = numFormatter.number(from: i["value"] as! String)
+                                cell.valueTextLabel.text = String(format: "%.2f", (num?.doubleValue)!)
+                            }else if value is Int {
+                                cell.valueTextLabel.text = numFormatter.string(for: (i["value"] as! Int))
+                            }else if value is Double {
+                                cell.valueTextLabel.text = String(format: "%.2f", i["value"] as! Double)
+                            }else {
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            break
+        case "GAUGE":
+//            cell.detailTextLabel?.text = ""
+            break
+        case "GRAPH":
+//            cell.detailTextLabel?.text = ""
+            break
+        case "DATA":
+//            cell.detailTextLabel?.text = ""
+//            cell.accessoryType = .disclosureIndicator
+            break
+        case "ALERT":
+//            cell.detailTextLabel?.text = ""
+            break
+        default:
+            break
+        }
+    
         // Configure the cell...
-        return cell
+        return (panelType == "GAUGE") ? gauge_cell : cell
     }
     
     
@@ -282,14 +378,39 @@ class DashboardTableViewController: UITableViewController {
         actionArray.append(deleteAction)
         return actionArray
     }
-//
-//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        selectIndexPath = indexPath
-//        if let selectedRowIndexPath = tableView.indexPathForSelectedRow {
-//            tableView.deselectRow(at: selectedRowIndexPath, animated: true)
-//        }
-//        return indexPath
-//    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let panelType = Global.memberData.dashboardData[indexPath.row]["panelType"] as! String
+        switch panelType {
+        case "VALUE":
+            break
+        case "GAUGE":
+            break
+        case "GRAPH":
+            break
+        case "DATA":
+            let dataLog = (timeSeriesData[indexPath.row]["data"] as! [String: Any])["data"] as! [[Any]]
+            
+            print(dataLog)
+            let show_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "showDataLog_vc") as! ShowDataLogTableViewController
+            show_vc.dataLog = dataLog
+            if Global.memberData.dashboardData[indexPath.row]["name"] is String {
+                show_vc.title = Global.memberData.dashboardData[indexPath.row]["name"] as! String
+            }
+            
+            self.show(show_vc, sender: self)
+            
+            break
+        default:
+            print("NoData")
+            break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.tableView.frame.size.height / 3
+    }
     
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return true

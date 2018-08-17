@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Starscream
 
 
 
@@ -114,6 +115,18 @@ class Global: NSObject {
         }
         return subStr
         
+    }
+    
+    static func connectToWebSocket(delegate: WebSocketDelegate) -> WebSocket {
+        var request = URLRequest(url: URL(string: "wss://api.tinkermode.com/userSession/websocket")!)
+        request.timeoutInterval = 5
+        request.setValue(Global.memberData.authToken, forHTTPHeaderField: "Authorization")
+        let socket = WebSocket(request: request)
+        socket.delegate = delegate
+        if !socket.isConnected {
+            socket.connect()
+        }
+        return socket
     }
     
     

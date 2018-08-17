@@ -215,7 +215,7 @@ class GaugeViewController: UIViewController {
                     "sensorType":sensorType,
                     "sensorId":(typeList["true"] as! [String])[sensorIndex],
                     "sensorModule":Global.memberData.onlineDevices[moduleIndex]["id"] as! String,
-                    "panelType":"VALUE",
+                    "panelType":"GAUGE",
                     "min":min,
                     "max":max
                 ]
