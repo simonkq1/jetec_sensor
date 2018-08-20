@@ -32,6 +32,9 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     var socket: WebSocket!
     var receiveData: [String: Any] = [:]
     
+    
+    
+    
     //MARK: - System Function
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +72,23 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         tableView.register(UINib(nibName: "GaugeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "gauge_cell")
         
         tableView.register(UINib(nibName: "ValueTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "value_cell")
-        
-        
         socket = Global.connectToWebSocket(delegate: self)
         
+        self.tableView.estimatedRowHeight = 0
+        self.tableView.estimatedSectionFooterHeight = 0
+        self.tableView.estimatedSectionHeaderHeight = 0
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+            self.tableView.reloadData()
+        }
+        if !socket.isConnected {
+            socket.connect()
+        }
     }
     
     
@@ -99,16 +114,18 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("************************")
         DispatchQueue.main.async {
+            
             self.receiveData = text.getJsonData() as! [String: Any]
-            self.tableView.reloadData()
+            if !self.tableView.isEditing {
+                self.tableView.reloadData()
+            }
         }
+//        print(self.receiveData)
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         
     }
-    
-    
     
     
     
@@ -253,6 +270,180 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     
     
+    //MARK:- Draw gauge
+    
+    func drawBackCircle(gauge_cell: GaugeTableViewCell, min: String, max: String) {
+        
+        var radius: CGFloat {
+            let width = gauge_cell.innerView.bounds.size.width
+            let height = gauge_cell.innerView.bounds.size.height
+            return (width > height) ? (height - (gauge_cell.circleWidth * 4)) : (width - (gauge_cell.circleWidth * 4))
+        }
+        
+        if gauge_cell.circleIsDraw {
+            gauge_cell.backgroundShapeLayer.removeFromSuperlayer()
+        }
+        
+        gauge_cell.backgroundShapeLayer = CAShapeLayer()
+        let linePath = UIBezierPath(
+            arcCenter: CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8),
+            radius: radius,
+            startAngle: 2 * CGFloat.pi * 0.5,
+            endAngle: 2 * CGFloat.pi,
+            clockwise: true)
+        
+        //        backgroundShapeLayer.frame = innerView.frame
+        gauge_cell.backgroundShapeLayer.path = linePath.cgPath
+        gauge_cell.backgroundShapeLayer.strokeColor = UIColor.black.cgColor
+        gauge_cell.backgroundShapeLayer.fillColor = UIColor.clear.cgColor
+        gauge_cell.backgroundShapeLayer.lineWidth = gauge_cell.circleWidth
+        
+        if gauge_cell.nibIsLoad {
+            gauge_cell.innerView.layer.addSublayer(gauge_cell.backgroundShapeLayer)
+            drawMinText(gauge_cell, size: CGSize(width: gauge_cell.circleWidth * 2, height: gauge_cell.innerView.bounds.size.height * 0.2), position: CGPoint(x: ((gauge_cell.innerView.layer.bounds.size.width / 2) - radius - gauge_cell.circleWidth ), y: gauge_cell.innerView.bounds.size.height * 0.8), text: min)
+            drawMaxText(gauge_cell, size: CGSize(width: gauge_cell.circleWidth * 2, height: gauge_cell.innerView.bounds.size.height * 0.2), position: CGPoint(x: ((gauge_cell.innerView.layer.bounds.size.width / 2) + radius - gauge_cell.circleWidth ), y: gauge_cell.innerView.bounds.size.height * 0.8), text: max)
+            
+            gauge_cell.circleIsDraw = true
+        }
+        gauge_cell.nibIsLoad = true
+    }
+    
+    func drawMinText(_ cell: GaugeTableViewCell, size: CGSize, position: CGPoint, text: String) {
+        let label = UILabel()
+        label.frame.size = size
+        label.frame.origin = position
+        label.textColor = .black
+        label.textAlignment = .center
+        
+        label.text = text
+        cell.innerView.addSubview(label)
+        
+    }
+    
+    func drawMaxText(_ cell: GaugeTableViewCell, size: CGSize, position: CGPoint, text: String) {
+        let label = UILabel()
+        label.frame.size = size
+        label.frame.origin = position
+        label.textColor = .black
+        label.textAlignment = .center
+        
+        label.text = text
+        cell.innerView.addSubview(label)
+        
+    }
+    
+    
+    func drawValueCircle(_ gauge_cell: GaugeTableViewCell, min: NSNumber, max: NSNumber, value: Double) {
+        if receiveData.count != 0 {
+            gauge_cell.valueCircleShapeLayer = CAShapeLayer()
+            var radius: CGFloat {
+                let width = gauge_cell.innerView.bounds.size.width
+                let height = gauge_cell.innerView.bounds.size.height
+                return (width > height) ? (height - (gauge_cell.circleWidth * 4)) : (width - (gauge_cell.circleWidth * 4))
+            }
+            
+            if gauge_cell.valueCircleIsDraw {
+                gauge_cell.valueCircleShapeLayer.removeFromSuperlayer()
+                gauge_cell.gaugePointerShaprLayer.removeFromSuperlayer()
+                gauge_cell.centerCircleShaprLayer.removeFromSuperlayer()
+            }
+            
+            var circlePosition: CGFloat {
+                var percent = (value / (max.doubleValue - min.doubleValue)) / 2
+                if percent >= 0.5 {
+                    percent = 0.5
+                }
+                if percent <= 0 {
+                    percent = 0
+                }
+                return CGFloat(percent)
+            }
+            print(circlePosition)
+            gauge_cell.valueCircleShapeLayer = CAShapeLayer()
+            let linePath = UIBezierPath(
+                arcCenter: CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8),
+                radius: radius,
+                startAngle: 2 * CGFloat.pi * 0.5,
+                endAngle: 2 * CGFloat.pi * (0.5 + circlePosition) ,
+                clockwise: true)
+            
+            gauge_cell.valueCircleShapeLayer.path = linePath.cgPath
+            gauge_cell.valueCircleShapeLayer.strokeColor = UIColor.blue.cgColor
+            gauge_cell.valueCircleShapeLayer.fillColor = UIColor.clear.cgColor
+            gauge_cell.valueCircleShapeLayer.lineWidth = gauge_cell.circleWidth
+            
+            
+            gauge_cell.valueLabel.frame.size = CGSize(width: 100, height: 50)
+            gauge_cell.valueLabel.frame.origin = CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - (gauge_cell.valueLabel.frame.size.width / 2), y: gauge_cell.innerView.bounds.size.height * 0.8)
+            gauge_cell.valueLabel.center.x = gauge_cell.innerView.layer.bounds.size.width / 2
+            
+            gauge_cell.valueLabel.textAlignment = .center
+            gauge_cell.valueLabel.font = UIFont.systemFont(ofSize: 25)
+            gauge_cell.valueLabel.textColor = UIColor.black
+            
+            
+            
+            
+            
+            
+            if gauge_cell.valueNibIsLoad {
+                gauge_cell.valueLabel.text = String(format: "%.2f", value)
+                gauge_cell.innerView.layer.addSublayer(gauge_cell.valueCircleShapeLayer)
+                drawGaugePointer(gauge_cell, angel: (1 + (circlePosition * 2)) * CGFloat.pi)
+                drawCenterCircle(gauge_cell)
+//                gaugePointerShaprLayer.backgroundColor = UIColor.yellow.cgColor
+                gauge_cell.valueCircleIsDraw = true
+                
+            }
+            gauge_cell.valueNibIsLoad = true
+        }
+    }
+    
+    
+    func drawGaugePointer(_ gauge_cell: GaugeTableViewCell, angel: CGFloat){
+        gauge_cell.gaugePointerShaprLayer = CAShapeLayer()
+        
+        let linePath = UIBezierPath()
+        var lineLength: CGFloat {
+            let width = gauge_cell.innerView.bounds.size.width
+            let height = gauge_cell.innerView.bounds.size.height
+            return (width > height) ? ((height - (gauge_cell.circleWidth * 4)) * 0.7) : ((width - (gauge_cell.circleWidth * 4)) * 0.7)
+        }
+        
+        let originPosition = CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8)
+        let lineTarget = CGPoint(x: originPosition.x + (lineLength * cos(angel)), y: originPosition.y + (lineLength * sin(angel)))
+        linePath.move(to: originPosition)
+//        linePath.addLine(to: CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - lineLength, y: gauge_cell.innerView.bounds.size.height * 0.8))
+        linePath.addLine(to: lineTarget)
+        
+        gauge_cell.gaugePointerShaprLayer.lineWidth = 5
+        gauge_cell.gaugePointerShaprLayer.strokeColor = UIColor.black.cgColor
+        gauge_cell.gaugePointerShaprLayer.fillColor = UIColor.clear.cgColor
+        gauge_cell.gaugePointerShaprLayer.path = linePath.cgPath
+        gauge_cell.innerView.layer.addSublayer(gauge_cell.gaugePointerShaprLayer)
+        
+    }
+    
+    func drawCenterCircle(_ gauge_cell: GaugeTableViewCell) {
+        gauge_cell.centerCircleShaprLayer = CAShapeLayer()
+        let linePath = UIBezierPath(
+            arcCenter: CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8),
+            radius: 5,
+            startAngle: 0,
+            endAngle: 2 * CGFloat.pi,
+            clockwise: true)
+        gauge_cell.centerCircleShaprLayer.fillColor = UIColor.black.cgColor
+        gauge_cell.centerCircleShaprLayer.strokeColor = UIColor.black.cgColor
+        gauge_cell.centerCircleShaprLayer.lineWidth = 1
+        gauge_cell.centerCircleShaprLayer.path = linePath.cgPath
+        gauge_cell.innerView.layer.addSublayer(gauge_cell.centerCircleShaprLayer)
+    }
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -277,6 +468,8 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         //        print((dashboardData["value"] as! [[String: Any]])[indexPath.row])
         var title = Global.memberData.dashboardData[indexPath.row]["name"] as? String ?? "沒有標題"
         
+        
+        
         var receiveSeriesData: [[String: Any]] {
             if let eventData: [String: Any] = receiveData["eventData"] as? [String: Any] {
                 if let series = eventData["timeSeriesData"] as? [[String:Any]] {
@@ -298,15 +491,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             gauge_cell = tableView.dequeueReusableCell(withIdentifier: "gauge_cell", for: indexPath) as! GaugeTableViewCell
         }
         
-//        cell.accessoryType = .none
-        
-        
-//        cell.textLabel?.textColor = UIColor.black
-//        if title.count <= 0 {
-//            cell.textLabel?.textColor = UIColor.lightGray
-//            title = "沒有標題"
-//        }
-//        cell.textLabel?.text = title
         
         
         switch panelType {
@@ -333,7 +517,34 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             }
             break
         case "GAUGE":
-//            cell.detailTextLabel?.text = ""
+            let min = Global.memberData.dashboardData[indexPath.row]["min"] as! NSNumber
+            let max = Global.memberData.dashboardData[indexPath.row]["max"] as! NSNumber
+            
+            
+            if receiveSeriesData.count > 0 {
+                var val: NSNumber = 0
+                for i in receiveSeriesData {
+                    if (i["seriesId"] as! String) == localSeriesId {
+                        if let value = i["value"] {
+                            let numFormatter = NumberFormatter()
+                            if value is String {
+                                let num = numFormatter.number(from: i["value"] as! String)
+                                val = num!
+                            }else if value is Int {
+                                val = NSNumber(value: (i["value"] as! Int))
+                            }else if value is Double {
+                                val = NSNumber(value: (i["value"] as! Double))
+                            }else {
+                                val = 0
+                            }
+                            print(val)
+                            drawBackCircle(gauge_cell: gauge_cell, min: min.stringValue, max: max.stringValue)
+                            drawValueCircle(gauge_cell, min: min, max: max, value: val.doubleValue)
+                            
+                        }
+                    }
+                }
+            }
             break
         case "GRAPH":
 //            cell.detailTextLabel?.text = ""

@@ -38,10 +38,10 @@
 		22E7E704211D8025001DE27F /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E703211D8025001DE27F /* BackgroundViewController.swift */; };
 		22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E7E705211D8BBD001DE27F /* Dashboard.storyboard */; };
 		85254EE521264CC7009CED23 /* ShowDataLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */; };
+		853E00F1212A625B0094A976 /* GaugeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */; };
+		853E00F2212A625B0094A976 /* GaugeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */; };
 		8563D07E2126B4DC00A3DA8B /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */; };
 		8563D07F2126B4DC00A3DA8B /* ValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */; };
-		8563D0822126B4EF00A3DA8B /* GaugeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563D0802126B4EF00A3DA8B /* GaugeTableViewCell.swift */; };
-		8563D0832126B4EF00A3DA8B /* GaugeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8563D0812126B4EF00A3DA8B /* GaugeTableViewCell.xib */; };
 		85C06B8121256D9A00450213 /* DashboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C06B8021256D9A00450213 /* DashboardNavigationController.swift */; };
 		95535ABC7B3FF8B0FF89FF03 /* Pods_2018_08_08_test_api.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */; };
 /* End PBXBuildFile section */
@@ -81,10 +81,10 @@
 		22E7E705211D8BBD001DE27F /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		61C7A3D0B737C572F9B6085B /* Pods-2018.08.08_test_api.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.release.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.release.xcconfig"; sourceTree = "<group>"; };
 		85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataLogTableViewController.swift; sourceTree = "<group>"; };
+		853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeTableViewCell.swift; sourceTree = "<group>"; };
+		853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GaugeTableViewCell.xib; sourceTree = "<group>"; };
 		8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValueTableViewCell.xib; sourceTree = "<group>"; };
-		8563D0802126B4EF00A3DA8B /* GaugeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeTableViewCell.swift; sourceTree = "<group>"; };
-		8563D0812126B4EF00A3DA8B /* GaugeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GaugeTableViewCell.xib; sourceTree = "<group>"; };
 		85C06B8021256D9A00450213 /* DashboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationController.swift; sourceTree = "<group>"; };
 		A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2018_08_08_test_api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F3828EDC95C4E3FC664D2 /* Pods-2018.08.08_test_api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,8 +190,8 @@
 				85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */,
 				8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */,
 				8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */,
-				8563D0802126B4EF00A3DA8B /* GaugeTableViewCell.swift */,
-				8563D0812126B4EF00A3DA8B /* GaugeTableViewCell.xib */,
+				853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */,
+				853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 			files = (
 				2204D036211AB5AF00B70B1D /* LaunchScreen.storyboard in Resources */,
 				2204D033211AB5AF00B70B1D /* Assets.xcassets in Resources */,
-				8563D0832126B4EF00A3DA8B /* GaugeTableViewCell.xib in Resources */,
+				853E00F2212A625B0094A976 /* GaugeTableViewCell.xib in Resources */,
 				2204D031211AB5AC00B70B1D /* Main.storyboard in Resources */,
 				8563D07F2126B4DC00A3DA8B /* ValueTableViewCell.xib in Resources */,
 				22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */,
@@ -344,7 +344,7 @@
 				226EC1FF211C0E66003A90D6 /* HomesListTableViewController.swift in Sources */,
 				2212C60B2123C520007AEE6D /* Struct.swift in Sources */,
 				22B5FC262121878F002C559A /* AddDashboardTableViewController.swift in Sources */,
-				8563D0822126B4EF00A3DA8B /* GaugeTableViewCell.swift in Sources */,
+				853E00F1212A625B0094A976 /* GaugeTableViewCell.swift in Sources */,
 				85C06B8121256D9A00450213 /* DashboardNavigationController.swift in Sources */,
 				2212C6092123C138007AEE6D /* Extension.swift in Sources */,
 				2204D02C211AB5AC00B70B1D /* AppDelegate.swift in Sources */,

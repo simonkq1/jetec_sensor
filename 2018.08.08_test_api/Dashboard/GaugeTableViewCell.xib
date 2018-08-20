@@ -6,36 +6,36 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gauge_cell" id="KGk-i7-Jjw" customClass="GaugeTableViewCell" customModule="_018_08_08_test_api" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gauge_cell" id="SP3-4l-UrP" customClass="GaugeTableViewCell" customModule="_018_08_08_test_api" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SP3-4l-UrP" id="Gaa-Jm-XFr">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTY-Bx-Pji">
-                        <rect key="frame" x="16" y="11" width="288" height="148"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-Xe-3rs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="375" id="Yeo-5j-CrB"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="xTY-Bx-Pji" secondAttribute="bottom" id="SMU-bm-OCB"/>
-                    <constraint firstItem="xTY-Bx-Pji" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="cXi-Fg-jxD"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="xTY-Bx-Pji" secondAttribute="trailing" id="nhZ-Z0-EU1"/>
-                    <constraint firstItem="xTY-Bx-Pji" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ugO-hd-Tle"/>
+                    <constraint firstItem="cYc-Xe-3rs" firstAttribute="centerX" secondItem="Gaa-Jm-XFr" secondAttribute="centerX" id="80q-PR-8rD"/>
+                    <constraint firstItem="cYc-Xe-3rs" firstAttribute="centerY" secondItem="Gaa-Jm-XFr" secondAttribute="centerY" id="Nmp-AH-oaI"/>
+                    <constraint firstItem="cYc-Xe-3rs" firstAttribute="height" secondItem="Gaa-Jm-XFr" secondAttribute="height" id="UHb-me-Ktw"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="innerView" destination="xTY-Bx-Pji" id="9je-fx-8nI"/>
+                <outlet property="innerView" destination="cYc-Xe-3rs" id="lHd-IT-HrO"/>
             </connections>
+            <point key="canvasLocation" x="67.5" y="41"/>
         </tableViewCell>
     </objects>
 </document>
