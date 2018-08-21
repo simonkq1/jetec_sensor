@@ -8,6 +8,7 @@ target '2018.08.08_test_api' do
   pod 'SwiftSVG', '~> 2.1.5'
   pod 'SwipeCellKit', '~> 2.4.3'
   pod 'DropDown', '~> 2.3.2'
+  pod 'Charts', '~> 3.1.1'
   # Pods for 2018.08.08_test_api
 
 end

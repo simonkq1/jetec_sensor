@@ -10,12 +10,9 @@ import UIKit
 
 class AddDashboardTableViewController: UITableViewController {
     
-    let titleList = ["Value", "Gauge", "Time-Series Graph", "Data Log", "Alert Log"]
+    let titleList = ["Value", "Gauge"]
     let contextList = ["Display current sensor value and its trend",
-                       "Gauge value from a single sensor between a minimum and maxinum",
-                       "Graphs value of a sensor over a period of time",
-                       "Display report values for a sensor over a specified amount of time",
-                       "Lists alert from a sensor over a specified duration"]
+                       "Gauge value from a single sensor between a minimum and maxinum"]
     
     var selectedCell: Int!
     var nextBarButton: UIBarButtonItem!
@@ -66,25 +63,7 @@ class AddDashboardTableViewController: UITableViewController {
             gauge_vc.dashboard_vc = self.dashboard_vc
             self.show(gauge_vc, sender: self)
             break
-        case "Time-Series Graph":
-            let graph_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "timeseriesgraph_panel_vc") as! TimeSeriesGraphViewController
-            graph_vc.dashboard_vc = self.dashboard_vc
-            graph_vc.title = titleList[selectedCell]
-            self.show(graph_vc, sender: self)
             
-            break
-        case "Data Log":
-            let dataLog_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "datalog_panel_vc") as! DataLogViewController
-            dataLog_vc.dashboard_vc = self.dashboard_vc
-            dataLog_vc.title = titleList[selectedCell]
-            self.show(dataLog_vc, sender: self)
-            break
-        case "Alert Log":
-            let alertLog_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "alertlog_panel_vc") as! AlertLogViewController
-            alertLog_vc.dashboard_vc = self.dashboard_vc
-            alertLog_vc.title = titleList[selectedCell]
-            self.show(alertLog_vc, sender: self)
-            break
         default:
             break
         }
@@ -105,7 +84,7 @@ class AddDashboardTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 5
+        return titleList.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -129,18 +108,7 @@ class AddDashboardTableViewController: UITableViewController {
             cell.innerLabel.alpha = 0
             cell.innerImageView.image = UIImage(named: "gauge")
             break
-        case "Time-Series Graph":
-            cell.innerLabel.alpha = 0
-            cell.innerImageView.image = UIImage(named: "time_series_graph")
-            break
-        case "Data Log":
-            cell.innerLabel.alpha = 0
-            cell.innerImageView.image = UIImage(named: "data_log")
-            break
-        case "Alert Log":
-            cell.innerLabel.alpha = 0
-            cell.innerImageView.image = UIImage(named: "alert_log")
-            break
+            
         default:
             break
         }
@@ -149,7 +117,7 @@ class AddDashboardTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.height / 2.3
+        return tableView.frame.size.height / 2.1
     }
     
     

@@ -1,10 +1,14 @@
 PODS:
+  - Charts (3.1.1):
+    - Charts/Core (= 3.1.1)
+  - Charts/Core (3.1.1)
   - DropDown (2.3.2)
   - Starscream (3.0.5)
   - SwiftSVG (2.1.5)
   - SwipeCellKit (2.4.3)
 
 DEPENDENCIES:
+  - Charts (~> 3.1.1)
   - DropDown (~> 2.3.2)
   - Starscream (~> 3.0.5)
   - SwiftSVG (~> 2.1.5)
@@ -12,17 +16,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
     - DropDown
     - Starscream
     - SwiftSVG
     - SwipeCellKit
 
 SPEC CHECKSUMS:
+  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwiftSVG: 9d78f41396a921c210ce9898ada05c85d412acb8
   SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
 
-PODFILE CHECKSUM: a223fe14258924407645eed00efa4573d72d0576
+PODFILE CHECKSUM: e45559729de9aee92ba19bce04e3ed6033ee589e
 
 COCOAPODS: 1.5.3

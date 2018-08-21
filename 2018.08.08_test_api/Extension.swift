@@ -53,6 +53,17 @@ extension String {
     
 }
 
+extension Double {
+    
+    func roundTo(places:Int) -> Double {
+        
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+        
+    }
+}
+
+
 
 
 extension UIScrollView {
@@ -70,6 +81,22 @@ extension UIView {
     //        controller.view.translatesAutoresizingMaskIntoConstraints = false
     //        self.addSubview(controller.view)
     //    }
+}
+
+extension Array {
+    func getJsonString() -> String {
+        let json = try? JSONSerialization.data(withJSONObject: self, options: [])
+        let jsonString = String(data: json!, encoding: .utf8) ?? ""
+        return jsonString
+    }
+}
+
+extension Dictionary {
+    func getJsonString() -> String {
+        let json = try? JSONSerialization.data(withJSONObject: self, options: [])
+        let jsonString = String(data: json!, encoding: .utf8) ?? ""
+        return jsonString
+    }
 }
 
 

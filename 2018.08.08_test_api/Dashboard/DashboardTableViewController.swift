@@ -13,8 +13,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     
     
-    
-    
     var dashboardData: [String: Any] = [:]
     var userDashboard: [[String:Any]] = []
     var dashboardIsGet: Bool = false
@@ -46,7 +44,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         
-        
+        self.title = "Dashboard"
         if let myDashboard = user.object(forKey: "dashboardJson") {
             do {
                 let data = (myDashboard as! String).data(using: .utf8)
@@ -77,6 +75,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         self.tableView.estimatedRowHeight = 0
         self.tableView.estimatedSectionFooterHeight = 0
         self.tableView.estimatedSectionHeaderHeight = 0
+        
         
     }
     
@@ -114,13 +113,12 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("************************")
         DispatchQueue.main.async {
-            
             self.receiveData = text.getJsonData() as! [String: Any]
             if !self.tableView.isEditing {
                 self.tableView.reloadData()
             }
         }
-//        print(self.receiveData)
+        //        print(self.receiveData)
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
@@ -179,7 +177,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                 
                 
                 print("----------------")
-                print(moduleSensorID)
+                print(sensorId)
                 var url = "https://api.tinkermode.com/homes/744/smartModules/tsdb/timeSeries/\(moduleSensorID)/data?begin=\(target)&end=\(now)&aggregation="
                 
                 
@@ -235,6 +233,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     @objc func editingBarButtonAction(sender: UIBarButtonItem) {
         selectIndexPath = nil
+        socket.disconnect()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneBarButtonAction(_:)))
         DispatchQueue.main.async {
             self.navigationItem.rightBarButtonItem = nil
@@ -244,11 +243,19 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     
     @objc func doneBarButtonAction(_ sender: UIBarButtonItem) {
+        
+        let json = Global.memberData.dashboardData.getJsonString()
+        user.setValue(json, forKey: "dashboardJson")
+        user.synchronize()
+        
         DispatchQueue.main.async {
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.rightBarButtonItems = self.leftBarItems
             self.tableView.setEditing(false, animated: true)
+            self.viewDidLoad()
+            self.tableView.reloadData()
         }
+        
     }
     
     @objc func addBarButtonAction(_ sender: UIBarButtonItem) {
@@ -316,7 +323,9 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         label.textAlignment = .center
         
         label.text = text
-        cell.innerView.addSubview(label)
+        if !cell.circleIsDraw{
+            cell.innerView.addSubview(label)
+        }
         
     }
     
@@ -326,9 +335,10 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         label.frame.origin = position
         label.textColor = .black
         label.textAlignment = .center
-        
         label.text = text
-        cell.innerView.addSubview(label)
+        if !cell.circleIsDraw{
+            cell.innerView.addSubview(label)
+        }
         
     }
     
@@ -391,7 +401,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                 gauge_cell.innerView.layer.addSublayer(gauge_cell.valueCircleShapeLayer)
                 drawGaugePointer(gauge_cell, angel: (1 + (circlePosition * 2)) * CGFloat.pi)
                 drawCenterCircle(gauge_cell)
-//                gaugePointerShaprLayer.backgroundColor = UIColor.yellow.cgColor
+                //                gaugePointerShaprLayer.backgroundColor = UIColor.yellow.cgColor
                 gauge_cell.valueCircleIsDraw = true
                 
             }
@@ -413,7 +423,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         let originPosition = CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8)
         let lineTarget = CGPoint(x: originPosition.x + (lineLength * cos(angel)), y: originPosition.y + (lineLength * sin(angel)))
         linePath.move(to: originPosition)
-//        linePath.addLine(to: CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - lineLength, y: gauge_cell.innerView.bounds.size.height * 0.8))
+        //        linePath.addLine(to: CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - lineLength, y: gauge_cell.innerView.bounds.size.height * 0.8))
         linePath.addLine(to: lineTarget)
         
         gauge_cell.gaugePointerShaprLayer.lineWidth = 5
@@ -493,8 +503,18 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         
         
         
+        
+        
         switch panelType {
         case "VALUE":
+            cell.sensorId = sensorId
+            cell.setIcon()
+            cell.nameTextLabel.text = title
+            if title.count <= 0 {
+                cell.nameTextLabel.textColor = UIColor.lightGray
+            }else {
+                cell.nameTextLabel.textColor = UIColor.black
+            }
             if receiveSeriesData.count > 0 {
                 for i in receiveSeriesData {
                     if (i["seriesId"] as! String) == localSeriesId {
@@ -519,8 +539,14 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         case "GAUGE":
             let min = Global.memberData.dashboardData[indexPath.row]["min"] as! NSNumber
             let max = Global.memberData.dashboardData[indexPath.row]["max"] as! NSNumber
-            
-            
+            gauge_cell.sensorId = sensorId
+            gauge_cell.setIcon()
+            gauge_cell.nameTextLabel.text = title
+            if title.count <= 0 {
+                gauge_cell.nameTextLabel.textColor = UIColor.lightGray
+            }else {
+                gauge_cell.nameTextLabel.textColor = UIColor.black
+            }
             if receiveSeriesData.count > 0 {
                 var val: NSNumber = 0
                 for i in receiveSeriesData {
@@ -537,7 +563,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                             }else {
                                 val = 0
                             }
-                            print(val)
+                            
                             drawBackCircle(gauge_cell: gauge_cell, min: min.stringValue, max: max.stringValue)
                             drawValueCircle(gauge_cell, min: min, max: max, value: val.doubleValue)
                             
@@ -547,24 +573,25 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             }
             break
         case "GRAPH":
-//            cell.detailTextLabel?.text = ""
+            //            cell.detailTextLabel?.text = ""
             break
         case "DATA":
-//            cell.detailTextLabel?.text = ""
-//            cell.accessoryType = .disclosureIndicator
+            //            cell.detailTextLabel?.text = ""
+            //            cell.accessoryType = .disclosureIndicator
             break
         case "ALERT":
-//            cell.detailTextLabel?.text = ""
+            //            cell.detailTextLabel?.text = ""
             break
         default:
             break
         }
-    
+        
         // Configure the cell...
         return (panelType == "GAUGE") ? gauge_cell : cell
     }
     
     
+    // MARK: Cell Swipe Action
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var actionArray: [UITableViewRowAction] = [UITableViewRowAction]()
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, index) in
@@ -578,10 +605,30 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                 self.tableView.reloadData()
             }
         }
-        
         let editAction = UITableViewRowAction(style: .destructive, title: "Edit") { (action, index) in
             
             print("Edit \(indexPath)")
+            let panelType = Global.memberData.dashboardData[indexPath.row]["panelType"] as? String
+            let value_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "edit_value_panel_vc") as! EditValuePanelViewController
+            let gauge_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "edit_gauge_panel_vc") as! EditGaugePanelViewController
+            
+            if let type = panelType {
+                if type == "VALUE" {
+                    value_vc.panelData = Global.memberData.dashboardData[indexPath.row]
+                    value_vc.dashboardIndex = indexPath.row
+                    value_vc.dashboard_vc = self
+                    let nc = UINavigationController(rootViewController: value_vc)
+                    self.present(nc, animated: true, completion: nil)
+                }else if type == "GAUGE" {
+                    gauge_vc.panelData = Global.memberData.dashboardData[indexPath.row]
+                    gauge_vc.dashboardIndex = indexPath.row
+                    gauge_vc.dashboard_vc = self
+                    let nc = UINavigationController(rootViewController: gauge_vc)
+                    self.present(nc, animated: true, completion: nil)
+                }
+                
+            }
+            
         }
         editAction.backgroundColor = UIColor.blue
         
@@ -590,33 +637,15 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         return actionArray
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let panelType = Global.memberData.dashboardData[indexPath.row]["panelType"] as! String
-        switch panelType {
-        case "VALUE":
-            break
-        case "GAUGE":
-            break
-        case "GRAPH":
-            break
-        case "DATA":
-            let dataLog = (timeSeriesData[indexPath.row]["data"] as! [String: Any])["data"] as! [[Any]]
-            
-            print(dataLog)
-            let show_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "showDataLog_vc") as! ShowDataLogTableViewController
-            show_vc.dataLog = dataLog
-            if Global.memberData.dashboardData[indexPath.row]["name"] is String {
-                show_vc.title = Global.memberData.dashboardData[indexPath.row]["name"] as! String
-            }
-            
-            self.show(show_vc, sender: self)
-            
-            break
-        default:
-            print("NoData")
-            break
-        }
+        let vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "showdetail_vc") as! ShowDetailDataViewController
+        vc.panelData = Global.memberData.dashboardData[indexPath.row]
+//        self.socket.disconnect()
+        self.show(vc, sender: nil)
+        
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -627,9 +656,14 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         return true
     }
     
-    
+    //MARK: TableViewCell DidMoved Action
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print(sourceIndexPath.row)
+        print(destinationIndexPath.row)
+        let tmpData = Global.memberData.dashboardData[sourceIndexPath.row]
+        Global.memberData.dashboardData[sourceIndexPath.row] = Global.memberData.dashboardData[destinationIndexPath.row]
+        Global.memberData.dashboardData[destinationIndexPath.row] = tmpData
+        
     }
     
     /*

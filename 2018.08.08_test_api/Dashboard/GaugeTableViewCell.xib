@@ -20,9 +20,32 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYc-Xe-3rs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="214.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emL-Hy-bNc">
+                                <rect key="frame" x="46" y="8" width="321" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="exn-aJ-ZIz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-WN-AmB">
+                                <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="XjJ-3N-i0y"/>
+                                    <constraint firstAttribute="height" constant="30" id="kQu-Gd-IOp"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="emL-Hy-bNc" firstAttribute="leading" secondItem="2Wa-WN-AmB" secondAttribute="trailing" constant="8" id="XC3-I8-qqO"/>
                             <constraint firstAttribute="width" constant="375" id="Yeo-5j-CrB"/>
+                            <constraint firstItem="2Wa-WN-AmB" firstAttribute="top" secondItem="cYc-Xe-3rs" secondAttribute="top" constant="8" id="Zzb-X9-yhl"/>
+                            <constraint firstAttribute="trailing" secondItem="emL-Hy-bNc" secondAttribute="trailing" constant="8" id="nWO-fq-YMH"/>
+                            <constraint firstItem="2Wa-WN-AmB" firstAttribute="leading" secondItem="cYc-Xe-3rs" secondAttribute="leading" constant="8" id="rCc-mS-hrq"/>
+                            <constraint firstItem="emL-Hy-bNc" firstAttribute="centerY" secondItem="2Wa-WN-AmB" secondAttribute="centerY" id="tFx-Gd-Ygc"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -33,9 +56,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="iconImageView" destination="2Wa-WN-AmB" id="tIr-Du-GGA"/>
                 <outlet property="innerView" destination="cYc-Xe-3rs" id="lHd-IT-HrO"/>
+                <outlet property="nameTextLabel" destination="emL-Hy-bNc" id="CsB-H8-T3f"/>
             </connections>
-            <point key="canvasLocation" x="67.5" y="41"/>
+            <point key="canvasLocation" x="67.5" y="40.5"/>
         </tableViewCell>
     </objects>
 </document>
