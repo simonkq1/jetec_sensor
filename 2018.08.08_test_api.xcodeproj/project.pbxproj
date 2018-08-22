@@ -45,6 +45,7 @@
 		85C06B8121256D9A00450213 /* DashboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C06B8021256D9A00450213 /* DashboardNavigationController.swift */; };
 		85D06D9C212BBDB30014A067 /* EditValuePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D06D9B212BBDB30014A067 /* EditValuePanelViewController.swift */; };
 		85D06D9E212BBDC30014A067 /* EditGaugePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D06D9D212BBDC30014A067 /* EditGaugePanelViewController.swift */; };
+		85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB259B212D044400E0546A /* CustomMarkerView.swift */; };
 		85E48E99212BE9F8002A9EA5 /* ShowDetailDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */; };
 		95535ABC7B3FF8B0FF89FF03 /* Pods_2018_08_08_test_api.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		85C06B8021256D9A00450213 /* DashboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationController.swift; sourceTree = "<group>"; };
 		85D06D9B212BBDB30014A067 /* EditValuePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValuePanelViewController.swift; sourceTree = "<group>"; };
 		85D06D9D212BBDC30014A067 /* EditGaugePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGaugePanelViewController.swift; sourceTree = "<group>"; };
+		85DB259B212D044400E0546A /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailDataViewController.swift; sourceTree = "<group>"; };
 		A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2018_08_08_test_api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F3828EDC95C4E3FC664D2 /* Pods-2018.08.08_test_api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */,
 				853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */,
 				853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */,
+				85DB259B212D044400E0546A /* CustomMarkerView.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				22165080212299E200190E44 /* AlertLogViewController.swift in Sources */,
 				226EC207211C3176003A90D6 /* DevicesListTableViewController.swift in Sources */,
 				2216507721228B5F00190E44 /* GaugeViewController.swift in Sources */,
+				85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */,
 				22B5FC2321218512002C559A /* AddDashboardTableViewCell.swift in Sources */,
 				85D06D9E212BBDC30014A067 /* EditGaugePanelViewController.swift in Sources */,
 				2204D03E211AB5DE00B70B1D /* Global.swift in Sources */,

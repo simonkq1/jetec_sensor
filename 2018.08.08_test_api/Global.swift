@@ -129,7 +129,34 @@ class Global: NSObject {
         return socket
     }
     
-    
+    static func getDirectionAngel(x: Double, y: Double) -> Double {
+        let value: Double!
+        
+        if x > 0, y > 0 {
+            //第一象限
+            print("1")
+            value = (atan(y / x) * (180 / Double.pi)) + 0
+        }else if x < 0, y > 0 {
+            //第二象限
+            print("2")
+            value = (atan(y / x) * (180 / Double.pi)) + 180
+            
+        }else if x < 0, y < 0{
+            //第三象限
+            print("3")
+            value = (atan(y / x) * (180 / Double.pi)) + 180
+            
+        }else if x > 0, y < 0 {
+            //第四象限
+            print("4")
+            value = (atan(y / x) * (180 / Double.pi)) + 360
+            
+        }else {
+            value = 0
+        }
+        
+        return value
+    }
     
     
     

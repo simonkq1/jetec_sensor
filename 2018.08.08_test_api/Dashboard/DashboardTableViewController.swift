@@ -22,14 +22,12 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     lazy var leftBarItems: [UIBarButtonItem] = {
         return [editingButton, addButton]
     }()
-    var timeSeriesData: [[String:Any]] = []
-    
     var selectIndexPath: IndexPath!
     
     let textLabel = UILabel()
     var socket: WebSocket!
     var receiveData: [String: Any] = [:]
-    
+    var centerCircleRadius: CGFloat = 5
     
     
     
@@ -58,11 +56,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         
         drawNoDataMessage()
         print("********************")
-        getTimeSeriesData()
-        self.timeSeriesData = self.timeSeriesData.sorted(by: { (d1, d2) -> Bool in
-            return (d1["order"] as! Int) < (d2["order"] as! Int)
-        })
-        
         
         editingButton = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editingBarButtonAction(sender:)))
         addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
@@ -154,77 +147,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         }
     }
     
-    
-    func getTimeSeriesData() {
-        
-        if Global.memberData.dashboardData.count > 0 {
-            timeSeriesData = []
-            let formatter = DateFormatter()
-            formatter.dateFormat = Basic.dateFormate
-            formatter.timeZone = TimeZone(abbreviation: "UTC")
-            let now = formatter.string(from: (Date() - 60))
-            print("AAA")
-            print(now)
-            let target = formatter.string(from: (Date() - 60 - (60 * 60 * 24)))
-            print(target)
-            for i in 0..<Global.memberData.dashboardData.count {
-                var check = true
-                let panelType = Global.memberData.dashboardData[i]["panelType"] as! String
-                let moduleId = Global.memberData.dashboardData[i]["sensorModule"] as! String
-                let sensorId = (Global.memberData.dashboardData[i]["sensorId"] as! String).lowercased()
-                let moduleSensorID = moduleId + "-\(sensorId)"
-                var seriesdata: [String: Any] = [:]
-                
-                
-                print("----------------")
-                print(sensorId)
-                var url = "https://api.tinkermode.com/homes/744/smartModules/tsdb/timeSeries/\(moduleSensorID)/data?begin=\(target)&end=\(now)&aggregation="
-                
-                
-                if sensorId.lowercased().contains("precipitation") {
-                    url = url + "sum"
-                }else {
-                    url = url + "avg"
-                }
-                
-                switch panelType {
-                case "VALUE":
-                    timeSeriesData.append(["order":i, "data":seriesdata])
-                    check = false
-                    break
-                case "GAUGE":
-                    timeSeriesData.append(["order":i, "data":seriesdata])
-                    check = false
-                    
-                    break
-                case "GRAPH":
-                    Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, respond) in
-                        seriesdata = html?.getJsonData() as! [String: Any]
-                        self.timeSeriesData.append(["order":i, "data":seriesdata])
-                        check = false
-                    }
-                    break
-                case "DATA":
-                    Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, respond) in
-                        seriesdata = html?.getJsonData() as! [String: Any]
-                        self.timeSeriesData.append(["order":i, "data":seriesdata])
-                        check = false
-                    }
-                    break
-                case "ALERT":
-                    check = false
-                    break
-                default:
-                    break
-                }
-                while check {
-                    usleep(200000)
-                }
-            }
-            // quit loop
-            
-        }
-    }
     
     
     
@@ -410,6 +332,34 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     
     
+    func drawGaugePointer2(_ gauge_cell: GaugeTableViewCell, angel: CGFloat){
+        gauge_cell.gaugePointerShaprLayer = CAShapeLayer()
+        
+        let linePath = UIBezierPath()
+        var lineLength: CGFloat {
+            let width = gauge_cell.innerView.bounds.size.width
+            let height = gauge_cell.innerView.bounds.size.height
+            return (width > height) ? ((height - (gauge_cell.circleWidth * 4)) * 0.7) : ((width - (gauge_cell.circleWidth * 4)) * 0.7)
+        }
+        
+        let originPosition = CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8)
+        let lineTarget = CGPoint(x: originPosition.x + (lineLength * cos(angel)), y: originPosition.y + (lineLength * sin(angel)))
+        let leftPoint = CGPoint(x: originPosition.x + (centerCircleRadius * cos(angel - 0.25)), y: originPosition.y + (centerCircleRadius * sin(angel - 0.25)))
+        let rightPoint = CGPoint(x: originPosition.x + (centerCircleRadius * cos(angel + 0.25)), y: originPosition.y + (centerCircleRadius * sin(angel + 0.25)))
+        linePath.move(to: rightPoint)
+        //        linePath.addLine(to: CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - lineLength, y: gauge_cell.innerView.bounds.size.height * 0.8))
+//        linePath.addArc(withCenter: originPosition, radius: centerCircleRadius, startAngle: angel + 0.5, endAngle: angel, clockwise: <#T##Bool#>)
+        linePath.addLine(to: lineTarget)
+        
+        gauge_cell.gaugePointerShaprLayer.lineWidth = 5
+        gauge_cell.gaugePointerShaprLayer.strokeColor = UIColor.black.cgColor
+        gauge_cell.gaugePointerShaprLayer.fillColor = UIColor.clear.cgColor
+        gauge_cell.gaugePointerShaprLayer.path = linePath.cgPath
+        gauge_cell.innerView.layer.addSublayer(gauge_cell.gaugePointerShaprLayer)
+        
+    }
+    
+    
     func drawGaugePointer(_ gauge_cell: GaugeTableViewCell, angel: CGFloat){
         gauge_cell.gaugePointerShaprLayer = CAShapeLayer()
         
@@ -438,7 +388,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         gauge_cell.centerCircleShaprLayer = CAShapeLayer()
         let linePath = UIBezierPath(
             arcCenter: CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8),
-            radius: 5,
+            radius: centerCircleRadius,
             startAngle: 0,
             endAngle: 2 * CGFloat.pi,
             clockwise: true)
@@ -605,6 +555,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                 self.tableView.reloadData()
             }
         }
+        
         let editAction = UITableViewRowAction(style: .destructive, title: "Edit") { (action, index) in
             
             print("Edit \(indexPath)")
@@ -642,7 +593,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         
         let vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "showdetail_vc") as! ShowDetailDataViewController
         vc.panelData = Global.memberData.dashboardData[indexPath.row]
-//        self.socket.disconnect()
         self.show(vc, sender: nil)
         
         
