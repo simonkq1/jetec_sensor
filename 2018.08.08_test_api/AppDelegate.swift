@@ -20,10 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var devicesIsGet: Bool = false
     var dataIsReady: Bool = false
     var dataIsError: Bool = false
+    var infoIsGet: Bool = false
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
         
         let auto_vc = (UIStoryboard(name: "Main", bundle: Bundle.main)).instantiateViewController(withIdentifier: "main_vc") as! MainViewController
         let login_vc = (UIStoryboard(name: "Main", bundle: Bundle.main)).instantiateViewController(withIdentifier: "login_vc") as! LoginViewController
@@ -64,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if dataIsReady == true {
                 break
             }
+            usleep(100000)
         }
         
         if dataIsError == false {
@@ -141,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if action != nil {
                         action!()
                     }
+                    self.getDevicesInfo()
                     self.devicesIsGet = true
                 }catch {
                     print(error)
@@ -149,10 +155,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func getDevicesInfo() {
+        for i in Global.memberData.devicesData {
+            let deviceId = i["id"] as! Int
+            let url = Basic.api + "/devices/\(deviceId)/kv"
+            Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, status) in
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: Any]]
+                    Global.memberData.devicesInfo.append(jsonData)
+                    Global.memberData.devicesInfo = Global.memberData.devicesInfo.sorted { (d1, d2) -> Bool in
+                        return ((d1[0]["value"] as! [String:Any])["gatewayId"] as! String) < ((d2[0]["value"] as! [String:Any])["gatewayId"] as! String)
+                    }
+                }catch {
+                    
+                }
+            }
+        }
+        
+        while Global.memberData.devicesInfo.count != Global.memberData.devicesData.count{
+            usleep(150000)
+        }
+        self.getOnlineDevice()
+        self.infoIsGet = true
+    }
     
+    
+    func getOnlineDevice() {
+        var check = true
+        Global.memberData.onlineDevices = []
+        for i in 0..<Global.memberData.devicesData.count {
+            var devices: [String: Any] = [:]
+            let isConnect: Bool = ((Global.memberData.devicesData[i]["isConnected"] as! Int) == 1) ? true : false
+            if isConnect {
+                for j in 0..<Global.memberData.devicesInfo[i].count {
+                    let deviceValue = Global.memberData.devicesInfo[i][j]["value"] as! [String:Any]
+                    Global.memberData.onlineDevices.append(deviceValue)
+                }
+                check = false
+            }
+        }
+        while check {
+            usleep(150000)
+        }
+        
+    }
     
     func dataCheck() {
-        if self.authIsGet == true, self.userIsGet == true, self.homesIsGet == true, self.devicesIsGet == true {
+        if self.authIsGet == true, self.userIsGet == true, self.homesIsGet == true, self.devicesIsGet == true, self.infoIsGet == true {
             self.dataIsReady = true
         }
     }

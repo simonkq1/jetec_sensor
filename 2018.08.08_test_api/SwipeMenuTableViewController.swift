@@ -10,7 +10,7 @@ import UIKit
 
 class SwipeMenuTableViewController: UITableViewController {
     
-    let list = ["Dashboard", "Hardware", "Notifications", "Support", "MyAccount"]
+    let list = ["Dashboard", "Hardware", "Notifications", "Logout"]
     
     
     
@@ -23,9 +23,10 @@ class SwipeMenuTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+        self.tableView.tableFooterView = UIView()
         main_vc = (parent as! UINavigationController).parent as! MainViewController
-//        main_vc = parent as! MainViewController
+        tableView.register(UINib(nibName: "SwipeMenuTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
+        
         
     }
 
@@ -49,9 +50,26 @@ class SwipeMenuTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = list[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeMenuTableViewCell
+        cell.nameLabel?.text = list[indexPath.row]
+        cell.menuImageView.image = nil
         
+        switch self.list[indexPath.row] {
+        case "Dashboard":
+            cell.menuImageView.image = UIImage(named: "nav-icon-dashboard")
+            break
+        case "Hardware":
+            cell.menuImageView.image = UIImage(named: "nav-icon-hardware")
+            break
+        case "Notifications":
+            cell.menuImageView.image = UIImage(named: "nav-icon-notifications")
+            break
+        case "Logout":
+            cell.menuImageView.image = UIImage(named: "nav-icon-logout")
+            break
+        default:
+            break
+        }
         // Configure the cell...
 
         return cell
@@ -60,7 +78,7 @@ class SwipeMenuTableViewController: UITableViewController {
     func celldidSelectAnimate(_ cell: UITableViewCell) {
         cell.contentView.backgroundColor = UIColor.lightGray
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
-            cell.contentView.backgroundColor = UIColor.white
+            cell.contentView.backgroundColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
         }
     }
     
@@ -76,13 +94,23 @@ class SwipeMenuTableViewController: UITableViewController {
                 self.main_vc.changePage(to: self.main_vc.dashboard_nc)
                 break
             case "Hardware":
-                self.main_vc.changePage(to: self.main_vc.firstViewController)
+                self.main_vc.changePage(to: self.main_vc.hardware_nc)
                 break
             case "Notifications":
                 break
-            case "Support":
-                break
-            case "MyAccount":
+            case "Logout":
+                let alert = UIAlertController(title: "Logout", message: "Do you sure you want to logout?", preferredStyle: UIAlertControllerStyle.alert)
+                let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+//                    let user = UserDefaults()
+//                    user.removeObject(forKey: <#T##String#>)
+                    print("OK")
+                })
+                let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
+                    print("cancel")
+                })
+                alert.addAction(ok)
+                alert.addAction(cancel)
+                self.main_vc.present(alert, animated: false, completion: nil)
                 break
             default:
                 break
@@ -94,6 +122,10 @@ class SwipeMenuTableViewController: UITableViewController {
         UIView.animate(withDuration: 0.5) {
             self.main_vc.view.layoutIfNeeded()
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.size.height / 5
     }
     
     

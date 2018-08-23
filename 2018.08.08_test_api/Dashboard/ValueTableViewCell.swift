@@ -14,6 +14,7 @@ class ValueTableViewCell: UITableViewCell {
     @IBOutlet weak var nameTextLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     var sensorId: String = ""
+    var unit: String = " "
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -18,10 +18,19 @@ class MainViewController: UIViewController {
     
     
     var selectedViewController: UIViewController!
-    var firstViewController: FirstNavigationController!
+    
+    var firstViewController: DashboardNavigationController!
+    
+    lazy var hardware_nc: FirstNavigationController = {
+        var nc = Global.main_storyboard.instantiateViewController(withIdentifier: "first_nc") as! FirstNavigationController
+        
+        self.add(asChildViewController: nc)
+        
+        return nc
+    }()
+    
     lazy var dashboard_nc: DashboardNavigationController = {
-        let dash_board = UIStoryboard(name: "Dashboard", bundle: Bundle.main)
-        var nc = dash_board.instantiateViewController(withIdentifier: "dashboard_nc") as! DashboardNavigationController
+        var nc = Global.dash_storyboard.instantiateViewController(withIdentifier: "dashboard_nc") as! DashboardNavigationController
         
         self.add(asChildViewController: nc)
         
@@ -90,8 +99,7 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "containerView_segue" {
-            firstViewController = segue.destination as! FirstNavigationController
-            
+            firstViewController = segue.destination as! DashboardNavigationController
         }
     }
     

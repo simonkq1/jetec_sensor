@@ -18,8 +18,11 @@ class GaugeTableViewCell: UITableViewCell {
     var valueCircleShapeLayer: CAShapeLayer!
     var gaugePointerShaprLayer: CAShapeLayer!
     var centerCircleShaprLayer: CAShapeLayer!
-    let circleWidth: CGFloat = 25
+    let circleWidth: CGFloat = 23
+    let centerCircleRadius: CGFloat = 10
     var valueLabel = UILabel()
+    var unitLabel = UILabel()
+    var unit: String = " "
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var nameTextLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -27,7 +30,7 @@ class GaugeTableViewCell: UITableViewCell {
     var radius: CGFloat {
         let width = innerView.bounds.size.width
         let height = innerView.bounds.size.height
-        return (width > height) ? (height - (circleWidth * 2)) : (width - (circleWidth * 2))
+        return (width >= height) ? (height - (circleWidth * 2)) : (width - (circleWidth * 2))
     }
     var sensorId: String = ""
     
@@ -37,7 +40,6 @@ class GaugeTableViewCell: UITableViewCell {
         // Initialization code
         valueLabel.text = " "
         self.innerView.addSubview(valueLabel)
-        
         
         
         self.innerView.frame.size.width = self.innerView.frame.size.height
@@ -51,23 +53,28 @@ class GaugeTableViewCell: UITableViewCell {
     func setIcon() {
         if sensorId.contains("humidity") {
             iconImageView.image = UIImage(named: "humidity_icon") ?? nil
+            unit = " %"
         }else if sensorId.contains("wind_direction") {
             iconImageView.image = UIImage(named: "wind_direction_icon") ?? nil
+            unit = " °"
             
         }else if sensorId.contains("temperature") {
             iconImageView.image = UIImage(named: "temp_icon") ?? nil
+            unit = " °C"
             
         }else if sensorId.contains("precipitation") {
             iconImageView.image = UIImage(named: "rain_icon") ?? nil
+            unit = " mm"
             
         }else if sensorId.contains("wind_speed") {
             iconImageView.image = UIImage(named: "wind_speed_icon") ?? nil
+            unit = " m/s"
             
         }else {
             iconImageView.image = nil
+            unit = " "
         }
     }
-    
     
     
     

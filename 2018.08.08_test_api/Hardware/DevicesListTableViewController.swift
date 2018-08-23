@@ -24,20 +24,14 @@ class DevicesListTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         
-            if Global.memberData.devicesInfo.count <= 0 {
-                self.getDevicesInfo()
-                while self.infoIsGet == false {
-                    usleep(150000)
-                }
-            }
-        
-        
-        Global.memberData.devicesInfo = Global.memberData.devicesInfo.sorted { (d1, d2) -> Bool in
-            
-            return ((d1[0]["value"] as! [String:Any])["gatewayId"] as! String) < ((d2[0]["value"] as! [String:Any])["gatewayId"] as! String)
-        }
-        
-        getOnlineDevice()
+//            if Global.memberData.devicesInfo.count <= 0 {
+//                self.getDevicesInfo()
+////                while self.infoIsGet == false {
+////                    usleep(150000)
+////                }
+//            }
+//        
+//        getOnlineDevice()
         
         
         
@@ -69,13 +63,15 @@ class DevicesListTableViewController: UITableViewController {
                 do {
                     let jsonData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: Any]]
                     Global.memberData.devicesInfo.append(jsonData)
-                    self.infoIsGet = true
-                    
+                    Global.memberData.devicesInfo = Global.memberData.devicesInfo.sorted { (d1, d2) -> Bool in
+                        return ((d1[0]["value"] as! [String:Any])["gatewayId"] as! String) < ((d2[0]["value"] as! [String:Any])["gatewayId"] as! String)
+                    }
                 }catch {
                     
                 }
             }
         }
+        
         while Global.memberData.devicesInfo.count != Global.memberData.devicesData.count{
             usleep(150000)
         }

@@ -27,8 +27,8 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     let textLabel = UILabel()
     var socket: WebSocket!
     var receiveData: [String: Any] = [:]
-    var centerCircleRadius: CGFloat = 5
-    
+    var cellText: [NSMutableAttributedString] = []
+    var pointerIsDraw: Bool = false
     
     
     //MARK: - System Function
@@ -41,6 +41,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        cellText = []
         
         self.title = "Dashboard"
         if let myDashboard = user.object(forKey: "dashboardJson") {
@@ -52,7 +53,10 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             }
         }
         
-        
+        for _ in 0..<Global.memberData.dashboardData.count {
+            let s1 = NSMutableAttributedString(string: "--")
+            cellText.append(s1)
+        }
         
         drawNoDataMessage()
         print("********************")
@@ -69,13 +73,13 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         self.tableView.estimatedSectionFooterHeight = 0
         self.tableView.estimatedSectionHeaderHeight = 0
         
-        
+        sleep(1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
         
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
             self.tableView.reloadData()
         }
         if !socket.isConnected {
@@ -105,6 +109,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("************************")
+        
         DispatchQueue.main.async {
             self.receiveData = text.getJsonData() as! [String: Any]
             if !self.tableView.isEditing {
@@ -227,13 +232,13 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         gauge_cell.backgroundShapeLayer.fillColor = UIColor.clear.cgColor
         gauge_cell.backgroundShapeLayer.lineWidth = gauge_cell.circleWidth
         
-        if gauge_cell.nibIsLoad {
+//        if gauge_cell.nibIsLoad {
             gauge_cell.innerView.layer.addSublayer(gauge_cell.backgroundShapeLayer)
             drawMinText(gauge_cell, size: CGSize(width: gauge_cell.circleWidth * 2, height: gauge_cell.innerView.bounds.size.height * 0.2), position: CGPoint(x: ((gauge_cell.innerView.layer.bounds.size.width / 2) - radius - gauge_cell.circleWidth ), y: gauge_cell.innerView.bounds.size.height * 0.8), text: min)
             drawMaxText(gauge_cell, size: CGSize(width: gauge_cell.circleWidth * 2, height: gauge_cell.innerView.bounds.size.height * 0.2), position: CGPoint(x: ((gauge_cell.innerView.layer.bounds.size.width / 2) + radius - gauge_cell.circleWidth ), y: gauge_cell.innerView.bounds.size.height * 0.8), text: max)
             
             gauge_cell.circleIsDraw = true
-        }
+//        }
         gauge_cell.nibIsLoad = true
     }
     
@@ -265,7 +270,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     
     
-    func drawValueCircle(_ gauge_cell: GaugeTableViewCell, min: NSNumber, max: NSNumber, value: Double) {
+    func drawValueCircle(_ gauge_cell: GaugeTableViewCell, min: NSNumber, max: NSNumber, value: Double? = nil, index: Int) {
         if receiveData.count != 0 {
             gauge_cell.valueCircleShapeLayer = CAShapeLayer()
             var radius: CGFloat {
@@ -273,24 +278,33 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                 let height = gauge_cell.innerView.bounds.size.height
                 return (width > height) ? (height - (gauge_cell.circleWidth * 4)) : (width - (gauge_cell.circleWidth * 4))
             }
-            
+            if pointerIsDraw {
+                if let _ = gauge_cell.gaugePointerShaprLayer {
+                    gauge_cell.gaugePointerShaprLayer.removeFromSuperlayer()
+                }
+                if let _ = gauge_cell.centerCircleShaprLayer {
+                    gauge_cell.centerCircleShaprLayer.removeFromSuperlayer()
+                }
+            }
             if gauge_cell.valueCircleIsDraw {
                 gauge_cell.valueCircleShapeLayer.removeFromSuperlayer()
-                gauge_cell.gaugePointerShaprLayer.removeFromSuperlayer()
-                gauge_cell.centerCircleShaprLayer.removeFromSuperlayer()
             }
             
             var circlePosition: CGFloat {
-                var percent = (value / (max.doubleValue - min.doubleValue)) / 2
-                if percent >= 0.5 {
-                    percent = 0.5
+                if let val = value {
+                    var percent = (val / (max.doubleValue - min.doubleValue)) / 2
+                    if percent >= 0.5 {
+                        percent = 0.5
+                    }
+                    if percent <= 0 {
+                        percent = 0
+                    }
+                    return CGFloat(percent)
+                }else {
+                    return 0
                 }
-                if percent <= 0 {
-                    percent = 0
-                }
-                return CGFloat(percent)
             }
-            print(circlePosition)
+//            print(circlePosition)
             gauge_cell.valueCircleShapeLayer = CAShapeLayer()
             let linePath = UIBezierPath(
                 arcCenter: CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8),
@@ -305,34 +319,29 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             gauge_cell.valueCircleShapeLayer.lineWidth = gauge_cell.circleWidth
             
             
-            gauge_cell.valueLabel.frame.size = CGSize(width: 100, height: 50)
+            gauge_cell.valueLabel.frame.size = CGSize(width: 120, height: 50)
             gauge_cell.valueLabel.frame.origin = CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - (gauge_cell.valueLabel.frame.size.width / 2), y: gauge_cell.innerView.bounds.size.height * 0.8)
             gauge_cell.valueLabel.center.x = gauge_cell.innerView.layer.bounds.size.width / 2
-            
             gauge_cell.valueLabel.textAlignment = .center
-            gauge_cell.valueLabel.font = UIFont.systemFont(ofSize: 25)
+            let valueText = UIFont.systemFont(ofSize: 25)
+            let unitText = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
+            let s1 = NSMutableAttributedString(string: String(format: "%.2f", (value != nil) ? value! : "--"), attributes: [NSAttributedStringKey.font : valueText])
+            let s2 = NSMutableAttributedString(string: (value != nil) ? gauge_cell.unit : " ", attributes: [NSAttributedStringKey.font : unitText])
             gauge_cell.valueLabel.textColor = UIColor.black
+            s1.append(s2)
             
+            cellText[index] = s1
+//            gauge_cell.valueLabel.attributedText = s1
+            gauge_cell.innerView.layer.addSublayer(gauge_cell.valueCircleShapeLayer)
+            drawGaugePointer(gauge_cell, angel: circlePosition)
+            gauge_cell.valueCircleIsDraw = true
             
-            
-            
-            
-            
-            if gauge_cell.valueNibIsLoad {
-                gauge_cell.valueLabel.text = String(format: "%.2f", value)
-                gauge_cell.innerView.layer.addSublayer(gauge_cell.valueCircleShapeLayer)
-                drawGaugePointer(gauge_cell, angel: (1 + (circlePosition * 2)) * CGFloat.pi)
-                drawCenterCircle(gauge_cell)
-                //                gaugePointerShaprLayer.backgroundColor = UIColor.yellow.cgColor
-                gauge_cell.valueCircleIsDraw = true
-                
-            }
             gauge_cell.valueNibIsLoad = true
         }
     }
     
     
-    func drawGaugePointer2(_ gauge_cell: GaugeTableViewCell, angel: CGFloat){
+    func drawGaugePointer(_ gauge_cell: GaugeTableViewCell, angel: CGFloat){
         gauge_cell.gaugePointerShaprLayer = CAShapeLayer()
         
         let linePath = UIBezierPath()
@@ -343,23 +352,22 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         }
         
         let originPosition = CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8)
-        let lineTarget = CGPoint(x: originPosition.x + (lineLength * cos(angel)), y: originPosition.y + (lineLength * sin(angel)))
-        let leftPoint = CGPoint(x: originPosition.x + (centerCircleRadius * cos(angel - 0.25)), y: originPosition.y + (centerCircleRadius * sin(angel - 0.25)))
-        let rightPoint = CGPoint(x: originPosition.x + (centerCircleRadius * cos(angel + 0.25)), y: originPosition.y + (centerCircleRadius * sin(angel + 0.25)))
-        linePath.move(to: rightPoint)
-        //        linePath.addLine(to: CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - lineLength, y: gauge_cell.innerView.bounds.size.height * 0.8))
-//        linePath.addArc(withCenter: originPosition, radius: centerCircleRadius, startAngle: angel + 0.5, endAngle: angel, clockwise: <#T##Bool#>)
-        linePath.addLine(to: lineTarget)
+        let lineTarget = CGPoint(x: originPosition.x + (lineLength * cos((1 + (angel * 2)) * CGFloat.pi)), y: originPosition.y + (lineLength * sin((1 + (angel * 2)) * CGFloat.pi)))
         
-        gauge_cell.gaugePointerShaprLayer.lineWidth = 5
+        linePath.addArc(withCenter: originPosition, radius: gauge_cell.centerCircleRadius, startAngle: 2 * CGFloat.pi * (0.5 + angel + 0.25), endAngle: 2 * CGFloat.pi * (1 + angel + 0.25), clockwise: true)
+        linePath.addLine(to: lineTarget)
+        linePath.close()
+        
+        gauge_cell.gaugePointerShaprLayer.lineWidth = 1
         gauge_cell.gaugePointerShaprLayer.strokeColor = UIColor.black.cgColor
-        gauge_cell.gaugePointerShaprLayer.fillColor = UIColor.clear.cgColor
+        gauge_cell.gaugePointerShaprLayer.fillColor = UIColor.black.cgColor
         gauge_cell.gaugePointerShaprLayer.path = linePath.cgPath
         gauge_cell.innerView.layer.addSublayer(gauge_cell.gaugePointerShaprLayer)
-        
+        drawCenterCircle(gauge_cell)
+        pointerIsDraw = true
     }
     
-    
+    /*
     func drawGaugePointer(_ gauge_cell: GaugeTableViewCell, angel: CGFloat){
         gauge_cell.gaugePointerShaprLayer = CAShapeLayer()
         
@@ -383,23 +391,27 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         gauge_cell.innerView.layer.addSublayer(gauge_cell.gaugePointerShaprLayer)
         
     }
-    
+    */
     func drawCenterCircle(_ gauge_cell: GaugeTableViewCell) {
         gauge_cell.centerCircleShaprLayer = CAShapeLayer()
         let linePath = UIBezierPath(
             arcCenter: CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8),
-            radius: centerCircleRadius,
+            radius: gauge_cell.centerCircleRadius / 2,
             startAngle: 0,
             endAngle: 2 * CGFloat.pi,
             clockwise: true)
-        gauge_cell.centerCircleShaprLayer.fillColor = UIColor.black.cgColor
+        gauge_cell.centerCircleShaprLayer.fillColor = UIColor.white.cgColor
         gauge_cell.centerCircleShaprLayer.strokeColor = UIColor.black.cgColor
         gauge_cell.centerCircleShaprLayer.lineWidth = 1
         gauge_cell.centerCircleShaprLayer.path = linePath.cgPath
         gauge_cell.innerView.layer.addSublayer(gauge_cell.centerCircleShaprLayer)
     }
     
-    
+    func drawInnerScale(_ cell: GaugeTableViewCell, min: NSNumber, max: NSNumber) {
+        let _min = min.doubleValue
+        let _max = max.doubleValue
+        
+    }
     
     
     
@@ -429,7 +441,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         var title = Global.memberData.dashboardData[indexPath.row]["name"] as? String ?? "沒有標題"
         
         
-        
         var receiveSeriesData: [[String: Any]] {
             if let eventData: [String: Any] = receiveData["eventData"] as? [String: Any] {
                 if let series = eventData["timeSeriesData"] as? [[String:Any]] {
@@ -447,9 +458,46 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         let localSeriesId = moduleId + "-\(sensorId)"
         if panelType != "GAUGE" {
             cell = tableView.dequeueReusableCell(withIdentifier: "value_cell", for: indexPath) as! ValueTableViewCell
+            
+            if sensorId.contains("humidity") {
+                cell.unit = " %"
+            }else if sensorId.contains("wind_direction") {
+                cell.unit = " °"
+                
+            }else if sensorId.contains("temperature") {
+                cell.unit = " ℃"
+                
+            }else if sensorId.contains("precipitation") {
+                cell.unit = " mm"
+                
+            }else if sensorId.contains("wind_speed") {
+                cell.unit = " m/s"
+                
+            }else {
+                cell.unit = " "
+            }
         }else {
             gauge_cell = tableView.dequeueReusableCell(withIdentifier: "gauge_cell", for: indexPath) as! GaugeTableViewCell
+            
+            if sensorId.contains("humidity") {
+                gauge_cell.unit = " %"
+            }else if sensorId.contains("wind_direction") {
+                gauge_cell.unit = " °"
+                
+            }else if sensorId.contains("temperature") {
+                gauge_cell.unit = " ℃"
+                
+            }else if sensorId.contains("precipitation") {
+                gauge_cell.unit = " mm"
+                
+            }else if sensorId.contains("wind_speed") {
+                gauge_cell.unit = " m/s"
+                
+            }else {
+                gauge_cell.unit = " "
+            }
         }
+        
         
         
         
@@ -471,13 +519,26 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                         let value = i["value"]
                         let numFormatter = NumberFormatter()
                         if value != nil {
+                            let valueText = UIFont.systemFont(ofSize: 50)
+                            let unitText = UIFont.systemFont(ofSize: 25)
                             if value is String {
                                 let num = numFormatter.number(from: i["value"] as! String)
-                                cell.valueTextLabel.text = String(format: "%.2f", (num?.doubleValue)!)
+                                let s1 = NSMutableAttributedString(string: String(format: "%.2f", (num?.doubleValue)!), attributes: [NSAttributedStringKey.font : valueText])
+                                let s2 = NSMutableAttributedString(string: cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                s1.append(s2)
+                                cell.valueTextLabel.attributedText = s1
                             }else if value is Int {
-                                cell.valueTextLabel.text = numFormatter.string(for: (i["value"] as! Int))
+                                let num = numFormatter.string(for: (i["value"] as! Int))
+                                let s1 = NSMutableAttributedString(string: num!, attributes: [NSAttributedStringKey.font : valueText])
+                                let s2 = NSMutableAttributedString(string: cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                s1.append(s2)
+                                cell.valueTextLabel.attributedText = s1
                             }else if value is Double {
-                                cell.valueTextLabel.text = String(format: "%.2f", i["value"] as! Double)
+                                
+                                let s1 = NSMutableAttributedString(string: String(format: "%.2f", i["value"] as! Double), attributes: [NSAttributedStringKey.font : valueText])
+                                let s2 = NSMutableAttributedString(string: cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                s1.append(s2)
+                                cell.valueTextLabel.attributedText = s1
                             }else {
                                 
                             }
@@ -503,6 +564,8 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                     if (i["seriesId"] as! String) == localSeriesId {
                         if let value = i["value"] {
                             let numFormatter = NumberFormatter()
+                            let valueText = UIFont.systemFont(ofSize: 25)
+                            let unitText = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
                             if value is String {
                                 let num = numFormatter.number(from: i["value"] as! String)
                                 val = num!
@@ -515,28 +578,31 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                             }
                             
                             drawBackCircle(gauge_cell: gauge_cell, min: min.stringValue, max: max.stringValue)
-                            drawValueCircle(gauge_cell, min: min, max: max, value: val.doubleValue)
+                            drawValueCircle(gauge_cell, min: min, max: max, value: val.doubleValue, index: indexPath.row)
+                            gauge_cell.valueLabel.textColor = UIColor.black
                             
                         }
                     }
                 }
+            }else if receiveSeriesData.count <= 0, gauge_cell.nibIsLoad, !gauge_cell.circleIsDraw {
+                drawBackCircle(gauge_cell: gauge_cell, min: min.stringValue, max: max.stringValue)
+                drawGaugePointer(gauge_cell, angel: 0)
+                gauge_cell.valueLabel.frame.size = CGSize(width: 120, height: 50)
+                gauge_cell.valueLabel.frame.origin = CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - (gauge_cell.valueLabel.frame.size.width / 2), y: gauge_cell.innerView.bounds.size.height * 0.8)
+                gauge_cell.valueLabel.center.x = gauge_cell.innerView.layer.bounds.size.width / 2
+                gauge_cell.valueLabel.textAlignment = .center
+                gauge_cell.valueLabel.text = "--"
             }
-            break
-        case "GRAPH":
-            //            cell.detailTextLabel?.text = ""
-            break
-        case "DATA":
-            //            cell.detailTextLabel?.text = ""
-            //            cell.accessoryType = .disclosureIndicator
-            break
-        case "ALERT":
-            //            cell.detailTextLabel?.text = ""
+            gauge_cell.valueLabel.attributedText = cellText[indexPath.row]
+            gauge_cell.nibIsLoad = true
             break
         default:
             break
         }
         
         // Configure the cell...
+        
+//        cellIsAwake = true
         return (panelType == "GAUGE") ? gauge_cell : cell
     }
     

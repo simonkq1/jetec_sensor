@@ -79,15 +79,12 @@ extension UIView {
 }
 
 extension MarkerView {
-    enum ArrowPosition {
+     enum ArrowPosition {
         case topLeft
         case topRight
         case bottomLeft
         case bottomRight
     }
-    
-    
-    
     
     
     func drawChatBallonBorder(shapeLayer: CAShapeLayer, highlight: Highlight, offset: CGPoint, cornerRadius: CGFloat = 0, side: ArrowPosition) {
@@ -96,17 +93,19 @@ extension MarkerView {
         var radius: CGFloat {
             let width = self.frame.size.width
             let height = self.frame.size.height
-            if cornerRadius == 0 {
+            if cornerRadius <= 2 {
                 return (width > height) ? height / 3 : width / 3
-            }else {
+            }else if cornerRadius <= ((width > height) ? height / 3 : width / 3){
                 return cornerRadius
+            }else {
+                return (width > height) ? height / 3 : width / 3
             }
         }
         
         switch side {
         case .topLeft:
             self.offset = CGPoint(x: (offset.x >= 0) ? offset.x : -offset.x, y: (offset.y >= 0) ? offset.y : -offset.y)
-            if cornerRadius == 0 {
+            if cornerRadius <= 0 {
                 linePath.move(to: CGPoint(x: 0, y: radius))
                 linePath.addLine(to: CGPoint(x: -self.offset.x, y: -self.offset.y))
                 linePath.addLine(to: CGPoint(x: radius, y: 0))
@@ -147,7 +146,7 @@ extension MarkerView {
             break
         case .topRight:
             self.offset = CGPoint(x: (offset.x >= 0) ? -self.frame.size.width - offset.x : -self.frame.size.width + offset.x, y: (offset.y >= 0) ? offset.y : -offset.y)
-            if cornerRadius == 0 {
+            if cornerRadius <= 0 {
                 linePath.move(to: CGPoint(x: self.frame.size.width - radius, y: 0))
                 linePath.addLine(to: CGPoint(x: -self.offset.x, y: -self.offset.y))
                 linePath.addLine(to: CGPoint(x: self.frame.size.width, y: radius))
@@ -157,9 +156,9 @@ extension MarkerView {
                 linePath.addLine(to: CGPoint(x: 0, y: 0))
                 linePath.close()
             }else {
-                linePath.move(to: CGPoint(x: self.frame.size.width - (radius * 2), y: 0))
+                linePath.move(to: CGPoint(x: self.frame.size.width - ((cornerRadius > 2) ? (radius * 2) : radius), y: 0))
                 linePath.addLine(to: CGPoint(x: -self.offset.x, y: -self.offset.y))
-                linePath.addLine(to: CGPoint(x: self.frame.size.width, y: (radius * 2)))
+                linePath.addLine(to: CGPoint(x: self.frame.size.width, y: ((cornerRadius > 2) ? (radius * 2) : radius)))
                 
                 linePath.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height - radius))
                 linePath.addArc(
@@ -189,7 +188,7 @@ extension MarkerView {
             break
         case .bottomLeft:
             self.offset = CGPoint(x: (offset.x >= 0) ? offset.x : -offset.x, y: (offset.y >= 0) ? -self.frame.size.height - offset.y : -self.frame.size.height + offset.y)
-            if cornerRadius == 0 {
+            if cornerRadius <= 0 {
                 linePath.move(to: CGPoint(x: radius, y: self.frame.size.height))
                 linePath.addLine(to: CGPoint(x: -self.offset.x, y: -self.offset.y))
                 linePath.addLine(to: CGPoint(x: 0, y: self.frame.size.height - radius))
@@ -198,9 +197,9 @@ extension MarkerView {
                 linePath.addLine(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height))
                 linePath.close()
             }else {
-                linePath.move(to: CGPoint(x: (radius * 2), y: self.frame.size.height))
+                linePath.move(to: CGPoint(x: ((cornerRadius > 2) ? (radius * 2) : radius), y: self.frame.size.height))
                 linePath.addLine(to: CGPoint(x: -self.offset.x, y: -self.offset.y))
-                linePath.addLine(to: CGPoint(x: 0, y: self.frame.size.height - (radius * 2)))
+                linePath.addLine(to: CGPoint(x: 0, y: self.frame.size.height - ((cornerRadius > 2) ? (radius * 2) : radius)))
                 linePath.addLine(to: CGPoint(x: 0, y: radius))
                 linePath.addArc(
                     withCenter: CGPoint(x: radius, y: radius),
@@ -227,7 +226,7 @@ extension MarkerView {
             break
         case .bottomRight:
             self.offset = CGPoint(x: (offset.x >= 0) ? -self.frame.size.width - offset.x : -self.frame.size.width + offset.x, y: (offset.y >= 0) ? -self.frame.size.height - offset.y : -self.frame.size.height + offset.y)
-            if cornerRadius == 0 {
+            if cornerRadius <= 0 {
                 linePath.move(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height - radius))
                 linePath.addLine(to: CGPoint(x: -self.offset.x, y: -self.offset.y))
                 linePath.addLine(to: CGPoint(x: self.frame.size.width - radius, y: self.frame.size.height))
@@ -236,9 +235,9 @@ extension MarkerView {
                 linePath.addLine(to: CGPoint(x: self.frame.size.width, y: 0))
                 linePath.close()
             }else {
-                linePath.move(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height - (radius * 2)))
+                linePath.move(to: CGPoint(x: self.frame.size.width, y: self.frame.size.height - ((cornerRadius > 2) ? (radius * 2) : radius)))
                 linePath.addLine(to: CGPoint(x: -self.offset.x, y: -self.offset.y))
-                linePath.addLine(to: CGPoint(x: self.frame.size.width - (radius * 2), y: self.frame.size.height))
+                linePath.addLine(to: CGPoint(x: self.frame.size.width - ((cornerRadius > 2) ? (radius * 2) : radius), y: self.frame.size.height))
                 
                 linePath.addLine(to: CGPoint(x: radius, y: self.frame.size.height))
                 linePath.addArc(

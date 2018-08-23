@@ -219,16 +219,16 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
         borderLayer.lineWidth = 0.5
         
         if highlight.x <= (Double(chartTitles.count) / 2), highlight.y <= chartData.average {
-            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: 5, side: .bottomLeft)
+            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: marker.layer.cornerRadius, side: .bottomLeft)
         }else if highlight.x >= (Double(chartTitles.count) / 2), highlight.y >= chartData.average {
-            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: 5, side: .topRight)
+            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: marker.layer.cornerRadius, side: .topRight)
         }else if highlight.x <= (Double(chartTitles.count) / 2), highlight.y >= chartData.average {
-            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: 5, side: .topLeft)
+            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: marker.layer.cornerRadius, side: .topLeft)
         }else if highlight.x >= (Double(chartTitles.count) / 2), highlight.y <= chartData.average {
-            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: 5, side: .bottomRight)
+            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: marker.layer.cornerRadius, side: .bottomRight)
         }else {
             
-            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: 5, side: .bottomLeft)
+            marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: marker.layer.cornerRadius, side: .bottomLeft)
         }
         
         
