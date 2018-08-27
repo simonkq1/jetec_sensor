@@ -1,0 +1,6 @@
+framework module LocaleManager {
+  umbrella header "LocaleManager-umbrella.h"
+
+  export *
+  module * { export * }
+}
