@@ -36,18 +36,20 @@
 		22E7E702211D769C001DE27F /* SwipeMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E701211D769C001DE27F /* SwipeMenuTableViewController.swift */; };
 		22E7E704211D8025001DE27F /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E703211D8025001DE27F /* BackgroundViewController.swift */; };
 		22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E7E705211D8BBD001DE27F /* Dashboard.storyboard */; };
+		8503A28F21338F850019888D /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503A28E21338F850019888D /* SettingTableViewController.swift */; };
+		8503A29121339C620019888D /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503A29021339C620019888D /* SelectLanguageViewController.swift */; };
 		85254EE521264CC7009CED23 /* ShowDataLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */; };
 		853E00F1212A625B0094A976 /* GaugeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */; };
 		853E00F2212A625B0094A976 /* GaugeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */; };
 		8563D07E2126B4DC00A3DA8B /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */; };
 		8563D07F2126B4DC00A3DA8B /* ValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */; };
-		8579F0F7212E93F200F79AD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8579F0F6212E93F100F79AD5 /* Assets.xcassets */; };
 		85C06B8121256D9A00450213 /* DashboardNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C06B8021256D9A00450213 /* DashboardNavigationController.swift */; };
 		85D06D9C212BBDB30014A067 /* EditValuePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D06D9B212BBDB30014A067 /* EditValuePanelViewController.swift */; };
 		85D06D9E212BBDC30014A067 /* EditGaugePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D06D9D212BBDC30014A067 /* EditGaugePanelViewController.swift */; };
 		85D2DBCD212E8AD000440E2B /* SwipeMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D2DBCB212E8AD000440E2B /* SwipeMenuTableViewCell.swift */; };
 		85D2DBCE212E8AD000440E2B /* SwipeMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D2DBCC212E8AD000440E2B /* SwipeMenuTableViewCell.xib */; };
 		85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB259B212D044400E0546A /* CustomMarkerView.swift */; };
+		85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85DB64CC2133D76E00D71DE1 /* Assets.xcassets */; };
 		85E48E99212BE9F8002A9EA5 /* ShowDetailDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */; };
 		95535ABC7B3FF8B0FF89FF03 /* Pods_2018_08_08_test_api.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */; };
 /* End PBXBuildFile section */
@@ -85,18 +87,20 @@
 		22E7E703211D8025001DE27F /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		22E7E705211D8BBD001DE27F /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		61C7A3D0B737C572F9B6085B /* Pods-2018.08.08_test_api.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.release.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.release.xcconfig"; sourceTree = "<group>"; };
+		8503A28E21338F850019888D /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
+		8503A29021339C620019888D /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataLogTableViewController.swift; sourceTree = "<group>"; };
 		853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeTableViewCell.swift; sourceTree = "<group>"; };
 		853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GaugeTableViewCell.xib; sourceTree = "<group>"; };
 		8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValueTableViewCell.xib; sourceTree = "<group>"; };
-		8579F0F6212E93F100F79AD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		85C06B8021256D9A00450213 /* DashboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationController.swift; sourceTree = "<group>"; };
 		85D06D9B212BBDB30014A067 /* EditValuePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValuePanelViewController.swift; sourceTree = "<group>"; };
 		85D06D9D212BBDC30014A067 /* EditGaugePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGaugePanelViewController.swift; sourceTree = "<group>"; };
 		85D2DBCB212E8AD000440E2B /* SwipeMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeMenuTableViewCell.swift; sourceTree = "<group>"; };
 		85D2DBCC212E8AD000440E2B /* SwipeMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeMenuTableViewCell.xib; sourceTree = "<group>"; };
 		85DB259B212D044400E0546A /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
+		85DB64CC2133D76E00D71DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailDataViewController.swift; sourceTree = "<group>"; };
 		A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2018_08_08_test_api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F3828EDC95C4E3FC664D2 /* Pods-2018.08.08_test_api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,15 +157,17 @@
 				22E7E6FD211D6CB9001DE27F /* MainViewController.swift */,
 				226EC200211C1A47003A90D6 /* FirstNavigationController.swift */,
 				22E7E703211D8025001DE27F /* BackgroundViewController.swift */,
-				8579F0F6212E93F100F79AD5 /* Assets.xcassets */,
 				226EC202211C27F5003A90D6 /* LoadingViewController.swift */,
 				226EC1FE211C0E66003A90D6 /* HomesListTableViewController.swift */,
-				2204D03D211AB5DE00B70B1D /* Global.swift */,
-				2212C6082123C138007AEE6D /* Extension.swift */,
-				2212C60A2123C520007AEE6D /* Struct.swift */,
 				22E7E701211D769C001DE27F /* SwipeMenuTableViewController.swift */,
 				85D2DBCB212E8AD000440E2B /* SwipeMenuTableViewCell.swift */,
 				85D2DBCC212E8AD000440E2B /* SwipeMenuTableViewCell.xib */,
+				8503A28E21338F850019888D /* SettingTableViewController.swift */,
+				8503A29021339C620019888D /* SelectLanguageViewController.swift */,
+				85DB64CC2133D76E00D71DE1 /* Assets.xcassets */,
+				2204D03D211AB5DE00B70B1D /* Global.swift */,
+				2212C6082123C138007AEE6D /* Extension.swift */,
+				2212C60A2123C520007AEE6D /* Struct.swift */,
 			);
 			path = 2018.08.08_test_api;
 			sourceTree = "<group>";
@@ -297,7 +303,7 @@
 				2204D031211AB5AC00B70B1D /* Main.storyboard in Resources */,
 				8563D07F2126B4DC00A3DA8B /* ValueTableViewCell.xib in Resources */,
 				22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */,
-				8579F0F7212E93F200F79AD5 /* Assets.xcassets in Resources */,
+				85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */,
 				22B5FC2421218512002C559A /* AddDashboardTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,16 +338,16 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/LocaleManager/LocaleManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSVG/SwiftSVG.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LocaleManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSVG.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +376,7 @@
 				221E82352124193600F1B5D3 /* MyScrollView.swift in Sources */,
 				226EC201211C1A47003A90D6 /* FirstNavigationController.swift in Sources */,
 				85D2DBCD212E8AD000440E2B /* SwipeMenuTableViewCell.swift in Sources */,
+				8503A28F21338F850019888D /* SettingTableViewController.swift in Sources */,
 				226EC203211C27F5003A90D6 /* LoadingViewController.swift in Sources */,
 				226EC1FF211C0E66003A90D6 /* HomesListTableViewController.swift in Sources */,
 				2212C60B2123C520007AEE6D /* Struct.swift in Sources */,
@@ -379,6 +386,7 @@
 				85C06B8121256D9A00450213 /* DashboardNavigationController.swift in Sources */,
 				2212C6092123C138007AEE6D /* Extension.swift in Sources */,
 				2204D02C211AB5AC00B70B1D /* AppDelegate.swift in Sources */,
+				8503A29121339C620019888D /* SelectLanguageViewController.swift in Sources */,
 				226EC20B211C3D55003A90D6 /* DeviceSocketTableViewController.swift in Sources */,
 				22165080212299E200190E44 /* AlertLogViewController.swift in Sources */,
 				226EC207211C3176003A90D6 /* DevicesListTableViewController.swift in Sources */,

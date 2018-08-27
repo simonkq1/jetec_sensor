@@ -36,6 +36,14 @@ class MainViewController: UIViewController {
         
         return nc
     }()
+    lazy var setting_vc: SettingTableViewController = {
+        var vc = Global.main_storyboard.instantiateViewController(withIdentifier: "setting_vc") as! SettingTableViewController
+        
+        self.add(asChildViewController: vc)
+        
+        return vc
+    }()
+    
     
     
     var menuIsShow: Bool = false

@@ -1,20 +1,18 @@
 //
-//  SwipeMenuTableViewController.swift
+//  SettingTableViewController.swift
 //  2018.08.08_test_api
 //
-//  Created by macos on 2018/8/10.
+//  Created by Jetec-RD on 2018/8/27.
 //  Copyright © 2018年 macos. All rights reserved.
 //
 
 import UIKit
 
-class SwipeMenuTableViewController: UITableViewController {
-    
-    let list = ["Dashboard", "Hardware", "Notifications", "Logout"]
-    
-    
-    
-    var main_vc: MainViewController!
+class SettingTableViewController: UITableViewController {
+    let list: [String] = ["Language", "Logout"]
+    var main_vc: MainViewController {
+        return parent as! MainViewController
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,18 +21,15 @@ class SwipeMenuTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.tableView.tableFooterView = UIView()
-        main_vc = (parent as! UINavigationController).parent as! MainViewController
-        tableView.register(UINib(nibName: "SwipeMenuTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
-        tableView.tableFooterView?.backgroundColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
+        print(String(describing: main_vc))
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     // MARK: - Table view data source
 
@@ -50,71 +45,60 @@ class SwipeMenuTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeMenuTableViewCell
-        cell.nameLabel?.text = list[indexPath.row]
-        cell.menuImageView.image = nil
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.accessoryType = .disclosureIndicator
+        cell.detailTextLabel?.text = " "
+        cell.detailTextLabel?.textColor = UIColor.lightGray
+        cell.textLabel?.text = list[indexPath.row]
         
-        switch self.list[indexPath.row] {
-        case "Dashboard":
-            cell.menuImageView.image = UIImage(named: "nav-icon-dashboard")
+        switch indexPath.row {
+        case 0:
+            
             break
-        case "Hardware":
-            cell.menuImageView.image = UIImage(named: "nav-icon-hardware")
-            break
-        case "Notifications":
-            cell.menuImageView.image = UIImage(named: "nav-icon-notifications")
-            break
-        case "Logout":
-            cell.menuImageView.image = UIImage(named: "nav-icon-logout")
+        case 1:
             break
         default:
             break
         }
+
         // Configure the cell...
 
         return cell
     }
     
-    func celldidSelectAnimate(_ cell: UITableViewCell) {
-        cell.contentView.backgroundColor = UIColor.lightGray
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
-            cell.contentView.backgroundColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
-        }
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.selectionFlashingStyleAction(animateColor: UIColor.lightGray, endColor: UIColor.white, timeInterval: 0.08)
         
-        celldidSelectAnimate(tableView.cellForRow(at: indexPath)!)
-        
-        let dash_board = UIStoryboard(name: "Dashboard", bundle: nil)
-        DispatchQueue.main.async {
+        switch indexPath.row {
+        case 0:
+            let language_vc = Global.main_storyboard.instantiateViewController(withIdentifier: "language_vc") as! SelectLanguageViewController
+            self.present(language_vc, animated: false, completion: nil)
+            break
+        case 1:
             
-            switch self.list[indexPath.row] {
-            case "Dashboard":
-                self.main_vc.changePage(to: self.main_vc.dashboard_nc)
-                break
-            case "Hardware":
-                self.main_vc.changePage(to: self.main_vc.hardware_nc)
-                break
-            case "Notifications":
-                break
-            case "Logout":
-                self.main_vc.changePage(to: self.main_vc.setting_vc)
-                break
-            default:
-                break
-            }
+             let alert = UIAlertController(title: "Logout", message: "Do you sure you want to logout?", preferredStyle: UIAlertControllerStyle.alert)
+             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+             let user = UserDefaults()
+             user.removeObject(forKey: "email")
+             user.removeObject(forKey: "password")
+             user.synchronize()
+             let login_vc = Global.main_storyboard.instantiateViewController(withIdentifier: "login_vc") as! LoginViewController
+             self.showDetailViewController(login_vc, sender: nil)
+             print("OK")
+             })
+             let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
+             print("cancel")
+             })
+             alert.addAction(ok)
+             alert.addAction(cancel)
+             self.main_vc.present(alert, animated: false, completion: nil)
+            break
+        default:
+            break
         }
         
-        main_vc.swipeMenuConstraint.constant = -150
-        main_vc.backgroundConstraint.constant = -400
-        UIView.animate(withDuration: 0.5) {
-            self.main_vc.view.layoutIfNeeded()
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.height / 5
     }
     
     

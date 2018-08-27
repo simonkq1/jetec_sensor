@@ -44,7 +44,7 @@
                     <constraint firstItem="yAX-6m-DzV" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="tmz-JJ-WBG"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.81176470588235294" green="0.81176470588235294" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="menuImageView" destination="yAX-6m-DzV" id="2z3-gB-31e"/>

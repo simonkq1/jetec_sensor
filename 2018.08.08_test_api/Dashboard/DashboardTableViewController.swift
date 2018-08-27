@@ -109,11 +109,22 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("************************")
-        
+//        print(text)
         DispatchQueue.main.async {
-            self.receiveData = text.getJsonData() as! [String: Any]
-            if !self.tableView.isEditing {
-                self.tableView.reloadData()
+            let json = text.getJsonData() as! [String: Any]
+            if let eventType = json["eventType"] {
+                if eventType as! String == "timeSeriesData" {
+                    self.receiveData = text.getJsonData() as! [String: Any]
+                    if !self.tableView.isEditing {
+                        self.tableView.reloadData()
+                    }
+                }else {
+                    if self.pointerIsDraw == false {
+                        if !self.tableView.isEditing {
+                        self.tableView.reloadData()
+                        }
+                    }
+                }
             }
         }
         //        print(self.receiveData)
@@ -243,29 +254,31 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     
     func drawMinText(_ cell: GaugeTableViewCell, size: CGSize, position: CGPoint, text: String) {
-        let label = UILabel()
-        label.frame.size = size
-        label.frame.origin = position
-        label.textColor = .black
-        label.textAlignment = .center
-        
-        label.text = text
-        if !cell.circleIsDraw{
-            cell.innerView.addSubview(label)
+        if let _ = cell.minLabel {
+            cell.minLabel.removeFromSuperview()
         }
+        cell.minLabel = UILabel()
+        cell.minLabel.frame.size = size
+        cell.minLabel.frame.origin = position
+        cell.minLabel.textColor = .black
+        cell.minLabel.textAlignment = .center
+        
+//        cell.minLabel.text = text
+        cell.innerView.addSubview(cell.minLabel)
         
     }
     
     func drawMaxText(_ cell: GaugeTableViewCell, size: CGSize, position: CGPoint, text: String) {
-        let label = UILabel()
-        label.frame.size = size
-        label.frame.origin = position
-        label.textColor = .black
-        label.textAlignment = .center
-        label.text = text
-        if !cell.circleIsDraw{
-            cell.innerView.addSubview(label)
+        if let _ = cell.maxLabel {
+            cell.maxLabel.removeFromSuperview()
         }
+        cell.maxLabel = UILabel()
+        cell.maxLabel.frame.size = size
+        cell.maxLabel.frame.origin = position
+        cell.maxLabel.textColor = .black
+        cell.maxLabel.textAlignment = .center
+//        cell.maxLabel.text = text
+        cell.innerView.addSubview(cell.maxLabel)
         
     }
     
@@ -286,7 +299,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                     gauge_cell.centerCircleShaprLayer.removeFromSuperlayer()
                 }
             }
-            if gauge_cell.valueCircleIsDraw {
+            if let _ = gauge_cell.valueCircleShapeLayer {
                 gauge_cell.valueCircleShapeLayer.removeFromSuperlayer()
             }
             
@@ -367,31 +380,8 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         pointerIsDraw = true
     }
     
-    /*
-    func drawGaugePointer(_ gauge_cell: GaugeTableViewCell, angel: CGFloat){
-        gauge_cell.gaugePointerShaprLayer = CAShapeLayer()
-        
-        let linePath = UIBezierPath()
-        var lineLength: CGFloat {
-            let width = gauge_cell.innerView.bounds.size.width
-            let height = gauge_cell.innerView.bounds.size.height
-            return (width > height) ? ((height - (gauge_cell.circleWidth * 4)) * 0.7) : ((width - (gauge_cell.circleWidth * 4)) * 0.7)
-        }
-        
-        let originPosition = CGPoint(x: gauge_cell.innerView.layer.bounds.size.width / 2, y: gauge_cell.innerView.bounds.size.height * 0.8)
-        let lineTarget = CGPoint(x: originPosition.x + (lineLength * cos(angel)), y: originPosition.y + (lineLength * sin(angel)))
-        linePath.move(to: originPosition)
-        //        linePath.addLine(to: CGPoint(x: (gauge_cell.innerView.layer.bounds.size.width / 2) - lineLength, y: gauge_cell.innerView.bounds.size.height * 0.8))
-        linePath.addLine(to: lineTarget)
-        
-        gauge_cell.gaugePointerShaprLayer.lineWidth = 5
-        gauge_cell.gaugePointerShaprLayer.strokeColor = UIColor.black.cgColor
-        gauge_cell.gaugePointerShaprLayer.fillColor = UIColor.clear.cgColor
-        gauge_cell.gaugePointerShaprLayer.path = linePath.cgPath
-        gauge_cell.innerView.layer.addSublayer(gauge_cell.gaugePointerShaprLayer)
-        
-    }
-    */
+    
+    
     func drawCenterCircle(_ gauge_cell: GaugeTableViewCell) {
         gauge_cell.centerCircleShaprLayer = CAShapeLayer()
         let linePath = UIBezierPath(
@@ -410,6 +400,16 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     func drawInnerScale(_ cell: GaugeTableViewCell, min: NSNumber, max: NSNumber) {
         let _min = min.doubleValue
         let _max = max.doubleValue
+        if let _ = cell.innerScaleShapeLayer {
+            cell.innerScaleShapeLayer.removeFromSuperlayer()
+        }
+        cell.innerScaleShapeLayer = CAShapeLayer()
+        let linePath = UIBezierPath()
+        
+        
+        
+        
+        
         
     }
     
@@ -542,9 +542,13 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                             }else {
                                 
                             }
+                            cell.valueTextLabel.textColor = UIColor.black
                         }
                     }
                 }
+            }else {
+                cell.valueTextLabel.text = "connecting"
+                cell.valueTextLabel.textColor = UIColor.lightGray
             }
             break
         case "GAUGE":
@@ -595,6 +599,12 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             }
             gauge_cell.valueLabel.attributedText = cellText[indexPath.row]
             gauge_cell.nibIsLoad = true
+            if let _ = gauge_cell.minLabel {
+                gauge_cell.minLabel.text = min.stringValue
+            }
+            if let _ = gauge_cell.maxLabel {
+                gauge_cell.maxLabel.text = max.stringValue
+            }
             break
         default:
             break

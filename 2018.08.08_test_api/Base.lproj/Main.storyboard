@@ -223,6 +223,106 @@
             </objects>
             <point key="canvasLocation" x="1739" y="116"/>
         </scene>
+        <!--Setting Table View Controller-->
+        <scene sceneID="TsM-UI-X20">
+            <objects>
+                <tableViewController storyboardIdentifier="setting_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wTq-vx-XCg" customClass="SettingTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FzZ-QO-6qy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="tmg-SH-UWc" detailTextLabel="7Gg-UA-K1v" style="IBUITableViewCellStyleValue1" id="YSV-n1-paJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YSV-n1-paJ" id="vLz-UQ-Ll1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tmg-SH-UWc">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Gg-UA-K1v">
+                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wTq-vx-XCg" id="ynf-KG-D5D"/>
+                            <outlet property="delegate" destination="wTq-vx-XCg" id="Xdp-4W-uBa"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zl1-Xk-cNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2578" y="125"/>
+        </scene>
+        <!--Select Language View Controller-->
+        <scene sceneID="z18-D9-d8f">
+            <objects>
+                <viewController storyboardIdentifier="language_vc" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gza-GK-JB5" customClass="SelectLanguageViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EgW-uR-8L3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsS-vj-X0v">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wfR-8U-McQ">
+                                <rect key="frame" x="55" y="223.5" width="265" height="220"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="Xg3-0J-7Pd"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="k9S-6h-Dh4">
+                                        <rect key="frame" x="0.0" y="28" width="265" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k9S-6h-Dh4" id="eyQ-lq-ZLe">
+                                            <rect key="frame" x="0.0" y="0.0" width="265" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Gza-GK-JB5" id="IJI-1P-Mh8"/>
+                                    <outlet property="delegate" destination="Gza-GK-JB5" id="aIR-lB-p8R"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.047837808098591547" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lsS-vj-X0v" firstAttribute="bottom" secondItem="sEb-UC-cws" secondAttribute="bottom" id="MP8-dF-13Z"/>
+                            <constraint firstItem="wfR-8U-McQ" firstAttribute="centerY" secondItem="EgW-uR-8L3" secondAttribute="centerY" id="PTX-BN-zpq"/>
+                            <constraint firstItem="lsS-vj-X0v" firstAttribute="top" secondItem="sEb-UC-cws" secondAttribute="top" id="PsK-qI-W6Z"/>
+                            <constraint firstItem="wfR-8U-McQ" firstAttribute="centerX" secondItem="EgW-uR-8L3" secondAttribute="centerX" id="aRy-lx-own"/>
+                            <constraint firstItem="lsS-vj-X0v" firstAttribute="trailing" secondItem="sEb-UC-cws" secondAttribute="trailing" id="ksZ-Od-vlj"/>
+                            <constraint firstItem="wfR-8U-McQ" firstAttribute="leading" secondItem="sEb-UC-cws" secondAttribute="leading" constant="55" id="lLI-aX-5iu"/>
+                            <constraint firstItem="lsS-vj-X0v" firstAttribute="leading" secondItem="sEb-UC-cws" secondAttribute="leading" id="lOs-Q5-FB2"/>
+                            <constraint firstItem="sEb-UC-cws" firstAttribute="trailing" secondItem="wfR-8U-McQ" secondAttribute="trailing" constant="55" id="stT-C4-62N"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sEb-UC-cws"/>
+                    </view>
+                    <connections>
+                        <outlet property="backView" destination="lsS-vj-X0v" id="ENR-xa-C2H"/>
+                        <outlet property="tableView" destination="wfR-8U-McQ" id="Ob1-4h-Y5r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Xg-rU-yRU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3405.5999999999999" y="124.58770614692655"/>
+        </scene>
         <!--First Navigation Controller-->
         <scene sceneID="Lcl-cP-SOX">
             <objects>

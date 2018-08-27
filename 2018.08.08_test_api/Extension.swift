@@ -11,60 +11,6 @@ import UIKit
 import Charts
 
 
-extension Data {
-    
-    func getJsonData() -> Any {
-        var jsonData: Any!
-        do {
-            jsonData = try JSONSerialization.jsonObject(with: self, options: .allowFragments)
-        }catch {
-            
-        }
-        return jsonData
-    }
-    
-}
-
-extension String {
-    
-    func getJsonData() -> Any {
-        var jsonData: Any!
-        do {
-            jsonData = try JSONSerialization.jsonObject(with: self.data(using: .utf8)!, options: .allowFragments)
-        }catch {
-            
-        }
-        return jsonData
-    }
-    
-    
-    func firstCharacterUppercase() -> String {
-        var str: String!
-        var origin = self
-        let firstCharacter = self.uppercased().first
-        var stringWithoutFirst: String {
-            var a = origin.lowercased()
-            a.remove(at: a.startIndex)
-            return a
-        }
-        str = String(firstCharacter!) + stringWithoutFirst
-        
-        return str
-    }
-    
-}
-
-extension Double {
-    
-    func roundTo(places:Int) -> Double {
-        
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-        
-    }
-}
-
-
 
 
 extension UIScrollView {
@@ -73,6 +19,15 @@ extension UIScrollView {
     }
 }
 
+extension UITableViewCell {
+    func selectionFlashingStyleAction(animateColor: UIColor = UIColor.lightGray, endColor: UIColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1), timeInterval: Double = 0.1) {
+        
+        self.layer.backgroundColor = animateColor.cgColor
+        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { (timer) in
+            self.layer.backgroundColor = endColor.cgColor
+        }
+    }
+}
 
 extension UIView {
     
@@ -304,6 +259,60 @@ extension Dictionary {
         let json = try? JSONSerialization.data(withJSONObject: self, options: [])
         let jsonString = String(data: json!, encoding: .utf8) ?? ""
         return jsonString
+    }
+}
+
+
+extension Data {
+    
+    func getJsonData() -> Any {
+        var jsonData: Any!
+        do {
+            jsonData = try JSONSerialization.jsonObject(with: self, options: .allowFragments)
+        }catch {
+            
+        }
+        return jsonData
+    }
+    
+}
+
+extension String {
+    
+    func getJsonData() -> Any {
+        var jsonData: Any!
+        do {
+            jsonData = try JSONSerialization.jsonObject(with: self.data(using: .utf8)!, options: .allowFragments)
+        }catch {
+            
+        }
+        return jsonData
+    }
+    
+    
+    func firstCharacterUppercase() -> String {
+        var str: String!
+        var origin = self
+        let firstCharacter = self.uppercased().first
+        var stringWithoutFirst: String {
+            var a = origin.lowercased()
+            a.remove(at: a.startIndex)
+            return a
+        }
+        str = String(firstCharacter!) + stringWithoutFirst
+        
+        return str
+    }
+    
+}
+
+extension Double {
+    
+    func roundTo(places:Int) -> Double {
+        
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+        
     }
 }
 

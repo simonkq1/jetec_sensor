@@ -18,6 +18,9 @@ class GaugeTableViewCell: UITableViewCell {
     var valueCircleShapeLayer: CAShapeLayer!
     var gaugePointerShaprLayer: CAShapeLayer!
     var centerCircleShaprLayer: CAShapeLayer!
+    var innerScaleShapeLayer: CAShapeLayer!
+    var minLabel: UILabel!
+    var maxLabel: UILabel!
     let circleWidth: CGFloat = 23
     let centerCircleRadius: CGFloat = 10
     var valueLabel = UILabel()
