@@ -24,6 +24,7 @@ class SelectLanguageViewController: UIViewController, UITableViewDataSource, UIT
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backViewTouchesBegin)))
         tableView.layer.borderWidth = 0.5
         tableView.layer.cornerRadius = 5
+        tableView.tableFooterView = UIView()
     }
     
     
