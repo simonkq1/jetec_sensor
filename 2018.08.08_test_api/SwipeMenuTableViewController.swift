@@ -10,7 +10,7 @@ import UIKit
 
 class SwipeMenuTableViewController: UITableViewController {
     
-    let list = ["Dashboard", "Hardware", "Notifications", "Logout"]
+    let list = ["Dashboard", "Hardware", "Notifications", "Setting"]
     
     
     
@@ -26,8 +26,8 @@ class SwipeMenuTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         main_vc = (parent as! UINavigationController).parent as! MainViewController
         tableView.register(UINib(nibName: "SwipeMenuTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
-        tableView.tableFooterView?.backgroundColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,8 +64,8 @@ class SwipeMenuTableViewController: UITableViewController {
         case "Notifications":
             cell.menuImageView.image = UIImage(named: "nav-icon-notifications")
             break
-        case "Logout":
-            cell.menuImageView.image = UIImage(named: "nav-icon-logout")
+        case "Setting":
+            cell.menuImageView.image = UIImage(named: "nav-icon-settings")
             break
         default:
             break
@@ -98,7 +98,7 @@ class SwipeMenuTableViewController: UITableViewController {
                 break
             case "Notifications":
                 break
-            case "Logout":
+            case "Setting":
                 self.main_vc.changePage(to: self.main_vc.setting_vc)
                 break
             default:

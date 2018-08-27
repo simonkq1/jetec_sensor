@@ -111,10 +111,10 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         print("************************")
 //        print(text)
         DispatchQueue.main.async {
-            let json = text.getJsonData() as! [String: Any]
+            let json = text.getJsonObject() as! [String: Any]
             if let eventType = json["eventType"] {
                 if eventType as! String == "timeSeriesData" {
-                    self.receiveData = text.getJsonData() as! [String: Any]
+                    self.receiveData = text.getJsonObject() as! [String: Any]
                     if !self.tableView.isEditing {
                         self.tableView.reloadData()
                     }

@@ -20,11 +20,16 @@ extension UIScrollView {
 }
 
 extension UITableViewCell {
+    
     func selectionFlashingStyleAction(animateColor: UIColor = UIColor.lightGray, endColor: UIColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1), timeInterval: Double = 0.1) {
         
         self.layer.backgroundColor = animateColor.cgColor
+        self.textLabel?.backgroundColor = animateColor
+        self.detailTextLabel?.backgroundColor = animateColor
         Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { (timer) in
             self.layer.backgroundColor = endColor.cgColor
+            self.textLabel?.backgroundColor = endColor
+            self.detailTextLabel?.backgroundColor = endColor
         }
     }
 }
@@ -235,10 +240,10 @@ extension Array {
     }
 }
 
+
 extension Array where Element == Int {
     var total: Int {return reduce(0, +)}
     var average: Double {return (Double(total) / Double(count))}
-    
 }
 
 
@@ -265,7 +270,7 @@ extension Dictionary {
 
 extension Data {
     
-    func getJsonData() -> Any {
+    func getJsonObject() -> Any {
         var jsonData: Any!
         do {
             jsonData = try JSONSerialization.jsonObject(with: self, options: .allowFragments)
@@ -279,7 +284,11 @@ extension Data {
 
 extension String {
     
-    func getJsonData() -> Any {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    func getJsonObject() -> Any {
         var jsonData: Any!
         do {
             jsonData = try JSONSerialization.jsonObject(with: self.data(using: .utf8)!, options: .allowFragments)

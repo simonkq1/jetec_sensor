@@ -28,7 +28,6 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print(panelData)
         
         self.title = panelData["name"] as? String ?? ""
         getDataLog()
@@ -63,7 +62,7 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
             let url_x = Basic.api + "/homes/\(homeId)/smartModules/tsdb/timeSeries/\(seriesId_x)/data?begin=\(target)&end=\(now)&aggregation=\(aggregation)"
             let url_y = Basic.api + "/homes/\(homeId)/smartModules/tsdb/timeSeries/\(seriesId_y)/data?begin=\(target)&end=\(now)&aggregation=\(aggregation)"
             Global.getFromURL(url: url_x, auth: Global.memberData.authToken) { (data, string, response) in
-                self.direction_x = data?.getJsonData() as! [String: Any]
+                self.direction_x = data?.getJsonObject() as! [String: Any]
                 check = false
             }
             
@@ -73,7 +72,7 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
             
             check = true
             Global.getFromURL(url: url_y, auth: Global.memberData.authToken) { (data, string, response) in
-                self.direction_y = data?.getJsonData() as! [String: Any]
+                self.direction_y = data?.getJsonObject() as! [String: Any]
                 check = false
             }
             
@@ -92,7 +91,6 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
                 
             }
             print("---------------")
-            print(directionData)
             
             self.dataLogForTableView = (self.directionData).sorted(by: { (d1, d2) -> Bool in
                 return (d1[0] as! String) > (d2[0] as! String)
@@ -103,7 +101,7 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
             let url = Basic.api + "/homes/\(homeId)/smartModules/tsdb/timeSeries/\(seriesId)/data?begin=\(target)&end=\(now)&aggregation=\(aggregation)"
             
             Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, response) in
-                self.dataLog = data?.getJsonData() as! [String: Any]
+                self.dataLog = data?.getJsonObject() as! [String: Any]
                 self.dataLogForTableView = (self.dataLog["data"] as! [[Any]]).sorted(by: { (d1, d2) -> Bool in
                     return (d1[0] as! String) > (d2[0] as! String)
                 })
@@ -206,7 +204,7 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
         marker.backgroundColor = UIColor.white
         marker.layer.borderWidth = 0
         marker.layer.cornerRadius = 5
-        marker.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.7)
+        marker.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.6)
         marker.layer.shadowColor = UIColor.lightGray.cgColor
         marker.layer.shadowPath = UIBezierPath(rect: marker.bounds).cgPath
         marker.layer.shadowRadius = 6
@@ -308,8 +306,6 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
         label.text = "Value"
         fv.addSubview(label)
         
-        print(fv.textLabel?.text)
-        print("SHOW HEIGHT")
     }
     
     

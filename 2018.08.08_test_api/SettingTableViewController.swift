@@ -53,7 +53,15 @@ class SettingTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            
+            if let localId = Locale.current.languageCode {
+                if localId == "en" {
+                    cell.detailTextLabel?.text = "English"
+                }else if localId.contains("zh-Hant") {
+                    cell.detailTextLabel?.text = "繁體中文"
+                }else if localId.contains("zh-Hans") {
+                    cell.detailTextLabel?.text = "简体中文"
+                }
+            }
             break
         case 1:
             break
@@ -89,6 +97,7 @@ class SettingTableViewController: UITableViewController {
              print("OK")
              })
              let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
+                alert.dismiss(animated: false, completion: nil)
              print("cancel")
              })
              alert.addAction(ok)

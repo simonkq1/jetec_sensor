@@ -241,6 +241,7 @@ class GaugeViewController: UIViewController {
                 self.dashboard_vc.tableView.reloadData()
                 
                 self.dismiss(animated: true, completion: nil)
+                
             }
         }
     }

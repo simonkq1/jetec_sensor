@@ -368,6 +368,39 @@
             </objects>
             <point key="canvasLocation" x="1238" y="860"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="e0j-kh-tK9">
+            <objects>
+                <tabBarController id="f5U-33-HmW" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qr2-Pg-AKX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dBL-KZ-xHM" kind="relationship" relationship="viewControllers" id="qYK-3p-lWi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XI6-bD-Hjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1564" y="869"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="rNw-Ty-9Nc">
+            <objects>
+                <viewController id="dBL-KZ-xHM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="719-dG-Hgs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Xyu-aS-C3v"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="QbA-26-gcc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e8s-ed-gdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-743" y="869"/>
+        </scene>
         <!--Devices-->
         <scene sceneID="Uke-5u-AsF">
             <objects>

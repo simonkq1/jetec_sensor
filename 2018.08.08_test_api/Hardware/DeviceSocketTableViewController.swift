@@ -49,7 +49,7 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
         sensorData = [:]
         print("***********************************")
 //        print(text)
-        revceiveData = text.getJsonData() as! [String: Any]
+        revceiveData = text.getJsonObject() as! [String: Any]
         if let data = (revceiveData["eventData"] as! [String:Any])["timeSeriesData"] {
             let originDeviceId = String(revceiveData["originDeviceId"] as! Int)
             let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String

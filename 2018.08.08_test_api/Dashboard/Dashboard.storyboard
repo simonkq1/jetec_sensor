@@ -133,16 +133,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8i9-8F-XEj">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8i9-8F-XEj" id="7zm-7P-WlV">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="0uK-VM-55H" id="Z8D-IO-M8c"/>
                             <outlet property="delegate" destination="0uK-VM-55H" id="AoG-27-r2l"/>
@@ -179,7 +169,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-zy-KcS" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-zy-KcS" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
                                 <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="YcZ-0f-g8T"/>
@@ -198,7 +188,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-t5-rPt" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-t5-rPt" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
                                 <rect key="frame" x="16" y="342" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="oan-Ux-DGE"/>
@@ -304,7 +294,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keD-gZ-vbT" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keD-gZ-vbT" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="213" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="J1i-1V-2f0"/>
@@ -323,7 +313,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-eb-Rwr" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-eb-Rwr" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="322" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="mIf-8X-u6m"/>
