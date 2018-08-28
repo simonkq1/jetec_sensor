@@ -32,7 +32,7 @@
 //Panel configure placeholder
 "panel_configure_placeholder_module" = "選擇一個模組";
 "panel_configure_placeholder_sensor" = "選擇一個傳感器";
-"panel_configure_placeholder_name" = "名稱";
+"panel_configure_placeholder_name" = "輸入名稱";
 
 
 // MARK: Dashboard
@@ -41,6 +41,8 @@
 "dashboard_detail_wind_speed" = "風速";
 "dashboard_detail_temperature" = "溫度";
 "dashboard_detail_precipitation" = "降雨";
+"dashboard_detail_datalog_header_date" = "日期";
+"dashboard_detail_datalog_header_value" = "數值";
 
 
 // MARK: Navigation title
@@ -71,4 +73,9 @@
 "bar_button_add" = "增加";
 "bar_button_next" = "下一步";
 
+//MARK: Else
+"dashboard_nodata_message" = "You have no panel, add one!";
+"hardware_footer_text_zero" = "0 個裝置";
+"hardware_footer_text_one" = "個裝置";
+"hardware_footer_text_plural" = "個裝置";
 

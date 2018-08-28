@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import DropDown
+import iOSDropDown
 
 class EditGaugePanelViewController: UIViewController {
     
     @IBOutlet weak var scrollView: MyScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var nameTextField: PanelClassTextField!
-    @IBOutlet weak var sensorModuleButton: PanelClassButton!
-    @IBOutlet weak var typeButton: PanelClassButton!
+    @IBOutlet weak var moduleDropDownTextField: DropDown!
+    @IBOutlet weak var sensorDropDownTextField: DropDown!
     @IBOutlet weak var minTextField: DecimalMinusTextField!
     @IBOutlet weak var maxTextField: DecimalMinusTextField!
     
@@ -40,7 +40,30 @@ class EditGaugePanelViewController: UIViewController {
     }()
     
     var panelData: [String: Any] = [:]
-    var typeList: [String: Any] = [:]
+    lazy var typeList: [String: Any] =  {
+        self.typeList = [:]
+        var returnList: [String: Any] = [:]
+        var list: [String] = []
+        var trueList: [String] = []
+        if let index = self.selectModuleIndex {
+            let a: [String] = Global.memberData.onlineDevices[index]["sensors"] as! [String]
+            for i in 0..<a.count {
+                var sensor = (a[i].replacingOccurrences(of: ":0", with: "")).replacingOccurrences(of: "_", with: " ")
+                let sensorFirst = sensor.first
+                sensor.remove(at: sensor.startIndex)
+                let sensortitle = "\(String(sensorFirst!).uppercased())\(sensor.lowercased())"
+                trueList.append(a[i])
+                list.append(sensortitle)
+                
+            }
+            returnList["show"] = list
+            returnList["true"] = trueList
+            return returnList
+        }else {
+            returnList["show"] = ["Select a sensor"]
+            return returnList
+        }
+    }()
     var sensorTypeList: [String]!
     var selectModuleIndex: Int?
     var selectSensorIndex: Int?
@@ -61,59 +84,29 @@ class EditGaugePanelViewController: UIViewController {
     var dashboardIndex: Int!
     
     
-    @IBAction func sensorModuleButtonAction(_ sender: Any) {
-        selectModuleIndex = nil
-        selectSensorIndex = nil
-        dataIsReady = false
-        typeList["show"] = ["Select a sensor"]
-        typeButton.titleLabel?.text = "Select a sensor"
-        dropDownAction(list: sensorList, anchorView: sensorModuleButton) { (sender, item, index) in
-            self.sensorModuleButton.titleLabel?.text = self.sensorList[index]
-            self.selectModuleIndex = index
-        }
-    }
-    @IBAction func typeButtonAction(_ sender: Any) {
-        selectSensorIndex = nil
-        dataIsReady = false
-        typeList = [:]
-        var list: [String] = []
-        var trueList: [String] = []
-        if let index = selectModuleIndex {
-            let a: [String] = Global.memberData.onlineDevices[index]["sensors"] as! [String]
-            for i in 0..<a.count {
-                var sensor = (a[i].replacingOccurrences(of: ":0", with: "")).replacingOccurrences(of: "_", with: " ")
-                let sensorFirst = sensor.first
-                sensor.remove(at: sensor.startIndex)
-                let sensortitle = "\(String(sensorFirst!).uppercased())\(sensor.lowercased())"
-                trueList.append(a[i])
-                list.append(sensortitle)
-                
-            }
-            typeList["show"] = list
-            typeList["true"] = trueList
-        }else {
-            typeList["show"] = ["Select a sensor"]
-        }
-        
-        dropDownAction(list: (typeList["show"] as! [String]), anchorView: typeButton) { (sender, item, index) in
-            if (self.typeList["show"] as! [String])[0] != "Select a sensor" {
-                self.typeButton.titleLabel?.text = (self.typeList["show"] as! [String])[index]
-                self.selectSensorIndex = index
-                
-            }
-        }
-    }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        //Localize
+        titleLabel.text = "panel_configure_title".localized
+        moduleTitleLabel.text = "panel_configure_module".localized
+        sensorTitleLabel.text = "panel_configure_sensor".localized
+        nameTitleLabel.text = "panel_configure_name".localized
+        dataRangeTitleLabel.text = "panel_configure_range".localized
+        minTitleLabel.text = "panel_configure_min".localized
+        maxTitleLabel.text = "panel_configure_max".localized
+        nameTextField.placeholder = "panel_configure_placeholder_name".localized
+        
+        
+        moduleDropDownTextField.placeholder = "panel_configure_placeholder_module".localized
+        sensorDropDownTextField.placeholder = "panel_configure_placeholder_sensor".localized
+        
+        
         contentView.frame.size.height = scrollView.frame.size.height + 100
         
-        sensorModuleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
-        typeButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
@@ -125,17 +118,21 @@ class EditGaugePanelViewController: UIViewController {
         addPanelButton.target = self
         addPanelButton.style = .plain
         addPanelButton.action = #selector(addPanelBarButtonAction)
-        addPanelButton.title = "Done"
+        addPanelButton.title = "bar_button_done".localized
         
         
         cancelBarButton.target = self
         cancelBarButton.style = .plain
         cancelBarButton.action = #selector(cancelBarButtonAction)
-        cancelBarButton.title = "Cancel"
+        cancelBarButton.title = "bar_button_cancel".localized
         self.navigationItem.leftBarButtonItem = cancelBarButton
         self.navigationItem.rightBarButtonItem = addPanelButton
         dataIsReady = false
         scrollView.innerTextField = [nameTextField, minTextField, maxTextField]
+        
+        dropDownSetting()
+        
+        
         DispatchQueue.global().async {
             while true {
                 DispatchQueue.main.async {
@@ -145,9 +142,6 @@ class EditGaugePanelViewController: UIViewController {
             }
         }
         
-//        print(panelData)
-//        print("------------------")
-//        print(Global.memberData.onlineDevices)
     }
     override func viewWillAppear(_ animated: Bool) {
         getBaseData()
@@ -163,6 +157,70 @@ class EditGaugePanelViewController: UIViewController {
     
     //MARK: - Function Area
     
+    func dropDownSetting() {
+        
+        moduleDropDownTextField.isSearchEnable = false
+        sensorDropDownTextField.isSearchEnable = false
+        moduleDropDownTextField.rowHeight = 44
+        sensorDropDownTextField.rowHeight = 44
+        moduleDropDownTextField.dropDown(list: sensorList) { (text, index, id) in
+            print("text: \(text), index: \(index)")
+            if let _ = self.selectModuleIndex {
+                if self.selectModuleIndex != index {
+                    self.sensorDropDownTextField.text = ""
+                    self.selectSensorIndex = nil
+                    self.sensorDropDownTextField.selectedIndex = nil
+                    self.sensorDropDownTextField.optionArray = ["Select a sensor"]
+                }
+            }
+            self.selectModuleIndex = index
+            
+            var list: [String] = []
+            var trueList: [String] = []
+            if let index = self.selectModuleIndex {
+                let a: [String] = Global.memberData.onlineDevices[index]["sensors"] as! [String]
+                for i in 0..<a.count {
+                    var sensor = (a[i].replacingOccurrences(of: ":0", with: "")).replacingOccurrences(of: "_", with: " ")
+                    let sensorFirst = sensor.first
+                    sensor.remove(at: sensor.startIndex)
+                    let sensortitle = "\(String(sensorFirst!).uppercased())\(sensor.lowercased())"
+                    trueList.append(a[i])
+                    list.append(sensortitle)
+                    
+                }
+                self.typeList["show"] = list
+                self.typeList["true"] = trueList
+            }else {
+                self.typeList["show"] = ["Select a sensor"]
+            }
+            self.sensorDropDownTextField.optionArray = self.typeList["show"] as! [String]
+            
+            
+        }
+        
+        sensorDropDownTextField.dropDown(list: typeList["show"] as! [String]) { (text, index, id) in
+            self.selectSensorIndex = index
+        }
+        
+        moduleDropDownTextField.listWillAppear {
+            if self.sensorDropDownTextField.isSelected {
+                self.sensorDropDownTextField.hideList()
+            }
+            if self.nameTextField.isEditing {
+                self.nameTextField.endEditing(true)
+            }
+        }
+        
+        sensorDropDownTextField.listWillAppear {
+            if self.moduleDropDownTextField.isSelected {
+                self.moduleDropDownTextField.hideList()
+            }
+            if self.nameTextField.isEditing {
+                self.nameTextField.endEditing(true)
+            }
+        }
+        
+    }
     
     func getBaseData() {
         
@@ -170,11 +228,11 @@ class EditGaugePanelViewController: UIViewController {
             return (data["id"] as! String) == (panelData["sensorModule"] as! String)
         }
         selectModuleIndex = moduleIndex
+        moduleDropDownTextField.selectedIndex = selectSensorIndex
         if selectModuleIndex != nil {
             DispatchQueue.main.async {
-                print(self.selectModuleIndex)
-                self.sensorModuleButton.titleLabel?.text = self.sensorList[self.selectModuleIndex!]
-                self.typeButton.titleLabel?.text = self.panelData["sensorType"] as! String
+                self.moduleDropDownTextField.text = self.sensorList[self.selectModuleIndex!]
+                self.sensorDropDownTextField.text = self.panelData["sensorType"] as! String
                 
             }
             
@@ -209,6 +267,9 @@ class EditGaugePanelViewController: UIViewController {
                 return tmpindex
             }
             selectSensorIndex = typeIndex
+            self.sensorDropDownTextField.selectedIndex = self.selectSensorIndex
+            self.sensorDropDownTextField.optionArray = self.typeList["show"] as! [String]
+            
             minTextField.text = (panelData["min"] as! NSNumber).stringValue
             maxTextField.text = (panelData["max"] as! NSNumber).stringValue
             nameTextField.text = (panelData["name"] as! String)
@@ -230,30 +291,6 @@ class EditGaugePanelViewController: UIViewController {
         return bol
     }
     
-    
-    
-    func dropDownAction(list: [String], anchorView: AnchorView, action: ((_ sender: DropDown, _ item: String, _ index: Int) -> Void)? = nil) {
-        let dropdown = DropDown()
-        if dropdown.isHidden {
-            dropdown.anchorView = anchorView
-            dropdown.dataSource = list
-            dropdown.direction = .bottom
-            dropdown.bottomOffset = CGPoint(x: 0, y: (dropdown.anchorView?.plainView.bounds.height)!)
-            if list[0] == "Select a sensor" || list[0] == "No module is online" {
-                dropdown.textColor = UIColor.gray
-            }
-            dropdown.selectionAction = { [unowned self] (index: Int, item: String) in
-                print("Selected item: \(item) at index: \(index)")
-                if action != nil {
-                    action!(dropdown, item, index)
-                }
-            }
-            dropdown.show()
-        }else {
-            dropdown.hide()
-        }
-        
-    }
     
     //MARK: - Selector Action
     
@@ -341,6 +378,12 @@ class EditGaugePanelViewController: UIViewController {
     
     @objc func keyboardWillRise(notification: NSNotification) {
         
+        if self.moduleDropDownTextField.isSelected {
+            self.moduleDropDownTextField.hideList()
+        }
+        if self.sensorDropDownTextField.isSelected {
+            self.sensorDropDownTextField.hideList()
+        }
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue

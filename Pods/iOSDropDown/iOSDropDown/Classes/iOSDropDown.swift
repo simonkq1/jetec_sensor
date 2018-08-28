@@ -15,7 +15,7 @@ public class DropDown : UITextField{
     var table : UITableView!
     var shadow : UIView!
     
-    public fileprivate(set) var selectedIndex: Int?
+    public var selectedIndex: Int?
     
     
     //MARK: IBInspectable
@@ -183,8 +183,8 @@ public class DropDown : UITextField{
     public func hideList() {
         
         TableWillDisappearCompletion()
-        UIView.animate(withDuration: 1.0,
-                       delay: 0.4,
+        UIView.animate(withDuration: 0.6,
+                       delay: 0,
                        usingSpringWithDamping: 0.9,
                        initialSpringVelocity: 0.1,
                        options: .curveEaseInOut,
@@ -325,7 +325,7 @@ extension DropDown: UITableViewDelegate {
         selectedIndex = (indexPath as NSIndexPath).row
         let selectedText = self.dataArray[self.selectedIndex!]
         tableView.cellForRow(at: indexPath)?.alpha = 0
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.3,
                        animations: { () -> Void in
                         tableView.cellForRow(at: indexPath)?.alpha = 1.0
                         tableView.cellForRow(at: indexPath)?.backgroundColor = self.selectedRowColor

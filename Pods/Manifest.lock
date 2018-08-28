@@ -2,7 +2,6 @@ PODS:
   - Charts (3.1.1):
     - Charts/Core (= 3.1.1)
   - Charts/Core (3.1.1)
-  - DropDown (2.3.2)
   - iOSDropDown (0.2.4)
   - LocaleManager (1.3.0)
   - Starscream (3.0.5)
@@ -10,7 +9,6 @@ PODS:
 
 DEPENDENCIES:
   - Charts (~> 3.1.1)
-  - DropDown (~> 2.3.2)
   - iOSDropDown
   - LocaleManager (~> 1.3.0)
   - Starscream (~> 3.0.5)
@@ -19,7 +17,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Charts
-    - DropDown
     - iOSDropDown
     - LocaleManager
     - Starscream
@@ -27,12 +24,11 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
-  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   iOSDropDown: 6d928eddd336c7bc698ad0ba4b324ce3d2d43c59
   LocaleManager: 425ebcf09ed04f1c6d4a426c6a36de8a8a5276fa
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
   SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
 
-PODFILE CHECKSUM: ea3c6210f5df9347b03cd55ccac5960dc4c61bad
+PODFILE CHECKSUM: 6345aa686ab39c8b67ffb360ff0b638a3328d656
 
 COCOAPODS: 1.5.3

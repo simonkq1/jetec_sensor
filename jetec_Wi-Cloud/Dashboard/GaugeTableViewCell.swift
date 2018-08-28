@@ -47,8 +47,6 @@ class GaugeTableViewCell: UITableViewCell {
         
         self.innerView.frame.size.width = self.innerView.frame.size.height
         setIcon()
-//        self.innerView.layer.borderWidth = 1
-//        drawBackCircle()
         
     }
     

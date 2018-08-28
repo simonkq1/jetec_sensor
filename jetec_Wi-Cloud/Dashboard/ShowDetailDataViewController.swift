@@ -157,8 +157,25 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
         for i in 0 ..< dataPoints.count {
             dataEntries.append(ChartDataEntry(x: Double(i), y: values[i]))
         }
+        var iconText: String {
+            let text = panelData["sensorType"] as? String ?? ""
+            switch text {
+            case let x where x.contains("Humidity"):
+                return "dashboard_detail_humidity".localized
+            case let x where x.contains("Wind direction"):
+                return "dashboard_detail_wind_direction".localized
+            case let x where x.contains("Wind speed"):
+                return "dashboard_detail_wind_speed".localized
+            case let x where x.contains("Temperature"):
+                return "dashboard_detail_temperature".localized
+            case let x where x.contains("Precipitation"):
+                return "dashboard_detail_precipitation".localized
+            default:
+                return text
+            }
+        }
         
-        let lineChartDataSet = LineChartDataSet(values: dataEntries, label: panelData["sensorType"] as? String)
+        let lineChartDataSet = LineChartDataSet(values: dataEntries, label: iconText)
         
         lineChartDataSet.axisDependency = .left
         lineChartDataSet.setColor(UIColor.blue)
@@ -289,7 +306,7 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Date"
+        return "dashboard_detail_datalog_header_date".localized
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -303,7 +320,7 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
         label.font = fv.textLabel?.font
         label.textColor = UIColor.black
         label.textAlignment = .center
-        label.text = "Value"
+        label.text = "dashboard_detail_datalog_header_value".localized
         fv.addSubview(label)
         
     }

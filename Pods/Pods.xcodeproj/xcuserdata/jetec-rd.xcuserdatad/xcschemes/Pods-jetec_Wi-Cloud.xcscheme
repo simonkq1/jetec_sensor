@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A63D8C4F95EB915B15BD9481AC4851B"
+               BlueprintIdentifier = "B172D4A793278E4E50F509AB7D1EB46C"
                BuildableName = "Pods_jetec_Wi_Cloud.framework"
                BlueprintName = "Pods-jetec_Wi-Cloud"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7A63D8C4F95EB915B15BD9481AC4851B"
+            BlueprintIdentifier = "B172D4A793278E4E50F509AB7D1EB46C"
             BuildableName = "Pods_jetec_Wi_Cloud.framework"
             BlueprintName = "Pods-jetec_Wi-Cloud"
             ReferencedContainer = "container:Pods.xcodeproj">

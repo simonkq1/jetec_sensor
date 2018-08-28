@@ -41,7 +41,8 @@
 "dashboard_detail_wind_speed" = "Wind speed";
 "dashboard_detail_temperature" = "Temperature";
 "dashboard_detail_precipitation" = "Precipitation";
-
+"dashboard_detail_datalog_header_date" = "Date";
+"dashboard_detail_datalog_header_value" = "Value";
 
 // MARK: Navigation title
 "navigation_title_dashboard" = "Dashboard";
@@ -68,6 +69,13 @@
 "bar_button_done" = "Done";
 "bar_button_add" = "Add";
 "bar_button_next" = "Next";
+
+
+//MARK: Else
+"dashboard_nodata_message" = "You have no panel, add one!";
+"hardware_footer_text_zero" = "no device";
+"hardware_footer_text_one" = "device";
+"hardware_footer_text_plural" = "devices";
 
 
 

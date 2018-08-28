@@ -14,13 +14,13 @@
         <scene sceneID="EOc-ST-u3B">
             <objects>
                 <tableViewController storyboardIdentifier="dashboard_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vuq-8N-Mlg" customClass="DashboardTableViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xNK-BL-2CF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="xNK-BL-2CF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="oi4-1Z-Wn7" detailTextLabel="Uvq-In-YKA" style="IBUITableViewCellStyleValue1" id="Mj9-VE-qKP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mj9-VE-qKP" id="36j-pm-KJZ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -169,16 +169,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-zy-KcS" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="233" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="YcZ-0f-g8T"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor module                     "/>
-                                <connections>
-                                    <action selector="sensorModuleButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="4oJ-O4-hGI"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoJ-G1-ac0">
                                 <rect key="frame" x="16" y="289" width="343" height="45"/>
                                 <constraints>
@@ -188,16 +178,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-t5-rPt" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="342" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="oan-Ux-DGE"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor                               "/>
-                                <connections>
-                                    <action selector="typeButtonAction:" destination="Vbc-iw-gX6" eventType="touchUpInside" id="RQl-wQ-wZN"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2r8-Vq-nMt">
                                 <rect key="frame" x="16" y="398" width="343" height="45"/>
                                 <constraints>
@@ -216,59 +196,59 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="PCO-AB-IRh">
-                                <rect key="frame" x="329" y="244" width="15" height="15"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M8n-md-vJa" customClass="DropDown" customModule="iOSDropDown">
+                                <rect key="frame" x="16" y="342" width="343" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="4Q6-6A-EGB"/>
-                                    <constraint firstAttribute="width" constant="15" id="u5H-Dz-VUl"/>
+                                    <constraint firstAttribute="height" constant="36" id="cUy-uN-Bi4"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-ol-3js">
-                                <rect key="frame" x="329" y="353" width="15" height="15"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V83-ts-TAN" customClass="DropDown" customModule="iOSDropDown">
+                                <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="3JO-dH-f86"/>
-                                    <constraint firstAttribute="height" constant="15" id="sOU-9q-89f"/>
+                                    <constraint firstAttribute="height" constant="36" id="hf5-LP-G4G"/>
                                 </constraints>
-                            </imageView>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="2r8-Vq-nMt" secondAttribute="trailing" constant="16" id="4Rh-zJ-VCe"/>
-                            <constraint firstItem="2r8-Vq-nMt" firstAttribute="top" secondItem="fLs-t5-rPt" secondAttribute="bottom" constant="20" id="8kx-XQ-riu"/>
-                            <constraint firstItem="PCO-AB-IRh" firstAttribute="trailing" secondItem="6tU-zy-KcS" secondAttribute="trailing" constant="-15" id="BFj-h2-4ZJ"/>
-                            <constraint firstItem="PCO-AB-IRh" firstAttribute="centerY" secondItem="6tU-zy-KcS" secondAttribute="centerY" id="GV7-hR-CsC"/>
+                            <constraint firstItem="M8n-md-vJa" firstAttribute="top" secondItem="hoJ-G1-ac0" secondAttribute="bottom" constant="8" id="8De-5e-vCX"/>
+                            <constraint firstItem="2r8-Vq-nMt" firstAttribute="top" secondItem="M8n-md-vJa" secondAttribute="bottom" constant="20" id="9vb-4K-1Wx"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="V83-ts-TAN" secondAttribute="trailing" constant="16" id="GYM-Tf-OGB"/>
                             <constraint firstItem="2r8-Vq-nMt" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="JLQ-4T-hqJ"/>
                             <constraint firstItem="gMd-QQ-jxv" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="Jwu-MV-67v"/>
                             <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="z0N-oY-S85" secondAttribute="trailing" constant="16" id="Lkf-4q-IYd"/>
                             <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="hoJ-G1-ac0" secondAttribute="trailing" constant="16" id="Oxv-gJ-R26"/>
-                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="6tU-zy-KcS" secondAttribute="trailing" constant="16" id="PJx-xH-rOm"/>
                             <constraint firstItem="GNl-Oq-S0A" firstAttribute="top" secondItem="2r8-Vq-nMt" secondAttribute="bottom" constant="8" id="QIL-XV-SYU"/>
                             <constraint firstItem="gMd-QQ-jxv" firstAttribute="top" secondItem="z0N-oY-S85" secondAttribute="bottom" constant="40" id="S75-EO-5sb"/>
                             <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="GNl-Oq-S0A" secondAttribute="trailing" constant="16" id="XkT-Iq-gFM"/>
                             <constraint firstItem="z0N-oY-S85" firstAttribute="top" secondItem="mv0-Qb-u7n" secondAttribute="top" constant="60" id="Y0k-cx-bQD"/>
-                            <constraint firstItem="fLs-t5-rPt" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="Ycm-gp-jJF"/>
+                            <constraint firstItem="V83-ts-TAN" firstAttribute="top" secondItem="gMd-QQ-jxv" secondAttribute="bottom" constant="8" id="ZoC-Mn-WHK"/>
                             <constraint firstItem="z0N-oY-S85" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="bad-eN-Xlg"/>
-                            <constraint firstItem="SPh-ol-3js" firstAttribute="centerY" secondItem="fLs-t5-rPt" secondAttribute="centerY" id="dRL-PP-we5"/>
                             <constraint firstItem="hoJ-G1-ac0" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="di0-sg-tpZ"/>
                             <constraint firstItem="GNl-Oq-S0A" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="e3H-49-UU9"/>
-                            <constraint firstItem="6tU-zy-KcS" firstAttribute="top" secondItem="gMd-QQ-jxv" secondAttribute="bottom" constant="8" id="is9-4S-1Lg"/>
-                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="fLs-t5-rPt" secondAttribute="trailing" constant="16" id="kjv-Dh-H7R"/>
-                            <constraint firstItem="fLs-t5-rPt" firstAttribute="top" secondItem="hoJ-G1-ac0" secondAttribute="bottom" constant="8" id="pNz-Bf-Hof"/>
-                            <constraint firstItem="6tU-zy-KcS" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="r6L-vH-3OF"/>
-                            <constraint firstItem="hoJ-G1-ac0" firstAttribute="top" secondItem="6tU-zy-KcS" secondAttribute="bottom" constant="20" id="rjo-98-ZRL"/>
+                            <constraint firstItem="V83-ts-TAN" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="lKE-P1-zb2"/>
+                            <constraint firstItem="M8n-md-vJa" firstAttribute="leading" secondItem="mv0-Qb-u7n" secondAttribute="leading" constant="16" id="li0-XE-BJ7"/>
+                            <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="M8n-md-vJa" secondAttribute="trailing" constant="16" id="oJD-g6-clW"/>
+                            <constraint firstItem="hoJ-G1-ac0" firstAttribute="top" secondItem="V83-ts-TAN" secondAttribute="bottom" constant="20" id="pe4-RZ-e4b"/>
                             <constraint firstItem="mv0-Qb-u7n" firstAttribute="trailing" secondItem="gMd-QQ-jxv" secondAttribute="trailing" constant="16" id="sbl-2y-FnY"/>
-                            <constraint firstItem="SPh-ol-3js" firstAttribute="centerX" secondItem="PCO-AB-IRh" secondAttribute="centerX" id="ygl-Hc-AlP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mv0-Qb-u7n"/>
                     </view>
                     <connections>
+                        <outlet property="moduleDropDownTextField" destination="V83-ts-TAN" id="NcJ-V0-yS1"/>
                         <outlet property="moduleTitleLabel" destination="gMd-QQ-jxv" id="8nI-aE-3tY"/>
                         <outlet property="nameTextField" destination="GNl-Oq-S0A" id="22x-pt-kbK"/>
                         <outlet property="nameTitleLabel" destination="2r8-Vq-nMt" id="1Oi-Ir-uPt"/>
-                        <outlet property="sensorModuleButton" destination="6tU-zy-KcS" id="OZg-k5-lBw"/>
+                        <outlet property="sensorDropDownTextField" destination="M8n-md-vJa" id="Cnc-YU-vkd"/>
                         <outlet property="sensorTitleLabel" destination="hoJ-G1-ac0" id="8T8-HE-TPN"/>
                         <outlet property="titleLabel" destination="z0N-oY-S85" id="Xkw-e4-JiU"/>
-                        <outlet property="typeButton" destination="fLs-t5-rPt" id="Xnt-zR-VOW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Adq-zd-z3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -298,16 +278,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keD-gZ-vbT" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="213" width="343" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="J1i-1V-2f0"/>
-                                                </constraints>
-                                                <state key="normal" title="Select a sensor module                     "/>
-                                                <connections>
-                                                    <action selector="sensorModuleButtonAction:" destination="Ev1-fr-4yq" eventType="touchUpInside" id="Hyb-2f-BP0"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om6-db-W9z">
                                                 <rect key="frame" x="16" y="269" width="343" height="45"/>
                                                 <constraints>
@@ -317,23 +287,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-eb-Rwr" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="322" width="343" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="mIf-8X-u6m"/>
-                                                </constraints>
-                                                <state key="normal" title="Select a sensor                               "/>
-                                                <connections>
-                                                    <action selector="typeButtonAction:" destination="Ev1-fr-4yq" eventType="touchUpInside" id="GYX-yH-2Mx"/>
-                                                </connections>
-                                            </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="IZe-6r-jJr">
-                                                <rect key="frame" x="329" y="332.5" width="15" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="lvs-Rp-JeW"/>
-                                                    <constraint firstAttribute="width" constant="15" id="v0Y-3g-cnV"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5g-i7-fxR">
                                                 <rect key="frame" x="16" y="60" width="343" height="60"/>
                                                 <constraints>
@@ -361,7 +314,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJx-yA-ksD" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="-20" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJx-yA-ksD" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="457" width="343" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="fjl-Yc-w7h"/>
@@ -379,7 +332,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-nK-Dxd" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-nK-Dxd" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="535" width="343" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="J7Y-y0-QdB"/>
@@ -397,13 +350,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-S8-Sai">
-                                                <rect key="frame" x="329" y="223.5" width="15" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="2Fd-uB-k2b"/>
-                                                    <constraint firstAttribute="width" constant="15" id="DWF-SA-IBQ"/>
-                                                </constraints>
-                                            </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nfE-uD-q9e" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="633" width="343" height="36"/>
                                                 <constraints>
@@ -413,50 +359,64 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PTI-BK-B01" customClass="DropDown" customModule="iOSDropDown">
+                                                <rect key="frame" x="16" y="322" width="343" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="cbw-gH-wkm"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eF-DN-iFC" customClass="DropDown" customModule="iOSDropDown">
+                                                <rect key="frame" x="16" y="213" width="343" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="5jU-C0-5x8"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="KN2-Ya-dcN" secondAttribute="trailing" constant="16" id="03f-MJ-ywX"/>
                                             <constraint firstAttribute="trailing" secondItem="IgA-mD-Mg5" secondAttribute="trailing" constant="16" id="0xx-FR-jmQ"/>
                                             <constraint firstAttribute="trailing" secondItem="j5C-cH-rIV" secondAttribute="trailing" constant="16" id="1DH-3x-WzX"/>
-                                            <constraint firstAttribute="trailing" secondItem="TgS-eb-Rwr" secondAttribute="trailing" constant="16" id="1TB-Cz-wJp"/>
+                                            <constraint firstItem="Om6-db-W9z" firstAttribute="top" secondItem="8eF-DN-iFC" secondAttribute="bottom" constant="20" id="1VX-nf-2rU"/>
                                             <constraint firstItem="KN2-Ya-dcN" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="2Ie-Og-Rpf"/>
                                             <constraint firstItem="KN2-Ya-dcN" firstAttribute="top" secondItem="lHR-9i-vDL" secondAttribute="bottom" constant="8" id="2ex-Ub-6Ve"/>
-                                            <constraint firstAttribute="trailing" secondItem="keD-gZ-vbT" secondAttribute="trailing" constant="16" id="3X9-Ee-hdh"/>
                                             <constraint firstItem="j5C-cH-rIV" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="3h9-3V-byV"/>
+                                            <constraint firstAttribute="trailing" secondItem="8eF-DN-iFC" secondAttribute="trailing" constant="16" id="57a-2y-3Lw"/>
                                             <constraint firstItem="ylY-lt-LDt" firstAttribute="top" secondItem="M5g-i7-fxR" secondAttribute="bottom" constant="40" id="6Jc-wL-GZ1"/>
                                             <constraint firstItem="lHR-9i-vDL" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="70Q-aX-Fzl"/>
-                                            <constraint firstItem="IZe-6r-jJr" firstAttribute="trailing" secondItem="nWg-S8-Sai" secondAttribute="trailing" id="76t-re-h4Z"/>
+                                            <constraint firstItem="PTI-BK-B01" firstAttribute="top" secondItem="Om6-db-W9z" secondAttribute="bottom" constant="8" id="7X7-4q-Y0s"/>
                                             <constraint firstItem="ylY-lt-LDt" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="9zQ-9x-bEW"/>
                                             <constraint firstAttribute="trailing" secondItem="UfM-nK-Dxd" secondAttribute="trailing" constant="16" id="BLq-VL-RZI"/>
                                             <constraint firstAttribute="trailing" secondItem="nfE-uD-q9e" secondAttribute="trailing" constant="16" id="BRc-gg-dpd"/>
                                             <constraint firstItem="M5g-i7-fxR" firstAttribute="top" secondItem="wef-fG-O7Z" secondAttribute="top" constant="60" id="Bmf-Ef-J8U"/>
                                             <constraint firstItem="Om6-db-W9z" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="CuD-xt-lo4"/>
-                                            <constraint firstItem="keD-gZ-vbT" firstAttribute="top" secondItem="ylY-lt-LDt" secondAttribute="bottom" constant="8" id="DXf-eL-2hl"/>
-                                            <constraint firstItem="keD-gZ-vbT" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="EFc-yP-AQP"/>
-                                            <constraint firstItem="lHR-9i-vDL" firstAttribute="top" secondItem="TgS-eb-Rwr" secondAttribute="bottom" constant="20" id="Exx-cG-C3a"/>
                                             <constraint firstAttribute="trailing" secondItem="M5g-i7-fxR" secondAttribute="trailing" constant="16" id="FLi-2l-pqS"/>
+                                            <constraint firstAttribute="trailing" secondItem="PTI-BK-B01" secondAttribute="trailing" constant="16" id="Ft8-lL-Jrq"/>
                                             <constraint firstItem="IgA-mD-Mg5" firstAttribute="top" secondItem="NJx-yA-ksD" secondAttribute="bottom" constant="10" id="GZ3-Ca-NkX"/>
+                                            <constraint firstItem="8eF-DN-iFC" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="IJp-ZQ-7I6"/>
                                             <constraint firstItem="NJx-yA-ksD" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="JaU-gq-J7G"/>
                                             <constraint firstItem="UfM-nK-Dxd" firstAttribute="top" secondItem="IgA-mD-Mg5" secondAttribute="bottom" constant="8" id="Jtc-Qb-AAg"/>
-                                            <constraint firstItem="Om6-db-W9z" firstAttribute="top" secondItem="keD-gZ-vbT" secondAttribute="bottom" constant="20" id="KKA-FC-zU7"/>
                                             <constraint firstAttribute="trailing" secondItem="NJx-yA-ksD" secondAttribute="trailing" constant="16" id="KiB-hr-ZGZ"/>
                                             <constraint firstAttribute="height" constant="730" id="LKh-M4-bes"/>
+                                            <constraint firstItem="8eF-DN-iFC" firstAttribute="top" secondItem="ylY-lt-LDt" secondAttribute="bottom" constant="8" id="M2q-bW-1iR"/>
                                             <constraint firstItem="j5C-cH-rIV" firstAttribute="top" secondItem="UfM-nK-Dxd" secondAttribute="bottom" constant="15" id="ShL-N8-Vwa"/>
                                             <constraint firstItem="NJx-yA-ksD" firstAttribute="top" secondItem="KN2-Ya-dcN" secondAttribute="bottom" constant="8" id="T5b-hD-Gkj"/>
                                             <constraint firstAttribute="trailing" secondItem="lHR-9i-vDL" secondAttribute="trailing" constant="16" id="clp-cC-UIc"/>
                                             <constraint firstItem="IgA-mD-Mg5" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="dP5-dU-POx"/>
                                             <constraint firstItem="nfE-uD-q9e" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="f1v-F5-Ajf"/>
-                                            <constraint firstItem="IZe-6r-jJr" firstAttribute="centerY" secondItem="TgS-eb-Rwr" secondAttribute="centerY" id="h5K-kL-LmG"/>
+                                            <constraint firstItem="PTI-BK-B01" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="f6x-2J-R2X"/>
                                             <constraint firstItem="UfM-nK-Dxd" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="hcF-dA-doQ"/>
-                                            <constraint firstItem="nWg-S8-Sai" firstAttribute="trailing" secondItem="keD-gZ-vbT" secondAttribute="trailing" constant="-15" id="ikh-qJ-zxg"/>
                                             <constraint firstItem="nfE-uD-q9e" firstAttribute="top" secondItem="j5C-cH-rIV" secondAttribute="bottom" constant="8" id="kcr-gN-pNI"/>
+                                            <constraint firstItem="lHR-9i-vDL" firstAttribute="top" secondItem="PTI-BK-B01" secondAttribute="bottom" constant="20" id="o6F-qx-UBG"/>
                                             <constraint firstItem="M5g-i7-fxR" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="oj9-za-beg"/>
-                                            <constraint firstItem="nWg-S8-Sai" firstAttribute="centerY" secondItem="keD-gZ-vbT" secondAttribute="centerY" id="onj-7p-ZaZ"/>
                                             <constraint firstAttribute="trailing" secondItem="Om6-db-W9z" secondAttribute="trailing" constant="16" id="t8i-cH-Qnc"/>
                                             <constraint firstAttribute="trailing" secondItem="ylY-lt-LDt" secondAttribute="trailing" constant="16" id="tdv-B8-y6f"/>
-                                            <constraint firstItem="TgS-eb-Rwr" firstAttribute="top" secondItem="Om6-db-W9z" secondAttribute="bottom" constant="8" id="vUE-nA-beT"/>
-                                            <constraint firstItem="TgS-eb-Rwr" firstAttribute="leading" secondItem="wef-fG-O7Z" secondAttribute="leading" constant="16" id="wF9-4j-02I"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -485,14 +445,14 @@
                         <outlet property="maxTitleLabel" destination="IgA-mD-Mg5" id="Xa7-Cb-aJw"/>
                         <outlet property="minTextField" destination="NJx-yA-ksD" id="Dtd-ca-st5"/>
                         <outlet property="minTitleLabel" destination="KN2-Ya-dcN" id="mP7-oD-AdT"/>
+                        <outlet property="moduleDropDownTextField" destination="8eF-DN-iFC" id="pfw-kE-IZY"/>
                         <outlet property="moduleTitleLabel" destination="ylY-lt-LDt" id="czK-2Z-m56"/>
                         <outlet property="nameTextField" destination="nfE-uD-q9e" id="Af3-K5-cnm"/>
                         <outlet property="nameTitleLabel" destination="j5C-cH-rIV" id="asS-dd-44v"/>
                         <outlet property="scrollView" destination="eNH-aB-79U" id="bWq-rX-cXX"/>
-                        <outlet property="sensorModuleButton" destination="keD-gZ-vbT" id="XGY-L6-5lM"/>
+                        <outlet property="sensorDropDownTextField" destination="PTI-BK-B01" id="gUO-G1-8FR"/>
                         <outlet property="sensorTitleLabel" destination="Om6-db-W9z" id="raU-RP-AbD"/>
                         <outlet property="titleLabel" destination="M5g-i7-fxR" id="r53-65-OVl"/>
-                        <outlet property="typeButton" destination="TgS-eb-Rwr" id="lL7-qV-2cj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tid-Sm-XuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -514,332 +474,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="638-Qy-8On" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="198" y="216"/>
-        </scene>
-        <!--Data Log View Controller-->
-        <scene sceneID="7ea-1A-24v">
-            <objects>
-                <viewController storyboardIdentifier="datalog_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pt-eI-mPV" customClass="DataLogViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mqf-9c-vhb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg6-Oc-Ciu">
-                                <rect key="frame" x="16" y="80" width="343" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="6Pj-oT-r8w"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVh-Qs-HOj">
-                                <rect key="frame" x="16" y="180" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="fdr-6j-tKb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awl-H1-gXT" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="233" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Ch5-Qr-1ka"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor module                     "/>
-                                <connections>
-                                    <action selector="sensorModuleButtonAction:" destination="5Pt-eI-mPV" eventType="touchUpInside" id="dav-5p-L1B"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yD0-yt-Dnd">
-                                <rect key="frame" x="16" y="279" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Ztk-gB-8Kz"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik1-wu-UOO" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="332" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="8p1-TM-ezp"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor                               "/>
-                                <connections>
-                                    <action selector="typeButtonAction:" destination="5Pt-eI-mPV" eventType="touchUpInside" id="9Ry-Og-FJC"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uD-hm-b8I">
-                                <rect key="frame" x="16" y="477" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="JPC-dW-uoi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2it-4L-NpH" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="530" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="uQ8-KC-9d6"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="xke-tM-gGo">
-                                <rect key="frame" x="329" y="244" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="CIt-NW-R1l"/>
-                                    <constraint firstAttribute="height" constant="15" id="bh6-D9-yaq"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="eSe-Xo-iU8">
-                                <rect key="frame" x="329" y="343" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="2az-a6-KA9"/>
-                                    <constraint firstAttribute="width" constant="15" id="Ryd-sH-jb9"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhi-Bq-G6o">
-                                <rect key="frame" x="16" y="378" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="KRJ-Jz-9pv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIY-Xn-IVt" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="431" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="nDX-3e-L8k"/>
-                                </constraints>
-                                <state key="normal" title="1 day                            "/>
-                                <connections>
-                                    <action selector="dateRangeButtonAction:" destination="5Pt-eI-mPV" eventType="touchUpInside" id="Aru-kH-M54"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="mvF-j1-5aK">
-                                <rect key="frame" x="329" y="442" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="mZI-Zt-7Tz"/>
-                                    <constraint firstAttribute="height" constant="15" id="tXu-0b-HZV"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="xke-tM-gGo" firstAttribute="trailing" secondItem="awl-H1-gXT" secondAttribute="trailing" constant="-15" id="0sn-iq-b2N"/>
-                            <constraint firstItem="mvF-j1-5aK" firstAttribute="centerY" secondItem="fIY-Xn-IVt" secondAttribute="centerY" id="4Qd-qP-Xyr"/>
-                            <constraint firstItem="2it-4L-NpH" firstAttribute="top" secondItem="1uD-hm-b8I" secondAttribute="bottom" constant="8" id="66n-5i-Q1C"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="yD0-yt-Dnd" secondAttribute="trailing" constant="16" id="68l-sw-Z5Z"/>
-                            <constraint firstItem="Ik1-wu-UOO" firstAttribute="top" secondItem="yD0-yt-Dnd" secondAttribute="bottom" constant="8" id="7yO-Ci-BHg"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="fIY-Xn-IVt" secondAttribute="trailing" constant="16" id="EXQ-a3-7K9"/>
-                            <constraint firstItem="JVh-Qs-HOj" firstAttribute="top" secondItem="Zg6-Oc-Ciu" secondAttribute="bottom" constant="40" id="H96-pD-nMn"/>
-                            <constraint firstItem="awl-H1-gXT" firstAttribute="top" secondItem="JVh-Qs-HOj" secondAttribute="bottom" constant="8" id="HBY-qU-bfT"/>
-                            <constraint firstItem="JVh-Qs-HOj" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="Kow-VH-FyX"/>
-                            <constraint firstItem="yD0-yt-Dnd" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="LHb-cT-6pd"/>
-                            <constraint firstItem="xke-tM-gGo" firstAttribute="centerY" secondItem="awl-H1-gXT" secondAttribute="centerY" id="Ljz-qa-Rsb"/>
-                            <constraint firstItem="Yhi-Bq-G6o" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="MWJ-Eo-ZMW"/>
-                            <constraint firstItem="Zg6-Oc-Ciu" firstAttribute="top" secondItem="iUy-v4-sBt" secondAttribute="top" constant="60" id="Mxs-0S-foM"/>
-                            <constraint firstItem="1uD-hm-b8I" firstAttribute="top" secondItem="fIY-Xn-IVt" secondAttribute="bottom" constant="10" id="Na1-5f-H94"/>
-                            <constraint firstItem="1uD-hm-b8I" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="QBd-bi-tMR"/>
-                            <constraint firstItem="mvF-j1-5aK" firstAttribute="centerX" secondItem="eSe-Xo-iU8" secondAttribute="centerX" id="SPd-h6-5hD"/>
-                            <constraint firstItem="Ik1-wu-UOO" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="SeX-73-wDg"/>
-                            <constraint firstItem="2it-4L-NpH" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="cza-b6-dE7"/>
-                            <constraint firstItem="yD0-yt-Dnd" firstAttribute="top" secondItem="awl-H1-gXT" secondAttribute="bottom" constant="10" id="dTV-wr-cRr"/>
-                            <constraint firstItem="fIY-Xn-IVt" firstAttribute="top" secondItem="Yhi-Bq-G6o" secondAttribute="bottom" constant="8" id="gEm-M4-lKY"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="JVh-Qs-HOj" secondAttribute="trailing" constant="16" id="hTc-sz-HB1"/>
-                            <constraint firstItem="eSe-Xo-iU8" firstAttribute="centerX" secondItem="xke-tM-gGo" secondAttribute="centerX" id="haw-LQ-EbZ"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="Yhi-Bq-G6o" secondAttribute="trailing" constant="16" id="htY-FH-CSo"/>
-                            <constraint firstItem="Zg6-Oc-Ciu" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="i2y-7y-hgn"/>
-                            <constraint firstItem="fIY-Xn-IVt" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="lAD-xz-41b"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="Zg6-Oc-Ciu" secondAttribute="trailing" constant="16" id="pKE-by-aiK"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="2it-4L-NpH" secondAttribute="trailing" constant="16" id="pid-QQ-3XC"/>
-                            <constraint firstItem="Yhi-Bq-G6o" firstAttribute="top" secondItem="Ik1-wu-UOO" secondAttribute="bottom" constant="10" id="sLD-XZ-zBg"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="1uD-hm-b8I" secondAttribute="trailing" constant="16" id="t1d-kj-uPk"/>
-                            <constraint firstItem="eSe-Xo-iU8" firstAttribute="centerY" secondItem="Ik1-wu-UOO" secondAttribute="centerY" id="tiS-0G-VAM"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="Ik1-wu-UOO" secondAttribute="trailing" constant="16" id="x71-4a-x8l"/>
-                            <constraint firstItem="awl-H1-gXT" firstAttribute="leading" secondItem="iUy-v4-sBt" secondAttribute="leading" constant="16" id="xUF-fg-p54"/>
-                            <constraint firstItem="iUy-v4-sBt" firstAttribute="trailing" secondItem="awl-H1-gXT" secondAttribute="trailing" constant="16" id="y3a-XA-rJU"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="iUy-v4-sBt"/>
-                    </view>
-                    <connections>
-                        <outlet property="dateRangeButton" destination="fIY-Xn-IVt" id="tIu-rK-i9X"/>
-                        <outlet property="nameTextField" destination="2it-4L-NpH" id="Hqq-sB-Klu"/>
-                        <outlet property="sensorModuleButton" destination="awl-H1-gXT" id="7zl-tZ-OMt"/>
-                        <outlet property="typeButton" destination="Ik1-wu-UOO" id="nuZ-oU-EkF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7DW-WP-AL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2750" y="928"/>
-        </scene>
-        <!--Alert Log View Controller-->
-        <scene sceneID="k4L-cB-F7K">
-            <objects>
-                <viewController storyboardIdentifier="alertlog_panel_vc" id="Qrz-Rt-U50" customClass="AlertLogViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TzN-Dv-SOO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7J-bd-A1W">
-                                <rect key="frame" x="16" y="80" width="343" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="9PH-Tb-uC0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NA-Ok-H1W">
-                                <rect key="frame" x="16" y="180" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="djC-eb-sf8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WK-hL-yze" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="233" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="cCk-79-huj"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor module                     "/>
-                                <connections>
-                                    <action selector="sensorModuleButtonAction:" destination="Qrz-Rt-U50" eventType="touchUpInside" id="h4X-ET-7i4"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeS-Xr-4AM">
-                                <rect key="frame" x="16" y="279" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="hYj-BG-CXb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjM-JN-bCM" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="332" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="qTy-O7-yLg"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor                               "/>
-                                <connections>
-                                    <action selector="typeButtonAction:" destination="Qrz-Rt-U50" eventType="touchUpInside" id="bsg-6m-PDI"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6p0-02-Wrg">
-                                <rect key="frame" x="16" y="477" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="pRA-G5-x3v"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pj-Rr-Rel" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="530" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="kuf-ao-Dft"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="r0Y-Zo-2LL">
-                                <rect key="frame" x="329" y="244" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="8c6-VX-huv"/>
-                                    <constraint firstAttribute="height" constant="15" id="II7-W6-vnI"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-yr-SDb">
-                                <rect key="frame" x="329" y="343" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="aWw-rt-Neb"/>
-                                    <constraint firstAttribute="height" constant="15" id="kmw-uN-OnC"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSa-KN-TzY">
-                                <rect key="frame" x="16" y="378" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="8D3-UA-JiP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoI-A6-m2F" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="431" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="B3l-aF-rX3"/>
-                                </constraints>
-                                <state key="normal" title="1 day                            "/>
-                                <connections>
-                                    <action selector="dateRangeButtonAction:" destination="Qrz-Rt-U50" eventType="touchUpInside" id="tfA-5F-NGt"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="4tr-IR-XCe">
-                                <rect key="frame" x="329" y="442" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="6ap-23-FMA"/>
-                                    <constraint firstAttribute="height" constant="15" id="WqH-lh-N4o"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="zeS-Xr-4AM" firstAttribute="top" secondItem="4WK-hL-yze" secondAttribute="bottom" constant="10" id="0Ba-CT-PGS"/>
-                            <constraint firstItem="8pj-Rr-Rel" firstAttribute="top" secondItem="6p0-02-Wrg" secondAttribute="bottom" constant="8" id="2IC-YC-kdH"/>
-                            <constraint firstItem="q7J-bd-A1W" firstAttribute="top" secondItem="sDb-9g-qEa" secondAttribute="top" constant="60" id="2jX-03-0Ih"/>
-                            <constraint firstItem="zeS-Xr-4AM" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="3HX-oj-6ad"/>
-                            <constraint firstItem="4tr-IR-XCe" firstAttribute="centerX" secondItem="hdr-yr-SDb" secondAttribute="centerX" id="3a3-VM-295"/>
-                            <constraint firstItem="3NA-Ok-H1W" firstAttribute="top" secondItem="q7J-bd-A1W" secondAttribute="bottom" constant="40" id="3h2-Xa-hTp"/>
-                            <constraint firstItem="hdr-yr-SDb" firstAttribute="centerY" secondItem="vjM-JN-bCM" secondAttribute="centerY" id="7QC-5F-0Le"/>
-                            <constraint firstItem="r0Y-Zo-2LL" firstAttribute="centerY" secondItem="4WK-hL-yze" secondAttribute="centerY" id="8vH-a8-NFU"/>
-                            <constraint firstItem="4WK-hL-yze" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="BIX-8E-HnX"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="vjM-JN-bCM" secondAttribute="trailing" constant="16" id="CzA-QU-lDf"/>
-                            <constraint firstItem="8pj-Rr-Rel" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="Fab-IA-7Vg"/>
-                            <constraint firstItem="XSa-KN-TzY" firstAttribute="top" secondItem="vjM-JN-bCM" secondAttribute="bottom" constant="10" id="Fbp-BW-vWw"/>
-                            <constraint firstItem="6p0-02-Wrg" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="HS5-4x-ub9"/>
-                            <constraint firstItem="XSa-KN-TzY" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="JkH-cE-q6c"/>
-                            <constraint firstItem="vjM-JN-bCM" firstAttribute="top" secondItem="zeS-Xr-4AM" secondAttribute="bottom" constant="8" id="QYd-Ks-heb"/>
-                            <constraint firstItem="q7J-bd-A1W" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="YSP-uR-W3L"/>
-                            <constraint firstItem="4tr-IR-XCe" firstAttribute="centerY" secondItem="xoI-A6-m2F" secondAttribute="centerY" id="Ytb-2K-DmE"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="q7J-bd-A1W" secondAttribute="trailing" constant="16" id="Zv9-kR-o42"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="XSa-KN-TzY" secondAttribute="trailing" constant="16" id="di6-NI-c5N"/>
-                            <constraint firstItem="vjM-JN-bCM" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="h2w-8j-Hph"/>
-                            <constraint firstItem="6p0-02-Wrg" firstAttribute="top" secondItem="xoI-A6-m2F" secondAttribute="bottom" constant="10" id="hnE-Ce-gWY"/>
-                            <constraint firstItem="xoI-A6-m2F" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="ltG-6y-bS3"/>
-                            <constraint firstItem="hdr-yr-SDb" firstAttribute="centerX" secondItem="r0Y-Zo-2LL" secondAttribute="centerX" id="mEn-cJ-lve"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="8pj-Rr-Rel" secondAttribute="trailing" constant="16" id="qeF-m8-VAE"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="4WK-hL-yze" secondAttribute="trailing" constant="16" id="qg1-gk-2HP"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="6p0-02-Wrg" secondAttribute="trailing" constant="16" id="s7d-7n-CeX"/>
-                            <constraint firstItem="4WK-hL-yze" firstAttribute="top" secondItem="3NA-Ok-H1W" secondAttribute="bottom" constant="8" id="tCC-vC-g8Q"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="3NA-Ok-H1W" secondAttribute="trailing" constant="16" id="tGy-yv-APT"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="xoI-A6-m2F" secondAttribute="trailing" constant="16" id="tMr-tL-Bez"/>
-                            <constraint firstItem="r0Y-Zo-2LL" firstAttribute="trailing" secondItem="4WK-hL-yze" secondAttribute="trailing" constant="-15" id="tbo-eD-Gsy"/>
-                            <constraint firstItem="3NA-Ok-H1W" firstAttribute="leading" secondItem="sDb-9g-qEa" secondAttribute="leading" constant="16" id="twq-u1-X7X"/>
-                            <constraint firstItem="xoI-A6-m2F" firstAttribute="top" secondItem="XSa-KN-TzY" secondAttribute="bottom" constant="8" id="uB2-m4-24b"/>
-                            <constraint firstItem="sDb-9g-qEa" firstAttribute="trailing" secondItem="zeS-Xr-4AM" secondAttribute="trailing" constant="16" id="ywu-RB-Liu"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="sDb-9g-qEa"/>
-                    </view>
-                    <connections>
-                        <outlet property="dateRangeButton" destination="xoI-A6-m2F" id="i2a-mk-dSx"/>
-                        <outlet property="nameTextField" destination="8pj-Rr-Rel" id="BD6-uz-VZy"/>
-                        <outlet property="sensorModuleButton" destination="4WK-hL-yze" id="I88-99-ayv"/>
-                        <outlet property="typeButton" destination="vjM-JN-bCM" id="1tT-Js-9ms"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hSq-R7-BmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3502" y="928"/>
         </scene>
         <!--Show Data Log Table View Controller-->
         <scene sceneID="mnm-zX-28c">
@@ -885,169 +519,6 @@
             </objects>
             <point key="canvasLocation" x="1098" y="928"/>
         </scene>
-        <!--Time Series Graph View Controller-->
-        <scene sceneID="2mJ-9J-pln">
-            <objects>
-                <viewController storyboardIdentifier="timeseriesgraph_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="evt-Vl-XzX" customClass="TimeSeriesGraphViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ASA-47-VAd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zld-3k-yti">
-                                <rect key="frame" x="16" y="80" width="343" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="KDq-cH-OlR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-xb-6yo">
-                                <rect key="frame" x="16" y="180" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="0io-bu-q6E"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKR-2O-Cmj" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="233" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="92b-a0-ocI"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor module                     "/>
-                                <connections>
-                                    <action selector="sensorModuleButtonAction:" destination="evt-Vl-XzX" eventType="touchUpInside" id="OEs-DP-1ZM"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXs-db-GMy">
-                                <rect key="frame" x="16" y="279" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="YnI-QQ-XKy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rW7-Kn-l18" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="332" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="CAo-H4-D6P"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor                               "/>
-                                <connections>
-                                    <action selector="typeButtonAction:" destination="evt-Vl-XzX" eventType="touchUpInside" id="Pv8-2F-FyK"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="Khf-wd-mW8">
-                                <rect key="frame" x="329" y="244" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="1g5-Dz-lQz"/>
-                                    <constraint firstAttribute="width" constant="15" id="xSM-z7-EUs"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="Cvk-p2-sM5">
-                                <rect key="frame" x="329" y="343" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="5kQ-W9-tcm"/>
-                                    <constraint firstAttribute="height" constant="15" id="ME2-Xz-oBq"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZc-nW-tRI">
-                                <rect key="frame" x="16" y="378" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Jqg-I0-QiI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uan-1p-cDa" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="431" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="jba-df-7hv"/>
-                                </constraints>
-                                <state key="normal" title="1 day                                           "/>
-                                <connections>
-                                    <action selector="dateRangeButtonAction:" destination="evt-Vl-XzX" eventType="touchUpInside" id="67b-cs-3VI"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="2eW-4x-zUr">
-                                <rect key="frame" x="329" y="442" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="FIN-rA-vGK"/>
-                                    <constraint firstAttribute="width" constant="15" id="Lda-qK-MHd"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKt-AQ-HOO">
-                                <rect key="frame" x="16" y="477" width="343" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="q3l-Ta-bgp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cjs-Bt-28n" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="530" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="V03-he-Ehy"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Cvk-p2-sM5" firstAttribute="centerY" secondItem="rW7-Kn-l18" secondAttribute="centerY" id="2qv-kL-13A"/>
-                            <constraint firstItem="wKR-2O-Cmj" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="3GC-92-vfL"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="Rog-xb-6yo" secondAttribute="trailing" constant="16" id="3oc-mY-7IB"/>
-                            <constraint firstItem="Zld-3k-yti" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="4mY-yl-Yvu"/>
-                            <constraint firstItem="tKt-AQ-HOO" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="93a-OO-oJd"/>
-                            <constraint firstItem="Khf-wd-mW8" firstAttribute="trailing" secondItem="wKR-2O-Cmj" secondAttribute="trailing" constant="-15" id="99a-jy-1h6"/>
-                            <constraint firstItem="Cjs-Bt-28n" firstAttribute="top" secondItem="tKt-AQ-HOO" secondAttribute="bottom" constant="8" id="CaJ-gb-Eqn"/>
-                            <constraint firstItem="uan-1p-cDa" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="CsF-Qx-CTd"/>
-                            <constraint firstItem="wKR-2O-Cmj" firstAttribute="top" secondItem="Rog-xb-6yo" secondAttribute="bottom" constant="8" id="CuS-Np-qGG"/>
-                            <constraint firstItem="LXs-db-GMy" firstAttribute="top" secondItem="wKR-2O-Cmj" secondAttribute="bottom" constant="10" id="IaF-Ta-IP9"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="LXs-db-GMy" secondAttribute="trailing" constant="16" id="Lmy-EC-H5g"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="Cjs-Bt-28n" secondAttribute="trailing" constant="16" id="Mtd-RB-091"/>
-                            <constraint firstItem="iZc-nW-tRI" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="NLi-Hv-E0x"/>
-                            <constraint firstItem="Zld-3k-yti" firstAttribute="top" secondItem="m6X-dw-9Bm" secondAttribute="top" constant="60" id="QLL-sQ-LdA"/>
-                            <constraint firstItem="iZc-nW-tRI" firstAttribute="top" secondItem="rW7-Kn-l18" secondAttribute="bottom" constant="10" id="Qu0-zy-rdF"/>
-                            <constraint firstItem="2eW-4x-zUr" firstAttribute="centerY" secondItem="uan-1p-cDa" secondAttribute="centerY" id="RlK-e0-wWh"/>
-                            <constraint firstItem="Cjs-Bt-28n" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="S8m-FV-6eC"/>
-                            <constraint firstItem="LXs-db-GMy" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="W1v-4V-Hdu"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="uan-1p-cDa" secondAttribute="trailing" constant="16" id="XJ5-St-d6g"/>
-                            <constraint firstItem="rW7-Kn-l18" firstAttribute="top" secondItem="LXs-db-GMy" secondAttribute="bottom" constant="8" id="bNm-2b-3l9"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="tKt-AQ-HOO" secondAttribute="trailing" constant="16" id="dt0-G2-fVa"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="iZc-nW-tRI" secondAttribute="trailing" constant="16" id="gYU-g0-pBG"/>
-                            <constraint firstItem="tKt-AQ-HOO" firstAttribute="top" secondItem="uan-1p-cDa" secondAttribute="bottom" constant="10" id="jXz-Oh-KdP"/>
-                            <constraint firstItem="Cvk-p2-sM5" firstAttribute="centerX" secondItem="Khf-wd-mW8" secondAttribute="centerX" id="lqX-5J-IJf"/>
-                            <constraint firstItem="2eW-4x-zUr" firstAttribute="centerX" secondItem="Cvk-p2-sM5" secondAttribute="centerX" id="mZX-Dt-T4j"/>
-                            <constraint firstItem="Rog-xb-6yo" firstAttribute="top" secondItem="Zld-3k-yti" secondAttribute="bottom" constant="40" id="ndH-15-08L"/>
-                            <constraint firstItem="Khf-wd-mW8" firstAttribute="centerY" secondItem="wKR-2O-Cmj" secondAttribute="centerY" id="pCv-kR-NWp"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="Zld-3k-yti" secondAttribute="trailing" constant="16" id="tss-RB-eO5"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="wKR-2O-Cmj" secondAttribute="trailing" constant="16" id="u7e-bn-R5d"/>
-                            <constraint firstItem="uan-1p-cDa" firstAttribute="top" secondItem="iZc-nW-tRI" secondAttribute="bottom" constant="8" id="uNF-RX-Yuc"/>
-                            <constraint firstItem="Rog-xb-6yo" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="uey-Yx-8ia"/>
-                            <constraint firstItem="rW7-Kn-l18" firstAttribute="leading" secondItem="m6X-dw-9Bm" secondAttribute="leading" constant="16" id="zFf-XK-ZS7"/>
-                            <constraint firstItem="m6X-dw-9Bm" firstAttribute="trailing" secondItem="rW7-Kn-l18" secondAttribute="trailing" constant="16" id="zXK-Hd-rVs"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="m6X-dw-9Bm"/>
-                    </view>
-                    <connections>
-                        <outlet property="dateRangeButton" destination="uan-1p-cDa" id="4wj-Ao-fJE"/>
-                        <outlet property="nameTextField" destination="Cjs-Bt-28n" id="8gc-j3-QEm"/>
-                        <outlet property="sensorModuleButton" destination="wKR-2O-Cmj" id="dLl-rA-kYe"/>
-                        <outlet property="typeButton" destination="rW7-Kn-l18" id="8z5-XV-oZR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8wL-xm-o5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1893.5999999999999" y="927.88605697151434"/>
-        </scene>
         <!--Edit Value Panel View Controller-->
         <scene sceneID="s1a-y9-8Kf">
             <objects>
@@ -1074,16 +545,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-Ez-R6E" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="233" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="W43-N5-G91"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor module                     "/>
-                                <connections>
-                                    <action selector="sensorModuleButtonAction:" destination="Ns6-gy-x3q" eventType="touchUpInside" id="ajf-mp-WSM"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryt-ad-Rz5">
                                 <rect key="frame" x="16" y="289" width="343" height="45"/>
                                 <constraints>
@@ -1093,16 +554,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHh-th-PHE" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="342" width="343" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Hkm-bW-2pa"/>
-                                </constraints>
-                                <state key="normal" title="Select a sensor                               "/>
-                                <connections>
-                                    <action selector="typeButtonAction:" destination="Ns6-gy-x3q" eventType="touchUpInside" id="mdf-8D-G9h"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75x-Y1-SdB">
                                 <rect key="frame" x="16" y="398" width="343" height="45"/>
                                 <constraints>
@@ -1121,64 +572,64 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="0sW-ae-XPI">
-                                <rect key="frame" x="329" y="244" width="15" height="15"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYw-zV-rqq" customClass="DropDown" customModule="iOSDropDown">
+                                <rect key="frame" x="16" y="342" width="343" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="J2a-lE-Z35"/>
-                                    <constraint firstAttribute="width" constant="15" id="cBv-aL-obx"/>
+                                    <constraint firstAttribute="height" constant="36" id="OU2-U4-7jQ"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="W2S-7Q-bLY">
-                                <rect key="frame" x="329" y="353" width="15" height="15"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2dA-jc-SfR" customClass="DropDown" customModule="iOSDropDown">
+                                <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="CIt-hP-V3o"/>
-                                    <constraint firstAttribute="width" constant="15" id="j8b-zh-Jex"/>
+                                    <constraint firstAttribute="height" constant="36" id="oIS-FH-c6e"/>
                                 </constraints>
-                            </imageView>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HPb-Px-sT8" firstAttribute="top" secondItem="kPm-K7-5Za" secondAttribute="bottom" constant="40" id="0Od-Y4-vZ8"/>
-                            <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="aEg-Ez-R6E" secondAttribute="trailing" constant="16" id="415-22-fuf"/>
+                            <constraint firstItem="ZYw-zV-rqq" firstAttribute="top" secondItem="ryt-ad-Rz5" secondAttribute="bottom" constant="8" id="1P4-gX-hJf"/>
+                            <constraint firstItem="75x-Y1-SdB" firstAttribute="top" secondItem="ZYw-zV-rqq" secondAttribute="bottom" constant="20" id="6gm-LB-s3h"/>
                             <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="Lwq-Et-aLm" secondAttribute="trailing" constant="16" id="7o7-vy-cL6"/>
                             <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="ryt-ad-Rz5" secondAttribute="trailing" constant="16" id="845-AS-Bdy"/>
-                            <constraint firstItem="W2S-7Q-bLY" firstAttribute="centerY" secondItem="NHh-th-PHE" secondAttribute="centerY" id="GyO-0n-YY1"/>
+                            <constraint firstItem="ZYw-zV-rqq" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="8JY-Vb-vgR"/>
+                            <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="ZYw-zV-rqq" secondAttribute="trailing" constant="16" id="Jt3-sO-PhD"/>
                             <constraint firstItem="kPm-K7-5Za" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="PlM-mZ-Vbm"/>
-                            <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="NHh-th-PHE" secondAttribute="trailing" constant="16" id="SDg-4l-yfi"/>
-                            <constraint firstItem="NHh-th-PHE" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="UgX-Dm-sbb"/>
                             <constraint firstItem="kPm-K7-5Za" firstAttribute="top" secondItem="p1O-dT-HDi" secondAttribute="top" constant="60" id="VM2-NZ-UhO"/>
                             <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="kPm-K7-5Za" secondAttribute="trailing" constant="16" id="c5m-06-gQ9"/>
-                            <constraint firstItem="aEg-Ez-R6E" firstAttribute="top" secondItem="HPb-Px-sT8" secondAttribute="bottom" constant="8" id="dgL-MR-Ore"/>
                             <constraint firstItem="Lwq-Et-aLm" firstAttribute="top" secondItem="75x-Y1-SdB" secondAttribute="bottom" constant="8" id="eaT-BF-W5a"/>
-                            <constraint firstItem="75x-Y1-SdB" firstAttribute="top" secondItem="NHh-th-PHE" secondAttribute="bottom" constant="20" id="f2r-b2-Azq"/>
                             <constraint firstItem="75x-Y1-SdB" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="fmR-5D-gR5"/>
-                            <constraint firstItem="0sW-ae-XPI" firstAttribute="centerY" secondItem="aEg-Ez-R6E" secondAttribute="centerY" id="iWR-eo-h5i"/>
-                            <constraint firstItem="ryt-ad-Rz5" firstAttribute="top" secondItem="aEg-Ez-R6E" secondAttribute="bottom" constant="20" id="ifs-yy-6cS"/>
+                            <constraint firstItem="ryt-ad-Rz5" firstAttribute="top" secondItem="2dA-jc-SfR" secondAttribute="bottom" constant="20" id="g7M-g0-CGQ"/>
                             <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="75x-Y1-SdB" secondAttribute="trailing" constant="16" id="kYA-0k-Gzl"/>
                             <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="HPb-Px-sT8" secondAttribute="trailing" constant="16" id="mGv-oe-Eka"/>
-                            <constraint firstItem="NHh-th-PHE" firstAttribute="top" secondItem="ryt-ad-Rz5" secondAttribute="bottom" constant="8" id="tIU-4D-gOo"/>
-                            <constraint firstItem="0sW-ae-XPI" firstAttribute="trailing" secondItem="aEg-Ez-R6E" secondAttribute="trailing" constant="-15" id="uQq-xU-7HH"/>
+                            <constraint firstItem="p1O-dT-HDi" firstAttribute="trailing" secondItem="2dA-jc-SfR" secondAttribute="trailing" constant="16" id="oqD-Py-nRR"/>
                             <constraint firstItem="Lwq-Et-aLm" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="uRF-tE-pbD"/>
                             <constraint firstItem="HPb-Px-sT8" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="ueM-x2-thx"/>
+                            <constraint firstItem="2dA-jc-SfR" firstAttribute="top" secondItem="HPb-Px-sT8" secondAttribute="bottom" constant="8" id="vBt-Ra-n7v"/>
                             <constraint firstItem="ryt-ad-Rz5" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="wxd-zf-xa5"/>
-                            <constraint firstItem="aEg-Ez-R6E" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="yq4-Z5-vbI"/>
-                            <constraint firstItem="W2S-7Q-bLY" firstAttribute="centerX" secondItem="0sW-ae-XPI" secondAttribute="centerX" id="yyO-y7-igr"/>
+                            <constraint firstItem="2dA-jc-SfR" firstAttribute="leading" secondItem="p1O-dT-HDi" secondAttribute="leading" constant="16" id="xYK-qY-fHp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p1O-dT-HDi"/>
                     </view>
                     <connections>
+                        <outlet property="moduleDropDownTextField" destination="2dA-jc-SfR" id="EZK-Xf-RUs"/>
                         <outlet property="moduleTitleLabel" destination="HPb-Px-sT8" id="2An-a1-RAj"/>
                         <outlet property="nameTextField" destination="Lwq-Et-aLm" id="8dp-SG-iGb"/>
                         <outlet property="nameTitleLabel" destination="75x-Y1-SdB" id="4lM-2l-kXs"/>
-                        <outlet property="sensorModuleButton" destination="aEg-Ez-R6E" id="wz6-Pd-h3g"/>
+                        <outlet property="sensorDropDownTextField" destination="ZYw-zV-rqq" id="ZF8-g5-yth"/>
                         <outlet property="sensorTitleLabel" destination="ryt-ad-Rz5" id="T0b-Kl-Lps"/>
                         <outlet property="titleLabel" destination="kPm-K7-5Za" id="Kvz-ID-ibm"/>
-                        <outlet property="typeButton" destination="NHh-th-PHE" id="JHO-n4-fVZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAm-x0-mo8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="-523"/>
+            <point key="canvasLocation" x="197.59999999999999" y="-523.088455772114"/>
         </scene>
         <!--Edit Gauge Panel View Controller-->
         <scene sceneID="EcL-LE-SLt">
@@ -1203,16 +654,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-Q8-fG0" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="213" width="343" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="87p-he-9gF"/>
-                                                </constraints>
-                                                <state key="normal" title="Select a sensor module                     "/>
-                                                <connections>
-                                                    <action selector="sensorModuleButtonAction:" destination="OEF-q1-PMT" eventType="touchUpInside" id="pUX-J7-IHE"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYs-9U-bgp">
                                                 <rect key="frame" x="16" y="269" width="343" height="45"/>
                                                 <constraints>
@@ -1222,23 +663,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="949-9K-Ahv" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="322" width="343" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="QA2-49-Voa"/>
-                                                </constraints>
-                                                <state key="normal" title="Select a sensor                               "/>
-                                                <connections>
-                                                    <action selector="typeButtonAction:" destination="OEF-q1-PMT" eventType="touchUpInside" id="CCI-0b-j92"/>
-                                                </connections>
-                                            </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="9sb-oh-604">
-                                                <rect key="frame" x="329" y="332.5" width="15" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="jgE-0h-CBf"/>
-                                                    <constraint firstAttribute="width" constant="15" id="trT-ra-ceC"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D6-Qb-4iD">
                                                 <rect key="frame" x="16" y="60" width="343" height="60"/>
                                                 <constraints>
@@ -1302,13 +726,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="mYH-vn-0xo">
-                                                <rect key="frame" x="329" y="223.5" width="15" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="15" id="8b2-bo-Qnb"/>
-                                                    <constraint firstAttribute="height" constant="15" id="VoI-EM-iVj"/>
-                                                </constraints>
-                                            </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2JJ-1y-cK9" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="633" width="343" height="36"/>
                                                 <constraints>
@@ -1318,47 +735,61 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UkW-uE-OMH" customClass="DropDown" customModule="iOSDropDown">
+                                                <rect key="frame" x="16" y="322" width="343" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="lr7-Vt-pdp"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x8H-xx-F3z" customClass="DropDown" customModule="iOSDropDown">
+                                                <rect key="frame" x="16" y="213" width="343" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="3lJ-fM-gNB"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="949-9K-Ahv" secondAttribute="trailing" constant="16" id="0Kc-UL-zET"/>
                                             <constraint firstItem="0D6-Qb-4iD" firstAttribute="top" secondItem="Srh-SJ-UAv" secondAttribute="top" constant="60" id="66F-kV-i1s"/>
-                                            <constraint firstItem="0Pl-Yj-KH6" firstAttribute="top" secondItem="949-9K-Ahv" secondAttribute="bottom" constant="20" id="7sp-Rb-vEj"/>
-                                            <constraint firstItem="iAi-Q8-fG0" firstAttribute="top" secondItem="nE8-XU-DLT" secondAttribute="bottom" constant="8" id="9fF-xi-lpU"/>
+                                            <constraint firstItem="UkW-uE-OMH" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="770-DX-qIB"/>
                                             <constraint firstItem="2JJ-1y-cK9" firstAttribute="top" secondItem="1MD-rV-Vih" secondAttribute="bottom" constant="8" id="B0N-Pj-LFv"/>
-                                            <constraint firstAttribute="trailing" secondItem="iAi-Q8-fG0" secondAttribute="trailing" constant="16" id="EP1-47-Kgh"/>
                                             <constraint firstItem="30O-Gg-fEA" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="F0v-Xv-9yX"/>
+                                            <constraint firstItem="UkW-uE-OMH" firstAttribute="top" secondItem="PYs-9U-bgp" secondAttribute="bottom" constant="8" id="G2F-2P-XHq"/>
                                             <constraint firstItem="PYs-9U-bgp" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="Gqx-xi-9Yi"/>
-                                            <constraint firstItem="949-9K-Ahv" firstAttribute="top" secondItem="PYs-9U-bgp" secondAttribute="bottom" constant="8" id="Grt-bl-eFT"/>
                                             <constraint firstItem="0D6-Qb-4iD" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="HRO-6c-Olq"/>
-                                            <constraint firstItem="9sb-oh-604" firstAttribute="trailing" secondItem="mYH-vn-0xo" secondAttribute="trailing" id="IZU-GB-0av"/>
                                             <constraint firstItem="0Pl-Yj-KH6" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="IeZ-gk-kV2"/>
                                             <constraint firstAttribute="trailing" secondItem="2JJ-1y-cK9" secondAttribute="trailing" constant="16" id="JTL-J4-2Mo"/>
                                             <constraint firstAttribute="trailing" secondItem="7Gy-T6-LXB" secondAttribute="trailing" constant="16" id="JbO-2T-NEq"/>
                                             <constraint firstAttribute="trailing" secondItem="PYs-9U-bgp" secondAttribute="trailing" constant="16" id="Kls-MK-Q09"/>
                                             <constraint firstItem="xIf-kx-ylP" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="Ltk-KH-i99"/>
                                             <constraint firstItem="7Gy-T6-LXB" firstAttribute="top" secondItem="30O-Gg-fEA" secondAttribute="bottom" constant="8" id="MUH-ZB-gn5"/>
-                                            <constraint firstItem="9sb-oh-604" firstAttribute="centerY" secondItem="949-9K-Ahv" secondAttribute="centerY" id="Pj8-SZ-xvn"/>
+                                            <constraint firstItem="x8H-xx-F3z" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="Mwa-wR-vgc"/>
+                                            <constraint firstItem="PYs-9U-bgp" firstAttribute="top" secondItem="x8H-xx-F3z" secondAttribute="bottom" constant="20" id="Op0-Yt-Wel"/>
+                                            <constraint firstAttribute="trailing" secondItem="UkW-uE-OMH" secondAttribute="trailing" constant="16" id="QlE-rL-8gL"/>
                                             <constraint firstAttribute="trailing" secondItem="aD3-2G-zle" secondAttribute="trailing" constant="16" id="QtW-Ex-ha4"/>
                                             <constraint firstItem="1MD-rV-Vih" firstAttribute="top" secondItem="aD3-2G-zle" secondAttribute="bottom" constant="15" id="Qv3-fV-lSc"/>
+                                            <constraint firstItem="x8H-xx-F3z" firstAttribute="top" secondItem="nE8-XU-DLT" secondAttribute="bottom" constant="8" id="VBQ-rN-pEV"/>
+                                            <constraint firstAttribute="trailing" secondItem="x8H-xx-F3z" secondAttribute="trailing" constant="16" id="a8E-fk-HEu"/>
+                                            <constraint firstItem="0Pl-Yj-KH6" firstAttribute="top" secondItem="UkW-uE-OMH" secondAttribute="bottom" constant="20" id="aBD-Ie-io6"/>
                                             <constraint firstAttribute="trailing" secondItem="nE8-XU-DLT" secondAttribute="trailing" constant="16" id="aHE-az-CIg"/>
                                             <constraint firstAttribute="height" constant="730" id="aaa-8Y-rcJ"/>
-                                            <constraint firstItem="mYH-vn-0xo" firstAttribute="centerY" secondItem="iAi-Q8-fG0" secondAttribute="centerY" id="eke-8F-Bmx"/>
                                             <constraint firstAttribute="trailing" secondItem="0D6-Qb-4iD" secondAttribute="trailing" constant="16" id="fbt-Ex-N6x"/>
                                             <constraint firstItem="1MD-rV-Vih" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="gD6-Du-qp0"/>
-                                            <constraint firstItem="iAi-Q8-fG0" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="gP3-7E-RDq"/>
                                             <constraint firstAttribute="trailing" secondItem="0Pl-Yj-KH6" secondAttribute="trailing" constant="16" id="gvw-UN-80g"/>
                                             <constraint firstItem="aD3-2G-zle" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="hg4-Ux-e1Q"/>
                                             <constraint firstItem="30O-Gg-fEA" firstAttribute="top" secondItem="0Pl-Yj-KH6" secondAttribute="bottom" constant="8" id="jme-Re-Gmq"/>
-                                            <constraint firstItem="949-9K-Ahv" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="lhP-WM-JWt"/>
                                             <constraint firstItem="nE8-XU-DLT" firstAttribute="top" secondItem="0D6-Qb-4iD" secondAttribute="bottom" constant="40" id="mEr-iG-FU4"/>
                                             <constraint firstAttribute="trailing" secondItem="1MD-rV-Vih" secondAttribute="trailing" constant="16" id="mi2-oL-TRZ"/>
                                             <constraint firstItem="7Gy-T6-LXB" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="nfy-uE-VeW"/>
                                             <constraint firstItem="xIf-kx-ylP" firstAttribute="top" secondItem="7Gy-T6-LXB" secondAttribute="bottom" constant="10" id="qBx-39-oJP"/>
                                             <constraint firstAttribute="trailing" secondItem="30O-Gg-fEA" secondAttribute="trailing" constant="16" id="twv-OD-rfJ"/>
                                             <constraint firstAttribute="trailing" secondItem="xIf-kx-ylP" secondAttribute="trailing" constant="16" id="uvY-67-2tN"/>
-                                            <constraint firstItem="PYs-9U-bgp" firstAttribute="top" secondItem="iAi-Q8-fG0" secondAttribute="bottom" constant="20" id="xRe-UD-8Jg"/>
-                                            <constraint firstItem="mYH-vn-0xo" firstAttribute="trailing" secondItem="iAi-Q8-fG0" secondAttribute="trailing" constant="-15" id="yTY-ya-WNh"/>
                                             <constraint firstItem="2JJ-1y-cK9" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="yj8-SI-XMO"/>
                                             <constraint firstItem="nE8-XU-DLT" firstAttribute="leading" secondItem="Srh-SJ-UAv" secondAttribute="leading" constant="16" id="zNQ-M8-d2L"/>
                                             <constraint firstItem="aD3-2G-zle" firstAttribute="top" secondItem="xIf-kx-ylP" secondAttribute="bottom" constant="8" id="zua-ne-bwi"/>
@@ -1390,19 +821,151 @@
                         <outlet property="maxTitleLabel" destination="xIf-kx-ylP" id="Ohg-UH-ryc"/>
                         <outlet property="minTextField" destination="7Gy-T6-LXB" id="3bA-Mf-hoF"/>
                         <outlet property="minTitleLabel" destination="30O-Gg-fEA" id="dxE-a6-4Nn"/>
+                        <outlet property="moduleDropDownTextField" destination="x8H-xx-F3z" id="Ufr-CE-rpY"/>
                         <outlet property="moduleTitleLabel" destination="nE8-XU-DLT" id="kpH-SB-ku9"/>
                         <outlet property="nameTextField" destination="2JJ-1y-cK9" id="7kB-Ee-SeE"/>
                         <outlet property="nameTitleLabel" destination="1MD-rV-Vih" id="CxY-fF-5Ch"/>
                         <outlet property="scrollView" destination="Y0Q-ZW-T5x" id="hey-sM-i6u"/>
-                        <outlet property="sensorModuleButton" destination="iAi-Q8-fG0" id="QcM-CZ-fBN"/>
+                        <outlet property="sensorDropDownTextField" destination="UkW-uE-OMH" id="r5C-w5-VLi"/>
                         <outlet property="sensorTitleLabel" destination="PYs-9U-bgp" id="9IZ-fi-kq0"/>
                         <outlet property="titleLabel" destination="0D6-Qb-4iD" id="idT-u1-gZE"/>
-                        <outlet property="typeButton" destination="949-9K-Ahv" id="W5q-Og-Ifo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJB-8u-Pw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="-523"/>
+            <point key="canvasLocation" x="949.60000000000002" y="-523.088455772114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bDJ-wV-d1l">
+            <objects>
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="vIk-0D-gra" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7fE-iS-SWX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D1-rI-aEr">
+                                <rect key="frame" x="16" y="80" width="343" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="pdE-K7-feg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxF-er-R66">
+                                <rect key="frame" x="16" y="180" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="kT1-Pu-o3D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcV-ir-TjC" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
+                                <rect key="frame" x="16" y="233" width="343" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="pNM-9J-XYf"/>
+                                </constraints>
+                                <state key="normal" title="Select a sensor module                     "/>
+                                <connections>
+                                    <action selector="sensorModuleButtonAction:" destination="vIk-0D-gra" eventType="touchUpInside" id="g5e-xy-Dc0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIp-j4-5Ga">
+                                <rect key="frame" x="16" y="289" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="p4B-80-uNM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iph-5f-9Od" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
+                                <rect key="frame" x="16" y="342" width="343" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="A7K-if-hpN"/>
+                                </constraints>
+                                <state key="normal" title="Select a sensor                               "/>
+                                <connections>
+                                    <action selector="typeButtonAction:" destination="vIk-0D-gra" eventType="touchUpInside" id="UAf-do-J6Q"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-5f-mNE">
+                                <rect key="frame" x="16" y="398" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4gr-QU-i0P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X4W-Jz-MXr" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
+                                <rect key="frame" x="16" y="451" width="343" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="IAd-Cj-Od0"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="hEv-GB-dpa">
+                                <rect key="frame" x="329" y="244" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="QeZ-zo-8Cx"/>
+                                    <constraint firstAttribute="width" constant="15" id="UQv-Ri-PuM"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="3um-Hi-dWR">
+                                <rect key="frame" x="329" y="353" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="6jv-Ra-wSj"/>
+                                    <constraint firstAttribute="width" constant="15" id="sPe-xG-8Kg"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qcV-ir-TjC" firstAttribute="top" secondItem="yxF-er-R66" secondAttribute="bottom" constant="8" id="29l-wB-ctH"/>
+                            <constraint firstItem="jJ6-5f-mNE" firstAttribute="leading" secondItem="OjJ-ke-sar" secondAttribute="leading" constant="16" id="3Vw-rh-5re"/>
+                            <constraint firstItem="OjJ-ke-sar" firstAttribute="trailing" secondItem="X4W-Jz-MXr" secondAttribute="trailing" constant="16" id="4M6-6d-5il"/>
+                            <constraint firstItem="OjJ-ke-sar" firstAttribute="trailing" secondItem="yxF-er-R66" secondAttribute="trailing" constant="16" id="4Nl-QM-UPa"/>
+                            <constraint firstItem="fIp-j4-5Ga" firstAttribute="leading" secondItem="OjJ-ke-sar" secondAttribute="leading" constant="16" id="C3r-gq-wDL"/>
+                            <constraint firstItem="iph-5f-9Od" firstAttribute="top" secondItem="fIp-j4-5Ga" secondAttribute="bottom" constant="8" id="CQH-pP-5Mr"/>
+                            <constraint firstItem="iph-5f-9Od" firstAttribute="leading" secondItem="OjJ-ke-sar" secondAttribute="leading" constant="16" id="DMj-7D-d7t"/>
+                            <constraint firstItem="jJ6-5f-mNE" firstAttribute="top" secondItem="iph-5f-9Od" secondAttribute="bottom" constant="20" id="Fgf-ao-mep"/>
+                            <constraint firstItem="yxF-er-R66" firstAttribute="top" secondItem="0D1-rI-aEr" secondAttribute="bottom" constant="40" id="Fxo-mI-pcf"/>
+                            <constraint firstItem="yxF-er-R66" firstAttribute="leading" secondItem="OjJ-ke-sar" secondAttribute="leading" constant="16" id="H7p-mN-8UR"/>
+                            <constraint firstItem="X4W-Jz-MXr" firstAttribute="top" secondItem="jJ6-5f-mNE" secondAttribute="bottom" constant="8" id="OEZ-G5-2tp"/>
+                            <constraint firstItem="3um-Hi-dWR" firstAttribute="centerY" secondItem="iph-5f-9Od" secondAttribute="centerY" id="R1K-dp-w3e"/>
+                            <constraint firstItem="OjJ-ke-sar" firstAttribute="trailing" secondItem="jJ6-5f-mNE" secondAttribute="trailing" constant="16" id="WDO-ck-fne"/>
+                            <constraint firstItem="hEv-GB-dpa" firstAttribute="trailing" secondItem="qcV-ir-TjC" secondAttribute="trailing" constant="-15" id="Zgy-9h-H4L"/>
+                            <constraint firstItem="0D1-rI-aEr" firstAttribute="top" secondItem="OjJ-ke-sar" secondAttribute="top" constant="60" id="aa0-Sg-G6e"/>
+                            <constraint firstItem="OjJ-ke-sar" firstAttribute="trailing" secondItem="iph-5f-9Od" secondAttribute="trailing" constant="16" id="fhg-xs-4Sb"/>
+                            <constraint firstItem="OjJ-ke-sar" firstAttribute="trailing" secondItem="qcV-ir-TjC" secondAttribute="trailing" constant="16" id="fi8-VS-0Dq"/>
+                            <constraint firstItem="qcV-ir-TjC" firstAttribute="leading" secondItem="OjJ-ke-sar" secondAttribute="leading" constant="16" id="iZW-sQ-2tF"/>
+                            <constraint firstItem="OjJ-ke-sar" firstAttribute="trailing" secondItem="fIp-j4-5Ga" secondAttribute="trailing" constant="16" id="lxi-O6-w33"/>
+                            <constraint firstItem="0D1-rI-aEr" firstAttribute="leading" secondItem="OjJ-ke-sar" secondAttribute="leading" constant="16" id="oXP-sZ-dvc"/>
+                            <constraint firstItem="X4W-Jz-MXr" firstAttribute="leading" secondItem="OjJ-ke-sar" secondAttribute="leading" constant="16" id="omM-DR-CXj"/>
+                            <constraint firstItem="3um-Hi-dWR" firstAttribute="centerX" secondItem="hEv-GB-dpa" secondAttribute="centerX" id="sRF-AW-QLN"/>
+                            <constraint firstItem="OjJ-ke-sar" firstAttribute="trailing" secondItem="0D1-rI-aEr" secondAttribute="trailing" constant="16" id="sff-UR-Qkg"/>
+                            <constraint firstItem="fIp-j4-5Ga" firstAttribute="top" secondItem="qcV-ir-TjC" secondAttribute="bottom" constant="20" id="v67-e4-ZD6"/>
+                            <constraint firstItem="hEv-GB-dpa" firstAttribute="centerY" secondItem="qcV-ir-TjC" secondAttribute="centerY" id="x8B-EO-raL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OjJ-ke-sar"/>
+                    </view>
+                    <connections>
+                        <outlet property="moduleTitleLabel" destination="yxF-er-R66" id="VLt-TY-6R6"/>
+                        <outlet property="nameTextField" destination="X4W-Jz-MXr" id="gJa-Xg-e8W"/>
+                        <outlet property="nameTitleLabel" destination="jJ6-5f-mNE" id="8h9-NA-GfK"/>
+                        <outlet property="sensorModuleButton" destination="qcV-ir-TjC" id="0Bv-R8-Qrg"/>
+                        <outlet property="sensorTitleLabel" destination="fIp-j4-5Ga" id="LG9-55-V1x"/>
+                        <outlet property="titleLabel" destination="0D1-rI-aEr" id="Uzu-lw-vlJ"/>
+                        <outlet property="typeButton" destination="iph-5f-9Od" id="MF2-UT-S69"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2Y-pT-aqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750" y="-523"/>
         </scene>
     </scenes>
     <resources>

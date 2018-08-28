@@ -121,7 +121,16 @@ class DevicesListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "\(Global.memberData.devicesInfo[section].count) 個裝置"
+        switch Global.memberData.devicesInfo[section].count {
+        case let x where x == 0:
+            return "hardware_footer_text_zero".localized
+        case let x where x == 1:
+            return "\(x) " + "hardware_footer_text_one".localized
+        case let x where x > 1:
+            return "\(x) " + "hardware_footer_text_plural".localized
+        default:
+            return ""
+        }
     }
     
     

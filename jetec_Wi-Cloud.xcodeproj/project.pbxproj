@@ -14,10 +14,7 @@
 		2212C6092123C138007AEE6D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212C6082123C138007AEE6D /* Extension.swift */; };
 		2212C60B2123C520007AEE6D /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212C60A2123C520007AEE6D /* Struct.swift */; };
 		2216507721228B5F00190E44 /* GaugeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507621228B5F00190E44 /* GaugeViewController.swift */; };
-		2216507921228B9F00190E44 /* TimeSeriesGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507821228B9F00190E44 /* TimeSeriesGraphViewController.swift */; };
 		2216507C212299CB00190E44 /* ValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507B212299CB00190E44 /* ValueViewController.swift */; };
-		2216507E212299D800190E44 /* DataLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507D212299D800190E44 /* DataLogViewController.swift */; };
-		22165080212299E200190E44 /* AlertLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216507F212299E200190E44 /* AlertLogViewController.swift */; };
 		2216508221229E0400190E44 /* PanelClassButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2216508121229E0400190E44 /* PanelClassButton.swift */; };
 		221650842122B89D00190E44 /* PanelClassTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221650832122B89D00190E44 /* PanelClassTextField.swift */; };
 		221965CE211C078B00329BA1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221965CD211C078B00329BA1 /* LoginViewController.swift */; };
@@ -36,6 +33,7 @@
 		22E7E702211D769C001DE27F /* SwipeMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E701211D769C001DE27F /* SwipeMenuTableViewController.swift */; };
 		22E7E704211D8025001DE27F /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7E703211D8025001DE27F /* BackgroundViewController.swift */; };
 		22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E7E705211D8BBD001DE27F /* Dashboard.storyboard */; };
+		7451B033F60808E508F551F7 /* Pods_jetec_Wi_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B63ADE9BDCB511787A9BE7E /* Pods_jetec_Wi_Cloud.framework */; };
 		8503A28F21338F850019888D /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503A28E21338F850019888D /* SettingTableViewController.swift */; };
 		8503A29121339C620019888D /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503A29021339C620019888D /* SelectLanguageViewController.swift */; };
 		85254EE521264CC7009CED23 /* ShowDataLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */; };
@@ -52,7 +50,6 @@
 		85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB259B212D044400E0546A /* CustomMarkerView.swift */; };
 		85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85DB64CC2133D76E00D71DE1 /* Assets.xcassets */; };
 		85E48E99212BE9F8002A9EA5 /* ShowDetailDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */; };
-		A4DB161499C9E46ABCDD5B28 /* Pods_jetec_Wi_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462AFCA20C54A5A324626323 /* Pods_jetec_Wi_Cloud.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,10 +62,7 @@
 		2212C6082123C138007AEE6D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2212C60A2123C520007AEE6D /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		2216507621228B5F00190E44 /* GaugeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeViewController.swift; sourceTree = "<group>"; };
-		2216507821228B9F00190E44 /* TimeSeriesGraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesGraphViewController.swift; sourceTree = "<group>"; };
 		2216507B212299CB00190E44 /* ValueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueViewController.swift; sourceTree = "<group>"; };
-		2216507D212299D800190E44 /* DataLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLogViewController.swift; sourceTree = "<group>"; };
-		2216507F212299E200190E44 /* AlertLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLogViewController.swift; sourceTree = "<group>"; };
 		2216508121229E0400190E44 /* PanelClassButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelClassButton.swift; sourceTree = "<group>"; };
 		221650832122B89D00190E44 /* PanelClassTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelClassTextField.swift; sourceTree = "<group>"; };
 		221965CD211C078B00329BA1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +81,9 @@
 		22E7E701211D769C001DE27F /* SwipeMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeMenuTableViewController.swift; sourceTree = "<group>"; };
 		22E7E703211D8025001DE27F /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		22E7E705211D8BBD001DE27F /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
-		462AFCA20C54A5A324626323 /* Pods_jetec_Wi_Cloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jetec_Wi_Cloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E632BA8E2738B4EA24531DD /* Pods-jetec_Wi-Cloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jetec_Wi-Cloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud.debug.xcconfig"; sourceTree = "<group>"; };
+		7454A7AE536B0691DC31E2FE /* Pods-jetec_Wi-Cloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jetec_Wi-Cloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud.release.xcconfig"; sourceTree = "<group>"; };
+		7B63ADE9BDCB511787A9BE7E /* Pods_jetec_Wi_Cloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jetec_Wi_Cloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8503A28E21338F850019888D /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		8503A29021339C620019888D /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataLogTableViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +94,6 @@
 		8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValueTableViewCell.xib; sourceTree = "<group>"; };
 		85C06B8021256D9A00450213 /* DashboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationController.swift; sourceTree = "<group>"; };
-		85C63435E167BA6ECA5D8527 /* Pods-jetec_Wi-Cloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jetec_Wi-Cloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud.debug.xcconfig"; sourceTree = "<group>"; };
 		85D06D9B212BBDB30014A067 /* EditValuePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValuePanelViewController.swift; sourceTree = "<group>"; };
 		85D06D9D212BBDC30014A067 /* EditGaugePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGaugePanelViewController.swift; sourceTree = "<group>"; };
 		85D2DBCB212E8AD000440E2B /* SwipeMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -106,7 +101,6 @@
 		85DB259B212D044400E0546A /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		85DB64CC2133D76E00D71DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailDataViewController.swift; sourceTree = "<group>"; };
-		A9FC5A418B97EF6CA09AD3E6 /* Pods-jetec_Wi-Cloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jetec_Wi-Cloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4DB161499C9E46ABCDD5B28 /* Pods_jetec_Wi_Cloud.framework in Frameworks */,
+				7451B033F60808E508F551F7 /* Pods_jetec_Wi_Cloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +120,8 @@
 			children = (
 				2204D02A211AB5AC00B70B1D /* jetec_Wi-Cloud */,
 				2204D029211AB5AC00B70B1D /* Products */,
-				F12610E5772BD0F1367A6869 /* Pods */,
-				4DB64E638ED8996D6F464471 /* Frameworks */,
+				47C14044EA1BE9E0A9AFBB75 /* Pods */,
+				B3BB0F0457D6C5F13E0AA0C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,9 +170,6 @@
 				22B5FC2221218512002C559A /* AddDashboardTableViewCell.xib */,
 				2216507B212299CB00190E44 /* ValueViewController.swift */,
 				2216507621228B5F00190E44 /* GaugeViewController.swift */,
-				2216507821228B9F00190E44 /* TimeSeriesGraphViewController.swift */,
-				2216507D212299D800190E44 /* DataLogViewController.swift */,
-				2216507F212299E200190E44 /* AlertLogViewController.swift */,
 				2216508121229E0400190E44 /* PanelClassButton.swift */,
 				221650832122B89D00190E44 /* PanelClassTextField.swift */,
 				22A220FC212406F100AE8EC1 /* DecimalMinusTextField.swift */,
@@ -215,12 +206,13 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
-		4DB64E638ED8996D6F464471 /* Frameworks */ = {
+		47C14044EA1BE9E0A9AFBB75 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				462AFCA20C54A5A324626323 /* Pods_jetec_Wi_Cloud.framework */,
+				5E632BA8E2738B4EA24531DD /* Pods-jetec_Wi-Cloud.debug.xcconfig */,
+				7454A7AE536B0691DC31E2FE /* Pods-jetec_Wi-Cloud.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		85D06D9A212BBCA80014A067 /* EditPanel */ = {
@@ -232,13 +224,12 @@
 			path = EditPanel;
 			sourceTree = "<group>";
 		};
-		F12610E5772BD0F1367A6869 /* Pods */ = {
+		B3BB0F0457D6C5F13E0AA0C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				85C63435E167BA6ECA5D8527 /* Pods-jetec_Wi-Cloud.debug.xcconfig */,
-				A9FC5A418B97EF6CA09AD3E6 /* Pods-jetec_Wi-Cloud.release.xcconfig */,
+				7B63ADE9BDCB511787A9BE7E /* Pods_jetec_Wi_Cloud.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,11 +239,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2204D03A211AB5AF00B70B1D /* Build configuration list for PBXNativeTarget "jetec_Wi-Cloud" */;
 			buildPhases = (
-				1AC9934AC485B62303EEBBCE /* [CP] Check Pods Manifest.lock */,
+				640EA5FEC52C6705151ADF52 /* [CP] Check Pods Manifest.lock */,
 				2204D024211AB5AC00B70B1D /* Sources */,
 				2204D025211AB5AC00B70B1D /* Frameworks */,
 				2204D026211AB5AC00B70B1D /* Resources */,
-				B44FB03AE7A090F971E8623F /* [CP] Embed Pods Frameworks */,
+				C29F47053A1988F1D354A0D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -317,7 +308,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1AC9934AC485B62303EEBBCE /* [CP] Check Pods Manifest.lock */ = {
+		640EA5FEC52C6705151ADF52 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -335,7 +326,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B44FB03AE7A090F971E8623F /* [CP] Embed Pods Frameworks */ = {
+		C29F47053A1988F1D354A0D5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -343,7 +334,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/LocaleManager/LocaleManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
@@ -352,7 +342,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LocaleManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
@@ -373,11 +362,9 @@
 				22898A2421212A3400A1CD61 /* DashboardTableViewController.swift in Sources */,
 				2216507C212299CB00190E44 /* ValueViewController.swift in Sources */,
 				85254EE521264CC7009CED23 /* ShowDataLogTableViewController.swift in Sources */,
-				2216507921228B9F00190E44 /* TimeSeriesGraphViewController.swift in Sources */,
 				22A220FD212406F100AE8EC1 /* DecimalMinusTextField.swift in Sources */,
 				22E7E704211D8025001DE27F /* BackgroundViewController.swift in Sources */,
 				22E7E702211D769C001DE27F /* SwipeMenuTableViewController.swift in Sources */,
-				2216507E212299D800190E44 /* DataLogViewController.swift in Sources */,
 				221965CE211C078B00329BA1 /* LoginViewController.swift in Sources */,
 				2216508221229E0400190E44 /* PanelClassButton.swift in Sources */,
 				221650842122B89D00190E44 /* PanelClassTextField.swift in Sources */,
@@ -396,7 +383,6 @@
 				2204D02C211AB5AC00B70B1D /* AppDelegate.swift in Sources */,
 				8503A29121339C620019888D /* SelectLanguageViewController.swift in Sources */,
 				226EC20B211C3D55003A90D6 /* DeviceSocketTableViewController.swift in Sources */,
-				22165080212299E200190E44 /* AlertLogViewController.swift in Sources */,
 				226EC207211C3176003A90D6 /* DevicesListTableViewController.swift in Sources */,
 				2216507721228B5F00190E44 /* GaugeViewController.swift in Sources */,
 				85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */,
@@ -558,7 +544,7 @@
 		};
 		2204D03B211AB5AF00B70B1D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 85C63435E167BA6ECA5D8527 /* Pods-jetec_Wi-Cloud.debug.xcconfig */;
+			baseConfigurationReference = 5E632BA8E2738B4EA24531DD /* Pods-jetec_Wi-Cloud.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -578,7 +564,7 @@
 		};
 		2204D03C211AB5AF00B70B1D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9FC5A418B97EF6CA09AD3E6 /* Pods-jetec_Wi-Cloud.release.xcconfig */;
+			baseConfigurationReference = 7454A7AE536B0691DC31E2FE /* Pods-jetec_Wi-Cloud.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

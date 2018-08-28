@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import Charts
-
+import iOSDropDown
 
 
 
@@ -37,6 +37,18 @@ extension UITableViewCell {
 extension UIView {
     
 }
+
+extension DropDown {
+    func dropDown(list: [String], completion: ((_ text: String, _ index: Int, _ id: Int)  -> Void)? = nil) {
+        self.optionArray = list
+        self.didSelect { (selectedText, ind, optionId) in
+            if completion != nil {
+                completion!(selectedText, ind, optionId)
+            }
+        }
+    }
+}
+
 
 extension MarkerView {
      enum ArrowPosition {

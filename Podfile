@@ -6,7 +6,6 @@ target 'jetec_Wi-Cloud' do
   use_frameworks!
   pod 'Starscream', '~> 3.0.5'
   pod 'SwipeCellKit', '~> 2.4.3'
-  pod 'DropDown', '~> 2.3.2'
   pod 'Charts', '~> 3.1.1'
   pod 'LocaleManager', '~> 1.3.0'
   pod 'iOSDropDown'
