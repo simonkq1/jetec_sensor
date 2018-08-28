@@ -1,6 +1,0 @@
-framework module Pods_2018_08_08_test_api {
-  umbrella header "Pods-2018.08.08_test_api-umbrella.h"
-
-  export *
-  module * { export * }
-}

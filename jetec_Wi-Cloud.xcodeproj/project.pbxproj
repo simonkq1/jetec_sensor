@@ -51,11 +51,12 @@
 		85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB259B212D044400E0546A /* CustomMarkerView.swift */; };
 		85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85DB64CC2133D76E00D71DE1 /* Assets.xcassets */; };
 		85E48E99212BE9F8002A9EA5 /* ShowDetailDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */; };
-		95535ABC7B3FF8B0FF89FF03 /* Pods_2018_08_08_test_api.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */; };
+		85F2EA262134CD0600807149 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85F2EA252134CD0600807149 /* Localizable.strings */; };
+		A4DB161499C9E46ABCDD5B28 /* Pods_jetec_Wi_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462AFCA20C54A5A324626323 /* Pods_jetec_Wi_Cloud.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2204D028211AB5AC00B70B1D /* 2018.08.08_test_api.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2018.08.08_test_api.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2204D028211AB5AC00B70B1D /* jetec_Wi-Cloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "jetec_Wi-Cloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2204D02B211AB5AC00B70B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2204D030211AB5AC00B70B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2204D035211AB5AF00B70B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,7 +87,7 @@
 		22E7E701211D769C001DE27F /* SwipeMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeMenuTableViewController.swift; sourceTree = "<group>"; };
 		22E7E703211D8025001DE27F /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		22E7E705211D8BBD001DE27F /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
-		61C7A3D0B737C572F9B6085B /* Pods-2018.08.08_test_api.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.release.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.release.xcconfig"; sourceTree = "<group>"; };
+		462AFCA20C54A5A324626323 /* Pods_jetec_Wi_Cloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jetec_Wi_Cloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8503A28E21338F850019888D /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		8503A29021339C620019888D /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataLogTableViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8563D07D2126B4DC00A3DA8B /* ValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ValueTableViewCell.xib; sourceTree = "<group>"; };
 		85C06B8021256D9A00450213 /* DashboardNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNavigationController.swift; sourceTree = "<group>"; };
+		85C63435E167BA6ECA5D8527 /* Pods-jetec_Wi-Cloud.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jetec_Wi-Cloud.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud.debug.xcconfig"; sourceTree = "<group>"; };
 		85D06D9B212BBDB30014A067 /* EditValuePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditValuePanelViewController.swift; sourceTree = "<group>"; };
 		85D06D9D212BBDC30014A067 /* EditGaugePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGaugePanelViewController.swift; sourceTree = "<group>"; };
 		85D2DBCB212E8AD000440E2B /* SwipeMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -102,8 +104,8 @@
 		85DB259B212D044400E0546A /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		85DB64CC2133D76E00D71DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailDataViewController.swift; sourceTree = "<group>"; };
-		A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2018_08_08_test_api.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE8F3828EDC95C4E3FC664D2 /* Pods-2018.08.08_test_api.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2018.08.08_test_api.debug.xcconfig"; path = "Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api.debug.xcconfig"; sourceTree = "<group>"; };
+		85F2EA252134CD0600807149 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A9FC5A418B97EF6CA09AD3E6 /* Pods-jetec_Wi-Cloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jetec_Wi-Cloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,40 +113,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95535ABC7B3FF8B0FF89FF03 /* Pods_2018_08_08_test_api.framework in Frameworks */,
+				A4DB161499C9E46ABCDD5B28 /* Pods_jetec_Wi_Cloud.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		187AB57E3B33C83FBB7FBF94 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A6F86B3E4A9C771CD3B8DAEE /* Pods_2018_08_08_test_api.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		2204D01F211AB5AC00B70B1D = {
 			isa = PBXGroup;
 			children = (
-				2204D02A211AB5AC00B70B1D /* 2018.08.08_test_api */,
+				2204D02A211AB5AC00B70B1D /* jetec_Wi-Cloud */,
 				2204D029211AB5AC00B70B1D /* Products */,
-				AD3B9D53D416B7F7D443285E /* Pods */,
-				187AB57E3B33C83FBB7FBF94 /* Frameworks */,
+				F12610E5772BD0F1367A6869 /* Pods */,
+				4DB64E638ED8996D6F464471 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		2204D029211AB5AC00B70B1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2204D028211AB5AC00B70B1D /* 2018.08.08_test_api.app */,
+				2204D028211AB5AC00B70B1D /* jetec_Wi-Cloud.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2204D02A211AB5AC00B70B1D /* 2018.08.08_test_api */ = {
+		2204D02A211AB5AC00B70B1D /* jetec_Wi-Cloud */ = {
 			isa = PBXGroup;
 			children = (
 				2204D02B211AB5AC00B70B1D /* AppDelegate.swift */,
@@ -168,8 +162,9 @@
 				2204D03D211AB5DE00B70B1D /* Global.swift */,
 				2212C6082123C138007AEE6D /* Extension.swift */,
 				2212C60A2123C520007AEE6D /* Struct.swift */,
+				85F2EA252134CD0600807149 /* Localizable.strings */,
 			);
-			path = 2018.08.08_test_api;
+			path = "jetec_Wi-Cloud";
 			sourceTree = "<group>";
 		};
 		2216507521228B2300190E44 /* AddPanel */ = {
@@ -219,6 +214,14 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		4DB64E638ED8996D6F464471 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				462AFCA20C54A5A324626323 /* Pods_jetec_Wi_Cloud.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		85D06D9A212BBCA80014A067 /* EditPanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,11 +231,11 @@
 			path = EditPanel;
 			sourceTree = "<group>";
 		};
-		AD3B9D53D416B7F7D443285E /* Pods */ = {
+		F12610E5772BD0F1367A6869 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BE8F3828EDC95C4E3FC664D2 /* Pods-2018.08.08_test_api.debug.xcconfig */,
-				61C7A3D0B737C572F9B6085B /* Pods-2018.08.08_test_api.release.xcconfig */,
+				85C63435E167BA6ECA5D8527 /* Pods-jetec_Wi-Cloud.debug.xcconfig */,
+				A9FC5A418B97EF6CA09AD3E6 /* Pods-jetec_Wi-Cloud.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -240,23 +243,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2204D027211AB5AC00B70B1D /* 2018.08.08_test_api */ = {
+		2204D027211AB5AC00B70B1D /* jetec_Wi-Cloud */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2204D03A211AB5AF00B70B1D /* Build configuration list for PBXNativeTarget "2018.08.08_test_api" */;
+			buildConfigurationList = 2204D03A211AB5AF00B70B1D /* Build configuration list for PBXNativeTarget "jetec_Wi-Cloud" */;
 			buildPhases = (
-				540CFBADC65F91C7D328A7FE /* [CP] Check Pods Manifest.lock */,
+				1AC9934AC485B62303EEBBCE /* [CP] Check Pods Manifest.lock */,
 				2204D024211AB5AC00B70B1D /* Sources */,
 				2204D025211AB5AC00B70B1D /* Frameworks */,
 				2204D026211AB5AC00B70B1D /* Resources */,
-				C2E389CDD109F2AC94B47EF8 /* [CP] Embed Pods Frameworks */,
+				B44FB03AE7A090F971E8623F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = 2018.08.08_test_api;
-			productName = 2018.08.08_test_api;
-			productReference = 2204D028211AB5AC00B70B1D /* 2018.08.08_test_api.app */;
+			name = "jetec_Wi-Cloud";
+			productName = "jetec_Wi-Cloud";
+			productReference = 2204D028211AB5AC00B70B1D /* jetec_Wi-Cloud.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -274,7 +277,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2204D023211AB5AC00B70B1D /* Build configuration list for PBXProject "2018.08.08_test_api" */;
+			buildConfigurationList = 2204D023211AB5AC00B70B1D /* Build configuration list for PBXProject "jetec_Wi-Cloud" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -287,7 +290,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2204D027211AB5AC00B70B1D /* 2018.08.08_test_api */,
+				2204D027211AB5AC00B70B1D /* jetec_Wi-Cloud */,
 			);
 		};
 /* End PBXProject section */
@@ -301,6 +304,7 @@
 				853E00F2212A625B0094A976 /* GaugeTableViewCell.xib in Resources */,
 				85D2DBCE212E8AD000440E2B /* SwipeMenuTableViewCell.xib in Resources */,
 				2204D031211AB5AC00B70B1D /* Main.storyboard in Resources */,
+				85F2EA262134CD0600807149 /* Localizable.strings in Resources */,
 				8563D07F2126B4DC00A3DA8B /* ValueTableViewCell.xib in Resources */,
 				22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */,
 				85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */,
@@ -311,7 +315,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		540CFBADC65F91C7D328A7FE /* [CP] Check Pods Manifest.lock */ = {
+		1AC9934AC485B62303EEBBCE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,20 +326,20 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-2018.08.08_test_api-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-jetec_Wi-Cloud-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C2E389CDD109F2AC94B47EF8 /* [CP] Embed Pods Frameworks */ = {
+		B44FB03AE7A090F971E8623F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/LocaleManager/LocaleManager.framework",
@@ -352,7 +356,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-2018.08.08_test_api/Pods-2018.08.08_test_api-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -539,18 +543,18 @@
 		};
 		2204D03B211AB5AF00B70B1D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE8F3828EDC95C4E3FC664D2 /* Pods-2018.08.08_test_api.debug.xcconfig */;
+			baseConfigurationReference = 85C63435E167BA6ECA5D8527 /* Pods-jetec_Wi-Cloud.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76T5KWEPVV;
-				INFOPLIST_FILE = 2018.08.08_test_api/Info.plist;
+				INFOPLIST_FILE = "jetec_Wi-Cloud/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "macos.-018-08-08-test-api";
+				PRODUCT_BUNDLE_IDENTIFIER = "macos.jetec-Wi-Cloud";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,18 +563,18 @@
 		};
 		2204D03C211AB5AF00B70B1D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61C7A3D0B737C572F9B6085B /* Pods-2018.08.08_test_api.release.xcconfig */;
+			baseConfigurationReference = A9FC5A418B97EF6CA09AD3E6 /* Pods-jetec_Wi-Cloud.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76T5KWEPVV;
-				INFOPLIST_FILE = 2018.08.08_test_api/Info.plist;
+				INFOPLIST_FILE = "jetec_Wi-Cloud/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "macos.-018-08-08-test-api";
+				PRODUCT_BUNDLE_IDENTIFIER = "macos.jetec-Wi-Cloud";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -580,7 +584,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2204D023211AB5AC00B70B1D /* Build configuration list for PBXProject "2018.08.08_test_api" */ = {
+		2204D023211AB5AC00B70B1D /* Build configuration list for PBXProject "jetec_Wi-Cloud" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2204D038211AB5AF00B70B1D /* Debug */,
@@ -589,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2204D03A211AB5AF00B70B1D /* Build configuration list for PBXNativeTarget "2018.08.08_test_api" */ = {
+		2204D03A211AB5AF00B70B1D /* Build configuration list for PBXNativeTarget "jetec_Wi-Cloud" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2204D03B211AB5AF00B70B1D /* Debug */,
