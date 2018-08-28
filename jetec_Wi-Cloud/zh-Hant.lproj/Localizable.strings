@@ -1,0 +1,74 @@
+/*
+ Localizable.strings
+ jetec_Wi-Cloud
+ 
+ Created by Jetec-RD on 2018/8/28.
+ Copyright © 2018年 macos. All rights reserved.
+ */
+
+
+// MARK: Menu
+"menu_dashboard" = "儀表板";
+"menu_hardware" = "硬體";
+"menu_notifications" = "通知";
+"menu_setting" = "設定";
+
+
+// MARK: Panel
+"panel_title_value" = "數值";
+"panel_title_gauge" = "儀表";
+"panel_context_value" = "顯示當前傳感器值及其動向";
+"panel_context_gauge" = "在儀表上的最大值和最小值之間顯示單個傳感器的值";
+"panel_module_button_title" = "選擇一個裝置                     ";
+"panel_sensor_button_title" = "選擇一個傳感器                               ";
+//Panel configure
+"panel_configure_title" = "配置面板";
+"panel_configure_module" = "裝置模組";
+"panel_configure_sensor" = "資料類型";
+"panel_configure_name" = "顯示名稱";
+"panel_configure_range" = "顯示範圍";
+"panel_configure_min" = "最小值";
+"panel_configure_max" = "最大值";
+//Panel configure placeholder
+"panel_configure_placeholder_module" = "選擇一個模組";
+"panel_configure_placeholder_sensor" = "選擇一個傳感器";
+"panel_configure_placeholder_name" = "名稱";
+
+
+// MARK: Dashboard
+"dashboard_detail_humidity" = "濕度";
+"dashboard_detail_wind_direction" = "風向";
+"dashboard_detail_wind_speed" = "風速";
+"dashboard_detail_temperature" = "溫度";
+"dashboard_detail_precipitation" = "降雨";
+
+
+// MARK: Navigation title
+"navigation_title_dashboard" = "儀表板";
+"navigation_title_hardware" = "硬體";
+"navigation_title_panel" = "選擇一種樣式";
+"navigation_title_setting" = "設定";
+"navigation_title_device_socket" = "即時數值";
+
+
+// MARK: Setting List
+"setting_language" = "語言";
+"setting_logout" = "登出";
+
+
+// MARK: Language
+"language_english" = "英文";
+"language_chinese_traditional" = "繁體中文";
+"language_chinese_simplified" = "簡體中文";
+
+
+
+//MARK: Bar button title
+"bar_back_button_panel" = "選擇樣式";
+
+"bar_button_cancel" = "取消";
+"bar_button_done" = "確定";
+"bar_button_add" = "增加";
+"bar_button_next" = "下一步";
+
+

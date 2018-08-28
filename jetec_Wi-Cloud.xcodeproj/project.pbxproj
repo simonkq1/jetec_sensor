@@ -39,6 +39,7 @@
 		8503A28F21338F850019888D /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503A28E21338F850019888D /* SettingTableViewController.swift */; };
 		8503A29121339C620019888D /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503A29021339C620019888D /* SelectLanguageViewController.swift */; };
 		85254EE521264CC7009CED23 /* ShowDataLogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */; };
+		852C069A2134F66A008670FA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 852C069C2134F66A008670FA /* Localizable.strings */; };
 		853E00F1212A625B0094A976 /* GaugeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */; };
 		853E00F2212A625B0094A976 /* GaugeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */; };
 		8563D07E2126B4DC00A3DA8B /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */; };
@@ -51,7 +52,6 @@
 		85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB259B212D044400E0546A /* CustomMarkerView.swift */; };
 		85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85DB64CC2133D76E00D71DE1 /* Assets.xcassets */; };
 		85E48E99212BE9F8002A9EA5 /* ShowDetailDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */; };
-		85F2EA262134CD0600807149 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 85F2EA252134CD0600807149 /* Localizable.strings */; };
 		A4DB161499C9E46ABCDD5B28 /* Pods_jetec_Wi_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462AFCA20C54A5A324626323 /* Pods_jetec_Wi_Cloud.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +91,8 @@
 		8503A28E21338F850019888D /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		8503A29021339C620019888D /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataLogTableViewController.swift; sourceTree = "<group>"; };
+		852C069B2134F66A008670FA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		852C069D2134F685008670FA /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		853E00EF212A625B0094A976 /* GaugeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeTableViewCell.swift; sourceTree = "<group>"; };
 		853E00F0212A625B0094A976 /* GaugeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GaugeTableViewCell.xib; sourceTree = "<group>"; };
 		8563D07C2126B4DC00A3DA8B /* ValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -104,7 +106,6 @@
 		85DB259B212D044400E0546A /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		85DB64CC2133D76E00D71DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailDataViewController.swift; sourceTree = "<group>"; };
-		85F2EA252134CD0600807149 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A9FC5A418B97EF6CA09AD3E6 /* Pods-jetec_Wi-Cloud.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jetec_Wi-Cloud.release.xcconfig"; path = "Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,7 +163,7 @@
 				2204D03D211AB5DE00B70B1D /* Global.swift */,
 				2212C6082123C138007AEE6D /* Extension.swift */,
 				2212C60A2123C520007AEE6D /* Struct.swift */,
-				85F2EA252134CD0600807149 /* Localizable.strings */,
+				852C069C2134F66A008670FA /* Localizable.strings */,
 			);
 			path = "jetec_Wi-Cloud";
 			sourceTree = "<group>";
@@ -284,6 +285,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 2204D01F211AB5AC00B70B1D;
 			productRefGroup = 2204D029211AB5AC00B70B1D /* Products */;
@@ -304,7 +306,7 @@
 				853E00F2212A625B0094A976 /* GaugeTableViewCell.xib in Resources */,
 				85D2DBCE212E8AD000440E2B /* SwipeMenuTableViewCell.xib in Resources */,
 				2204D031211AB5AC00B70B1D /* Main.storyboard in Resources */,
-				85F2EA262134CD0600807149 /* Localizable.strings in Resources */,
+				852C069A2134F66A008670FA /* Localizable.strings in Resources */,
 				8563D07F2126B4DC00A3DA8B /* ValueTableViewCell.xib in Resources */,
 				22E7E706211D8BBD001DE27F /* Dashboard.storyboard in Resources */,
 				85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */,
@@ -345,6 +347,7 @@
 				"${BUILT_PRODUCTS_DIR}/LocaleManager/LocaleManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -353,6 +356,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LocaleManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -424,6 +428,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		852C069C2134F66A008670FA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				852C069B2134F66A008670FA /* en */,
+				852C069D2134F685008670FA /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -431,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -491,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

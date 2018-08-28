@@ -19,6 +19,13 @@ class EditGaugePanelViewController: UIViewController {
     @IBOutlet weak var minTextField: DecimalMinusTextField!
     @IBOutlet weak var maxTextField: DecimalMinusTextField!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var moduleTitleLabel: UILabel!
+    @IBOutlet weak var sensorTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
+    @IBOutlet weak var dataRangeTitleLabel: UILabel!
+    @IBOutlet weak var minTitleLabel: UILabel!
+    @IBOutlet weak var maxTitleLabel: UILabel!
     
     lazy var sensorList: [String] = {
         var list: [String] = []

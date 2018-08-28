@@ -19,7 +19,7 @@ class DevicesListTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.title = "Hardware"
+        self.title = "navigation_title_hardware".localized
         print(Global.memberData.devicesData.count)
         print(Global.memberData.devicesInfo.count)
         tableView.tableFooterView = UIView()
@@ -120,9 +120,18 @@ class DevicesListTableViewController: UITableViewController {
         return title
     }
     
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "\(Global.memberData.devicesInfo[section].count) 個裝置"
+    }
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let deviceValue = Global.memberData.devicesInfo[indexPath.section][indexPath.row]["value"] as! [String:Any]
+        let deviceName = deviceValue["name"] as! String
         let vc = storyboard?.instantiateViewController(withIdentifier: "showinfo_vc") as! DeviceSocketTableViewController
         vc.deviceData = Global.memberData.devicesInfo[indexPath.section][indexPath.row]
+        vc.title = deviceName
         let isConnected = Global.memberData.devicesData[indexPath.section]["isConnected"] as! Int
 //        if isConnected == 1 {
             DispatchQueue.main.async {
@@ -132,7 +141,7 @@ class DevicesListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return (section == 0) ? 40 : 60
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

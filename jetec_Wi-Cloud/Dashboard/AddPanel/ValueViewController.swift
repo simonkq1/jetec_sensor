@@ -15,6 +15,10 @@ class ValueViewController: UIViewController {
     @IBOutlet weak var nameTextField: PanelClassTextField!
     @IBOutlet weak var sensorModuleButton: PanelClassButton!
     @IBOutlet weak var typeButton: PanelClassButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var moduleTitleLabel: UILabel!
+    @IBOutlet weak var sensorTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
     
     
     // MARK: Variables
@@ -56,7 +60,7 @@ class ValueViewController: UIViewController {
         selectModuleIndex = nil
         dataIsReady = false
         typeList["show"] = ["Select a sensor"]
-        typeButton.titleLabel?.text = "Select a sensor"
+        typeButton.titleLabel?.text = "panel_configure_placeholder_sensor".localized
         dropDownAction(list: sensorList, anchorView: sensorModuleButton) { (sender, item, index) in
             self.sensorModuleButton.titleLabel?.text = self.sensorList[index]
             self.selectModuleIndex = index
@@ -99,7 +103,14 @@ class ValueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Localize
+        titleLabel.text = "panel_configure_title".localized
+        moduleTitleLabel.text = "panel_configure_module".localized
+        sensorTitleLabel.text = "panel_configure_sensor".localized
+        nameTitleLabel.text = "panel_configure_name".localized
+        nameTextField.placeholder = "panel_configure_placeholder_name".localized
         // Do any additional setup after loading the view.
+        
         sensorModuleButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         typeButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -110,13 +121,15 @@ class ValueViewController: UIViewController {
         addPanelButton.target = self
         addPanelButton.style = .plain
         addPanelButton.action = #selector(addPanelBarButtonAction)
-        addPanelButton.title = "Add"
+        addPanelButton.title = "bar_button_add".localized
         self.navigationItem.rightBarButtonItem = addPanelButton
         dataIsReady = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
+        sensorModuleButton.titleLabel?.text = "panel_configure_placeholder_module".localized
+        typeButton.titleLabel?.text = "panel_configure_placeholder_sensor".localized
         originY = self.view.frame.origin.y
     }
     

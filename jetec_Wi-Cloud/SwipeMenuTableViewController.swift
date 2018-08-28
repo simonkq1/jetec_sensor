@@ -10,7 +10,7 @@ import UIKit
 
 class SwipeMenuTableViewController: UITableViewController {
     
-    let list = ["Dashboard", "Hardware", "Notifications", "Setting"]
+    let list = ["menu_dashboard", "menu_hardware", "menu_notifications", "menu_setting"]
     
     
     
@@ -51,20 +51,20 @@ class SwipeMenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeMenuTableViewCell
-        cell.nameLabel?.text = list[indexPath.row]
+        cell.nameLabel?.text = list[indexPath.row].localized
         cell.menuImageView.image = nil
         
-        switch self.list[indexPath.row] {
-        case "Dashboard":
+        switch indexPath.row {
+        case 0:
             cell.menuImageView.image = UIImage(named: "nav-icon-dashboard")
             break
-        case "Hardware":
+        case 1:
             cell.menuImageView.image = UIImage(named: "nav-icon-hardware")
             break
-        case "Notifications":
+        case 2:
             cell.menuImageView.image = UIImage(named: "nav-icon-notifications")
             break
-        case "Setting":
+        case 3:
             cell.menuImageView.image = UIImage(named: "nav-icon-settings")
             break
         default:
@@ -89,16 +89,16 @@ class SwipeMenuTableViewController: UITableViewController {
         let dash_board = UIStoryboard(name: "Dashboard", bundle: nil)
         DispatchQueue.main.async {
             
-            switch self.list[indexPath.row] {
-            case "Dashboard":
+            switch indexPath.row {
+            case 0:
                 self.main_vc.changePage(to: self.main_vc.dashboard_nc)
                 break
-            case "Hardware":
+            case 1:
                 self.main_vc.changePage(to: self.main_vc.hardware_nc)
                 break
-            case "Notifications":
+            case 2:
                 break
-            case "Setting":
+            case 3:
                 self.main_vc.changePage(to: self.main_vc.setting_vc)
                 break
             default:

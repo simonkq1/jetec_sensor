@@ -9,6 +9,7 @@ target 'jetec_Wi-Cloud' do
   pod 'DropDown', '~> 2.3.2'
   pod 'Charts', '~> 3.1.1'
   pod 'LocaleManager', '~> 1.3.0'
+  pod 'iOSDropDown'
   # Pods for jetec_Wi-Cloud
 
 end

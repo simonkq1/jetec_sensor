@@ -13,7 +13,7 @@
         <!--Dashboard Table View Controller-->
         <scene sceneID="EOc-ST-u3B">
             <objects>
-                <tableViewController storyboardIdentifier="dashboard_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vuq-8N-Mlg" customClass="DashboardTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="dashboard_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vuq-8N-Mlg" customClass="DashboardTableViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xNK-BL-2CF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +58,7 @@
         <!--Show Detail Data View Controller-->
         <scene sceneID="O3m-Ob-HvL">
             <objects>
-                <viewController storyboardIdentifier="showdetail_vc" id="4XD-UH-UjM" customClass="ShowDetailDataViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showdetail_vc" id="4XD-UH-UjM" customClass="ShowDetailDataViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MdT-qH-Qp0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +128,7 @@
         <!--Add Dashboard Table View Controller-->
         <scene sceneID="t8h-sG-hms">
             <objects>
-                <tableViewController storyboardIdentifier="adddashboard_vc" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0uK-VM-55H" customClass="AddDashboardTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="adddashboard_vc" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0uK-VM-55H" customClass="AddDashboardTableViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="0rJ-TO-qJF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
         <!--Value View Controller-->
         <scene sceneID="nIf-pH-ESE">
             <objects>
-                <viewController storyboardIdentifier="value_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vbc-iw-gX6" customClass="ValueViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="value_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vbc-iw-gX6" customClass="ValueViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OSQ-uB-UyA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-zy-KcS" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-zy-KcS" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="YcZ-0f-g8T"/>
@@ -188,7 +188,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-t5-rPt" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-t5-rPt" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="342" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="oan-Ux-DGE"/>
@@ -207,7 +207,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNl-Oq-S0A" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNl-Oq-S0A" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="451" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="gX3-8x-a8o"/>
@@ -262,8 +262,12 @@
                         <viewLayoutGuide key="safeArea" id="mv0-Qb-u7n"/>
                     </view>
                     <connections>
+                        <outlet property="moduleTitleLabel" destination="gMd-QQ-jxv" id="8nI-aE-3tY"/>
                         <outlet property="nameTextField" destination="GNl-Oq-S0A" id="22x-pt-kbK"/>
+                        <outlet property="nameTitleLabel" destination="2r8-Vq-nMt" id="1Oi-Ir-uPt"/>
                         <outlet property="sensorModuleButton" destination="6tU-zy-KcS" id="OZg-k5-lBw"/>
+                        <outlet property="sensorTitleLabel" destination="hoJ-G1-ac0" id="8T8-HE-TPN"/>
+                        <outlet property="titleLabel" destination="z0N-oY-S85" id="Xkw-e4-JiU"/>
                         <outlet property="typeButton" destination="fLs-t5-rPt" id="Xnt-zR-VOW"/>
                     </connections>
                 </viewController>
@@ -274,12 +278,12 @@
         <!--Gauge View Controller-->
         <scene sceneID="aLO-ET-ihc">
             <objects>
-                <viewController storyboardIdentifier="gauge_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ev1-fr-4yq" customClass="GaugeViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="gauge_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ev1-fr-4yq" customClass="GaugeViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Sc-ij-VcA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNH-aB-79U" customClass="MyScrollView" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNH-aB-79U" customClass="MyScrollView" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-fG-O7Z">
@@ -294,7 +298,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keD-gZ-vbT" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keD-gZ-vbT" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="213" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="J1i-1V-2f0"/>
@@ -313,7 +317,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-eb-Rwr" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-eb-Rwr" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="322" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="mIf-8X-u6m"/>
@@ -357,7 +361,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJx-yA-ksD" customClass="DecimalMinusTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJx-yA-ksD" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="457" width="343" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="fjl-Yc-w7h"/>
@@ -375,7 +379,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-nK-Dxd" customClass="DecimalMinusTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-nK-Dxd" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="535" width="343" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="J7Y-y0-QdB"/>
@@ -400,7 +404,7 @@
                                                     <constraint firstAttribute="width" constant="15" id="DWF-SA-IBQ"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nfE-uD-q9e" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nfE-uD-q9e" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="633" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="2f5-to-OEI"/>
@@ -476,11 +480,18 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="wef-fG-O7Z" id="97c-HV-PDn"/>
+                        <outlet property="dataRangeTitleLabel" destination="lHR-9i-vDL" id="EYr-Gn-Q6l"/>
                         <outlet property="maxTextField" destination="UfM-nK-Dxd" id="MQr-i6-Buo"/>
+                        <outlet property="maxTitleLabel" destination="IgA-mD-Mg5" id="Xa7-Cb-aJw"/>
                         <outlet property="minTextField" destination="NJx-yA-ksD" id="Dtd-ca-st5"/>
+                        <outlet property="minTitleLabel" destination="KN2-Ya-dcN" id="mP7-oD-AdT"/>
+                        <outlet property="moduleTitleLabel" destination="ylY-lt-LDt" id="czK-2Z-m56"/>
                         <outlet property="nameTextField" destination="nfE-uD-q9e" id="Af3-K5-cnm"/>
+                        <outlet property="nameTitleLabel" destination="j5C-cH-rIV" id="asS-dd-44v"/>
                         <outlet property="scrollView" destination="eNH-aB-79U" id="bWq-rX-cXX"/>
                         <outlet property="sensorModuleButton" destination="keD-gZ-vbT" id="XGY-L6-5lM"/>
+                        <outlet property="sensorTitleLabel" destination="Om6-db-W9z" id="raU-RP-AbD"/>
+                        <outlet property="titleLabel" destination="M5g-i7-fxR" id="r53-65-OVl"/>
                         <outlet property="typeButton" destination="TgS-eb-Rwr" id="lL7-qV-2cj"/>
                     </connections>
                 </viewController>
@@ -491,7 +502,7 @@
         <!--Dashboard Navigation Controller-->
         <scene sceneID="rvI-zV-eW4">
             <objects>
-                <navigationController storyboardIdentifier="dashboard_nc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M69-3L-bux" customClass="DashboardNavigationController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="dashboard_nc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M69-3L-bux" customClass="DashboardNavigationController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Stb-iQ-NbE">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -507,7 +518,7 @@
         <!--Data Log View Controller-->
         <scene sceneID="7ea-1A-24v">
             <objects>
-                <viewController storyboardIdentifier="datalog_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pt-eI-mPV" customClass="DataLogViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="datalog_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Pt-eI-mPV" customClass="DataLogViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mqf-9c-vhb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -530,7 +541,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awl-H1-gXT" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awl-H1-gXT" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Ch5-Qr-1ka"/>
@@ -549,7 +560,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik1-wu-UOO" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ik1-wu-UOO" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="332" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="8p1-TM-ezp"/>
@@ -568,7 +579,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2it-4L-NpH" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2it-4L-NpH" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="530" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="uQ8-KC-9d6"/>
@@ -600,7 +611,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIY-Xn-IVt" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIY-Xn-IVt" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="431" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="nDX-3e-L8k"/>
@@ -670,7 +681,7 @@
         <!--Alert Log View Controller-->
         <scene sceneID="k4L-cB-F7K">
             <objects>
-                <viewController storyboardIdentifier="alertlog_panel_vc" id="Qrz-Rt-U50" customClass="AlertLogViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="alertlog_panel_vc" id="Qrz-Rt-U50" customClass="AlertLogViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TzN-Dv-SOO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -693,7 +704,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WK-hL-yze" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WK-hL-yze" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="cCk-79-huj"/>
@@ -712,7 +723,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjM-JN-bCM" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjM-JN-bCM" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="332" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="qTy-O7-yLg"/>
@@ -731,7 +742,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pj-Rr-Rel" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pj-Rr-Rel" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="530" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="kuf-ao-Dft"/>
@@ -763,7 +774,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoI-A6-m2F" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoI-A6-m2F" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="431" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="B3l-aF-rX3"/>
@@ -833,7 +844,7 @@
         <!--Show Data Log Table View Controller-->
         <scene sceneID="mnm-zX-28c">
             <objects>
-                <tableViewController storyboardIdentifier="showDataLog_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fs2-Vy-SSf" customClass="ShowDataLogTableViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="showDataLog_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fs2-Vy-SSf" customClass="ShowDataLogTableViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aiY-yg-qcg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -877,7 +888,7 @@
         <!--Time Series Graph View Controller-->
         <scene sceneID="2mJ-9J-pln">
             <objects>
-                <viewController storyboardIdentifier="timeseriesgraph_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="evt-Vl-XzX" customClass="TimeSeriesGraphViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="timeseriesgraph_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="evt-Vl-XzX" customClass="TimeSeriesGraphViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ASA-47-VAd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -900,7 +911,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKR-2O-Cmj" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKR-2O-Cmj" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="92b-a0-ocI"/>
@@ -919,7 +930,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rW7-Kn-l18" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rW7-Kn-l18" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="332" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="CAo-H4-D6P"/>
@@ -952,7 +963,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uan-1p-cDa" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uan-1p-cDa" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="431" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="jba-df-7hv"/>
@@ -978,7 +989,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cjs-Bt-28n" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cjs-Bt-28n" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="530" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="V03-he-Ehy"/>
@@ -1040,7 +1051,7 @@
         <!--Edit Value Panel View Controller-->
         <scene sceneID="s1a-y9-8Kf">
             <objects>
-                <viewController storyboardIdentifier="edit_value_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ns6-gy-x3q" customClass="EditValuePanelViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="edit_value_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ns6-gy-x3q" customClass="EditValuePanelViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h0x-eq-JJj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1063,7 +1074,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-Ez-R6E" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-Ez-R6E" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="233" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="W43-N5-G91"/>
@@ -1082,7 +1093,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHh-th-PHE" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHh-th-PHE" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="342" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Hkm-bW-2pa"/>
@@ -1101,7 +1112,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lwq-Et-aLm" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lwq-Et-aLm" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="16" y="451" width="343" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="2ns-hq-561"/>
@@ -1156,8 +1167,12 @@
                         <viewLayoutGuide key="safeArea" id="p1O-dT-HDi"/>
                     </view>
                     <connections>
+                        <outlet property="moduleTitleLabel" destination="HPb-Px-sT8" id="2An-a1-RAj"/>
                         <outlet property="nameTextField" destination="Lwq-Et-aLm" id="8dp-SG-iGb"/>
+                        <outlet property="nameTitleLabel" destination="75x-Y1-SdB" id="4lM-2l-kXs"/>
                         <outlet property="sensorModuleButton" destination="aEg-Ez-R6E" id="wz6-Pd-h3g"/>
+                        <outlet property="sensorTitleLabel" destination="ryt-ad-Rz5" id="T0b-Kl-Lps"/>
+                        <outlet property="titleLabel" destination="kPm-K7-5Za" id="Kvz-ID-ibm"/>
                         <outlet property="typeButton" destination="NHh-th-PHE" id="JHO-n4-fVZ"/>
                     </connections>
                 </viewController>
@@ -1168,12 +1183,12 @@
         <!--Edit Gauge Panel View Controller-->
         <scene sceneID="EcL-LE-SLt">
             <objects>
-                <viewController storyboardIdentifier="edit_gauge_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OEF-q1-PMT" customClass="EditGaugePanelViewController" customModule="_018_08_08_test_api" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="edit_gauge_panel_vc" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OEF-q1-PMT" customClass="EditGaugePanelViewController" customModule="jetec_Wi_Cloud" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iOL-eq-1d3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Q-ZW-T5x" customClass="MyScrollView" customModule="_018_08_08_test_api" customModuleProvider="target">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Q-ZW-T5x" customClass="MyScrollView" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Srh-SJ-UAv">
@@ -1188,7 +1203,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-Q8-fG0" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAi-Q8-fG0" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="213" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="87p-he-9gF"/>
@@ -1207,7 +1222,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="949-9K-Ahv" customClass="PanelClassButton" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="949-9K-Ahv" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="322" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="QA2-49-Voa"/>
@@ -1251,7 +1266,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Gy-T6-LXB" customClass="DecimalMinusTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="-20" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Gy-T6-LXB" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="457" width="343" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="dez-Gl-32c"/>
@@ -1269,7 +1284,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aD3-2G-zle" customClass="DecimalMinusTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aD3-2G-zle" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="535" width="343" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="eo9-An-wTM"/>
@@ -1294,7 +1309,7 @@
                                                     <constraint firstAttribute="height" constant="15" id="VoI-EM-iVj"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2JJ-1y-cK9" customClass="PanelClassTextField" customModule="_018_08_08_test_api" customModuleProvider="target">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2JJ-1y-cK9" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="633" width="343" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="V0C-1X-zbO"/>
@@ -1370,11 +1385,18 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="Srh-SJ-UAv" id="wGJ-JM-gur"/>
+                        <outlet property="dataRangeTitleLabel" destination="0Pl-Yj-KH6" id="0xN-07-bV0"/>
                         <outlet property="maxTextField" destination="aD3-2G-zle" id="eUE-JA-VoC"/>
+                        <outlet property="maxTitleLabel" destination="xIf-kx-ylP" id="Ohg-UH-ryc"/>
                         <outlet property="minTextField" destination="7Gy-T6-LXB" id="3bA-Mf-hoF"/>
+                        <outlet property="minTitleLabel" destination="30O-Gg-fEA" id="dxE-a6-4Nn"/>
+                        <outlet property="moduleTitleLabel" destination="nE8-XU-DLT" id="kpH-SB-ku9"/>
                         <outlet property="nameTextField" destination="2JJ-1y-cK9" id="7kB-Ee-SeE"/>
+                        <outlet property="nameTitleLabel" destination="1MD-rV-Vih" id="CxY-fF-5Ch"/>
                         <outlet property="scrollView" destination="Y0Q-ZW-T5x" id="hey-sM-i6u"/>
                         <outlet property="sensorModuleButton" destination="iAi-Q8-fG0" id="QcM-CZ-fBN"/>
+                        <outlet property="sensorTitleLabel" destination="PYs-9U-bgp" id="9IZ-fi-kq0"/>
+                        <outlet property="titleLabel" destination="0D6-Qb-4iD" id="idT-u1-gZE"/>
                         <outlet property="typeButton" destination="949-9K-Ahv" id="W5q-Og-Ifo"/>
                     </connections>
                 </viewController>

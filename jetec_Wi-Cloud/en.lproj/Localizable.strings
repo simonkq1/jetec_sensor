@@ -1,0 +1,75 @@
+/*
+ Localizable.strings
+ jetec_Wi-Cloud
+ 
+ Created by Jetec-RD on 2018/8/28.
+ Copyright © 2018年 macos. All rights reserved.
+ */
+
+
+// MARK: Menu
+"menu_dashboard" = "Dashboard";
+"menu_hardware" = "Hardware";
+"menu_notifications" = "Notifications";
+"menu_setting" = "Setting";
+
+
+// MARK: Panel
+"panel_title_value" = "value";
+"panel_title_gauge" = "gauge";
+"panel_context_value" = "Display current sensor value and its trend";
+"panel_context_gauge" = "Gauge value from a single sensor between a minimum and maxinum";
+"panel_module_button_title" = "Select a sensor module                     ";
+"panel_sensor_button_title" = "Select a sensor                               ";
+//Panel configure
+"panel_configure_title" = "Configure Panel";
+"panel_configure_module" = "Sensor Module";
+"panel_configure_sensor" = "Type of Value";
+"panel_configure_name" = "Display Name";
+"panel_configure_range" = "DataRange";
+"panel_configure_min" = "Min";
+"panel_configure_max" = "Max";
+//Panel configure placeholder
+"panel_configure_placeholder_module" = "Select a sensor module";
+"panel_configure_placeholder_sensor" = "Select a sensor";
+"panel_configure_placeholder_name" = "Name";
+
+
+// MARK: Dashboard
+"dashboard_detail_humidity" = "Humidity";
+"dashboard_detail_wind_direction" = "Wind direction";
+"dashboard_detail_wind_speed" = "Wind speed";
+"dashboard_detail_temperature" = "Temperature";
+"dashboard_detail_precipitation" = "Precipitation";
+
+
+// MARK: Navigation title
+"navigation_title_dashboard" = "Dashboard";
+"navigation_title_hardware" = "Hardware";
+"navigation_title_panel" = "Select a Type of Panel";
+"navigation_title_setting" = "Setting";
+"navigation_title_device_socket" = "Sensor Values";
+
+
+// MARK: Setting List
+"setting_language" = "Language";
+"setting_logout" = "Logout";
+
+
+// MARK: Language
+"language_english" = "English";
+"language_chinese_traditional" = "Chinses(Triditional)";
+"language_chinese_simplified" = "Chinses(Simplified)";
+
+//MARK: Bar button title
+"bar_back_button_panel" = "Panel Style";
+
+"bar_button_cancel" = "Cancel";
+"bar_button_done" = "Done";
+"bar_button_add" = "Add";
+"bar_button_next" = "Next";
+
+
+
+
+

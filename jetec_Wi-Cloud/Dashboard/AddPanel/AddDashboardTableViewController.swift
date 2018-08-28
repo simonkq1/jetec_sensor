@@ -10,9 +10,9 @@ import UIKit
 
 class AddDashboardTableViewController: UITableViewController {
     
-    let titleList = ["Value", "Gauge"]
-    let contextList = ["Display current sensor value and its trend",
-                       "Gauge value from a single sensor between a minimum and maxinum"]
+    let titleList = ["panel_title_value", "panel_title_gauge"]
+    let contextList = ["panel_context_value",
+                       "panel_context_gauge"]
     
     var selectedCell: Int!
     var nextBarButton: UIBarButtonItem!
@@ -30,11 +30,11 @@ class AddDashboardTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.title = "Select Type of Panel to Add"
+        self.title = "navigation_title_panel".localized
         tableView.register(UINib(nibName: "AddDashboardTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
-        nextBarButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.plain, target: self, action: #selector(nextBarButtonAction))
+        nextBarButton = UIBarButtonItem(title: "bar_button_next".localized, style: UIBarButtonItemStyle.plain, target: self, action: #selector(nextBarButtonAction))
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBarButtonAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "bar_button_cancel".localized, style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBarButtonAction))
         self.navigationItem.rightBarButtonItem = nextBarButton
         
         if selectedCell == nil{
@@ -51,15 +51,15 @@ class AddDashboardTableViewController: UITableViewController {
     @objc func nextBarButtonAction() {
         print(titleList[selectedCell])
         switch titleList[selectedCell] {
-        case "Value":
+        case "panel_title_value":
             let value_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "value_panel_vc") as! ValueViewController
-            value_vc.title = titleList[selectedCell]
+            value_vc.title = titleList[selectedCell].localized
             value_vc.dashboard_vc = self.dashboard_vc
             self.show(value_vc, sender: self)
             break
-        case "Gauge":
+        case "panel_title_gauge":
             let gauge_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "gauge_panel_vc") as! GaugeViewController
-            gauge_vc.title = titleList[selectedCell]
+            gauge_vc.title = titleList[selectedCell].localized
             gauge_vc.dashboard_vc = self.dashboard_vc
             self.show(gauge_vc, sender: self)
             break
@@ -69,7 +69,7 @@ class AddDashboardTableViewController: UITableViewController {
         }
         
         let backItem = UIBarButtonItem()
-        backItem.title = "Panel Style"
+        backItem.title = "bar_back_button_panel".localized
         navigationItem.backBarButtonItem = backItem
     }
     
@@ -95,16 +95,16 @@ class AddDashboardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddDashboardTableViewCell
-        cell.typeTextLabel.text = titleList[indexPath.section]
-        cell.contextLabel.text = contextList[indexPath.section]
+        cell.typeTextLabel.text = titleList[indexPath.section].localized
+        cell.contextLabel.text = contextList[indexPath.section].localized
         cell.innerView.backgroundColor = UIColor.white
-        switch titleList[indexPath.section] {
-        case "Value":
+        switch indexPath.section {
+        case 0:
             cell.innerLabel.alpha = 1
             cell.innerLabel.text = "50.4"
             cell.innerImageView.image = nil
             break
-        case "Gauge":
+        case 1:
             cell.innerLabel.alpha = 0
             cell.innerImageView.image = UIImage(named: "gauge")
             break
@@ -126,7 +126,7 @@ class AddDashboardTableViewController: UITableViewController {
         if selectedCell != nil {
             nextBarButton.isEnabled = true
             DispatchQueue.main.async {
-                self.title = self.titleList[indexPath.section]
+                self.title = self.titleList[indexPath.section].localized
             }
         }
         

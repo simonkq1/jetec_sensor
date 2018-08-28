@@ -43,7 +43,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         
         cellText = []
         
-        self.title = "Dashboard"
+        self.title = "navigation_title_dashboard".localized
         if let myDashboard = user.object(forKey: "dashboardJson") {
             do {
                 let data = (myDashboard as! String).data(using: .utf8)
@@ -172,7 +172,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     @objc func editingBarButtonAction(sender: UIBarButtonItem) {
         selectIndexPath = nil
         socket.disconnect()
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneBarButtonAction(_:)))
+        let doneButton = UIBarButtonItem(title: "bar_button_done".localized, style: .plain, target: self, action: #selector(doneBarButtonAction(_:)))
         DispatchQueue.main.async {
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.rightBarButtonItem = doneButton

@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingTableViewController: UITableViewController {
-    let list: [String] = ["Language", "Logout"]
+    let list: [String] = ["setting_language", "setting_logout"]
     var main_vc: MainViewController {
         return parent as! MainViewController
     }
@@ -49,7 +49,7 @@ class SettingTableViewController: UITableViewController {
         cell.accessoryType = .disclosureIndicator
         cell.detailTextLabel?.text = " "
         cell.detailTextLabel?.textColor = UIColor.lightGray
-        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.text = list[indexPath.row].localized
         
         switch indexPath.row {
         case 0:

@@ -16,6 +16,10 @@ class EditValuePanelViewController: UIViewController {
     @IBOutlet weak var sensorModuleButton: PanelClassButton!
     @IBOutlet weak var typeButton: PanelClassButton!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var moduleTitleLabel: UILabel!
+    @IBOutlet weak var sensorTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
     
     // MARK: Variables
     lazy var sensorList: [String] = {
