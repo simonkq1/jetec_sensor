@@ -53,13 +53,13 @@ class AddDashboardTableViewController: UITableViewController {
         switch titleList[selectedCell] {
         case "panel_title_value":
             let value_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "value_panel_vc") as! ValueViewController
-            value_vc.title = titleList[selectedCell].localized
+            value_vc.title = titleList[selectedCell].localized + "panel_configure_title".localized
             value_vc.dashboard_vc = self.dashboard_vc
             self.show(value_vc, sender: self)
             break
         case "panel_title_gauge":
             let gauge_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "gauge_panel_vc") as! GaugeViewController
-            gauge_vc.title = titleList[selectedCell].localized
+            gauge_vc.title = titleList[selectedCell].localized + "panel_configure_title".localized
             gauge_vc.dashboard_vc = self.dashboard_vc
             self.show(gauge_vc, sender: self)
             break
@@ -97,7 +97,7 @@ class AddDashboardTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! AddDashboardTableViewCell
         cell.typeTextLabel.text = titleList[indexPath.section].localized
         cell.contextLabel.text = contextList[indexPath.section].localized
-        cell.innerView.backgroundColor = UIColor.white
+//        cell.innerView.backgroundColor = UIColor.white
         switch indexPath.section {
         case 0:
             cell.innerLabel.alpha = 1
@@ -117,7 +117,7 @@ class AddDashboardTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.size.height / 2.1
+        return tableView.frame.size.height / 2.3
     }
     
     

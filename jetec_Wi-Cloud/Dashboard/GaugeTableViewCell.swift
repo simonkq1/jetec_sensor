@@ -26,6 +26,24 @@ class GaugeTableViewCell: UITableViewCell {
     var valueLabel = UILabel()
     var unitLabel = UILabel()
     var unit: String = " "
+    var backCircleColor: CGColor = UIColor(red: 13/255, green: 76/255, blue: 142/255, alpha: 1).cgColor {
+        didSet {
+            self.backgroundShapeLayer.strokeColor = self.backCircleColor
+            self.backgroundShapeLayer.fillColor = UIColor.clear.cgColor
+        }
+    }
+    var pointerCircleColor: CGColor = UIColor(red: 13/255, green: 76/255, blue: 142/255, alpha: 1).cgColor {
+        didSet {
+            self.gaugePointerShaprLayer.strokeColor = self.pointerCircleColor
+            self.gaugePointerShaprLayer.fillColor = self.pointerCircleColor
+        }
+    }
+    var valueCircleColor: CGColor = UIColor(red: 161/255, green: 217/255, blue: 229/255, alpha: 1).cgColor {
+        didSet {
+            self.valueCircleShapeLayer.strokeColor = self.valueCircleColor
+            self.valueCircleShapeLayer.fillColor = UIColor.clear.cgColor
+        }
+    }
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var nameTextLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!

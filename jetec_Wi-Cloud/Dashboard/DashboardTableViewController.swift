@@ -239,8 +239,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         
         //        backgroundShapeLayer.frame = innerView.frame
         gauge_cell.backgroundShapeLayer.path = linePath.cgPath
-        gauge_cell.backgroundShapeLayer.strokeColor = UIColor.black.cgColor
-        gauge_cell.backgroundShapeLayer.fillColor = UIColor.clear.cgColor
+        gauge_cell.backCircleColor = UIColor(red: 161/255, green: 217/255, blue: 229/255, alpha: 1).cgColor
         gauge_cell.backgroundShapeLayer.lineWidth = gauge_cell.circleWidth
         
 //        if gauge_cell.nibIsLoad {
@@ -329,8 +328,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                 clockwise: true)
             
             gauge_cell.valueCircleShapeLayer.path = linePath.cgPath
-            gauge_cell.valueCircleShapeLayer.strokeColor = UIColor.blue.cgColor
-            gauge_cell.valueCircleShapeLayer.fillColor = UIColor.clear.cgColor
+            gauge_cell.valueCircleColor = UIColor(red: 13/255, green: 76/255, blue: 142/255, alpha: 1).cgColor
             gauge_cell.valueCircleShapeLayer.lineWidth = gauge_cell.circleWidth
             
             
@@ -374,8 +372,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         linePath.close()
         
         gauge_cell.gaugePointerShaprLayer.lineWidth = 1
-        gauge_cell.gaugePointerShaprLayer.strokeColor = UIColor.black.cgColor
-        gauge_cell.gaugePointerShaprLayer.fillColor = UIColor.black.cgColor
+        gauge_cell.pointerCircleColor = UIColor(red: 13/255, green: 76/255, blue: 142/255, alpha: 1).cgColor
         gauge_cell.gaugePointerShaprLayer.path = linePath.cgPath
         gauge_cell.innerView.layer.addSublayer(gauge_cell.gaugePointerShaprLayer)
         drawCenterCircle(gauge_cell)
@@ -393,27 +390,13 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             endAngle: 2 * CGFloat.pi,
             clockwise: true)
         gauge_cell.centerCircleShaprLayer.fillColor = UIColor.white.cgColor
-        gauge_cell.centerCircleShaprLayer.strokeColor = UIColor.black.cgColor
+        gauge_cell.centerCircleShaprLayer.strokeColor = gauge_cell.pointerCircleColor
         gauge_cell.centerCircleShaprLayer.lineWidth = 1
         gauge_cell.centerCircleShaprLayer.path = linePath.cgPath
         gauge_cell.innerView.layer.addSublayer(gauge_cell.centerCircleShaprLayer)
     }
     
-    func drawInnerScale(_ cell: GaugeTableViewCell, min: NSNumber, max: NSNumber) {
-        let _min = min.doubleValue
-        let _max = max.doubleValue
-        if let _ = cell.innerScaleShapeLayer {
-            cell.innerScaleShapeLayer.removeFromSuperlayer()
-        }
-        cell.innerScaleShapeLayer = CAShapeLayer()
-        let linePath = UIBezierPath()
-        
-        
-        
-        
-        
-        
-    }
+    
     
     
     
@@ -713,7 +696,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.tableView.frame.size.height / 3
+        return (self.tableView.frame.size.height / 3.25)
     }
     
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
@@ -721,6 +704,9 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.1
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 5
     }
     
     //MARK: TableViewCell DidMoved Action

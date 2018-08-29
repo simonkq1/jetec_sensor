@@ -10,7 +10,7 @@ import UIKit
 
 class SwipeMenuTableViewController: UITableViewController {
     
-    let list = ["menu_dashboard", "menu_hardware", "menu_notifications", "menu_setting"]
+    let list = ["menu_dashboard", "menu_hardware", "menu_notifications", "menu_logout"]
     
     
     

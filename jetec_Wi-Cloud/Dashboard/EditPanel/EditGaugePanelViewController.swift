@@ -19,7 +19,6 @@ class EditGaugePanelViewController: UIViewController {
     @IBOutlet weak var minTextField: DecimalMinusTextField!
     @IBOutlet weak var maxTextField: DecimalMinusTextField!
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moduleTitleLabel: UILabel!
     @IBOutlet weak var sensorTitleLabel: UILabel!
     @IBOutlet weak var nameTitleLabel: UILabel!
@@ -27,6 +26,7 @@ class EditGaugePanelViewController: UIViewController {
     @IBOutlet weak var minTitleLabel: UILabel!
     @IBOutlet weak var maxTitleLabel: UILabel!
     
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     lazy var sensorList: [String] = {
         var list: [String] = []
         for i in Global.memberData.onlineDevices {
@@ -89,7 +89,6 @@ class EditGaugePanelViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         //Localize
-        titleLabel.text = "panel_configure_title".localized
         moduleTitleLabel.text = "panel_configure_module".localized
         sensorTitleLabel.text = "panel_configure_sensor".localized
         nameTitleLabel.text = "panel_configure_name".localized
@@ -103,7 +102,7 @@ class EditGaugePanelViewController: UIViewController {
         sensorDropDownTextField.placeholder = "panel_configure_placeholder_sensor".localized
         
         
-        contentView.frame.size.height = scrollView.frame.size.height + 100
+        contentViewHeightConstraint.constant = scrollView.frame.size.height + 30
         
         
         

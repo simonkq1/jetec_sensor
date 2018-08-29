@@ -8,10 +8,10 @@
 
 
 // MARK: Menu
-"menu_dashboard" = "儀表板";
-"menu_hardware" = "硬體";
-"menu_notifications" = "通知";
-"menu_setting" = "設定";
+"menu_dashboard" = "即時數值";
+"menu_hardware" = "硬體資訊";
+"menu_notifications" = "事件警報";
+"menu_logout" = "登出";
 
 
 // MARK: Panel
@@ -22,7 +22,7 @@
 "panel_module_button_title" = "選擇一個裝置                     ";
 "panel_sensor_button_title" = "選擇一個傳感器                               ";
 //Panel configure
-"panel_configure_title" = "配置面板";
+"panel_configure_title" = "配置";
 "panel_configure_module" = "裝置模組";
 "panel_configure_sensor" = "資料類型";
 "panel_configure_name" = "顯示名稱";

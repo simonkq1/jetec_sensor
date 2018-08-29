@@ -8,10 +8,10 @@
 
 
 // MARK: Menu
-"menu_dashboard" = "Dashboard";
+"menu_dashboard" = "Instant Value";
 "menu_hardware" = "Hardware";
 "menu_notifications" = "Notifications";
-"menu_setting" = "Setting";
+"menu_logout" = "Logout";
 
 
 // MARK: Panel
@@ -22,7 +22,7 @@
 "panel_module_button_title" = "Select a sensor module                     ";
 "panel_sensor_button_title" = "Select a sensor                               ";
 //Panel configure
-"panel_configure_title" = "Configure Panel";
+"panel_configure_title" = "Configure";
 "panel_configure_module" = "Sensor Module";
 "panel_configure_sensor" = "Type of Value";
 "panel_configure_name" = "Display Name";
@@ -45,7 +45,7 @@
 "dashboard_detail_datalog_header_value" = "Value";
 
 // MARK: Navigation title
-"navigation_title_dashboard" = "Dashboard";
+"navigation_title_dashboard" = "Real-time";
 "navigation_title_hardware" = "Hardware";
 "navigation_title_panel" = "Select a Type of Panel";
 "navigation_title_setting" = "Setting";

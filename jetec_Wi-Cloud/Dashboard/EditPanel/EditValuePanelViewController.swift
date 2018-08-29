@@ -16,7 +16,6 @@ class EditValuePanelViewController: UIViewController {
     
     @IBOutlet weak var moduleDropDownTextField: DropDown!
     @IBOutlet weak var sensorDropDownTextField: DropDown!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var moduleTitleLabel: UILabel!
     @IBOutlet weak var sensorTitleLabel: UILabel!
     @IBOutlet weak var nameTitleLabel: UILabel!
@@ -91,7 +90,6 @@ class EditValuePanelViewController: UIViewController {
         super.viewDidLoad()
         
         //Localize
-        titleLabel.text = "panel_configure_title".localized
         moduleTitleLabel.text = "panel_configure_module".localized
         sensorTitleLabel.text = "panel_configure_sensor".localized
         nameTitleLabel.text = "panel_configure_name".localized

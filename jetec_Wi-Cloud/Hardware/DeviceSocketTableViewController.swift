@@ -15,18 +15,21 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     var socket: WebSocket!
     
     var sensorData: [String:String] = [:]
-
-    var revceiveData: [String: Any] = [:]
+    
+    var receiveData: [String: Any] = [:]
+    var isConnected: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        isConnected = UIBarButtonItem(image: UIImage(named: "disconnected_icon"), style: .done, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = isConnected
         conncetWebSocket()
-//        print(deviceData)
+        //        print(deviceData)
         
     }
     
@@ -48,27 +51,53 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         sensorData = [:]
         print("***********************************")
-        print(text)
-        revceiveData = text.getJsonObject() as! [String: Any]
-        if let data = (revceiveData["eventData"] as! [String:Any])["timeSeriesData"] {
-            let originDeviceId = String(revceiveData["originDeviceId"] as! Int)
-            let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
-            if deviceId == originDeviceId {
-                print(self.revceiveData)
-                for i in (data as! [[String:Any]]) {
-                    let sensorKey = (Global.regexGetSub(pattern: Basic.dataPattern, str: (i["seriesId"] as! String)))[1]
-                    let sensorValue = String(format: "%.0f", i["value"] as! Double)
-                    sensorData[sensorKey] = sensorValue
-                    //            print(sensorKey + " : \(sensorValue)")
-                    
+        //        print(text)
+        receiveData = text.getJsonObject() as! [String: Any]
+        let eventType = receiveData["eventType"] as? String
+        if eventType == "timeSeriesData" {
+            if let data = (receiveData["eventData"] as! [String:Any])["timeSeriesData"] {
+                let originDeviceId = String(receiveData["originDeviceId"] as! Int)
+                let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
+                if deviceId == originDeviceId {
+                    //                    print(self.receiveData)
+                    for i in (data as! [[String:Any]]) {
+                        let sensorKey = (Global.regexGetSub(pattern: Basic.dataPattern, str: (i["seriesId"] as! String)))[1]
+                        let sensorValue = String(format: "%.0f", i["value"] as! Double)
+                        sensorData[sensorKey] = sensorValue
+                    }
+                    DispatchQueue.main.async {
+                        self.isConnected.image = UIImage(named: "connected_icon")
+                        self.tableView.reloadData()
+                    }
                 }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                
+            }
+        }else if eventType == "_deviceDisconnected_" {
+            if let eventData = receiveData["eventData"] {
+                let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
+                if let receiveDeviceId: Int = (eventData as! [String: Any])["deviceId"] as? Int {
+                    if deviceId == String(receiveDeviceId) {
+                        DispatchQueue.main.async {
+                            self.isConnected.image = UIImage(named: "disconnected_icon")
+                        }
+                    }
+                }
+            }
+            
+        }else if eventType == "_deviceConnected_" {
+            if let eventData = receiveData["eventData"] {
+                let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
+                if let receiveDeviceId: Int = (eventData as! [String: Any])["deviceId"] as? Int {
+                    if deviceId == String(receiveDeviceId) {
+                        DispatchQueue.main.async {
+                            self.isConnected.image = UIImage(named: "connected_icon")
+                        }
+                    }
                 }
             }
             
         }
-//        print(sensorData)
+        //        print(sensorData)
         print("did ReceiveMessage")
     }
     
@@ -90,24 +119,24 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return ((deviceData["value"] as! [String:Any])["sensors"] as! [String]).count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -134,57 +163,57 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
                 cell.detailTextLabel?.text = sensorData["precipitation"]
             }
         }
-//        sensor = sensor.first + sensor.lowercased().removeFirst()
+        //        sensor = sensor.first + sensor.lowercased().removeFirst()
         cell.textLabel?.text = sensortitle
         
-
+        
         return cell
     }
     
-
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }    
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

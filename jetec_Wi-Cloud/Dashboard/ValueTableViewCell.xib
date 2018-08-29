@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="value_cell" rowHeight="166" id="mD4-HX-kFi" customClass="ValueTableViewCell" customModule="_018_08_08_test_api" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="value_cell" rowHeight="166" id="mD4-HX-kFi" customClass="ValueTableViewCell" customModule="jetec_Wi_Cloud" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mD4-HX-kFi" id="5fn-5A-162">
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmf-VS-Sep">
-                        <rect key="frame" x="-0.5" y="-0.5" width="375" height="215"/>
+                        <rect key="frame" x="0.0" y="-0.5" width="375" height="215"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bM6-3b-Gzd">
                                 <rect key="frame" x="46" y="8" width="321" height="30"/>
@@ -52,7 +52,6 @@
                             <constraint firstItem="bM6-3b-Gzd" firstAttribute="centerY" secondItem="6sx-3u-y7J" secondAttribute="centerY" id="C38-Eo-naC"/>
                             <constraint firstAttribute="bottom" secondItem="xWy-QE-BYF" secondAttribute="bottom" id="Ckc-e6-Wdz"/>
                             <constraint firstAttribute="trailing" secondItem="xWy-QE-BYF" secondAttribute="trailing" id="Dva-wR-8gi"/>
-                            <constraint firstAttribute="width" constant="375" id="NCm-l6-Ab4"/>
                             <constraint firstItem="6sx-3u-y7J" firstAttribute="leading" secondItem="Fmf-VS-Sep" secondAttribute="leading" constant="8" id="Xse-Ic-Kzw"/>
                             <constraint firstItem="xWy-QE-BYF" firstAttribute="leading" secondItem="Fmf-VS-Sep" secondAttribute="leading" id="lvL-1i-XnB"/>
                             <constraint firstAttribute="trailing" secondItem="bM6-3b-Gzd" secondAttribute="trailing" constant="8" id="rjv-IW-xtY"/>
@@ -60,9 +59,11 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Fmf-VS-Sep" secondAttribute="trailing" id="3Lc-Zq-f5N"/>
                     <constraint firstItem="Fmf-VS-Sep" firstAttribute="centerX" secondItem="5fn-5A-162" secondAttribute="centerX" id="D4R-cT-QjX"/>
                     <constraint firstItem="Fmf-VS-Sep" firstAttribute="centerY" secondItem="5fn-5A-162" secondAttribute="centerY" id="cAA-DD-LC9"/>
                     <constraint firstItem="Fmf-VS-Sep" firstAttribute="height" secondItem="5fn-5A-162" secondAttribute="height" id="xQR-wW-925"/>
+                    <constraint firstItem="Fmf-VS-Sep" firstAttribute="leading" secondItem="5fn-5A-162" secondAttribute="leading" id="z7h-rD-Qg1"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

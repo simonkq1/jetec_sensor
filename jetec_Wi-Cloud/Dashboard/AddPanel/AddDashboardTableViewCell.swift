@@ -10,9 +10,6 @@ import UIKit
 
 class AddDashboardTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var stackView: UIStackView!
-    
-    @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var innerLabel: UILabel!
     @IBOutlet weak var typeTextLabel: UILabel!
     
@@ -23,10 +20,12 @@ class AddDashboardTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        stackView.layer.borderWidth = 0.5
-        stackView.layer.cornerRadius = 5
-        innerView.layer.borderWidth = 0.5
-        innerView.layer.cornerRadius = 5
+//        stackView.layer.borderWidth = 0.5
+//        stackView.layer.cornerRadius = 5
+//        innerView.layer.borderWidth = 0.5
+//        innerView.layer.cornerRadius = 5
+        innerImageView.layer.borderWidth = 0.5
+        innerImageView.layer.cornerRadius = 5
         
     }
 
