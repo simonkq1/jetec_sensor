@@ -41,6 +41,7 @@ class GaugeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.innerView.frame.size.width = self.frame.size.width
         valueLabel.text = " "
         self.innerView.addSubview(valueLabel)
         

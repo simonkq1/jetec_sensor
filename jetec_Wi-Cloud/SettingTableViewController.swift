@@ -86,17 +86,23 @@ class SettingTableViewController: UITableViewController {
             break
         case 1:
             
-             let alert = UIAlertController(title: "Logout", message: "Do you sure you want to logout?", preferredStyle: UIAlertControllerStyle.alert)
-             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+             let alert = UIAlertController(title: "logout_alert_title".localized, message: "logout_alert_context".localized, preferredStyle: UIAlertControllerStyle.alert)
+             let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertActionStyle.default, handler: { (action) in
              let user = UserDefaults()
              user.removeObject(forKey: "email")
              user.removeObject(forKey: "password")
              user.synchronize()
+                Global.memberData.authData.removeAll()
+                Global.memberData.devicesData.removeAll()
+                Global.memberData.devicesInfo.removeAll()
+                Global.memberData.homesData.removeAll()
+                Global.memberData.userData.removeAll()
+                Global.memberData.onlineDevices.removeAll()
              let login_vc = Global.main_storyboard.instantiateViewController(withIdentifier: "login_vc") as! LoginViewController
              self.showDetailViewController(login_vc, sender: nil)
              print("OK")
              })
-             let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) in
+             let cancel = UIAlertAction(title: "logout_alert_cancel".localized, style: UIAlertActionStyle.cancel, handler: { (action) in
                 alert.dismiss(animated: false, completion: nil)
              print("cancel")
              })

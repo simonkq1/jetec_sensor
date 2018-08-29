@@ -100,6 +100,51 @@ class Global: NSObject {
         
     }
     
+    static func getDevices (homeId: Int, action: (() -> Void)? = nil) {
+        let url = Basic.api + "/devices?homeId=" + "\(homeId)"
+        Global.memberData.devicesData = []
+        Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, status) in
+            if status == 200 {
+                do {
+                    Global.memberData.devicesData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String:Any]]
+                    
+                    getDevicesInfo()
+                    getDevicesInfo(action: action)
+                }catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    
+    static private func getDevicesInfo(action: (() -> Void)? = nil) {
+        Global.memberData.devicesInfo = []
+        for i in Global.memberData.devicesData {
+            let deviceId = i["id"] as! Int
+            let url = Basic.api + "/devices/\(deviceId)/kv"
+            Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, status) in
+                do {
+                    let jsonData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [[String: Any]]
+                    Global.memberData.devicesInfo.append(jsonData)
+                    Global.memberData.devicesInfo = Global.memberData.devicesInfo.sorted { (d1, d2) -> Bool in
+                        return ((d1[0]["value"] as! [String:Any])["gatewayId"] as! String) < ((d2[0]["value"] as! [String:Any])["gatewayId"] as! String)
+                    }
+                }catch {
+                    
+                }
+            }
+        }
+        DispatchQueue.global().async {
+            while true {
+                if Global.memberData.devicesData.count == Global.memberData.devicesInfo.count {
+                    if action != nil {
+                        action!()
+                    }
+                }
+            }
+        }
+    }
     
     
     static func regexGetSub(pattern:String, str:String) -> [String] {

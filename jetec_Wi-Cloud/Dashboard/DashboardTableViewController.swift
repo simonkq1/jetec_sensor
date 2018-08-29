@@ -104,7 +104,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         
-        print("disConnect Socket")
+        print("Disconnect Socket")
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
@@ -720,7 +720,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         return true
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 0.1
     }
     
     //MARK: TableViewCell DidMoved Action

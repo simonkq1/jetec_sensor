@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        
         let auto_vc = (UIStoryboard(name: "Main", bundle: Bundle.main)).instantiateViewController(withIdentifier: "main_vc") as! MainViewController
         let login_vc = (UIStoryboard(name: "Main", bundle: Bundle.main)).instantiateViewController(withIdentifier: "login_vc") as! LoginViewController
         if let email = user.string(forKey: "email"), let password = user.string(forKey: "password") {

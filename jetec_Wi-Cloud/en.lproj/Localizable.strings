@@ -71,6 +71,13 @@
 "bar_button_next" = "Next";
 
 
+//MARK: Logout message
+"logout_alert_title" = "Logout";
+"logout_alert_context" = "Are you sure you want to logout?";
+"logout_alert_cancel" = "Cancel";
+"logout_alert_ok" = "Ok";
+
+
 //MARK: Else
 "dashboard_nodata_message" = "You have no panel, add one!";
 "hardware_footer_text_zero" = "no device";

@@ -67,11 +67,19 @@
 
 //MARK: Bar button title
 "bar_back_button_panel" = "選擇樣式";
-
 "bar_button_cancel" = "取消";
 "bar_button_done" = "確定";
 "bar_button_add" = "增加";
 "bar_button_next" = "下一步";
+
+
+//MARK: Logout message
+"logout_alert_title" = "登出";
+"logout_alert_context" = "您確定要登出嗎?";
+"logout_alert_cancel" = "取消";
+"logout_alert_ok" = "確定";
+
+
 
 //MARK: Else
 "dashboard_nodata_message" = "You have no panel, add one!";

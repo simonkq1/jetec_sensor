@@ -22,26 +22,38 @@ class LoginViewController: UIViewController {
     var userIsGet: Bool = false
     var devicesIsGet: Bool = false
     var dataIsReady: Bool = false
-    var dataIsError: Bool = false
+    var dataIsError: Bool = true
     var infoIsGet: Bool = false
     var authToken: String!
     let user = UserDefaults()
     
+    @IBOutlet weak var loadingAction: UIActivityIndicatorView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBAction func login(_ sender: Any) {
         self.dataIsReady = false
+        self.dataIsError = true
         let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        
-        
         if email != "", password != "" {
-            
+            DispatchQueue.main.async {
+                self.loadingAction.startAnimating()
+                self.loadingAction.alpha = 1
+                usleep(100000)
+                for i in self.view.subviews {
+                    if i is UIButton {
+                        (i as! UIButton).isEnabled = false
+                    }
+                    if i is UITextField {
+                        (i as! UITextField).isEnabled = false
+                    }
+                }
+            }
             self.dataIsReady = false
             loginCheck(email: email, password: password, projectId: Basic.projectId)
             
-            DispatchQueue.main.async {
-                
+//            DispatchQueue.main.async {
+            
                 while true {
                     self.dataCheck()
                     if self.dataIsReady == true {
@@ -50,7 +62,7 @@ class LoginViewController: UIViewController {
                     usleep(100000)
                     
                 }
-            }
+//            }
             
             if dataIsError == false {
                 user.setValue(email, forKey: "email")
@@ -63,6 +75,16 @@ class LoginViewController: UIViewController {
                 }
             }else {
                 print("data is error")
+                for i in self.view.subviews {
+                    if i is UIButton {
+                        (i as! UIButton).isEnabled = true
+                    }
+                    if i is UITextField {
+                        (i as! UITextField).isEnabled = true
+                    }
+                }
+                loadingAction.stopAnimating()
+                loadingAction.alpha = 0
             }
         }else {
             
@@ -74,7 +96,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.text = "tohsakarc@gmail.com"
         passwordTextField.text = "jetec0000"
-        
+        loadingAction.stopAnimating()
+        loadingAction.alpha = 0
         
         
         // Do any additional setup after loading the view.
@@ -84,6 +107,16 @@ class LoginViewController: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for i in self.view.subviews {
+            if i is UITextField {
+                if (i as! UITextField).isEditing {
+                    (i as! UITextField).endEditing(true)
+                }
+            }
+        }
     }
     
     
@@ -97,7 +130,6 @@ class LoginViewController: UIViewController {
                     Global.memberData.authData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: Any]
                     Global.memberData.authToken = "ModeCloud " + (Global.memberData.authData["token"] as! String)
                     self.authIsGet = true
-                    
                     self.getUserData()
                     self.getHomes()
                 }catch {
@@ -213,6 +245,7 @@ class LoginViewController: UIViewController {
     func dataCheck() {
         if self.authIsGet == true, self.userIsGet == true, self.homesIsGet == true, self.devicesIsGet == true, self.infoIsGet == true {
             self.dataIsReady = true
+            self.dataIsError = false
         }
     }
     

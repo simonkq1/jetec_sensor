@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LocaleManager
 
 class SelectLanguageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -17,9 +16,6 @@ class SelectLanguageViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(Locale.current.languageCode!)
-//        print(Locale.preferredLanguages[0])
-//        print(LocaleManager.availableLocalizations)
         // Do any additional setup after loading the view.
         backView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backViewTouchesBegin)))
         tableView.layer.borderWidth = 0.5

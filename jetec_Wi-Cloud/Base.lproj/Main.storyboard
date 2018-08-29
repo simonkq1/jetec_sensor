@@ -84,6 +84,10 @@
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ph5-mT-cLN"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TwL-Iw-F2Z">
+                                <rect key="frame" x="169" y="315.5" width="37" height="37"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -96,7 +100,9 @@
                             <constraint firstItem="HsN-dO-2VA" firstAttribute="top" secondItem="FOP-QL-nKq" secondAttribute="bottom" constant="90" id="HzG-Rp-d6Q"/>
                             <constraint firstItem="nDg-1P-Vbv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Ias-Qn-TrT"/>
                             <constraint firstItem="FOP-QL-nKq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="QUw-iy-xRZ"/>
+                            <constraint firstItem="TwL-Iw-F2Z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SvI-vZ-jQD"/>
                             <constraint firstItem="FOP-QL-nKq" firstAttribute="top" secondItem="Ryq-sR-k98" secondAttribute="bottom" constant="51" id="Yc3-X2-byC"/>
+                            <constraint firstItem="TwL-Iw-F2Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ksy-3k-ANV"/>
                             <constraint firstItem="nDg-1P-Vbv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="opO-2U-pFg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nDg-1P-Vbv" secondAttribute="trailing" constant="16" id="pkP-K4-xlw"/>
                         </constraints>
@@ -104,6 +110,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Ryq-sR-k98" id="Yv6-ol-sZg"/>
+                        <outlet property="loadingAction" destination="TwL-Iw-F2Z" id="aEB-ur-1XO"/>
                         <outlet property="passwordTextField" destination="FOP-QL-nKq" id="uM0-Vq-CLy"/>
                     </connections>
                 </viewController>

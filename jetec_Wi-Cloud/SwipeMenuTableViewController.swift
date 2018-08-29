@@ -26,7 +26,8 @@ class SwipeMenuTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView()
         main_vc = (parent as! UINavigationController).parent as! MainViewController
         tableView.register(UINib(nibName: "SwipeMenuTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
-        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
     }
 

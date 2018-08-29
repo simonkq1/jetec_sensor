@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gauge_cell" id="SP3-4l-UrP" customClass="GaugeTableViewCell" customModule="_018_08_08_test_api" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gauge_cell" id="SP3-4l-UrP" customClass="GaugeTableViewCell" customModule="jetec_Wi_Cloud" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SP3-4l-UrP" id="Gaa-Jm-XFr">
@@ -41,7 +41,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="emL-Hy-bNc" firstAttribute="leading" secondItem="2Wa-WN-AmB" secondAttribute="trailing" constant="8" id="XC3-I8-qqO"/>
-                            <constraint firstAttribute="width" constant="375" id="Yeo-5j-CrB"/>
                             <constraint firstItem="2Wa-WN-AmB" firstAttribute="top" secondItem="cYc-Xe-3rs" secondAttribute="top" constant="8" id="Zzb-X9-yhl"/>
                             <constraint firstAttribute="trailing" secondItem="emL-Hy-bNc" secondAttribute="trailing" constant="8" id="nWO-fq-YMH"/>
                             <constraint firstItem="2Wa-WN-AmB" firstAttribute="leading" secondItem="cYc-Xe-3rs" secondAttribute="leading" constant="8" id="rCc-mS-hrq"/>
@@ -51,8 +50,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="cYc-Xe-3rs" firstAttribute="centerX" secondItem="Gaa-Jm-XFr" secondAttribute="centerX" id="80q-PR-8rD"/>
+                    <constraint firstAttribute="trailing" secondItem="cYc-Xe-3rs" secondAttribute="trailing" id="Mda-lC-aCT"/>
                     <constraint firstItem="cYc-Xe-3rs" firstAttribute="centerY" secondItem="Gaa-Jm-XFr" secondAttribute="centerY" id="Nmp-AH-oaI"/>
                     <constraint firstItem="cYc-Xe-3rs" firstAttribute="height" secondItem="Gaa-Jm-XFr" secondAttribute="height" id="UHb-me-Ktw"/>
+                    <constraint firstItem="cYc-Xe-3rs" firstAttribute="leading" secondItem="Gaa-Jm-XFr" secondAttribute="leading" id="YZ5-cD-Eaa"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

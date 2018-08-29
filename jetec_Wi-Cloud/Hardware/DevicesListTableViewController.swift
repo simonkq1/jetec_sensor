@@ -20,20 +20,18 @@ class DevicesListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.title = "navigation_title_hardware".localized
-        print(Global.memberData.devicesData.count)
-        print(Global.memberData.devicesInfo.count)
         tableView.tableFooterView = UIView()
-        
-        
-//            if Global.memberData.devicesInfo.count <= 0 {
-//                self.getDevicesInfo()
-////                while self.infoIsGet == false {
-////                    usleep(150000)
-////                }
-//            }
-//        
-//        getOnlineDevice()
-        
+        /*
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (timer) in
+            DispatchQueue.global().async {
+                Global.getDevices(homeId: Global.memberData.homesData[0]["id"] as! Int, action: { () in
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+        }
+        */
         
         
     }
@@ -101,7 +99,12 @@ class DevicesListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let deviceValue = Global.memberData.devicesInfo[indexPath.section][indexPath.row]["value"] as! [String:Any]
         let deviceName = deviceValue["name"] as! String
-        
+        let isConnected = Global.memberData.devicesData[indexPath.section]["isConnected"] as! Bool
+        if isConnected {
+            cell.textLabel?.textColor = UIColor.black
+        }else {
+            cell.textLabel?.textColor = UIColor.lightGray
+        }
         
         cell.textLabel?.text = deviceName
         // Configure the cell...
