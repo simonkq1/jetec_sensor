@@ -79,7 +79,7 @@ class SwipeMenuTableViewController: UITableViewController {
             cell.menuImageView.image = UIImage(named: "nav-icon-notifications")
             break
         case 3:
-            cell.menuImageView.image = UIImage(named: "nav-icon-settings")
+            cell.menuImageView.image = UIImage(named: "nav-icon-logout")
             break
         case 4:
             cell.menuImageView.image = nil
@@ -117,6 +117,7 @@ class SwipeMenuTableViewController: UITableViewController {
             case 2:
                 break
             case 3:
+                
                 let alert = UIAlertController(title: "logout_alert_title".localized, message: "logout_alert_context".localized, preferredStyle: UIAlertControllerStyle.alert)
                 let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertActionStyle.default, handler: { (action) in
                     let user = UserDefaults()
@@ -140,6 +141,7 @@ class SwipeMenuTableViewController: UITableViewController {
                 alert.addAction(ok)
                 alert.addAction(cancel)
                 self.main_vc.present(alert, animated: false, completion: nil)
+                
                 break
             case 4:
                 break

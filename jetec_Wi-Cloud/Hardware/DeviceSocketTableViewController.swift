@@ -11,13 +11,17 @@ import Starscream
 
 class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate {
     
+    
+    var deviceSettingList = ["hardware_socket_device_setting_connectstate", "hardware_socket_device_setting_avaliable_sensors", "hardware_socket_device_setting_alerts", "hardware_socket_device_setting_interval", "hardware_socket_device_setting_duration"]
     var deviceData: [String: Any] = [:]
     var socket: WebSocket!
-    
     var sensorData: [String:String] = [:]
     
     var receiveData: [String: Any] = [:]
-    var isConnected: UIBarButtonItem!
+    var isConnected: Bool = false
+    var connectStatusImage: UIImageView!
+    var connectImageIsAdd: Bool = false
+    var loadingAction: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,11 +30,25 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        isConnected = UIBarButtonItem(image: UIImage(named: "disconnected_icon"), style: .done, target: self, action: nil)
-        self.navigationItem.rightBarButtonItem = isConnected
-        conncetWebSocket()
-        //        print(deviceData)
+//        isConnected = UIBarButtonItem(image: UIImage(named: "disconnected_icon"), style: .done, target: self, action: nil)
+//        self.navigationItem.rightBarButtonItem = isConnected
+        loadingAction = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        loadingAction.color = UIColor.black
+        loadingAction.frame.size = CGSize(width: 50, height: 50)
+        loadingAction.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        loadingAction.center = self.tableView.center
         
+        loadingAction.startAnimating()
+        
+        conncetWebSocket()
+        
+        self.tableView.separatorStyle = .singleLineEtched
+                print(deviceData)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.view.addSubview(loadingAction)
     }
     
     
@@ -66,7 +84,11 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
                         sensorData[sensorKey] = sensorValue
                     }
                     DispatchQueue.main.async {
-                        self.isConnected.image = UIImage(named: "connected_icon")
+                        if self.loadingAction.isAnimating {
+                            self.loadingAction.stopAnimating()
+                            self.loadingAction.alpha = 0
+                        }
+                        self.connectStatusImage.image = UIImage(named: "ok_icon")
                         self.tableView.reloadData()
                     }
                 }
@@ -78,7 +100,8 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
                 if let receiveDeviceId: Int = (eventData as! [String: Any])["deviceId"] as? Int {
                     if deviceId == String(receiveDeviceId) {
                         DispatchQueue.main.async {
-                            self.isConnected.image = UIImage(named: "disconnected_icon")
+//                            self.isConnected.image = UIImage(named: "disconnected_icon")
+                            self.connectStatusImage.image = UIImage(named: "cancel_icon")
                         }
                     }
                 }
@@ -90,7 +113,12 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
                 if let receiveDeviceId: Int = (eventData as! [String: Any])["deviceId"] as? Int {
                     if deviceId == String(receiveDeviceId) {
                         DispatchQueue.main.async {
-                            self.isConnected.image = UIImage(named: "connected_icon")
+                            if self.loadingAction.isAnimating {
+                                self.loadingAction.stopAnimating()
+                                self.loadingAction.alpha = 0
+                            }
+//                            self.isConnected.image = UIImage(named: "connected_icon")
+                            self.connectStatusImage.image = UIImage(named: "ok_icon")
                         }
                     }
                 }
@@ -129,45 +157,119 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ((deviceData["value"] as! [String:Any])["sensors"] as! [String]).count
+        
+        return (section == 1) ? ((deviceData["value"] as! [String:Any])["sensors"] as! [String]).count : deviceSettingList.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        var sensor = ((((deviceData["value"] as! [String:Any])["sensors"] as! [String])[indexPath.row]).replacingOccurrences(of: ":0", with: "")).replacingOccurrences(of: "_", with: " ")
-        let sensorFirst = sensor.first
-        sensor.remove(at: sensor.startIndex)
-        let sensortitle = "\(String(sensorFirst!).uppercased())\(sensor.lowercased())"
-        if sensorData.count <= 0 {
-            cell.detailTextLabel?.text = ""
-        }else {
-            if sensortitle.lowercased().contains("wind"), sensortitle.lowercased().contains("speed") {
-                cell.detailTextLabel?.text = sensorData["wind_speed"]
+        let values = self.deviceData["value"] as! [String: Any]
+        switch indexPath.section {
+        case 0:
+            cell.textLabel?.text = deviceSettingList[indexPath.row].localized
+            cell.detailTextLabel?.text = " "
+            
+            switch indexPath.row {
+            case 0:
+                connectStatusImage = UIImageView()
+                connectStatusImage.image = UIImage(named: (isConnected) ? "ok_icon" : "cancel_icon")
+                connectStatusImage.frame.size = CGSize(width: 30, height: 30)
+                connectStatusImage.frame.origin = CGPoint(x: self.tableView.frame.size.width - connectStatusImage.frame.size.width - 7, y: 0)
+                connectStatusImage.center.y = cell.center.y
+                connectStatusImage.alpha = 1
+                if !connectImageIsAdd {
+                    cell.contentView.addSubview(connectStatusImage)
+                    connectImageIsAdd = true
+                }
+                break
+            case 1:
+                let numbers = NumberFormatter()
+                if let sensorsNum = (values["sensors"] as? [String])?.count {
+                    cell.detailTextLabel?.text = numbers.string(from: NSNumber(value: sensorsNum))
+                }
+                break
+            case 2:
+                break
+            case 3:
+                let interval = values["interval"] as! Int
+                    switch interval {
+                    case let x where x < 60:
+                        cell.detailTextLabel?.text = String(describing: interval) + "s"
+                        break
+                    case 60..<3600:
+                        cell.detailTextLabel?.text = String(describing: interval / 60) + "m"
+                        break
+                    case 3600..<86400:
+                        cell.detailTextLabel?.text = String(describing: interval / 3600) + "h"
+                        break
+                    case let x where x >= 86400:
+                        cell.detailTextLabel?.text = String(describing: interval / 86400) + "d"
+                        break
+                    default:
+                        break
+                    }
+                
+                break
+            case 4:
+                cell.detailTextLabel?.text = "24h"
+                break
+            default:
+                break
             }
-            if sensortitle.lowercased().contains("wind"), sensortitle.lowercased().contains("direction") {
-                cell.detailTextLabel?.text = sensorData["wind_direction"]
+            break
+        case 1:
+            
+            var sensor = ((((deviceData["value"] as! [String:Any])["sensors"] as! [String])[indexPath.row]).split(separator: ":"))[0].replacingOccurrences(of: "_", with: " ")
+            let sensorFirst = sensor.first
+            sensor.remove(at: sensor.startIndex)
+            let sensortitle = "\(String(sensorFirst!).uppercased())\(sensor.lowercased())"
+            if sensorData.count <= 0 {
+                cell.detailTextLabel?.text = ""
+            }else {
+                if sensortitle.lowercased().contains("wind"), sensortitle.lowercased().contains("speed") {
+                    cell.detailTextLabel?.text = sensorData["wind_speed"]
+                }
+                if sensortitle.lowercased().contains("wind"), sensortitle.lowercased().contains("direction") {
+                    cell.detailTextLabel?.text = sensorData["wind_direction"]
+                }
+                if sensortitle.lowercased().contains("temperature") {
+                    cell.detailTextLabel?.text = sensorData["temperature"]
+                }
+                if sensortitle.lowercased().contains("humidity") {
+                    cell.detailTextLabel?.text = sensorData["humidity"]
+                }
+                if sensortitle.lowercased().contains("precipitation") {
+                    cell.detailTextLabel?.text = sensorData["precipitation"]
+                }
             }
-            if sensortitle.lowercased().contains("temperature") {
-                cell.detailTextLabel?.text = sensorData["temperature"]
-            }
-            if sensortitle.lowercased().contains("humidity") {
-                cell.detailTextLabel?.text = sensorData["humidity"]
-            }
-            if sensortitle.lowercased().contains("precipitation") {
-                cell.detailTextLabel?.text = sensorData["precipitation"]
-            }
+            
+            cell.textLabel?.text = sensortitle
+            break
+        default:
+            break
         }
-        //        sensor = sensor.first + sensor.lowercased().removeFirst()
-        cell.textLabel?.text = sensortitle
         
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let fv = view as? UITableViewHeaderFooterView
+        fv?.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return (section == 0) ? "hardware_socket_device_header_setting".localized : "hardware_socket_device_header_values".localized
     }
     
     

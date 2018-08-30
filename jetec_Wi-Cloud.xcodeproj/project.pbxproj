@@ -48,6 +48,7 @@
 		85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DB259B212D044400E0546A /* CustomMarkerView.swift */; };
 		85DB64CD2133D76F00D71DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85DB64CC2133D76E00D71DE1 /* Assets.xcassets */; };
 		85E48E99212BE9F8002A9EA5 /* ShowDetailDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */; };
+		85EEFBE72137E08700E14C52 /* LoginInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EEFBE62137E08700E14C52 /* LoginInsertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		85DB259B212D044400E0546A /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		85DB64CC2133D76E00D71DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85E48E98212BE9F8002A9EA5 /* ShowDetailDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailDataViewController.swift; sourceTree = "<group>"; };
+		85EEFBE62137E08700E14C52 /* LoginInsertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInsertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				2204D034211AB5AF00B70B1D /* LaunchScreen.storyboard */,
 				2204D037211AB5AF00B70B1D /* Info.plist */,
 				221965CD211C078B00329BA1 /* LoginViewController.swift */,
+				85EEFBE62137E08700E14C52 /* LoginInsertView.swift */,
 				22E7E6FD211D6CB9001DE27F /* MainViewController.swift */,
 				226EC200211C1A47003A90D6 /* FirstNavigationController.swift */,
 				22E7E703211D8025001DE27F /* BackgroundViewController.swift */,
@@ -376,6 +379,7 @@
 				226EC207211C3176003A90D6 /* DevicesListTableViewController.swift in Sources */,
 				2216507721228B5F00190E44 /* GaugeViewController.swift in Sources */,
 				85DB259C212D044400E0546A /* CustomMarkerView.swift in Sources */,
+				85EEFBE72137E08700E14C52 /* LoginInsertView.swift in Sources */,
 				22B5FC2321218512002C559A /* AddDashboardTableViewCell.swift in Sources */,
 				85D06D9E212BBDC30014A067 /* EditGaugePanelViewController.swift in Sources */,
 				2204D03E211AB5DE00B70B1D /* Global.swift in Sources */,
@@ -468,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -523,7 +527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -548,7 +552,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "macos.jetec-Wi-Cloud";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -568,7 +572,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "macos.jetec-Wi-Cloud";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

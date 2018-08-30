@@ -17,11 +17,13 @@
 // MARK: Panel
 "panel_title_value" = "value";
 "panel_title_gauge" = "gauge";
-"panel_context_value" = "Display current sensor value and its trend";
+"panel_context_value" = "Display current sensor value";
 "panel_context_gauge" = "Gauge value from a single sensor between a minimum and maxinum";
 "panel_module_button_title" = "Select a sensor module                     ";
 "panel_sensor_button_title" = "Select a sensor                               ";
 "panel_connecting" = "Connecting";
+"panel_cell_swipe_button_delete" = "delete";
+"panel_cell_swipe_button_edit" = "Edit";
 //Panel configure
 "panel_configure_title" = "Configure";
 "panel_configure_module" = "Sensor Module";
@@ -44,6 +46,21 @@
 "dashboard_detail_precipitation" = "Precipitation";
 "dashboard_detail_datalog_header_date" = "Date";
 "dashboard_detail_datalog_header_value" = "Value";
+
+
+// MARK: Hardware
+"hardware_socket_device_header_setting" = "Setting information";
+"hardware_socket_device_header_values" = "Real-time values";
+"hardware_socket_device_setting_connectstate" = "Connection status";
+"hardware_socket_device_setting_avaliable_sensors" = "Avaliable sensors";
+"hardware_socket_device_setting_alerts" = "Number of alerts";
+"hardware_socket_device_setting_interval" = "Reveive interval";
+"hardware_socket_device_setting_duration" = "Chart duration";
+
+
+"hardware_footer_text_zero" = "no device";
+"hardware_footer_text_one" = "device";
+"hardware_footer_text_plural" = "devices";
 
 // MARK: Navigation title
 "navigation_title_dashboard" = "Real-time";
@@ -82,9 +99,12 @@
 
 //MARK: Else
 "dashboard_nodata_message" = "You have no panel, add one!";
-"hardware_footer_text_zero" = "no device";
-"hardware_footer_text_one" = "device";
-"hardware_footer_text_plural" = "devices";
+"login_email_placeholder" = "email";
+"login_password_placeholder" = "password";
+"login_button_title" = "SIGN IN";
+"login_error_alert_title" = "Error";
+"login_error_alert_message" = "Email or password is wrong!";
+
 
 
 

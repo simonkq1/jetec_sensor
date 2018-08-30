@@ -22,8 +22,8 @@ class SwipeMenuTableViewCell: UITableViewCell {
             let height = self.menuImageView.frame.size.height
             return (width >= height) ? height : width
         }
-        menuImageView.frame.size.height = borderLength
-        menuImageView.frame.size.width = borderLength
+//        menuImageView.frame.size.height = borderLength
+//        menuImageView.frame.size.width = borderLength
         menuImageView.center.x = self.center.x
 //        nameLabel.layer.borderWidth = 1
     }

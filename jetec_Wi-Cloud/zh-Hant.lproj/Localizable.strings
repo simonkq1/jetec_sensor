@@ -18,11 +18,13 @@
 // MARK: Panel
 "panel_title_value" = "數值";
 "panel_title_gauge" = "儀表";
-"panel_context_value" = "顯示當前傳感器值及其動向";
+"panel_context_value" = "顯示當前傳感器的值";
 "panel_context_gauge" = "在儀表上的最大值和最小值之間顯示單個傳感器的值";
 "panel_module_button_title" = "選擇一個裝置                     ";
 "panel_sensor_button_title" = "選擇一個傳感器                               ";
 "panel_connecting" = "連線中";
+"panel_cell_swipe_button_delete" = "刪除";
+"panel_cell_swipe_button_Edit" = "編輯";
 //Panel configure
 "panel_configure_title" = "配置";
 "panel_configure_module" = "裝置模組";
@@ -45,6 +47,20 @@
 "dashboard_detail_precipitation" = "降雨";
 "dashboard_detail_datalog_header_date" = "日期";
 "dashboard_detail_datalog_header_value" = "數值";
+
+
+// MARK: Hardware
+"hardware_socket_device_header_setting" = "設定資訊";
+"hardware_socket_device_header_values" = "即時數據";
+"hardware_socket_device_setting_connectstate" = "連線狀態";
+"hardware_socket_device_setting_avaliable_sensors" = "啟動 sensors";
+"hardware_socket_device_setting_alerts" = "警報數";
+"hardware_socket_device_setting_interval" = "讀取間隔";
+"hardware_socket_device_setting_duration" = "曲線間隔";
+
+"hardware_footer_text_zero" = "0 個裝置";
+"hardware_footer_text_one" = "個裝置";
+"hardware_footer_text_plural" = "個裝置";
 
 
 // MARK: Navigation title
@@ -84,8 +100,10 @@
 
 
 //MARK: Else
-"dashboard_nodata_message" = "You have no panel, add one!";
-"hardware_footer_text_zero" = "0 個裝置";
-"hardware_footer_text_one" = "個裝置";
-"hardware_footer_text_plural" = "個裝置";
+"dashboard_nodata_message" = "你沒有面板，增加一個吧！";
+"login_email_placeholder" = "信箱";
+"login_password_placeholder" = "密碼";
+"login_button_title" = "登入";
+"login_error_alert_title" = "錯誤";
+"login_error_alert_message" = "信箱或密碼錯誤!";
 

@@ -640,7 +640,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     // MARK: Cell Swipe Action
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         var actionArray: [UITableViewRowAction] = [UITableViewRowAction]()
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, index) in
+        let deleteAction = UITableViewRowAction(style: .default, title: "panel_cell_swipe_button_delete".localized) { (action, index) in
             
             print("Delete \(indexPath)")
             Global.memberData.dashboardData.remove(at: index.row)
@@ -652,7 +652,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             }
         }
         
-        let editAction = UITableViewRowAction(style: .destructive, title: "Edit") { (action, index) in
+        let editAction = UITableViewRowAction(style: .destructive, title: "panel_cell_swipe_button_edit".localized) { (action, index) in
             
             print("Edit \(indexPath)")
             let panelType = Global.memberData.dashboardData[indexPath.section]["panelType"] as? String

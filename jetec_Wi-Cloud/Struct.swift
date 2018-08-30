@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Basic {
     static let api = "https://api.tinkermode.com"
@@ -14,6 +15,10 @@ struct Basic {
     static let dateFormate = "YYYY-MM-dd'T'HH:mm:ss.SSS'Z'"
     static let projectId = "1010"
     static let appId = "webapp"
+}
+
+struct Color {
+    static let loginButtonColor: UIColor = UIColor(red: 9/255, green: 62/255, blue: 142/255, alpha: 1)
 }
 
 

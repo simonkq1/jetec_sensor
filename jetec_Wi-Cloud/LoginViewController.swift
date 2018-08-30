@@ -26,7 +26,19 @@ class LoginViewController: UIViewController {
     var infoIsGet: Bool = false
     var authToken: String!
     let user = UserDefaults()
+    var originY: CGFloat!
+    var isNotEmpty: Bool = false {
+        didSet {
+            DispatchQueue.main.async {
+                self.loginButton.backgroundColor = self.isNotEmpty ? Color.loginButtonColor : UIColor.lightGray
+                self.loginButton.isEnabled = self.isNotEmpty
+            }
+        }
+    }
     
+    
+    
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loadingAction: UIActivityIndicatorView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -83,8 +95,10 @@ class LoginViewController: UIViewController {
                         (i as! UITextField).isEnabled = true
                     }
                 }
-                loadingAction.stopAnimating()
-                loadingAction.alpha = 0
+                if self.loadingAction.isAnimating {
+                    self.loadingAction.stopAnimating()
+                    self.loadingAction.alpha = 0
+                }
             }
         }else {
             
@@ -98,24 +112,43 @@ class LoginViewController: UIViewController {
         passwordTextField.text = "jetec0000"
         loadingAction.stopAnimating()
         loadingAction.alpha = 0
+        isNotEmpty = false
+        passwordTextField.isSecureTextEntry = true
+        emailTextField.borderStyle = .none
+        passwordTextField.borderStyle = .none
+        emailTextField.placeholder = "login_email_placeholder".localized
+        passwordTextField.placeholder = "login_password_placeholder".localized
+        loginButton.setTitle("login_button_title".localized, for: UIControlState.normal)
+        loginButton.layer.cornerRadius = 5
         
         
         // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        
+        emailTextField.addTarget(self, action: #selector(keyboardReturnAction(sender:)), for: UIControlEvents.editingDidEndOnExit)
+        passwordTextField.addTarget(self, action: #selector(keyboardReturnAction(sender:)), for: UIControlEvents.editingDidEndOnExit)
+        
+        checkTextFieldIsNotEmpty()
     }
     
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        self.originY = self.view.frame.origin.y
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for i in self.view.subviews {
-            if i is UITextField {
-                if (i as! UITextField).isEditing {
-                    (i as! UITextField).endEditing(true)
-                }
-            }
+        if emailTextField.isEditing {
+            emailTextField.endEditing(true)
+        }
+        if passwordTextField.isEditing {
+            passwordTextField.endEditing(true)
         }
     }
     
@@ -138,6 +171,35 @@ class LoginViewController: UIViewController {
             }else {
                 self.dataIsReady = true
                 self.dataIsError = true
+                
+                let alert = UIAlertController(title: "login_error_alert_title".localized, message: "login_error_alert_message".localized, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertActionStyle.default, handler: { (action) in
+                    DispatchQueue.main.async {
+                        
+                        alert.dismiss(animated: true, completion: nil)
+                        if self.loadingAction.isAnimating {
+                            self.loadingAction.stopAnimating()
+                            self.loadingAction.alpha = 0
+                            self.passwordTextField.text?.removeAll()
+                            for i in self.view.subviews {
+                                if i is UITextField {
+                                    if !(i as! UITextField).isEnabled {
+                                        (i as! UITextField).isEnabled = true
+                                    }
+                                }
+                                if i is UIButton {
+                                    if !(i as! UIButton).isEnabled {
+                                        (i as! UIButton).isEnabled = true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+                alert.addAction(ok)
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
                 print("connect error")
             }
         }
@@ -196,6 +258,8 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    
     func getDevicesInfo() {
         Global.memberData.devicesInfo = []
         for i in Global.memberData.devicesData {
@@ -253,6 +317,52 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func checkTextFieldIsNotEmpty() {
+        DispatchQueue.global().async {
+            while true {
+                DispatchQueue.main.async {
+                    if self.passwordTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count != 0, self.emailTextField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count != 0 {
+                        self.isNotEmpty = true
+                    }else {
+                        self.isNotEmpty = false
+                    }
+                }
+                usleep(100000)
+            }
+        }
+    }
+    
+    @objc func keyboardReturnAction(sender: UITextField) {
+        DispatchQueue.main.async {
+            sender.endEditing(true)
+        }
+    }
+    
+    
+    @objc func keyboardWillRise(notification: NSNotification) {
+        
+        guard let userInfo = notification.userInfo else {return}
+        guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
+        let keyboardFrame = keyboardSize.cgRectValue
+        
+        if self.view.frame.origin.y == originY {
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.frame.origin.y -= keyboardFrame.height / 3
+            })
+        }
+        
+    }
+    @objc func keyboardWillFall(notification: NSNotification) {
+        if self.view.frame.origin.y != originY {
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                self.view.frame.origin.y = self.originY
+            })
+        }
+        
     }
     
     

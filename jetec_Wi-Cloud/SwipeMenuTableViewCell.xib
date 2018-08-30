@@ -30,19 +30,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yAX-6m-DzV">
-                        <rect key="frame" x="16" y="11" width="288" height="129"/>
+                        <rect key="frame" x="26" y="21" width="268" height="119"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ozI-cn-PCD" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" id="CuZ-1n-Qgg"/>
-                    <constraint firstItem="yAX-6m-DzV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Jmb-Ft-QOl"/>
+                    <constraint firstItem="yAX-6m-DzV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="Jmb-Ft-QOl"/>
                     <constraint firstItem="ozI-cn-PCD" firstAttribute="top" secondItem="yAX-6m-DzV" secondAttribute="bottom" id="ZHt-ng-GKa"/>
                     <constraint firstItem="ozI-cn-PCD" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="aiG-rR-1px"/>
-                    <constraint firstItem="yAX-6m-DzV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="bXA-Av-2tg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yAX-6m-DzV" secondAttribute="trailing" constant="10" id="bXA-Av-2tg"/>
                     <constraint firstItem="yAX-6m-DzV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mHL-lt-cw8"/>
                     <constraint firstItem="ozI-cn-PCD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mO3-QY-6gj"/>
-                    <constraint firstItem="yAX-6m-DzV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="sLC-hO-6Q9"/>
+                    <constraint firstItem="yAX-6m-DzV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="sLC-hO-6Q9"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

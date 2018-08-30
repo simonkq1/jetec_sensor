@@ -13,12 +13,19 @@ class LoadingViewController: UIViewController {
     
     
     
-
+    @IBOutlet weak var loadingActive: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loadingActive.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        loadingActive.startAnimating()
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        loadingActive.stopAnimating()
     }
 
     

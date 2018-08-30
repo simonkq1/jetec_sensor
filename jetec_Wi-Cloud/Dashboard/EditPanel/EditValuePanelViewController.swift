@@ -99,6 +99,10 @@ class EditValuePanelViewController: UIViewController {
         moduleDropDownTextField.placeholder = "panel_configure_placeholder_module".localized
         sensorDropDownTextField.placeholder = "panel_configure_placeholder_sensor".localized
         
+        moduleDropDownTextField.borderWidth = 1
+        sensorDropDownTextField.borderWidth = 1
+        moduleDropDownTextField.cornerRadius = 5
+        sensorDropDownTextField.cornerRadius = 5
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -150,6 +154,8 @@ class EditValuePanelViewController: UIViewController {
         sensorDropDownTextField.isSearchEnable = false
         moduleDropDownTextField.rowHeight = 44
         sensorDropDownTextField.rowHeight = 44
+        moduleDropDownTextField.selectedRowColor = UIColor(red: 161/255, green: 217/255, blue: 229/255, alpha: 1)
+        sensorDropDownTextField.selectedRowColor = UIColor(red: 161/255, green: 217/255, blue: 229/255, alpha: 1)
         moduleDropDownTextField.dropDown(list: sensorList) { (text, index, id) in
             print("text: \(text), index: \(index)")
             if let _ = self.selectModuleIndex {
