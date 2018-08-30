@@ -25,6 +25,7 @@ class SwipeMenuTableViewCell: UITableViewCell {
         menuImageView.frame.size.height = borderLength
         menuImageView.frame.size.width = borderLength
         menuImageView.center.x = self.center.x
+//        nameLabel.layer.borderWidth = 1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

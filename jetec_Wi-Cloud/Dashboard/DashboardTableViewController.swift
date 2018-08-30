@@ -425,7 +425,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         //        print((dashboardData["value"] as! [[String: Any]])[indexPath.section])
         var title = Global.memberData.dashboardData[indexPath.section]["name"] as? String ?? "沒有標題"
         
-        
         var receiveSeriesData: [[String: Any]] {
             if let eventData: [String: Any] = receiveData["eventData"] as? [String: Any] {
                 if let series = eventData["timeSeriesData"] as? [[String:Any]] {
@@ -532,7 +531,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                     }
                 }
             }else {
-                cell.valueTextLabel.text = "connecting"
+                cell.valueTextLabel.text = "panel_connecting".localized
                 cell.valueTextLabel.textColor = UIColor.lightGray
             }
             break

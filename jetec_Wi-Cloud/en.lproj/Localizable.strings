@@ -8,11 +8,11 @@
 
 
 // MARK: Menu
-"menu_dashboard" = "Instant Value";
+"menu_dashboard" = "Real-time";
 "menu_hardware" = "Hardware";
 "menu_notifications" = "Notifications";
 "menu_logout" = "Logout";
-
+"menu_consultation" = "Consultation";
 
 // MARK: Panel
 "panel_title_value" = "value";
@@ -21,6 +21,7 @@
 "panel_context_gauge" = "Gauge value from a single sensor between a minimum and maxinum";
 "panel_module_button_title" = "Select a sensor module                     ";
 "panel_sensor_button_title" = "Select a sensor                               ";
+"panel_connecting" = "Connecting";
 //Panel configure
 "panel_configure_title" = "Configure";
 "panel_configure_module" = "Sensor Module";
@@ -47,6 +48,7 @@
 // MARK: Navigation title
 "navigation_title_dashboard" = "Real-time";
 "navigation_title_hardware" = "Hardware";
+"navigation_title_notifications" = "notifications";
 "navigation_title_panel" = "Select a Type of Panel";
 "navigation_title_setting" = "Setting";
 "navigation_title_device_socket" = "Sensor Values";

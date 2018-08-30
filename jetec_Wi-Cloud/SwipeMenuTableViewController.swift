@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SafariServices
 
 class SwipeMenuTableViewController: UITableViewController {
     
-    let list = ["menu_dashboard", "menu_hardware", "menu_notifications", "menu_logout"]
+    let list = ["menu_dashboard", "menu_hardware", "menu_notifications", "menu_logout", "menu_consultation"]
     
     
     
@@ -24,16 +25,26 @@ class SwipeMenuTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.tableFooterView = UIView()
-        main_vc = (parent as! UINavigationController).parent as! MainViewController
+//        print(String(describing: parent))
+//        main_vc = parent as! MainViewController
         tableView.register(UINib(nibName: "SwipeMenuTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @objc func tapGestureAction(sender: UITapGestureRecognizer) {
+        main_vc.swipeMenuConstraint.constant = -150
+        main_vc.backgroundConstraint.constant = -400
+        UIView.animate(withDuration: 0.5) {
+            self.main_vc.view.layoutIfNeeded()
+        }
+        let safari = SFSafariViewController(url: URL(string: "http://www.jetec.com.tw/wicloud/support.html")!)
+        self.main_vc.show(safari, sender: self.main_vc)
     }
     
 
@@ -54,7 +65,9 @@ class SwipeMenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeMenuTableViewCell
         cell.nameLabel?.text = list[indexPath.row].localized
         cell.menuImageView.image = nil
-        
+        cell.nameLabel.textColor = UIColor.white
+        cell.nameLabel.gestureRecognizers = []
+        cell.nameLabel.isUserInteractionEnabled = false
         switch indexPath.row {
         case 0:
             cell.menuImageView.image = UIImage(named: "nav-icon-dashboard")
@@ -68,6 +81,11 @@ class SwipeMenuTableViewController: UITableViewController {
         case 3:
             cell.menuImageView.image = UIImage(named: "nav-icon-settings")
             break
+        case 4:
+            cell.menuImageView.image = nil
+            cell.nameLabel.isUserInteractionEnabled = true
+            cell.nameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(sender:))))
+            break
         default:
             break
         }
@@ -79,15 +97,14 @@ class SwipeMenuTableViewController: UITableViewController {
     func celldidSelectAnimate(_ cell: UITableViewCell) {
         cell.contentView.backgroundColor = UIColor.lightGray
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
-            cell.contentView.backgroundColor = UIColor(red: 207/255, green: 207/255, blue: 207/255, alpha: 1)
+            cell.contentView.backgroundColor = UIColor.darkGray
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        celldidSelectAnimate(tableView.cellForRow(at: indexPath)!)
+//        celldidSelectAnimate(tableView.cellForRow(at: indexPath)!)
         
-        let dash_board = UIStoryboard(name: "Dashboard", bundle: nil)
         DispatchQueue.main.async {
             
             switch indexPath.row {
@@ -100,7 +117,31 @@ class SwipeMenuTableViewController: UITableViewController {
             case 2:
                 break
             case 3:
-                self.main_vc.changePage(to: self.main_vc.setting_vc)
+                let alert = UIAlertController(title: "logout_alert_title".localized, message: "logout_alert_context".localized, preferredStyle: UIAlertControllerStyle.alert)
+                let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertActionStyle.default, handler: { (action) in
+                    let user = UserDefaults()
+                    user.removeObject(forKey: "email")
+                    user.removeObject(forKey: "password")
+                    user.synchronize()
+                    Global.memberData.authData.removeAll()
+                    Global.memberData.devicesData.removeAll()
+                    Global.memberData.devicesInfo.removeAll()
+                    Global.memberData.homesData.removeAll()
+                    Global.memberData.userData.removeAll()
+                    Global.memberData.onlineDevices.removeAll()
+                    let login_vc = Global.main_storyboard.instantiateViewController(withIdentifier: "login_vc") as! LoginViewController
+                    self.showDetailViewController(login_vc, sender: nil)
+                    print("OK")
+                })
+                let cancel = UIAlertAction(title: "logout_alert_cancel".localized, style: UIAlertActionStyle.cancel, handler: { (action) in
+                    alert.dismiss(animated: false, completion: nil)
+                    print("cancel")
+                })
+                alert.addAction(ok)
+                alert.addAction(cancel)
+                self.main_vc.present(alert, animated: false, completion: nil)
+                break
+            case 4:
                 break
             default:
                 break

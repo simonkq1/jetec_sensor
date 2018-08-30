@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var mainContainerView: UIView!
     
+    @IBOutlet weak var swipeMenuWidthConstraint: NSLayoutConstraint!
     
     
     var selectedViewController: UIViewController!
@@ -35,13 +36,6 @@ class MainViewController: UIViewController {
         self.add(asChildViewController: nc)
         
         return nc
-    }()
-    lazy var setting_vc: SettingTableViewController = {
-        var vc = Global.main_storyboard.instantiateViewController(withIdentifier: "setting_vc") as! SettingTableViewController
-        
-        self.add(asChildViewController: vc)
-        
-        return vc
     }()
     
     
@@ -94,7 +88,8 @@ class MainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         selectedViewController = firstViewController
-        
+        self.swipeMenuWidthConstraint.constant = (self.view.frame.size.width / 3.5)
+        self.swipeMenuConstraint.constant = -self.swipeMenuWidthConstraint.constant
         for i in childViewControllers {
             
             if i.restorationIdentifier == "menu_vc" {
@@ -108,6 +103,9 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "containerView_segue" {
             firstViewController = segue.destination as! DashboardNavigationController
+        }
+        if segue.identifier == "menu_segue" {
+            (segue.destination as! SwipeMenuTableViewController).main_vc = self
         }
     }
     
