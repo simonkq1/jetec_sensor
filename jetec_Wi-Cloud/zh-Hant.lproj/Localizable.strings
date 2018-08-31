@@ -24,7 +24,7 @@
 "panel_sensor_button_title" = "選擇一個傳感器                               ";
 "panel_connecting" = "連線中";
 "panel_cell_swipe_button_delete" = "刪除";
-"panel_cell_swipe_button_Edit" = "編輯";
+"panel_cell_swipe_button_edit" = "編輯";
 //Panel configure
 "panel_configure_title" = "配置";
 "panel_configure_module" = "裝置模組";
@@ -53,7 +53,7 @@
 "hardware_socket_device_header_setting" = "設定資訊";
 "hardware_socket_device_header_values" = "即時數據";
 "hardware_socket_device_setting_connectstate" = "連線狀態";
-"hardware_socket_device_setting_avaliable_sensors" = "啟動 sensors";
+"hardware_socket_device_setting_avaliable_sensors" = "啟動感測器";
 "hardware_socket_device_setting_alerts" = "警報數";
 "hardware_socket_device_setting_interval" = "讀取間隔";
 "hardware_socket_device_setting_duration" = "曲線間隔";
