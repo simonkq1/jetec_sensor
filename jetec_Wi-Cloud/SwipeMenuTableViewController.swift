@@ -38,7 +38,7 @@ class SwipeMenuTableViewController: UITableViewController {
     
     
     @objc func tapGestureAction(sender: UITapGestureRecognizer) {
-        main_vc.swipeMenuConstraint.constant = -150
+        main_vc.swipeMenuConstraint.constant = -main_vc.swipeMenuWidthConstraint.constant
         main_vc.backgroundConstraint.constant = -400
         UIView.animate(withDuration: 0.5) {
             self.main_vc.view.layoutIfNeeded()

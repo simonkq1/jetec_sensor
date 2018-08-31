@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
         case .changed:
             let posX = position.x
             if swipeMenuConstraint.constant < 0 {
-                swipeMenuConstraint.constant = -150 + posX
+                swipeMenuConstraint.constant = -swipeMenuWidthConstraint.constant + posX
             }
         case .ended:
             
@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
                 swipeMenuConstraint.constant = 0
                 menuIsShow = true
             }else {
-                swipeMenuConstraint.constant = -150
+                swipeMenuConstraint.constant = -swipeMenuWidthConstraint.constant
                 menuIsShow = false
             }
             UIView.animate(withDuration: 0.5) {
@@ -91,7 +91,6 @@ class MainViewController: UIViewController {
         self.swipeMenuWidthConstraint.constant = (self.view.frame.size.width / 3.5)
         self.swipeMenuConstraint.constant = -self.swipeMenuWidthConstraint.constant
         for i in childViewControllers {
-            
             if i.restorationIdentifier == "menu_vc" {
                 menu_vc = i as! SwipeMenuTableViewController
             }

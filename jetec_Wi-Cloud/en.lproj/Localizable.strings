@@ -8,7 +8,7 @@
 
 
 // MARK: Menu
-"menu_dashboard" = "Real-time";
+"menu_dashboard" = "Dashboard";
 "menu_hardware" = "Hardware";
 "menu_notifications" = "Notifications";
 "menu_logout" = "Logout";
@@ -63,7 +63,7 @@
 "hardware_footer_text_plural" = "devices";
 
 // MARK: Navigation title
-"navigation_title_dashboard" = "Real-time";
+"navigation_title_dashboard" = "Dashboard";
 "navigation_title_hardware" = "Hardware";
 "navigation_title_notifications" = "notifications";
 "navigation_title_panel" = "Select a Type of Panel";
@@ -76,10 +76,7 @@
 "setting_logout" = "Logout";
 
 
-// MARK: Language
-"language_english" = "English";
-"language_chinese_traditional" = "Chinses(Triditional)";
-"language_chinese_simplified" = "Chinses(Simplified)";
+
 
 //MARK: Bar button title
 "bar_back_button_panel" = "Panel Style";

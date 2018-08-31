@@ -29,7 +29,7 @@ class BackgroundViewController: UIViewController {
             break
         case .ended:
             if originX - position.x > 0 {
-                main_vc.swipeMenuConstraint.constant = -150
+                main_vc.swipeMenuConstraint.constant = -main_vc.swipeMenuWidthConstraint.constant
                 main_vc.menuIsShow = false
                 main_vc.backgroundConstraint.constant = -400
             }else {
@@ -62,7 +62,7 @@ class BackgroundViewController: UIViewController {
     @objc func tapGestureAction(sender: UITapGestureRecognizer) {
         
         let main_vc = parent as! MainViewController
-        main_vc.swipeMenuConstraint.constant = -150
+        main_vc.swipeMenuConstraint.constant = -main_vc.swipeMenuWidthConstraint.constant
         main_vc.backgroundConstraint.constant = -400
         main_vc.menuIsShow = false
         UIView.animate(withDuration: 0.5) {
