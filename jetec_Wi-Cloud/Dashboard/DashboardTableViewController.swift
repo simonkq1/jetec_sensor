@@ -30,7 +30,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     var cellText: [NSMutableAttributedString] = []
     var pointerIsDraw: Bool = false
     
-    
     //MARK: - System Function
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +64,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
         self.navigationItem.rightBarButtonItems = leftBarItems
         tableView.register(UINib(nibName: "GaugeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "gauge_cell")
-        
         tableView.register(UINib(nibName: "ValueTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "value_cell")
         socket = Global.connectToWebSocket(delegate: self)
         
@@ -73,7 +71,16 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         self.tableView.estimatedSectionFooterHeight = 0
         self.tableView.estimatedSectionHeaderHeight = 0
         
-        sleep(1)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+        
+        usleep(300000)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if !socket.isConnected {
+            socket.connect()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,7 +95,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     }
     
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         if socket != nil {
             if socket.isConnected {
                 socket.disconnect()
@@ -166,6 +173,11 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     
     
+    @objc func applicationDidBecomeActive() {
+        if !socket.isConnected {
+            socket.connect()
+        }
+    }
     
     
     
@@ -420,7 +432,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: ValueTableViewCell!
+        var value_cell: ValueTableViewCell!
         var gauge_cell: GaugeTableViewCell!
         //        print((dashboardData["value"] as! [[String: Any]])[indexPath.section])
         var title = Global.memberData.dashboardData[indexPath.section]["name"] as? String ?? "沒有標題"
@@ -441,24 +453,24 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         let sensorId = (Global.memberData.dashboardData[indexPath.section]["sensorId"] as! String).lowercased()
         let localSeriesId = moduleId + "-\(sensorId)"
         if panelType != "GAUGE" {
-            cell = tableView.dequeueReusableCell(withIdentifier: "value_cell", for: indexPath) as! ValueTableViewCell
+            value_cell = tableView.dequeueReusableCell(withIdentifier: "value_cell", for: indexPath) as! ValueTableViewCell
             
             if sensorId.contains("humidity") {
-                cell.unit = " %"
+                value_cell.unit = " %"
             }else if sensorId.contains("wind_direction") {
-                cell.unit = " °"
+                value_cell.unit = " °"
                 
             }else if sensorId.contains("temperature") {
-                cell.unit = " ℃"
+                value_cell.unit = " ℃"
                 
             }else if sensorId.contains("precipitation") {
-                cell.unit = " mm"
+                value_cell.unit = " mm"
                 
             }else if sensorId.contains("wind_speed") {
-                cell.unit = " m/s"
+                value_cell.unit = " m/s"
                 
             }else {
-                cell.unit = " "
+                value_cell.unit = " "
             }
         }else {
             gauge_cell = tableView.dequeueReusableCell(withIdentifier: "gauge_cell", for: indexPath) as! GaugeTableViewCell
@@ -489,13 +501,13 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         
         switch panelType {
         case "VALUE":
-            cell.sensorId = sensorId
-            cell.setIcon()
-            cell.nameTextLabel.text = title
+            value_cell.sensorId = sensorId
+            value_cell.setIcon()
+            value_cell.nameTextLabel.text = title
             if title.count <= 0 {
-                cell.nameTextLabel.textColor = UIColor.lightGray
+                value_cell.nameTextLabel.textColor = UIColor.lightGray
             }else {
-                cell.nameTextLabel.textColor = UIColor.black
+                value_cell.nameTextLabel.textColor = UIColor.black
             }
             if receiveSeriesData.count > 0 {
                 for i in receiveSeriesData {
@@ -508,31 +520,31 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                             if value is String {
                                 let num = numFormatter.number(from: i["value"] as! String)
                                 let s1 = NSMutableAttributedString(string: String(format: "%.2f", (num?.doubleValue)!), attributes: [NSAttributedStringKey.font : valueText])
-                                let s2 = NSMutableAttributedString(string: cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedStringKey.font : unitText])
                                 s1.append(s2)
-                                cell.valueTextLabel.attributedText = s1
+                                value_cell.valueTextLabel.attributedText = s1
                             }else if value is Int {
                                 let num = numFormatter.string(for: (i["value"] as! Int))
                                 let s1 = NSMutableAttributedString(string: num!, attributes: [NSAttributedStringKey.font : valueText])
-                                let s2 = NSMutableAttributedString(string: cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedStringKey.font : unitText])
                                 s1.append(s2)
-                                cell.valueTextLabel.attributedText = s1
+                                value_cell.valueTextLabel.attributedText = s1
                             }else if value is Double {
                                 
                                 let s1 = NSMutableAttributedString(string: String(format: "%.2f", i["value"] as! Double), attributes: [NSAttributedStringKey.font : valueText])
-                                let s2 = NSMutableAttributedString(string: cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedStringKey.font : unitText])
                                 s1.append(s2)
-                                cell.valueTextLabel.attributedText = s1
+                                value_cell.valueTextLabel.attributedText = s1
                             }else {
                                 
                             }
-                            cell.valueTextLabel.textColor = UIColor.black
+                            value_cell.valueTextLabel.textColor = UIColor.black
                         }
                     }
                 }
             }else {
-                cell.valueTextLabel.text = "panel_connecting".localized
-                cell.valueTextLabel.textColor = UIColor.lightGray
+                value_cell.valueTextLabel.text = "panel_connecting".localized
+                value_cell.valueTextLabel.textColor = UIColor.lightGray
             }
             break
         case "GAUGE":
@@ -633,7 +645,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         // Configure the cell...
         
 //        cellIsAwake = true
-        return (panelType == "GAUGE") ? gauge_cell : cell
+        return (panelType == "GAUGE") ? gauge_cell : value_cell
     }
     
     

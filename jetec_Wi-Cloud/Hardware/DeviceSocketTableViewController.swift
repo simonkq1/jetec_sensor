@@ -32,6 +32,7 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 //        isConnected = UIBarButtonItem(image: UIImage(named: "disconnected_icon"), style: .done, target: self, action: nil)
 //        self.navigationItem.rightBarButtonItem = isConnected
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
         loadingAction = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
         loadingAction.color = UIColor.black
         loadingAction.frame.size = CGSize(width: 50, height: 50)
@@ -49,12 +50,16 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     override func viewDidAppear(_ animated: Bool) {
         self.view.addSubview(loadingAction)
+        if !socket.isConnected {
+            socket.connect()
+        }
     }
     
     
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        socket.disconnect()
+    override func viewDidDisappear(_ animated: Bool) {
+        if socket.isConnected {
+            socket.disconnect()
+        }
     }
     
     
@@ -131,6 +136,13 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("didReceiveData")
+    }
+    
+    
+    @objc func applicationDidBecomeActive() {
+        if !socket.isConnected {
+            socket.connect()
+        }
     }
     
     
