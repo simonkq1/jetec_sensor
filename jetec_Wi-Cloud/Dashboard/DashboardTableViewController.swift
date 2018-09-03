@@ -141,7 +141,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     // MARK:- Function Area
     
     func drawNoDataMessage() {
-        
         if Global.memberData.dashboardData.count <= 0 {
             textLabel.center = view.center
             textLabel.frame.origin = CGPoint(x: self.view.center.x, y: self.view.center.y)
@@ -157,9 +156,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             DispatchQueue.main.async {
                 self.view.addSubview(self.textLabel)
             }
-            
         }else {
-            
             textLabel.alpha = 0
         }
     }

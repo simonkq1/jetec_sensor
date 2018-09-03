@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dataIsReady: Bool = false
     var dataIsError: Bool = false
     var infoIsGet: Bool = false
+    var timeInterval: Double = 0
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -58,17 +59,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func autoLogin(_ email: String, _ password: String, action: () -> Void) {
-        
+        timeInterval = 0
         self.dataIsReady = false
         DispatchQueue.global().async {
             self.loginCheck(email: email, password: password, projectId: Basic.projectId)
         }
-        
-        while true {
+        var checking: Bool = true
+        while checking {
             dataCheck()
             if dataIsReady == true {
-                break
+                checking = false
             }
+            /*
+            if timeInterval > 15 {
+                DispatchQueue.global().async {
+                    self.loginCheck(email: email, password: password, projectId: Basic.projectId)
+                }
+                timeInterval = 0
+            }
+            self.timeInterval += 0.1
+            */
             usleep(100000)
         }
         
