@@ -76,12 +76,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         usleep(300000)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if !socket.isConnected {
-            socket.connect()
-        }
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()

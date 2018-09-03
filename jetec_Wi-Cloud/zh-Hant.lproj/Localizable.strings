@@ -26,7 +26,8 @@
 "panel_cell_swipe_button_delete" = "刪除";
 "panel_cell_swipe_button_edit" = "編輯";
 //Panel configure
-"panel_configure_title" = "配置";
+"panel_configure_title_value" = "數值配置";
+"panel_configure_title_gauge" = "儀表配置";
 "panel_configure_module" = "裝置模組";
 "panel_configure_sensor" = "資料類型";
 "panel_configure_name" = "顯示名稱";

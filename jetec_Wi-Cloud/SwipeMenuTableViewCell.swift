@@ -17,14 +17,17 @@ class SwipeMenuTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        /*
         var borderLength: CGFloat {
             let width = self.menuImageView.frame.size.width
             let height = self.menuImageView.frame.size.height
             return (width >= height) ? height : width
         }
-//        menuImageView.frame.size.height = borderLength
-//        menuImageView.frame.size.width = borderLength
-        menuImageView.center.x = self.center.x
+        menuImageView.frame.size.height = borderLength
+        menuImageView.frame.size.width = borderLength
+ 
+        menuImageView.center.x = self.center.
+         */
 //        nameLabel.layer.borderWidth = 1
     }
 

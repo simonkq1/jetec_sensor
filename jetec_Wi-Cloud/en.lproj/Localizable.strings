@@ -25,7 +25,8 @@
 "panel_cell_swipe_button_delete" = "delete";
 "panel_cell_swipe_button_edit" = "Edit";
 //Panel configure
-"panel_configure_title" = "Configure";
+"panel_configure_title_value" = "Configure Value";
+"panel_configure_title_gauge" = "Configure Gauge";
 "panel_configure_module" = "Sensor Module";
 "panel_configure_sensor" = "Type of Value";
 "panel_configure_name" = "Display Name";

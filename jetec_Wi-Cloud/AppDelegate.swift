@@ -60,7 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func autoLogin(_ email: String, _ password: String, action: () -> Void) {
         
         self.dataIsReady = false
-        loginCheck(email: email, password: password, projectId: Basic.projectId)
+        DispatchQueue.global().async {
+            self.loginCheck(email: email, password: password, projectId: Basic.projectId)
+        }
         
         while true {
             dataCheck()

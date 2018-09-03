@@ -53,13 +53,13 @@ class AddDashboardTableViewController: UITableViewController {
         switch titleList[selectedCell] {
         case "panel_title_value":
             let value_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "value_panel_vc") as! ValueViewController
-            value_vc.title = titleList[selectedCell].localized + "panel_configure_title".localized
+            value_vc.title = "panel_configure_title_value".localized
             value_vc.dashboard_vc = self.dashboard_vc
             self.show(value_vc, sender: self)
             break
         case "panel_title_gauge":
             let gauge_vc = Global.dash_storyboard.instantiateViewController(withIdentifier: "gauge_panel_vc") as! GaugeViewController
-            gauge_vc.title = titleList[selectedCell].localized + "panel_configure_title".localized
+            gauge_vc.title = "panel_configure_title_gauge".localized
             gauge_vc.dashboard_vc = self.dashboard_vc
             self.show(gauge_vc, sender: self)
             break
