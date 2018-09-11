@@ -48,6 +48,7 @@
 "dashboard_detail_precipitation" = "Precipitation";
 "dashboard_detail_datalog_header_date" = "Date";
 "dashboard_detail_datalog_header_value" = "Value";
+"dashboard_detail_nodata_text" = "No chart data available.";
 
 
 // MARK: Hardware

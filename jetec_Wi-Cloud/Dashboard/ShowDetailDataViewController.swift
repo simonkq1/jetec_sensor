@@ -29,10 +29,20 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
 
         // Do any additional setup after loading the view.
         
+        
         self.title = panelData["name"] as? String ?? ""
         getDataLog()
-        drawChart()
+        if dataLogForTableView.count != 0{
+            
+            drawChart()
+        }else {
+            
+        }
+        
         lineChartView.delegate = self
+        lineChartView.noDataText = "dashboard_detail_nodata_text".localized
+        print(dataLog.count)
+        print(directionData.count)
         
     }
     override func viewWillAppear(_ animated: Bool) {
