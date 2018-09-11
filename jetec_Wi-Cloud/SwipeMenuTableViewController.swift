@@ -96,8 +96,12 @@ class SwipeMenuTableViewController: UITableViewController {
     
     func celldidSelectAnimate(_ cell: UITableViewCell) {
         cell.contentView.backgroundColor = UIColor.lightGray
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
-            cell.contentView.backgroundColor = UIColor.darkGray
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
+                cell.contentView.backgroundColor = UIColor.darkGray
+            }
+        } else {
+            // Fallback on earlier versions
         }
     }
     

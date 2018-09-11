@@ -80,8 +80,12 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
-            self.tableView.reloadData()
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+                self.tableView.reloadData()
+            }
+        } else {
+            // Fallback on earlier versions
         }
         if !socket.isConnected {
             socket.connect()

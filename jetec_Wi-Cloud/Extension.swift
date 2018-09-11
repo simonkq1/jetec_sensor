@@ -26,10 +26,14 @@ extension UITableViewCell {
         self.layer.backgroundColor = animateColor.cgColor
         self.textLabel?.backgroundColor = animateColor
         self.detailTextLabel?.backgroundColor = animateColor
-        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { (timer) in
-            self.layer.backgroundColor = endColor.cgColor
-            self.textLabel?.backgroundColor = endColor
-            self.detailTextLabel?.backgroundColor = endColor
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: false) { (timer) in
+                self.layer.backgroundColor = endColor.cgColor
+                self.textLabel?.backgroundColor = endColor
+                self.detailTextLabel?.backgroundColor = endColor
+            }
+        } else {
+            // Fallback on earlier versions
         }
     }
 }
