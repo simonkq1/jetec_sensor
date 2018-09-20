@@ -4,27 +4,23 @@ PODS:
   - Charts/Core (3.1.1)
   - iOSDropDown (0.2.4)
   - Starscream (3.0.5)
-  - SwipeCellKit (2.4.3)
 
 DEPENDENCIES:
   - Charts (~> 3.1.1)
   - iOSDropDown
   - Starscream (~> 3.0.5)
-  - SwipeCellKit (~> 2.4.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Charts
     - iOSDropDown
     - Starscream
-    - SwipeCellKit
 
 SPEC CHECKSUMS:
   Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
   iOSDropDown: 6d928eddd336c7bc698ad0ba4b324ce3d2d43c59
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
-  SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
 
-PODFILE CHECKSUM: caa2099be21a0dae536bd1931a6de0f8f83fab80
+PODFILE CHECKSUM: 428069a40d988a718523ac1eabd2e8d49e65a4e1
 
 COCOAPODS: 1.5.3

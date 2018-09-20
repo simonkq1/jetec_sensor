@@ -187,9 +187,9 @@
 		22E7E708211D8C04001DE27F /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				22E7E705211D8BBD001DE27F /* Dashboard.storyboard */,
 				2216507521228B2300190E44 /* AddPanel */,
 				85D06D9A212BBCA80014A067 /* EditPanel */,
-				22E7E705211D8BBD001DE27F /* Dashboard.storyboard */,
 				22898A2321212A3400A1CD61 /* DashboardTableViewController.swift */,
 				85C06B8021256D9A00450213 /* DashboardNavigationController.swift */,
 				85254EE421264CC7009CED23 /* ShowDataLogTableViewController.swift */,
@@ -332,14 +332,12 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-jetec_Wi-Cloud/Pods-jetec_Wi-Cloud-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M69-3L-bux">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M69-3L-bux">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2304" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,21 +64,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="712-ZF-kFH">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Mv-Ji-acw" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="323.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="290"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dW0-Zt-9DJ">
-                                        <rect key="frame" x="0.0" y="323.5" width="375" height="323.5"/>
+                                        <rect key="frame" x="0.0" y="290" width="600" height="290"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="mJY-AA-t75" detailTextLabel="Hch-kO-zQQ" style="IBUITableViewCellStyleValue1" id="jdo-SA-utW">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jdo-SA-utW" id="VJW-FK-6zc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mJY-AA-t75">
@@ -89,7 +89,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hch-kO-zQQ">
-                                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                            <rect key="frame" x="541" y="12" width="44" height="20.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -152,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMd-QQ-jxv">
-                                <rect key="frame" x="16" y="50" width="343" height="45"/>
+                                <rect key="frame" x="16" y="50" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="wOu-fK-GpB"/>
                                 </constraints>
@@ -161,7 +161,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoJ-G1-ac0">
-                                <rect key="frame" x="16" y="159" width="343" height="45"/>
+                                <rect key="frame" x="16" y="159" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Xch-WG-gye"/>
                                 </constraints>
@@ -170,7 +170,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2r8-Vq-nMt">
-                                <rect key="frame" x="16" y="268" width="343" height="45"/>
+                                <rect key="frame" x="16" y="268" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="mGc-kr-hVD"/>
                                 </constraints>
@@ -179,7 +179,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNl-Oq-S0A" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="321" width="343" height="36"/>
+                                <rect key="frame" x="16" y="321" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="gX3-8x-a8o"/>
                                 </constraints>
@@ -188,7 +188,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M8n-md-vJa" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="16" y="212" width="343" height="36"/>
+                                <rect key="frame" x="16" y="212" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="cUy-uN-Bi4"/>
                                 </constraints>
@@ -197,7 +197,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V83-ts-TAN" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="16" y="103" width="343" height="36"/>
+                                <rect key="frame" x="16" y="103" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="hf5-LP-G4G"/>
                                 </constraints>
@@ -251,13 +251,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNH-aB-79U" customClass="MyScrollView" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-fG-O7Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="730"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylY-lt-LDt">
-                                                <rect key="frame" x="16" y="30" width="343" height="45"/>
+                                                <rect key="frame" x="16" y="30" width="568" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="QLG-sb-uV1"/>
                                                 </constraints>
@@ -266,7 +266,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om6-db-W9z">
-                                                <rect key="frame" x="16" y="139" width="343" height="45"/>
+                                                <rect key="frame" x="16" y="139" width="568" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="v6h-uH-8Ej"/>
                                                 </constraints>
@@ -275,7 +275,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHR-9i-vDL">
-                                                <rect key="frame" x="16" y="248" width="343" height="33"/>
+                                                <rect key="frame" x="16" y="248" width="568" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="1e8-GX-7NN"/>
                                                 </constraints>
@@ -284,7 +284,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KN2-Ya-dcN">
-                                                <rect key="frame" x="16" y="289" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="289" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="oXK-2j-fN1"/>
                                                 </constraints>
@@ -293,7 +293,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex: -20" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJx-yA-ksD" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="327" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="327" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="fjl-Yc-w7h"/>
                                                 </constraints>
@@ -302,7 +302,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgA-mD-Mg5">
-                                                <rect key="frame" x="16" y="367" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="367" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3YX-Zs-qiv"/>
                                                 </constraints>
@@ -311,7 +311,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex: 100" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-nK-Dxd" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="405" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="405" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="J7Y-y0-QdB"/>
                                                 </constraints>
@@ -320,7 +320,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5C-cH-rIV">
-                                                <rect key="frame" x="16" y="450" width="343" height="45"/>
+                                                <rect key="frame" x="16" y="450" width="568" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="vGo-nS-fU9"/>
                                                 </constraints>
@@ -329,7 +329,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nfE-uD-q9e" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="503" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="503" width="568" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="2f5-to-OEI"/>
                                                 </constraints>
@@ -338,7 +338,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PTI-BK-B01" customClass="DropDown" customModule="iOSDropDown">
-                                                <rect key="frame" x="16" y="192" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="192" width="568" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="cbw-gH-wkm"/>
                                                 </constraints>
@@ -347,7 +347,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eF-DN-iFC" customClass="DropDown" customModule="iOSDropDown">
-                                                <rect key="frame" x="16" y="83" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="83" width="568" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="5jU-C0-5x8"/>
                                                 </constraints>
@@ -432,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tid-Sm-XuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3501.5999999999999" y="215.44227886056973"/>
+            <point key="canvasLocation" x="3625" y="215"/>
         </scene>
         <!--Dashboard Navigation Controller-->
         <scene sceneID="rvI-zV-eW4">
@@ -503,7 +503,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPb-Px-sT8">
-                                <rect key="frame" x="16" y="50" width="343" height="45"/>
+                                <rect key="frame" x="16" y="50" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="OC0-3T-6hR"/>
                                 </constraints>
@@ -512,7 +512,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryt-ad-Rz5">
-                                <rect key="frame" x="16" y="159" width="343" height="45"/>
+                                <rect key="frame" x="16" y="159" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="zdf-VS-MRA"/>
                                 </constraints>
@@ -521,7 +521,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75x-Y1-SdB">
-                                <rect key="frame" x="16" y="268" width="343" height="45"/>
+                                <rect key="frame" x="16" y="268" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="AgV-yd-rqq"/>
                                 </constraints>
@@ -530,7 +530,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lwq-Et-aLm" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="321" width="343" height="36"/>
+                                <rect key="frame" x="16" y="321" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="2ns-hq-561"/>
                                 </constraints>
@@ -539,7 +539,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYw-zV-rqq" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="16" y="212" width="343" height="36"/>
+                                <rect key="frame" x="16" y="212" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="OU2-U4-7jQ"/>
                                 </constraints>
@@ -548,7 +548,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2dA-jc-SfR" customClass="DropDown" customModule="iOSDropDown">
-                                <rect key="frame" x="16" y="103" width="343" height="36"/>
+                                <rect key="frame" x="16" y="103" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="oIS-FH-c6e"/>
                                 </constraints>
@@ -602,13 +602,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Q-ZW-T5x" customClass="MyScrollView" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Srh-SJ-UAv">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="730"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nE8-XU-DLT">
-                                                <rect key="frame" x="16" y="30" width="343" height="45"/>
+                                                <rect key="frame" x="16" y="30" width="568" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="P8x-lp-R23"/>
                                                 </constraints>
@@ -617,7 +617,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYs-9U-bgp">
-                                                <rect key="frame" x="16" y="139" width="343" height="45"/>
+                                                <rect key="frame" x="16" y="139" width="568" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="ryw-rg-Drt"/>
                                                 </constraints>
@@ -626,7 +626,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Pl-Yj-KH6">
-                                                <rect key="frame" x="16" y="248" width="343" height="33"/>
+                                                <rect key="frame" x="16" y="248" width="568" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="9lG-Mw-KKw"/>
                                                 </constraints>
@@ -635,7 +635,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30O-Gg-fEA">
-                                                <rect key="frame" x="16" y="289" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="289" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5KD-WX-Uih"/>
                                                 </constraints>
@@ -644,7 +644,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex: -20" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Gy-T6-LXB" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="327" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="327" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="dez-Gl-32c"/>
                                                 </constraints>
@@ -653,7 +653,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIf-kx-ylP">
-                                                <rect key="frame" x="16" y="367" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="367" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="sw4-ey-vUK"/>
                                                 </constraints>
@@ -662,7 +662,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex: 100" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aD3-2G-zle" customClass="DecimalMinusTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="405" width="343" height="30"/>
+                                                <rect key="frame" x="16" y="405" width="568" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="eo9-An-wTM"/>
                                                 </constraints>
@@ -671,7 +671,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MD-rV-Vih">
-                                                <rect key="frame" x="16" y="450" width="343" height="45"/>
+                                                <rect key="frame" x="16" y="450" width="568" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="0vM-xv-t4n"/>
                                                 </constraints>
@@ -680,7 +680,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2JJ-1y-cK9" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="503" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="503" width="568" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="V0C-1X-zbO"/>
                                                 </constraints>
@@ -689,7 +689,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UkW-uE-OMH" customClass="DropDown" customModule="iOSDropDown">
-                                                <rect key="frame" x="16" y="192" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="192" width="568" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="lr7-Vt-pdp"/>
                                                 </constraints>
@@ -698,7 +698,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x8H-xx-F3z" customClass="DropDown" customModule="iOSDropDown">
-                                                <rect key="frame" x="16" y="83" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="83" width="568" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="3lJ-fM-gNB"/>
                                                 </constraints>
@@ -794,7 +794,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configure Panel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D1-rI-aEr">
-                                <rect key="frame" x="16" y="80" width="343" height="60"/>
+                                <rect key="frame" x="16" y="80" width="568" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="pdE-K7-feg"/>
                                 </constraints>
@@ -803,7 +803,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensor Module" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxF-er-R66">
-                                <rect key="frame" x="16" y="180" width="343" height="45"/>
+                                <rect key="frame" x="16" y="180" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="kT1-Pu-o3D"/>
                                 </constraints>
@@ -812,7 +812,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcV-ir-TjC" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="233" width="343" height="36"/>
+                                <rect key="frame" x="16" y="233" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="pNM-9J-XYf"/>
                                 </constraints>
@@ -822,7 +822,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIp-j4-5Ga">
-                                <rect key="frame" x="16" y="289" width="343" height="45"/>
+                                <rect key="frame" x="16" y="289" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="p4B-80-uNM"/>
                                 </constraints>
@@ -831,7 +831,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iph-5f-9Od" customClass="PanelClassButton" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="342" width="343" height="36"/>
+                                <rect key="frame" x="16" y="342" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="A7K-if-hpN"/>
                                 </constraints>
@@ -841,7 +841,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-5f-mNE">
-                                <rect key="frame" x="16" y="398" width="343" height="45"/>
+                                <rect key="frame" x="16" y="398" width="568" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="4gr-QU-i0P"/>
                                 </constraints>
@@ -850,7 +850,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X4W-Jz-MXr" customClass="PanelClassTextField" customModule="jetec_Wi_Cloud" customModuleProvider="target">
-                                <rect key="frame" x="16" y="451" width="343" height="36"/>
+                                <rect key="frame" x="16" y="451" width="568" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="IAd-Cj-Od0"/>
                                 </constraints>
@@ -859,14 +859,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="hEv-GB-dpa">
-                                <rect key="frame" x="329" y="244" width="15" height="15"/>
+                                <rect key="frame" x="554" y="243.5" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="QeZ-zo-8Cx"/>
                                     <constraint firstAttribute="width" constant="15" id="UQv-Ri-PuM"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangel_down" translatesAutoresizingMaskIntoConstraints="NO" id="3um-Hi-dWR">
-                                <rect key="frame" x="329" y="353" width="15" height="15"/>
+                                <rect key="frame" x="554" y="352.5" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="6jv-Ra-wSj"/>
                                     <constraint firstAttribute="width" constant="15" id="sPe-xG-8Kg"/>
