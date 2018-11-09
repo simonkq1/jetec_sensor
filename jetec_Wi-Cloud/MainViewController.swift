@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
     
     var firstViewController: DashboardNavigationController!
     
+    var nowViewController: UIViewController!
+    
     lazy var hardware_nc: FirstNavigationController = {
         var nc = Global.main_storyboard.instantiateViewController(withIdentifier: "first_nc") as! FirstNavigationController
         
@@ -90,7 +92,7 @@ class MainViewController: UIViewController {
         selectedViewController = firstViewController
         self.swipeMenuWidthConstraint.constant = (self.view.frame.size.width / 3.5)
         self.swipeMenuConstraint.constant = -self.swipeMenuWidthConstraint.constant
-        for i in childViewControllers {
+        for i in children {
             if i.restorationIdentifier == "menu_vc" {
                 menu_vc = i as! SwipeMenuTableViewController
             }
@@ -111,7 +113,7 @@ class MainViewController: UIViewController {
     
     private func add(asChildViewController viewController: UIViewController) {
         // Add Child View Controller
-        self.addChildViewController(viewController)
+        self.addChild(viewController)
         
         // Add Child View as Subview
         self.view.addSubview(viewController.view)
@@ -121,24 +123,27 @@ class MainViewController: UIViewController {
         viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // Notify Child View Controller
-        viewController.didMove(toParentViewController: self)
+        viewController.didMove(toParent: self)
     }
     
     
     func changePage(to newViewController: UIViewController) {
         // 2. Remove previous viewController
-        selectedViewController.willMove(toParentViewController: nil)
-        selectedViewController.view.removeFromSuperview()
-        selectedViewController.removeFromParentViewController()
-        
-        // 3. Add new viewController
-        addChildViewController(newViewController)
-        self.mainContainerView.addSubview(newViewController.view)
-        newViewController.view.frame = self.mainContainerView.bounds
-        newViewController.didMove(toParentViewController: self)
-        
-        // 4.
-        self.selectedViewController = newViewController
+        if selectedViewController != newViewController {
+            
+            selectedViewController.willMove(toParent: nil)
+            selectedViewController.view.removeFromSuperview()
+            selectedViewController.removeFromParent()
+            
+            // 3. Add new viewController
+            addChild(newViewController)
+            self.mainContainerView.addSubview(newViewController.view)
+            newViewController.view.frame = self.mainContainerView.bounds
+            newViewController.didMove(toParent: self)
+            
+            // 4.
+            self.selectedViewController = newViewController
+        }
         
     }
     

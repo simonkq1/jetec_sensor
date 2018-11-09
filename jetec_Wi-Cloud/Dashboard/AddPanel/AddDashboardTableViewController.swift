@@ -32,9 +32,9 @@ class AddDashboardTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.title = "navigation_title_panel".localized
         tableView.register(UINib(nibName: "AddDashboardTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
-        nextBarButton = UIBarButtonItem(title: "bar_button_next".localized, style: UIBarButtonItemStyle.plain, target: self, action: #selector(nextBarButtonAction))
+        nextBarButton = UIBarButtonItem(title: "bar_button_next".localized, style: UIBarButtonItem.Style.plain, target: self, action: #selector(nextBarButtonAction))
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "bar_button_cancel".localized, style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBarButtonAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "bar_button_cancel".localized, style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancelBarButtonAction))
         self.navigationItem.rightBarButtonItem = nextBarButton
         
         if selectedCell == nil{

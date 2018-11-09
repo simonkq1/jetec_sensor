@@ -118,18 +118,18 @@ class LoginViewController: UIViewController {
         passwordTextField.borderStyle = .none
         emailTextField.placeholder = "login_email_placeholder".localized
         passwordTextField.placeholder = "login_password_placeholder".localized
-        loginButton.setTitle("login_button_title".localized, for: UIControlState.normal)
+        loginButton.setTitle("login_button_title".localized, for: UIControl.State.normal)
         loginButton.layer.cornerRadius = 5
         
         
         // Do any additional setup after loading the view.
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        emailTextField.addTarget(self, action: #selector(keyboardReturnAction(sender:)), for: UIControlEvents.editingDidEndOnExit)
-        passwordTextField.addTarget(self, action: #selector(keyboardReturnAction(sender:)), for: UIControlEvents.editingDidEndOnExit)
+        emailTextField.addTarget(self, action: #selector(keyboardReturnAction(sender:)), for: UIControl.Event.editingDidEndOnExit)
+        passwordTextField.addTarget(self, action: #selector(keyboardReturnAction(sender:)), for: UIControl.Event.editingDidEndOnExit)
         
         checkTextFieldIsNotEmpty()
     }
@@ -173,7 +173,7 @@ class LoginViewController: UIViewController {
                 self.dataIsError = true
                 
                 let alert = UIAlertController(title: "login_error_alert_title".localized, message: "login_error_alert_message".localized, preferredStyle: .alert)
-                let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertActionStyle.default, handler: { (action) in
+                let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertAction.Style.default, handler: { (action) in
                     DispatchQueue.main.async {
                         
                         alert.dismiss(animated: true, completion: nil)
@@ -345,7 +345,7 @@ class LoginViewController: UIViewController {
     @objc func keyboardWillRise(notification: NSNotification) {
         
         guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         
         if self.view.frame.origin.y == originY {

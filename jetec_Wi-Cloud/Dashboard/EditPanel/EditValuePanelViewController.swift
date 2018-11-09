@@ -105,10 +105,10 @@ class EditValuePanelViewController: UIViewController {
         sensorDropDownTextField.cornerRadius = 5
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        nameTextField.addTarget(self, action: #selector(nameReturnAction), for: UIControlEvents.editingDidEndOnExit)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        nameTextField.addTarget(self, action: #selector(nameReturnAction), for: UIControl.Event.editingDidEndOnExit)
         
         addPanelButton.target = self
         addPanelButton.style = .plain
@@ -352,7 +352,7 @@ class EditValuePanelViewController: UIViewController {
         }
         
         guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         if self.view.frame.origin.y == originY {
             

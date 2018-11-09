@@ -32,8 +32,8 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 //        isConnected = UIBarButtonItem(image: UIImage(named: "disconnected_icon"), style: .done, target: self, action: nil)
 //        self.navigationItem.rightBarButtonItem = isConnected
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
-        loadingAction = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        loadingAction = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         loadingAction.color = UIColor.black
         loadingAction.frame.size = CGSize(width: 50, height: 50)
         loadingAction.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)

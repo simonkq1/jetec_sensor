@@ -61,7 +61,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         print("********************")
         
         editingButton = UIBarButtonItem(image: UIImage(named: "edit_icon"), style: .plain, target: self, action: #selector(editingBarButtonAction(sender:)))
-        addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
+        addButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addBarButtonAction(_:)))
         self.navigationItem.rightBarButtonItems = leftBarItems
         tableView.register(UINib(nibName: "GaugeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "gauge_cell")
         tableView.register(UINib(nibName: "ValueTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "value_cell")
@@ -71,7 +71,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         self.tableView.estimatedSectionFooterHeight = 0
         self.tableView.estimatedSectionHeaderHeight = 0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.applicationDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         usleep(300000)
     }
@@ -344,9 +344,9 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             gauge_cell.valueLabel.center.x = gauge_cell.innerView.layer.bounds.size.width / 2
             gauge_cell.valueLabel.textAlignment = .center
             let valueText = UIFont.systemFont(ofSize: 25)
-            let unitText = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
-            let s1 = NSMutableAttributedString(string: String(format: "%.2f", (value != nil) ? value! : "--"), attributes: [NSAttributedStringKey.font : valueText])
-            let s2 = NSMutableAttributedString(string: (value != nil) ? gauge_cell.unit : " ", attributes: [NSAttributedStringKey.font : unitText])
+            let unitText = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
+            let s1 = NSMutableAttributedString(string: String(format: "%.2f", (value != nil) ? value! : "--"), attributes: [NSAttributedString.Key.font : valueText])
+            let s2 = NSMutableAttributedString(string: (value != nil) ? gauge_cell.unit : " ", attributes: [NSAttributedString.Key.font : unitText])
             gauge_cell.valueLabel.textColor = UIColor.black
             s1.append(s2)
             
@@ -514,20 +514,20 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                             let unitText = UIFont.systemFont(ofSize: 25)
                             if value is String {
                                 let num = numFormatter.number(from: i["value"] as! String)
-                                let s1 = NSMutableAttributedString(string: String(format: "%.2f", (num?.doubleValue)!), attributes: [NSAttributedStringKey.font : valueText])
-                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                let s1 = NSMutableAttributedString(string: String(format: "%.2f", (num?.doubleValue)!), attributes: [NSAttributedString.Key.font : valueText])
+                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedString.Key.font : unitText])
                                 s1.append(s2)
                                 value_cell.valueTextLabel.attributedText = s1
                             }else if value is Int {
                                 let num = numFormatter.string(for: (i["value"] as! Int))
-                                let s1 = NSMutableAttributedString(string: num!, attributes: [NSAttributedStringKey.font : valueText])
-                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                let s1 = NSMutableAttributedString(string: num!, attributes: [NSAttributedString.Key.font : valueText])
+                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedString.Key.font : unitText])
                                 s1.append(s2)
                                 value_cell.valueTextLabel.attributedText = s1
                             }else if value is Double {
                                 
-                                let s1 = NSMutableAttributedString(string: String(format: "%.2f", i["value"] as! Double), attributes: [NSAttributedStringKey.font : valueText])
-                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedStringKey.font : unitText])
+                                let s1 = NSMutableAttributedString(string: String(format: "%.2f", i["value"] as! Double), attributes: [NSAttributedString.Key.font : valueText])
+                                let s2 = NSMutableAttributedString(string: value_cell.unit, attributes: [NSAttributedString.Key.font : unitText])
                                 s1.append(s2)
                                 value_cell.valueTextLabel.attributedText = s1
                             }else {
@@ -569,7 +569,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
                         if let value = i["value"] {
                             let numFormatter = NumberFormatter()
                             let valueText = UIFont.systemFont(ofSize: 25)
-                            let unitText = UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote)
+                            let unitText = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.footnote)
                             if value is String {
                                 let num = numFormatter.number(from: i["value"] as! String)
                                 val = num!

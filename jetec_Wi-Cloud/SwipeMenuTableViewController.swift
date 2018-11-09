@@ -122,8 +122,8 @@ class SwipeMenuTableViewController: UITableViewController {
                 break
             case 3:
                 
-                let alert = UIAlertController(title: "logout_alert_title".localized, message: "logout_alert_context".localized, preferredStyle: UIAlertControllerStyle.alert)
-                let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertActionStyle.default, handler: { (action) in
+                let alert = UIAlertController(title: "logout_alert_title".localized, message: "logout_alert_context".localized, preferredStyle: UIAlertController.Style.alert)
+                let ok = UIAlertAction(title: "logout_alert_ok".localized, style: UIAlertAction.Style.default, handler: { (action) in
                     let user = UserDefaults()
                     user.removeObject(forKey: "email")
                     user.removeObject(forKey: "password")
@@ -138,7 +138,7 @@ class SwipeMenuTableViewController: UITableViewController {
                     self.showDetailViewController(login_vc, sender: nil)
                     print("OK")
                 })
-                let cancel = UIAlertAction(title: "logout_alert_cancel".localized, style: UIAlertActionStyle.cancel, handler: { (action) in
+                let cancel = UIAlertAction(title: "logout_alert_cancel".localized, style: UIAlertAction.Style.cancel, handler: { (action) in
                     alert.dismiss(animated: false, completion: nil)
                     print("cancel")
                 })

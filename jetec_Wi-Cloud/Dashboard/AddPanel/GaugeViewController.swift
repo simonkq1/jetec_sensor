@@ -112,11 +112,11 @@ class GaugeViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         contentViewHeightConstraint.constant = scrollView.frame.size.height + 30
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillRise(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillFall(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        nameTextField.addTarget(self, action: #selector(nameReturnAction), for: UIControlEvents.editingDidEndOnExit)
+        nameTextField.addTarget(self, action: #selector(nameReturnAction), for: UIControl.Event.editingDidEndOnExit)
         
         
         
@@ -302,7 +302,7 @@ class GaugeViewController: UIViewController {
     @objc func keyboardWillChangeFrame(notification: NSNotification) {
         
         guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         if self.view.frame.origin.y != originY {
             DispatchQueue.main.async {
@@ -324,7 +324,7 @@ class GaugeViewController: UIViewController {
         }
         
         guard let userInfo = notification.userInfo else {return}
-        guard let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         if self.view.frame.origin.y == originY {
             DispatchQueue.main.async {
