@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dataIsError: Bool = false
     var infoIsGet: Bool = false
     var timeInterval: Double = 0
+    var loginCount: Int = 1
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -61,6 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func autoLogin(_ email: String, _ password: String, action: () -> Void) {
         timeInterval = 0
         self.dataIsReady = false
+        guard loginCount <= 3 else {
+            let login_vc = (UIStoryboard(name: "Main", bundle: Bundle.main)).instantiateViewController(withIdentifier: "login_vc") as! LoginViewController
+            window?.rootViewController = login_vc
+            return
+        }
         DispatchQueue.global().async {
             self.loginCheck(email: email, password: password, projectId: Basic.projectId)
         }
@@ -70,15 +76,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if dataIsReady == true {
                 checking = false
             }
-            /*
-            if timeInterval > 15 {
+            
+            if timeInterval > 10 {
                 DispatchQueue.global().async {
                     self.loginCheck(email: email, password: password, projectId: Basic.projectId)
+                    checking = false
                 }
                 timeInterval = 0
             }
             self.timeInterval += 0.1
-            */
+            
             usleep(100000)
         }
         
@@ -99,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     Global.memberData.authData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: Any]
                     Global.memberData.authToken = "ModeCloud " + (Global.memberData.authData["token"] as! String)
                     self.authIsGet = true
-                    
+                    self.loginCount += 1
                     self.getUserData()
                     self.getHomes()
                 }catch {

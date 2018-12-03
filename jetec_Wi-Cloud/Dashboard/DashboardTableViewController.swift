@@ -25,8 +25,8 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     var selectIndexPath: IndexPath!
     
     let textLabel = UILabel()
-    var socket: WebSocket!
-    var receiveData: [String: Any] = [:]
+//    var socket: WebSocket!
+//    var receiveData: [String: Any] = [:]
     var cellText: [NSMutableAttributedString] = []
     var pointerIsDraw: Bool = false
     
@@ -65,7 +65,9 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         self.navigationItem.rightBarButtonItems = leftBarItems
         tableView.register(UINib(nibName: "GaugeTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "gauge_cell")
         tableView.register(UINib(nibName: "ValueTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "value_cell")
-        socket = Global.connectToWebSocket(delegate: self)
+        if Global.socket == nil {
+            Global.socket = Global.connectToWebSocket(delegate: self)
+        }
         
         self.tableView.estimatedRowHeight = 0
         self.tableView.estimatedSectionFooterHeight = 0
@@ -86,21 +88,29 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             }
         } else {
             // Fallback on earlier versions
+            DispatchQueue.global().async {
+                sleep(1)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         }
-        if !socket.isConnected {
-            socket.connect()
+        if !Global.socket.isConnected {
+            Global.socket.connect()
+        }else {
+            Global.socket.delegate = self
         }
     }
     
-    
+    /*
     override func viewDidDisappear(_ animated: Bool) {
         if socket != nil {
-            if socket.isConnected {
-                socket.disconnect()
+            if Global.socket.isConnected {
+                Global.socket.disconnect()
             }
         }
     }
-    
+    */
     //MARK: - Socket Event Action
     
     func websocketDidConnect(socket: WebSocketClient) {
@@ -119,7 +129,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             let json = text.getJsonObject() as! [String: Any]
             if let eventType = json["eventType"] {
                 if eventType as! String == "timeSeriesData" {
-                    self.receiveData = text.getJsonObject() as! [String: Any]
+                    Global.receiveData = text.getJsonObject() as! [String: Any]
                     if !self.tableView.isEditing {
                         self.tableView.reloadData()
                     }
@@ -169,8 +179,8 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     
     @objc func applicationDidBecomeActive() {
-        if !socket.isConnected {
-            socket.connect()
+        if !Global.socket.isConnected {
+            Global.socket.connect()
         }
     }
     
@@ -178,7 +188,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     @objc func editingBarButtonAction(sender: UIBarButtonItem) {
         selectIndexPath = nil
-        socket.disconnect()
+        Global.socket.disconnect()
         let doneButton = UIBarButtonItem(title: "bar_button_done".localized, style: .plain, target: self, action: #selector(doneBarButtonAction(_:)))
         DispatchQueue.main.async {
             self.navigationItem.rightBarButtonItem = nil
@@ -290,7 +300,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     
     
     func drawValueCircle(_ gauge_cell: GaugeTableViewCell, min: NSNumber, max: NSNumber, value: Double? = nil, index: Int) {
-        if receiveData.count != 0 {
+        if Global.receiveData.count != 0 {
             gauge_cell.valueCircleShapeLayer = CAShapeLayer()
             var radius: CGFloat {
                 let width = gauge_cell.innerView.bounds.size.width
@@ -308,8 +318,6 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
             if let _ = gauge_cell.valueCircleShapeLayer {
                 gauge_cell.valueCircleShapeLayer.removeFromSuperlayer()
             }
-            print("------------")
-            print(max.doubleValue - min.doubleValue)
             
             var circlePosition: CGFloat {
                 if let val = value {
@@ -433,7 +441,7 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
         var title = Global.memberData.dashboardData[indexPath.section]["name"] as? String ?? "沒有標題"
         
         var receiveSeriesData: [[String: Any]] {
-            if let eventData: [String: Any] = receiveData["eventData"] as? [String: Any] {
+            if let eventData: [String: Any] = Global.receiveData["eventData"] as? [String: Any] {
                 if let series = eventData["timeSeriesData"] as? [[String:Any]] {
                     return series
                 }else {

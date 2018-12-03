@@ -65,7 +65,6 @@ class LoginViewController: UIViewController {
             loginCheck(email: email, password: password, projectId: Basic.projectId)
             
 //            DispatchQueue.main.async {
-            
                 while true {
                     self.dataCheck()
                     if self.dataIsReady == true {

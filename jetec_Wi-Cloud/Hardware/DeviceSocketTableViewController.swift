@@ -14,10 +14,10 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     var deviceSettingList = ["hardware_socket_device_setting_connectstate", "hardware_socket_device_setting_avaliable_sensors", "hardware_socket_device_setting_alerts", "hardware_socket_device_setting_interval", "hardware_socket_device_setting_duration"]
     var deviceData: [String: Any] = [:]
-    var socket: WebSocket!
+//    var socket: WebSocket!
     var sensorData: [String:String] = [:]
     
-    var receiveData: [String: Any] = [:]
+//    var receiveData: [String: Any] = [:]
     var isConnected: Bool = false
     var connectStatusImage: UIImageView!
     var connectImageIsAdd: Bool = false
@@ -50,17 +50,19 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     override func viewDidAppear(_ animated: Bool) {
         self.view.addSubview(loadingAction)
-        if !socket.isConnected {
-            socket.connect()
+        if !Global.socket.isConnected {
+            Global.socket.connect()
+        }else {
+            Global.socket.delegate = self
         }
     }
     
-    
+    /*
     override func viewDidDisappear(_ animated: Bool) {
-        if socket.isConnected {
-            socket.disconnect()
+        if Global.socket.isConnected {
+            Global.socket.disconnect()
         }
-    }
+    }*/
     
     
     func websocketDidConnect(socket: WebSocketClient) {
@@ -75,11 +77,11 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
         sensorData = [:]
         print("***********************************")
         //        print(text)
-        receiveData = text.getJsonObject() as! [String: Any]
-        let eventType = receiveData["eventType"] as? String
+        Global.receiveData = text.getJsonObject() as! [String: Any]
+        let eventType = Global.receiveData["eventType"] as? String
         if eventType == "timeSeriesData" {
-            if let data = (receiveData["eventData"] as! [String:Any])["timeSeriesData"] {
-                let originDeviceId = String(receiveData["originDeviceId"] as! Int)
+            if let data = (Global.receiveData["eventData"] as! [String:Any])["timeSeriesData"] {
+                let originDeviceId = String(Global.receiveData["originDeviceId"] as! Int)
                 let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
                 if deviceId == originDeviceId {
                     //                    print(self.receiveData)
@@ -100,7 +102,7 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
                 
             }
         }else if eventType == "_deviceDisconnected_" {
-            if let eventData = receiveData["eventData"] {
+            if let eventData = Global.receiveData["eventData"] {
                 let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
                 if let receiveDeviceId: Int = (eventData as! [String: Any])["deviceId"] as? Int {
                     if deviceId == String(receiveDeviceId) {
@@ -113,7 +115,7 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
             }
             
         }else if eventType == "_deviceConnected_" {
-            if let eventData = receiveData["eventData"] {
+            if let eventData = Global.receiveData["eventData"] {
                 let deviceId = (deviceData["value"] as! [String:Any])["gatewayId"] as! String
                 if let receiveDeviceId: Int = (eventData as! [String: Any])["deviceId"] as? Int {
                     if deviceId == String(receiveDeviceId) {
@@ -140,8 +142,8 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
     
     
     @objc func applicationDidBecomeActive() {
-        if !socket.isConnected {
-            socket.connect()
+        if !Global.socket.isConnected {
+            Global.socket.connect()
         }
     }
     
@@ -152,9 +154,9 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
         var request = URLRequest(url: URL(string: "wss://api.tinkermode.com/userSession/websocket")!)
         request.timeoutInterval = 5
         request.setValue(Global.memberData.authToken, forHTTPHeaderField: "Authorization")
-        socket = WebSocket(request: request)
-        socket.delegate = self
-        socket.connect()
+        Global.socket = WebSocket(request: request)
+        Global.socket.delegate = self
+        Global.socket.connect()
     }
     
     
@@ -190,7 +192,8 @@ class DeviceSocketTableViewController: UITableViewController, WebSocketDelegate 
             switch indexPath.row {
             case 0:
                 connectStatusImage = UIImageView()
-                connectStatusImage.image = UIImage(named: (isConnected) ? "ok_icon" : "cancel_icon")
+//                connectStatusImage.image = UIImage(named: (isConnected) ? "ok_icon" : "cancel_icon")
+                connectStatusImage.image = UIImage(named: (Global.socket.isConnected) ? "ok_icon" : "cancel_icon")
                 connectStatusImage.frame.size = CGSize(width: 30, height: 30)
                 connectStatusImage.frame.origin = CGPoint(x: self.tableView.frame.size.width - connectStatusImage.frame.size.width - 7, y: 0)
                 connectStatusImage.center.y = cell.center.y

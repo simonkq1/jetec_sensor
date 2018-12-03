@@ -134,8 +134,8 @@
 		2204D02A211AB5AC00B70B1D /* jetec_Wi-Cloud */ = {
 			isa = PBXGroup;
 			children = (
+				85E68AB421B50B45009090E1 /* Storyboard */,
 				2204D02B211AB5AC00B70B1D /* AppDelegate.swift */,
-				2204D02F211AB5AC00B70B1D /* Main.storyboard */,
 				22E7E708211D8C04001DE27F /* Dashboard */,
 				22E7E707211D8BCF001DE27F /* Hardware */,
 				2204D034211AB5AF00B70B1D /* LaunchScreen.storyboard */,
@@ -187,7 +187,6 @@
 		22E7E708211D8C04001DE27F /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				22E7E705211D8BBD001DE27F /* Dashboard.storyboard */,
 				2216507521228B2300190E44 /* AddPanel */,
 				85D06D9A212BBCA80014A067 /* EditPanel */,
 				22898A2321212A3400A1CD61 /* DashboardTableViewController.swift */,
@@ -219,6 +218,15 @@
 				85D06D9D212BBDC30014A067 /* EditGaugePanelViewController.swift */,
 			);
 			path = EditPanel;
+			sourceTree = "<group>";
+		};
+		85E68AB421B50B45009090E1 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2204D02F211AB5AC00B70B1D /* Main.storyboard */,
+				22E7E705211D8BBD001DE27F /* Dashboard.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		B3BB0F0457D6C5F13E0AA0C1 /* Frameworks */ = {

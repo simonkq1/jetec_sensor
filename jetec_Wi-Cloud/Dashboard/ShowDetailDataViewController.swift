@@ -109,7 +109,7 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
             
         }else {
             let url = Basic.api + "/homes/\(homeId)/smartModules/tsdb/timeSeries/\(seriesId)/data?begin=\(target)&end=\(now)&aggregation=\(aggregation)"
-            
+//            print(url)
             Global.getFromURL(url: url, auth: Global.memberData.authToken) { (data, html, response) in
                 self.dataLog = data?.getJsonObject() as! [String: Any]
                 self.dataLogForTableView = (self.dataLog["data"] as! [[Any]]).sorted(by: { (d1, d2) -> Bool in
@@ -252,7 +252,6 @@ class ShowDetailDataViewController: UIViewController, UITableViewDelegate, UITab
         }else if highlight.x >= (Double(chartTitles.count) / 2), highlight.y <= chartData.average {
             marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: marker.layer.cornerRadius, side: .bottomRight)
         }else {
-            
             marker.drawChatBallonBorder(shapeLayer: borderLayer, highlight: highlight, offset: CGPoint(x: 7, y: 7), cornerRadius: marker.layer.cornerRadius, side: .bottomLeft)
         }
         

@@ -22,6 +22,8 @@ class Global: NSObject {
     static var main_storyboard: UIStoryboard = {
         return UIStoryboard(name: "Main", bundle: Bundle.main)
     }()
+    static var socket: WebSocket!
+    static var receiveData: [String: Any] = [:]
     
     class memberData: Global {
         static var authData: [String:Any] = [:]
