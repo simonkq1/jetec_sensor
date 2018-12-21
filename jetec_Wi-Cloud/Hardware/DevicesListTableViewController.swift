@@ -31,8 +31,11 @@ class DevicesListTableViewController: UITableViewController {
                 })
             }
         }
+         print("------------------")
+         print(Global.memberData.devicesData)
+         print("==================")
+         print(Global.memberData.devicesInfo.count)
         */
-        
         
     }
     
@@ -86,7 +89,7 @@ class DevicesListTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return Global.memberData.devicesInfo.count
+        return Global.memberData.devicesData.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -99,7 +102,7 @@ class DevicesListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let deviceValue = Global.memberData.devicesInfo[indexPath.section][indexPath.row]["value"] as! [String:Any]
         let deviceName = deviceValue["name"] as! String
-        let isConnected = Global.memberData.devicesData[indexPath.section]["isConnected"] as! Bool
+        let isConnected = Global.memberData.devicesData[indexPath.section]["isConnected"] as? Bool ?? false
         if isConnected {
             cell.textLabel?.textColor = UIColor.black
         }else {

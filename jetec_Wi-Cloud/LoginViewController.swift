@@ -232,6 +232,7 @@ class LoginViewController: UIViewController {
                 self.homesIsGet = true
                 
                 let homeId = Global.memberData.homesData[0]["id"] as! Int
+                usleep(50000)
                 self.getDevices(homeId: homeId)
             }catch {
                 print(error)
@@ -248,8 +249,8 @@ class LoginViewController: UIViewController {
                     if action != nil {
                         action!()
                     }
-                    self.getDevicesInfo()
                     self.devicesIsGet = true
+                    self.getDevicesInfo()
                 }catch {
                     print(error)
                 }
@@ -280,8 +281,8 @@ class LoginViewController: UIViewController {
         while Global.memberData.devicesInfo.count != Global.memberData.devicesData.count{
             usleep(150000)
         }
-        self.getOnlineDevice()
         self.infoIsGet = true
+        self.getOnlineDevice()
     }
     
     
@@ -302,7 +303,6 @@ class LoginViewController: UIViewController {
         while check {
             usleep(150000)
         }
-        
     }
     
     func dataCheck() {

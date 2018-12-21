@@ -727,9 +727,12 @@ class DashboardTableViewController: UITableViewController, WebSocketDelegate {
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print(sourceIndexPath.section)
         print(destinationIndexPath.section)
+        Global.memberData.dashboardData.swapAt(sourceIndexPath.section, destinationIndexPath.section)
+        /*
         let tmpData = Global.memberData.dashboardData[sourceIndexPath.section]
         Global.memberData.dashboardData[sourceIndexPath.section] = Global.memberData.dashboardData[destinationIndexPath.section]
         Global.memberData.dashboardData[destinationIndexPath.section] = tmpData
+         */
         
     }
     

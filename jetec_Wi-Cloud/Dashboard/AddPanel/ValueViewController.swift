@@ -39,13 +39,13 @@ class ValueViewController: UIViewController {
         var list: [String] = []
         var trueList: [String] = []
         if let index = self.selectModuleIndex {
-            let a: [String] = Global.memberData.onlineDevices[index]["sensors"] as! [String]
-            for i in 0..<a.count {
-                var sensor = (a[i].replacingOccurrences(of: ":0", with: "")).replacingOccurrences(of: "_", with: " ")
+            let s: [String] = Global.memberData.onlineDevices[index]["sensors"] as! [String]
+            for i in 0..<s.count {
+                var sensor = (s[i].replacingOccurrences(of: ":0", with: "")).replacingOccurrences(of: "_", with: " ")
                 let sensorFirst = sensor.first
                 sensor.remove(at: sensor.startIndex)
                 let sensortitle = "\(String(sensorFirst!).uppercased())\(sensor.lowercased())"
-                trueList.append(a[i])
+                trueList.append(s[i])
                 list.append(sensortitle)
                 
             }
@@ -79,18 +79,17 @@ class ValueViewController: UIViewController {
     //MARK: - IBAction
     
     
-    
     //MARK: - System Function
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Do any additional setup after loading the view.
         //Localize
         moduleTitleLabel.text = "panel_configure_module".localized
         sensorTitleLabel.text = "panel_configure_sensor".localized
         nameTitleLabel.text = "panel_configure_name".localized
         nameTextField.placeholder = "panel_configure_placeholder_name".localized
-        // Do any additional setup after loading the view.
         
         moduleDropDownTextField.placeholder = "panel_configure_placeholder_module".localized
         sensorDropDownTextField.placeholder = "panel_configure_placeholder_sensor".localized

@@ -34,9 +34,7 @@ class MainViewController: UIViewController {
     
     lazy var dashboard_nc: DashboardNavigationController = {
         var nc = Global.dash_storyboard.instantiateViewController(withIdentifier: "dashboard_nc") as! DashboardNavigationController
-        
         self.add(asChildViewController: nc)
-        
         return nc
     }()
     

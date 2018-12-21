@@ -174,6 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func getDevicesInfo() {
+        Global.memberData.devicesInfo = []
         for i in Global.memberData.devicesData {
             let deviceId = i["id"] as! Int
             let url = Basic.api + "/devices/\(deviceId)/kv"
